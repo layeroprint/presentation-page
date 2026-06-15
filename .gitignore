@@ -1,6 +1,8 @@
 *.log
 localhost-server.*.log
-output/
+output/*
+!output/screenshots/
+!output/screenshots/**
 node_modules/
 .DS_Store
 Thumbs.db
