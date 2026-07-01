@@ -19,9 +19,6 @@ output/
 index_old.html
 blog.html
 
-# ── Videók (tárhelyre FTP-vel töltendők) ───────────────────────
-assets/videos/
-
 # ── Teszt és kísérlet képek ─────────────────────────────────────
 assets/images/test_hero.png
 assets/images/layero_hero_new.webp
