@@ -1,17 +1,30 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="hu">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Layero vízió - személyes történetek prémium 3D formában.">
     <title>Vízió | Layero 3D Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Sora:wght@300;400;500;600&display=swap">
+    <link rel="canonical" href="https://layero.ro/vizio.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Layero 3D Design">
+    <meta property="og:title" content="Vízió | Layero 3D Design">
+    <meta property="og:description" content="A személyes történetek prémium 3D formában – a Layero víziója és gondolkodásmódja.">
+    <meta property="og:url" content="https://layero.ro/vizio.html">
+    <meta property="og:image" content="https://layero.ro/assets/images/layero-wire-heart-sculpture.webp">
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,400;9..144,1,500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="tv-theme.css">
+    <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js"}}</script>
   </head>
   <body>
-    <header class="site-header motion-load" style="--load-delay: 80ms"><div class="header-shell"><a class="logo" href="index.html"><img class="logo__brand-mark" src="assets/layero-logo-mark-from-source.png" alt="" width="240" height="237"><img class="logo__brand-wordmark" src="assets/layero-logo-wordmark-from-source.png" alt="Layero 3D Design" width="493" height="171"></a><button class="nav-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" data-nav-toggle><span class="sr-only">Menü megnyitása</span><span class="nav-toggle__line" aria-hidden="true"></span></button><nav class="site-nav" id="site-navigation" aria-label="Főmenü"><a href="vizio.html" aria-current="page">Vízió</a><a href="egyedi-munkak.html">Egyedi munkák</a><a href="inspiracio.html">Inspiráció</a><a href="tudastar.html">Tudástár</a><a href="hogyan-mukodik.html">Hogyan működik</a><a href="rolunk.html">Rólunk</a></nav><a class="btn btn--outline header-cta" href="kapcsolat.html">Belépés a shopba <span aria-hidden="true">→</span></a></div></header>
+    <header class="site-header motion-load" style="--load-delay: 80ms"><div class="header-shell"><a class="logo" href="index.html"><img class="logo__brand-mark" src="assets/layero-logo-mark-from-source.png" alt="" width="240" height="237"><img class="logo__brand-wordmark" src="assets/layero-logo-wordmark-from-source.png" alt="Layero 3D Design" width="493" height="171"></a><button class="nav-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" data-nav-toggle><span class="sr-only">Menü megnyitása</span><span class="nav-toggle__line" aria-hidden="true"></span></button><nav class="site-nav" id="site-navigation" aria-label="Főmenü"><a href="egyedi-munkak.html">Munkáink</a><a href="inspiracio.html">Inspiráció</a><a href="tudastar.html">Tudástár</a><a href="rolunk.html">Rólunk</a><a href="kapcsolat.html">Kapcsolat</a></nav><a class="btn btn--outline header-cta" href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer">Shop megnyitása <span aria-hidden="true">→</span></a></div></header>
     <main class="subpage-main">
       <section class="subpage-hero" aria-labelledby="page-title">
-        <div class="subpage-hero__bg" aria-hidden="true"></div>
+        <canvas class="subpage-hero__canvas" data-three-canvas="subpage" aria-hidden="true"></canvas><div class="subpage-hero__bg" aria-hidden="true"></div>
         <div class="subpage-hero__fx" aria-hidden="true">
           <span class="subpage-hero__scan"></span>
           <span class="subpage-hero__grid-bg"></span>
@@ -22,6 +35,6 @@
       <section class="subpage-section subpage-section--tight"><div class="subpage-shell split-section"><div><p class="subpage-kicker">A Layero gondolkodás</p><h2 class="mini-title">A tárgy akkor erős, ha <span>jelentést</span> hordoz.</h2><p class="mini-copy">Nem csak formát nyomtatunk. Kapcsolódást, emléket és identitást tervezünk olyan tárgyakba, amelyek hosszú távon is értéket képviselnek.</p></div><div class="split-section__image"><img src="assets/images/hero-layero-futuristic-tunnel-900.webp" alt=""></div></div></section>
       <section class="subpage-section subpage-section--tight"><div class="subpage-shell wide-cta"><h2 class="mini-title">Van egy ötleted? Adjunk neki <span>formát.</span></h2><p>Oszd meg velünk, mit szeretnél megőrizni vagy kifejezni, és megtervezzük hozzá a méltó tárgyat.</p><a class="btn btn--primary" href="kapcsolat.html">Kapcsolatfelvétel <span aria-hidden="true">→</span></a></div></section>
     </main>
-    <footer class="site-footer"><div class="container footer__bottom"><p>© 2024 Layero 3D Design. Minden jog fenntartva.</p><div><a href="vizio.html">Vízió</a><a href="egyedi-munkak.html">Egyedi munkák</a><a href="inspiracio.html">Inspiráció</a><a href="tudastar.html">Tudástár</a><a href="hogyan-mukodik.html">Hogyan működik</a><a href="rolunk.html">Rólunk</a></div></div></footer><script src="script.js"></script>
+    <footer class="site-footer"><div class="container footer__bottom"><p>© 2025–2026 Layero · layero.ro · Minden jog fenntartva.</p><div><a href="egyedi-munkak.html">Munkáink</a><a href="inspiracio.html">Inspiráció</a><a href="tudastar.html">Tudástár</a><a href="rolunk.html">Rólunk</a><a href="kapcsolat.html">Kapcsolat</a><a href="adatvedelem.html">Adatvédelem</a><a href="aszf.html">ÁSZF</a><a href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer">Shop →</a></div></div></footer><script src="script.js"></script><script type="module" src="three-scene.js"></script>
   </body>
 </html>

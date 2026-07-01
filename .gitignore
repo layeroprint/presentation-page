@@ -1,8 +1,34 @@
-*.log
-localhost-server.*.log
-output/*
-!output/screenshots/
-!output/screenshots/**
-node_modules/
+# ── Rendszerfájlok ─────────────────────────────────────────────
 .DS_Store
 Thumbs.db
+*.log
+localhost-server.*.log
+
+# ── Fejlesztői eszközök ─────────────────────────────────────────
+node_modules/
+.claude/
+.playwright-cli/
+source_build/
+-background
+/-background/
+
+# ── Kimenetek / screenshotok ────────────────────────────────────
+output/
+
+# ── Régi / nem használt oldalak ─────────────────────────────────
+index_old.html
+blog.html
+
+# ── Videók (tárhelyre FTP-vel töltendők) ───────────────────────
+assets/videos/
+
+# ── Teszt és kísérlet képek ─────────────────────────────────────
+assets/images/test_hero.png
+assets/images/layero_hero_new.webp
+assets/images/layero_hero_new-*.webp
+assets/images/layero_hero_new_background.webp
+assets/images/layero_hero_new_background-*.webp
+assets/images/new_hero_image.webp
+assets/images/new_hero_image_better_resolution.webp
+assets/images/new_hero_image_better_resolution-*.webp
+assets/images/hero-layero-futuristic-tunnel-1600 - Copy.webp

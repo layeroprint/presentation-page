@@ -1,24 +1,40 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="hu">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Személyre szabott Layero ajándékok - akril táblák, névtáblák, emléktárgyak és prémium 3D ajándékötletek.">
     <title>Személyre szabott ajándékok | Layero 3D Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Sora:wght@300;400;500;600&display=swap">
+    <link rel="canonical" href="https://layero.ro/szemelyre-szabott-ajandekok.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Layero 3D Design">
+    <meta property="og:title" content="Személyre szabott ajándékok | Layero 3D Design">
+    <meta property="og:description" content="Egyedi 3D ajándékok személyre szabva – névtáblák, akril táblák, emléktárgyak és szoborszerű ajándékok.">
+    <meta property="og:url" content="https://layero.ro/szemelyre-szabott-ajandekok.html">
+    <meta property="og:image" content="https://layero.ro/assets/images/personalized-father-plaque.webp">
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,400;9..144,1,500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="tv-theme.css">
+    <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js"}}</script>
   </head>
   <body>
     <header class="site-header motion-load" style="--load-delay: 80ms">
       <div class="header-shell">
         <a class="logo" href="index.html" aria-label="Layero 3D Design főoldal"><img class="logo__brand-mark" src="assets/layero-logo-mark-from-source.png" alt="" width="240" height="237"><img class="logo__brand-wordmark" src="assets/layero-logo-wordmark-from-source.png" alt="Layero 3D Design" width="493" height="171"></a>
         <button class="nav-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" data-nav-toggle><span class="sr-only">Menü megnyitása</span><span class="nav-toggle__line" aria-hidden="true"></span></button>
-        <nav class="site-nav" id="site-navigation" aria-label="Főmenü"><a href="vizio.html">Vízió</a><a href="egyedi-munkak.html" aria-current="page">Egyedi munkák</a><a href="inspiracio.html">Inspiráció</a><a href="tudastar.html">Tudástár</a><a href="hogyan-mukodik.html">Hogyan működik</a><a href="rolunk.html">Rólunk</a></nav>
-        <a class="btn btn--outline header-cta" href="kapcsolat.html">Belépés a shopba <span aria-hidden="true">→</span></a>
+        <nav class="site-nav" id="site-navigation" aria-label="Főmenü"><a href="egyedi-munkak.html" aria-current="page">Munkáink</a><a href="inspiracio.html">Inspiráció</a><a href="tudastar.html">Tudástár</a><a href="rolunk.html">Rólunk</a><a href="kapcsolat.html">Kapcsolat</a></nav>
+        <a class="btn btn--outline header-cta" href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer">Shop megnyitása <span aria-hidden="true">→</span></a>
       </div>
     </header>
+
     <main class="subpage-main">
-      <section class="subpage-hero subpage-hero--compact" aria-labelledby="page-title">
-        <div class="subpage-hero__bg" aria-hidden="true"></div>
+      <!-- HERO -->
+      <section class="subpage-hero subpage-hero--compact" aria-labelledby="page-title"
+        style="--subpage-hero-position: 70% 36%">
+        <canvas class="subpage-hero__canvas" data-three-canvas="subpage" aria-hidden="true"></canvas><div class="subpage-hero__bg" aria-hidden="true"></div>
         <div class="subpage-hero__fx" aria-hidden="true">
           <span class="subpage-hero__scan"></span>
           <span class="subpage-hero__grid-bg"></span>
@@ -26,52 +42,142 @@
         <div class="subpage-hero__shade" aria-hidden="true"></div>
         <div class="subpage-shell subpage-hero__grid">
           <div class="subpage-hero__copy">
-            <p class="subpage-kicker">3. oldal / 7</p>
             <h1 class="subpage-title" id="page-title">Személyre szabott <span>ajándékok</span></h1>
             <p class="subpage-lead">Jelentéssel teli, egyedileg készített emléktárgyak, gondos odafigyeléssel megalkotva, hosszú időre tervezve.</p>
             <div class="subpage-hero__actions"><a class="btn btn--primary" href="kapcsolat.html">Ajándék tervezése <span aria-hidden="true">→</span></a></div>
           </div>
-          <div class="subpage-hero__media" aria-hidden="true"><img src="assets/images/personalized-father-plaque.webp" alt=""></div>
+          <div class="subpage-hero__media" aria-hidden="true">
+            <img src="assets/images/personalized-father-plaque.webp" alt="">
+          </div>
         </div>
       </section>
+
+      <!-- KIEMELT AJÁNDÉKKATEGÓRIÁK -->
       <section class="subpage-section">
         <div class="subpage-shell">
           <p class="subpage-heading">Kiemelt ajándékkategóriák</p>
           <div class="page-card-grid page-card-grid--4">
-            <article class="page-card"><div class="page-card__media"><img src="assets/images/personalized-father-plaque.webp" alt=""></div><div class="page-card__body"><h3>Akril táblák</h3><p>Lézergravírozott tisztaság. Időtálló és elegáns.</p><a class="page-card__link" href="kapcsolat.html">Felfedezés <span aria-hidden="true">→</span></a></div></article>
-            <article class="page-card"><div class="page-card__media"><img src="assets/images/custom-family-nameplate.webp" alt=""></div><div class="page-card__body"><h3>Névtáblák</h3><p>Személyre szabott feliratok bármilyen térbe.</p><a class="page-card__link" href="kapcsolat.html">Felfedezés <span aria-hidden="true">→</span></a></div></article>
-            <article class="page-card"><div class="page-card__media"><img src="assets/images/decorative-lattice-ornament.webp" alt=""></div><div class="page-card__body"><h3>Dekoratív emléktárgyak</h3><p>Finom részletek, amelyek elmesélik a történetedet.</p><a class="page-card__link" href="kapcsolat.html">Felfedezés <span aria-hidden="true">→</span></a></div></article>
-            <article class="page-card"><div class="page-card__media"><img src="assets/images/parametric-vase-object.webp" alt=""></div><div class="page-card__body"><h3>Szoborszerű ajándékok</h3><p>Modern, művészi darabok 3D-ben megalkotva.</p><a class="page-card__link" href="kapcsolat.html">Felfedezés <span aria-hidden="true">→</span></a></div></article>
+            <article class="page-card">
+              <div class="page-card__media"><img src="assets/images/personalized-father-plaque.webp" alt=""></div>
+              <div class="page-card__body">
+                <h3>Akril táblák</h3>
+                <p>Lézergravírozott tisztaság. Időtálló és elegáns.</p>
+                <a class="page-card__link" href="kapcsolat.html">Felfedezés <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+            <article class="page-card">
+              <div class="page-card__media"><img src="assets/images/custom-family-nameplate.webp" alt=""></div>
+              <div class="page-card__body">
+                <h3>Névtáblák</h3>
+                <p>Személyre szabott feliratok bármilyen térbe.</p>
+                <a class="page-card__link" href="kapcsolat.html">Felfedezés <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+            <article class="page-card">
+              <div class="page-card__media"><img src="assets/images/decorative-lattice-ornament.webp" alt=""></div>
+              <div class="page-card__body">
+                <h3>Dekoratív emléktárgyak</h3>
+                <p>Finom részletek, amelyek elmesélik a történetedet.</p>
+                <a class="page-card__link" href="kapcsolat.html">Felfedezés <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+            <article class="page-card">
+              <div class="page-card__media"><img src="assets/images/parametric-vase-object.webp" alt=""></div>
+              <div class="page-card__body">
+                <h3>Szoborszerű ajándékok</h3>
+                <p>Modern, művészi darabok 3D-ben megalkotva.</p>
+                <a class="page-card__link" href="kapcsolat.html">Felfedezés <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
           </div>
         </div>
       </section>
+
+      <!-- SZEMÉLYRE SZABOTT AJÁNDÉKÖTLETEK -->
       <section class="subpage-section subpage-section--tight">
         <div class="subpage-shell">
           <p class="subpage-heading">Személyre szabott ajándékötletek</p>
           <div class="page-card-grid page-card-grid--5">
-            <article class="page-card"><div class="page-card__media"><img src="assets/images/personalized-father-plaque.webp" alt=""></div><div class="page-card__body"><h3>Születésnapok</h3><p>Ünnepeld az újabb évet maradandó módon.</p></div></article>
-            <article class="page-card"><div class="page-card__media"><img src="assets/images/decorative-lattice-ornament.webp" alt=""></div><div class="page-card__body"><h3>Évfordulók</h3><p>Tisztelegj a közös utak előtt.</p></div></article>
-            <article class="page-card"><div class="page-card__media"><img src="assets/images/custom-family-nameplate.webp" alt=""></div><div class="page-card__body"><h3>Apák napja</h3><p>Mutasd meg háládat egy tartós emlékkel.</p></div></article>
-            <article class="page-card"><div class="page-card__media"><img src="assets/images/layero-wire-heart-sculpture.webp" alt=""></div><div class="page-card__body"><h3>Emlékajándékok</h3><p>Őrizd meg szeretteid emlékét közel a szívedhez.</p></div></article>
-            <article class="page-card"><div class="page-card__media"><img src="assets/images/personalized-father-plaque.webp" alt=""></div><div class="page-card__body"><h3>Esküvők</h3><p>Személyes részletek a különleges napodra.</p></div></article>
+            <article class="page-card">
+              <div class="page-card__media"><img src="assets/images/personalized-father-plaque.webp" alt=""></div>
+              <div class="page-card__body"><h3>Születésnapok</h3><p>Ünnepeld az újabb évet maradandó módon.</p></div>
+            </article>
+            <article class="page-card">
+              <div class="page-card__media"><img src="assets/images/layero-wire-heart-sculpture.webp" alt=""></div>
+              <div class="page-card__body"><h3>Évfordulók</h3><p>Tisztelegj a közös utak előtt.</p></div>
+            </article>
+            <article class="page-card">
+              <div class="page-card__media"><img src="assets/images/custom-family-nameplate.webp" alt=""></div>
+              <div class="page-card__body"><h3>Apák napja</h3><p>Mutasd meg háládat egy tartós emlékkel.</p></div>
+            </article>
+            <article class="page-card">
+              <div class="page-card__media"><img src="assets/images/decorative-lattice-ornament.webp" alt=""></div>
+              <div class="page-card__body"><h3>Emlékajándékok</h3><p>Őrizd meg szeretteid emlékét közel a szívedhez.</p></div>
+            </article>
+            <article class="page-card">
+              <div class="page-card__media"><img src="assets/images/parametric-vase-object.webp" alt=""></div>
+              <div class="page-card__body"><h3>Esküvők</h3><p>Személyes részletek a különleges napodra.</p></div>
+            </article>
           </div>
         </div>
       </section>
+
+      <!-- CÉLLAL KÉSZÍTVE -->
       <section class="subpage-section">
         <div class="subpage-shell">
           <p class="subpage-heading">Céllal készítve. Hosszú távra tervezve.</p>
           <div class="feature-band">
-            <div class="feature-band__item"><img src="assets/images/how-command/icon-shield-check.png" alt=""><h3>Prémium alapanyagok</h3><p>Magas minőségű akril, fa és fém.</p></div>
-            <div class="feature-band__item"><img src="assets/images/how-command/icon-sliders.png" alt=""><h3>Precíz gravírozás</h3><p>Részletgazdag munka minden darabon.</p></div>
-            <div class="feature-band__item"><img src="assets/images/how-command/new-icon-gift.webp" alt=""><h3>Egyedire készítve</h3><p>Minden darab kifejezetten neked készül.</p></div>
-            <div class="feature-band__item"><img src="assets/images/how-command/icon-shield-check.png" alt=""><h3>Tartós kivitel</h3><p>Évekkel később is értéket képvisel.</p></div>
-            <div class="feature-band__item"><img src="assets/images/how-command/icon-package-box.png" alt=""><h3>Igényes csomagolás</h3><p>Az ajándék már érkezéskor különleges.</p></div>
+            <div class="feature-band__item">
+              <span class="icon-line icon-line--sm" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+              </span>
+              <h3>Prémium alapanyagok</h3>
+              <p>Magas minőségű akril, fa és fém az esztétika és tartósság jegyében.</p>
+            </div>
+            <div class="feature-band__item">
+              <span class="icon-line icon-line--sm" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><line x1="12" y1="2" x2="12" y2="22"/><line x1="2" y1="12" x2="22" y2="12"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/><line x1="19.07" y1="4.93" x2="4.93" y2="19.07"/></svg>
+              </span>
+              <h3>Precíz gravírozás</h3>
+              <p>Részletgazdag munka, amely életre kelti a terveket.</p>
+            </div>
+            <div class="feature-band__item">
+              <span class="icon-line icon-line--sm" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 12v10H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/></svg>
+              </span>
+              <h3>Egyedire készítve</h3>
+              <p>Minden darab kifejezetten neked készül.</p>
+            </div>
+            <div class="feature-band__item">
+              <span class="icon-line icon-line--sm" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/></svg>
+              </span>
+              <h3>Tartós kivitel</h3>
+              <p>Úgy készül, hogy ma és évekkel később is értéket képviseljen.</p>
+            </div>
+            <div class="feature-band__item">
+              <span class="icon-line icon-line--sm" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+              </span>
+              <h3>Igényes csomagolás</h3>
+              <p>Átgondolt csomagolás, hogy az ajándék már érkezéskor különleges legyen.</p>
+            </div>
           </div>
         </div>
       </section>
-      <section class="subpage-section subpage-section--tight"><div class="subpage-shell wide-cta"><h2 class="mini-title">Készíts ajándékot, amely <span>tovább él</span>, mint a pillanat.</h2><p>A szívből jövő üzenetektől az egyedi tervekig segítünk a jelentést kézzelfoghatóvá tenni.</p><a class="btn btn--primary" href="kapcsolat.html">Ajándék tervezése <span aria-hidden="true">→</span></a></div></section>
+
+      <!-- CTA -->
+      <section class="subpage-section subpage-section--tight">
+        <div class="subpage-shell wide-cta">
+          <h2 class="mini-title">Készíts ajándékot, amely <span>tovább él</span>, mint a pillanat.</h2>
+          <p>A szívből jövő üzenetektől az egyedi tervekig segítünk a jelentést kézzelfoghatóvá tenni.</p>
+          <a class="btn btn--primary" href="kapcsolat.html">Ajándék tervezése <span aria-hidden="true">→</span></a>
+        </div>
+      </section>
     </main>
-    <footer class="site-footer"><div class="container footer__bottom"><p>© 2024 Layero 3D Design. Minden jog fenntartva.</p><div><a href="vizio.html">Vízió</a><a href="egyedi-munkak.html">Egyedi munkák</a><a href="inspiracio.html">Inspiráció</a><a href="tudastar.html">Tudástár</a><a href="hogyan-mukodik.html">Hogyan működik</a><a href="rolunk.html">Rólunk</a></div></div></footer>
+
+    <footer class="site-footer"><div class="container footer__bottom"><p>© 2025–2026 Layero · layero.ro · Minden jog fenntartva.</p><div><a href="egyedi-munkak.html">Munkáink</a><a href="inspiracio.html">Inspiráció</a><a href="tudastar.html">Tudástár</a><a href="rolunk.html">Rólunk</a><a href="kapcsolat.html">Kapcsolat</a><a href="adatvedelem.html">Adatvédelem</a><a href="aszf.html">ÁSZF</a><a href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer">Shop →</a></div></div></footer>
     <script src="script.js"></script>
+    <script type="module" src="three-scene.js"></script>
   </body>
 </html>

@@ -1,0 +1,889 @@
+<!doctype html>
+<html lang="hu">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Layero galéria — termékfotók, gyártási videók, folyamat képek és prezentációs anyagok.">
+    <title>Galéria | Layero 3D Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Sora:wght@300;400;500;600&display=swap">
+    <link rel="canonical" href="https://layero.ro/galeria.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Layero 3D Design">
+    <meta property="og:title" content="Galéria | Layero 3D Design">
+    <meta property="og:description" content="Termékfotók, gyártási videók és folyamat képek a Layero 3D Design műhelyéből.">
+    <meta property="og:url" content="https://layero.ro/galeria.html">
+    <meta property="og:image" content="https://layero.ro/assets/images/categories/layero-category-new-gyujtoi-darabok-1100.webp">
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,400;9..144,1,500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="tv-theme.css">
+    <style>
+      /* ── GALÉRIA OLDAL ──────────────────────────────────────── */
+      .subpage-hero { min-height: 0 !important; padding: 96px 0 36px !important; }
+      .subpage-main::after { display: none !important; }
+
+      /* ── TAB NAV ────────────────────────────────────────────── */
+      .gl-tabs-wrap {
+        position: sticky; top: 64px; z-index: 50;
+        background: rgba(2,6,16,.9); backdrop-filter: blur(18px);
+        border-bottom: 1px solid rgba(255,255,255,.07);
+      }
+      .gl-tabs {
+        max-width: 1200px; margin: 0 auto;
+        padding: 10px 24px; display: flex; gap: 6px;
+        overflow-x: auto; scrollbar-width: none;
+      }
+      .gl-tabs::-webkit-scrollbar { display: none; }
+      .gl-tab {
+        flex-shrink: 0; padding: 7px 20px; border-radius: 24px;
+        border: 1px solid rgba(255,255,255,.1);
+        font-family: 'Space Grotesk', sans-serif; font-size: .72rem; font-weight: 600;
+        letter-spacing: .12em; text-transform: uppercase;
+        color: rgba(255,255,255,.42); background: transparent;
+        cursor: pointer; transition: color .2s, border-color .2s, background .2s;
+      }
+      .gl-tab.is-on, .gl-tab:hover {
+        color: #f4b860; border-color: rgba(244,184,96,.42);
+        background: rgba(244,184,96,.08);
+      }
+
+      /* ── SECTION WRAPPERS ──────────────────────────────────── */
+      .gl-section { padding: 60px 0; }
+      .gl-section + .gl-section { padding-top: 0; }
+      .gl-section[hidden] { display: none !important; }
+      .gl-shell { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+
+      .gl-section-hd {
+        display: flex; align-items: baseline;
+        justify-content: space-between; gap: 16px;
+        margin-bottom: 32px; flex-wrap: wrap;
+      }
+      .gl-section-title {
+        font-family: 'Fraunces', Georgia, serif;
+        font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 500;
+        color: rgba(255,255,255,.9); margin: 0; letter-spacing: -.02em;
+      }
+      .gl-section-title em { font-style: italic; color: rgba(255,255,255,.5); }
+      .gl-count {
+        font-family: 'Space Grotesk', sans-serif; font-size: .68rem; font-weight: 600;
+        letter-spacing: .15em; color: rgba(255,255,255,.25); text-transform: uppercase;
+      }
+
+      /* ── KIEMELT BANNER ─────────────────────────────────────── */
+      .gl-featured {
+        display: grid; grid-template-columns: 1.25fr 1fr;
+        min-height: 500px; border-radius: 20px; overflow: hidden;
+        border: 1px solid rgba(255,255,255,.07);
+      }
+      @media (max-width: 860px) { .gl-featured { grid-template-columns: 1fr; } }
+      .gl-featured__media { position: relative; overflow: hidden; min-height: 280px; }
+      .gl-featured__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+      .gl-featured__media::after {
+        content: ''; position: absolute; inset: 0;
+        background: linear-gradient(90deg, transparent 60%, rgba(4,10,22,.6));
+        pointer-events: none;
+      }
+      .gl-featured__body {
+        padding: 52px 56px;
+        background: linear-gradient(140deg, rgba(8,18,36,1), rgba(4,10,22,1));
+        display: flex; flex-direction: column; justify-content: center; gap: 0;
+      }
+      @media (max-width: 860px) { .gl-featured__body { padding: 36px 28px; } }
+      .gl-featured__kicker {
+        font-family: 'Space Grotesk', sans-serif; font-size: .64rem; font-weight: 700;
+        letter-spacing: .24em; text-transform: uppercase;
+        color: #f4b860; margin: 0 0 20px;
+        display: flex; align-items: center; gap: 10px;
+      }
+      .gl-featured__kicker::before { content: ''; width: 28px; height: 1px; background: #f4b860; }
+      .gl-featured__title {
+        font-family: 'Fraunces', Georgia, serif;
+        font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 500;
+        line-height: 1.1; color: #fff; margin: 0 0 18px; letter-spacing: -.03em;
+      }
+      .gl-featured__title em { font-style: italic; color: rgba(255,255,255,.65); }
+      .gl-featured__desc {
+        font-size: .87rem; line-height: 1.78; color: rgba(255,255,255,.42);
+        margin: 0 0 36px; max-width: 340px;
+      }
+      .gl-featured__facts { display: flex; gap: 28px; flex-wrap: wrap; margin-bottom: 36px; }
+      .gl-featured__fact { display: flex; flex-direction: column; gap: 2px; }
+      .gl-featured__fact strong {
+        font-family: 'Space Grotesk', sans-serif; font-size: .8rem; font-weight: 700;
+        color: rgba(255,255,255,.75);
+      }
+      .gl-featured__fact small {
+        font-size: .68rem; color: rgba(255,255,255,.32); text-transform: uppercase;
+        letter-spacing: .1em;
+      }
+      .gl-featured__cta {
+        display: inline-flex; align-items: center; gap: 8px;
+        font-family: 'Space Grotesk', sans-serif; font-size: .72rem; font-weight: 600;
+        letter-spacing: .14em; text-transform: uppercase;
+        color: rgba(255,255,255,.45); text-decoration: none; transition: color .2s;
+      }
+      .gl-featured__cta:hover { color: #f4b860; }
+
+      /* ── VIDEO RÁCS ─────────────────────────────────────────── */
+      .gl-vtabs { display: flex; gap: 6px; margin-bottom: 28px; }
+      .gl-vtab {
+        padding: 6px 16px; border-radius: 20px;
+        border: 1px solid rgba(255,255,255,.1);
+        font-family: 'Space Grotesk', sans-serif; font-size: .68rem; font-weight: 600;
+        letter-spacing: .12em; text-transform: uppercase;
+        color: rgba(255,255,255,.38); background: none; cursor: pointer;
+        transition: color .2s, border-color .2s, background .2s;
+      }
+      .gl-vtab.is-on { color: #f4b860; border-color: rgba(244,184,96,.4); background: rgba(244,184,96,.07); }
+
+      .gl-vgrid {
+        display: grid;
+        grid-template-columns: repeat(5, 1fr);
+        gap: 8px;
+      }
+      @media (max-width: 1100px) { .gl-vgrid { grid-template-columns: repeat(4, 1fr); } }
+      @media (max-width: 760px)  { .gl-vgrid { grid-template-columns: repeat(3, 1fr); } }
+      @media (max-width: 480px)  { .gl-vgrid { grid-template-columns: repeat(2, 1fr); } }
+
+      .gl-vcard {
+        aspect-ratio: 9/16; position: relative;
+        border-radius: 14px; overflow: hidden;
+        cursor: pointer; border: 1px solid rgba(255,255,255,.07);
+        background: rgba(6,14,28,.8);
+        transition: border-color .28s, transform .28s, box-shadow .28s;
+      }
+      .gl-vcard:hover {
+        border-color: rgba(244,184,96,.4);
+        transform: translateY(-4px);
+        box-shadow: 0 20px 48px -12px rgba(0,0,0,.7);
+      }
+      .gl-vcard > video {
+        width: 100%; height: 100%; object-fit: cover;
+        display: block; pointer-events: none;
+      }
+      .gl-vcard__shade {
+        position: absolute; inset: 0;
+        background: linear-gradient(to top, rgba(2,6,18,.85) 0%, rgba(2,6,18,.15) 50%, transparent 100%);
+      }
+      .gl-vcard__play {
+        position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+        width: 44px; height: 44px; border-radius: 50%;
+        background: rgba(255,255,255,.1); border: 1.5px solid rgba(255,255,255,.25);
+        display: flex; align-items: center; justify-content: center;
+        color: #fff; backdrop-filter: blur(6px);
+        opacity: 0; transition: opacity .22s; z-index: 2;
+      }
+      .gl-vcard:hover .gl-vcard__play { opacity: 1; }
+      .gl-vcard__meta {
+        position: absolute; bottom: 0; left: 0; right: 0;
+        padding: 10px 12px; z-index: 2;
+      }
+      .gl-vcard__num {
+        font-family: 'Space Grotesk', sans-serif; font-size: .52rem; font-weight: 700;
+        letter-spacing: .22em; color: rgba(244,184,96,.65); display: block; margin-bottom: 2px;
+      }
+      .gl-vcard__title {
+        font-family: 'Space Grotesk', sans-serif; font-size: .7rem; font-weight: 600;
+        color: rgba(255,255,255,.8); white-space: nowrap;
+        overflow: hidden; text-overflow: ellipsis;
+      }
+
+      .gl-placeholder-card {
+        border-radius: 14px; padding: 60px 36px;
+        border: 1px dashed rgba(255,255,255,.1);
+        text-align: center; color: rgba(255,255,255,.22);
+        font-family: 'Space Grotesk', sans-serif; font-size: .72rem; letter-spacing: .14em;
+        text-transform: uppercase; line-height: 1.8;
+        grid-column: 1 / -1;
+      }
+      .gl-placeholder-card span { display: block; font-size: 1.4rem; margin-bottom: 12px; opacity: .3; }
+
+      /* ── MASONRY (termékek) ──────────────────────────────────── */
+      .gl-masonry { columns: 4; column-gap: 8px; }
+      @media (max-width: 1000px) { .gl-masonry { columns: 3; } }
+      @media (max-width: 640px)  { .gl-masonry { columns: 2; } }
+
+      .gl-photo {
+        break-inside: avoid; margin-bottom: 8px;
+        border-radius: 10px; overflow: hidden;
+        position: relative; cursor: zoom-in;
+        border: 1px solid rgba(255,255,255,.06);
+        transition: border-color .28s, box-shadow .28s;
+      }
+      .gl-photo:hover {
+        border-color: rgba(244,184,96,.32);
+        box-shadow: 0 12px 36px -8px rgba(0,0,0,.6);
+      }
+      .gl-photo img { width: 100%; height: auto; display: block; transition: transform .45s; }
+      .gl-photo:hover img { transform: scale(1.04); }
+      .gl-photo__overlay {
+        position: absolute; inset: 0; opacity: 0;
+        background: rgba(244,184,96,.06);
+        display: flex; align-items: center; justify-content: center;
+        transition: opacity .28s;
+      }
+      .gl-photo:hover .gl-photo__overlay { opacity: 1; }
+      .gl-photo__zoom { color: rgba(255,255,255,.5); }
+
+      /* ── KATEGÓRIÁK ───────────────────────────────────────────── */
+      .gl-kat-section { margin-bottom: 64px; }
+      .gl-kat-section:last-child { margin-bottom: 0; }
+
+      .gl-kat-header {
+        display: flex; align-items: baseline; gap: 18px;
+        margin-bottom: 22px; padding-bottom: 18px;
+        border-bottom: 1px solid rgba(255,255,255,.07);
+      }
+      .gl-kat-num {
+        font-family: 'Space Grotesk', sans-serif; font-size: .82rem; font-weight: 700;
+        color: rgba(244,184,96,.55); letter-spacing: .04em; flex-shrink: 0;
+      }
+      .gl-kat-titlewrap { min-width: 0; }
+      .gl-kat-title {
+        font-family: 'Fraunces', Georgia, serif;
+        font-size: clamp(1.15rem, 1.8vw, 1.5rem); font-weight: 500;
+        color: rgba(255,255,255,.92); margin: 0 0 5px; letter-spacing: -.01em;
+      }
+      .gl-kat-desc {
+        font-size: .8rem; line-height: 1.6; color: rgba(255,255,255,.4);
+        margin: 0; max-width: 560px;
+      }
+      .gl-kat-count {
+        margin-left: auto; flex-shrink: 0;
+        font-family: 'Space Grotesk', sans-serif; font-size: .65rem; font-weight: 600;
+        letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.22);
+        white-space: nowrap;
+      }
+
+      .gl-kat-grid {
+        display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px;
+      }
+      @media (max-width: 1100px) { .gl-kat-grid { grid-template-columns: repeat(4, 1fr); } }
+      @media (max-width: 760px)  { .gl-kat-grid { grid-template-columns: repeat(3, 1fr); } }
+      @media (max-width: 480px)  { .gl-kat-grid { grid-template-columns: repeat(2, 1fr); } }
+
+      .gl-kat-photo {
+        aspect-ratio: 1; border-radius: 10px; overflow: hidden;
+        position: relative; cursor: zoom-in;
+        border: 1px solid rgba(255,255,255,.06);
+        transition: border-color .28s, box-shadow .28s;
+      }
+      .gl-kat-photo:hover { border-color: rgba(244,184,96,.32); box-shadow: 0 12px 30px -8px rgba(0,0,0,.6); }
+      .gl-kat-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s; }
+      .gl-kat-photo:hover img { transform: scale(1.06); }
+
+      .gl-kat-empty {
+        padding: 30px 24px; border-radius: 12px;
+        border: 1px dashed rgba(255,255,255,.09);
+        text-align: center; color: rgba(255,255,255,.2);
+        font-family: 'Space Grotesk', sans-serif; font-size: .68rem;
+        letter-spacing: .1em; text-transform: uppercase;
+      }
+
+      /* ── GYÁRTÁS RÁCS ──────────────────────────────────────── */
+      .gl-process-grid {
+        display: grid; grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+      }
+      @media (max-width: 700px) { .gl-process-grid { grid-template-columns: 1fr 1fr; } }
+      .gl-process-item {
+        position: relative; border-radius: 12px; overflow: hidden;
+        aspect-ratio: 4/3; cursor: zoom-in;
+        border: 1px solid rgba(255,255,255,.07);
+        transition: border-color .28s;
+      }
+      .gl-process-item:hover { border-color: rgba(244,184,96,.3); }
+      .gl-process-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .45s; }
+      .gl-process-item:hover img { transform: scale(1.05); }
+      .gl-process-item__label {
+        position: absolute; bottom: 0; left: 0; right: 0;
+        padding: 8px 12px;
+        background: linear-gradient(to top, rgba(2,6,18,.8), transparent);
+        font-family: 'Space Grotesk', sans-serif; font-size: .65rem; font-weight: 600;
+        letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.5);
+      }
+
+      /* Műhely placeholder */
+      .gl-workshop-placeholder {
+        border-radius: 14px; padding: 80px 36px;
+        border: 1px dashed rgba(255,255,255,.1);
+        text-align: center;
+        background: rgba(255,255,255,.015);
+      }
+      .gl-workshop-placeholder p {
+        font-family: 'Space Grotesk', sans-serif; font-size: .72rem; letter-spacing: .14em;
+        text-transform: uppercase; color: rgba(255,255,255,.2); margin: 8px 0 0;
+      }
+      .gl-workshop-placeholder svg { opacity: .18; margin-bottom: 16px; }
+
+      /* ── LIGHTBOX ──────────────────────────────────────────── */
+      .gl-lb {
+        position: fixed; inset: 0; z-index: 900;
+        background: rgba(2,4,14,.97);
+        display: flex; align-items: center; justify-content: center;
+        opacity: 0; pointer-events: none; transition: opacity .28s;
+        cursor: zoom-out;
+      }
+      .gl-lb.is-open { opacity: 1; pointer-events: all; }
+      .gl-lb__close {
+        position: fixed; top: 18px; right: 18px; z-index: 10;
+        width: 40px; height: 40px; border-radius: 50%;
+        background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+        color: rgba(255,255,255,.55); cursor: pointer;
+        display: flex; align-items: center; justify-content: center;
+        transition: background .2s, color .2s;
+      }
+      .gl-lb__close:hover { background: rgba(255,255,255,.15); color: #fff; }
+      .gl-lb__media {
+        max-width: calc(100vw - 140px); max-height: 90vh;
+        display: flex; align-items: center; justify-content: center; cursor: default;
+      }
+      .gl-lb__img {
+        max-width: 100%; max-height: 88vh; object-fit: contain;
+        display: block; border-radius: 6px; transition: opacity .18s;
+      }
+      .gl-lb__img.fade { opacity: 0; }
+      .gl-lb__video {
+        max-width: 100%; max-height: 88vh;
+        border-radius: 10px; background: #000; outline: none;
+      }
+      .gl-lb__nav {
+        position: fixed; top: 50%; transform: translateY(-50%); z-index: 10;
+        width: 50px; height: 50px; border-radius: 50%;
+        background: rgba(8,16,30,.75); border: 1px solid rgba(255,255,255,.12);
+        color: rgba(255,255,255,.8); font-size: 1.65rem; line-height: 1;
+        cursor: pointer; display: flex; align-items: center; justify-content: center;
+        backdrop-filter: blur(8px); transition: all .2s; padding: 0;
+      }
+      .gl-lb__nav:hover { border-color: rgba(244,184,96,.4); color: #f4b860; }
+      .gl-lb__prev { left: 16px; }
+      .gl-lb__next { right: 16px; }
+      .gl-lb__counter {
+        position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+        font-family: 'Space Grotesk', sans-serif; font-size: .75rem; font-weight: 500;
+        letter-spacing: .12em; color: rgba(255,255,255,.3); pointer-events: none;
+      }
+    </style>
+  </head>
+  <body>
+    <header class="site-header motion-load" style="--load-delay: 80ms"><div class="header-shell"><a class="logo" href="index.html"><img class="logo__brand-mark" src="assets/layero-logo-mark-from-source.png" alt="" width="240" height="237"><img class="logo__brand-wordmark" src="assets/layero-logo-wordmark-from-source.png" alt="Layero 3D Design" width="493" height="171"></a><button class="nav-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" data-nav-toggle><span class="sr-only">Menü megnyitása</span><span class="nav-toggle__line" aria-hidden="true"></span></button><nav class="site-nav" id="site-navigation" aria-label="Főmenü"><a href="termekvilag.html">Termékvilág</a><a href="egyedi-rendeles.html">Egyedi rendelés</a><a href="cegeknek.html">Cégeknek</a><a href="galeria.html" aria-current="page">Galéria</a><a href="rolunk.html">Rólunk</a><a href="kapcsolat.html">Kapcsolat</a></nav><a class="btn btn--outline header-cta" href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer">Üzlet <span aria-hidden="true">→</span></a></div></header>
+
+    <main class="subpage-main">
+
+      <!-- ── HERO ──────────────────────────────────────────────── -->
+      <section class="subpage-hero subpage-hero--compact" aria-labelledby="page-title">
+        <canvas class="subpage-hero__canvas" data-three-canvas="subpage" aria-hidden="true"></canvas>
+        <div class="subpage-hero__bg" aria-hidden="true"></div>
+        <div class="subpage-hero__shade" aria-hidden="true"></div>
+        <div class="subpage-shell">
+          <div class="subpage-hero__copy">
+            <h1 class="subpage-title" id="page-title">Galéria</h1>
+            <p class="subpage-lead">Videók, termékfotók és gyártási képek — minden, ami a Layero műhelyéből kikerül.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── STICKY TAB NAV ─────────────────────────────────────── -->
+      <div class="gl-tabs-wrap">
+        <div class="gl-tabs" role="tablist">
+          <button class="gl-tab is-on" data-filter="all" role="tab" aria-selected="true">Összes</button>
+          <button class="gl-tab" data-filter="videok" role="tab" aria-selected="false">Videók</button>
+          <button class="gl-tab" data-filter="termekek" role="tab" aria-selected="false">Termékek</button>
+          <button class="gl-tab" data-filter="gyartas" role="tab" aria-selected="false">Gyártás</button>
+          <button class="gl-tab" data-filter="kategoriak" role="tab" aria-selected="false">Kategóriák</button>
+        </div>
+      </div>
+
+      <!-- ── KIEMELT ALKOTÁS ───────────────────────────────────── -->
+      <section class="gl-section" data-gl="all termekek">
+        <div class="gl-shell">
+          <div class="gl-featured">
+            <div class="gl-featured__media">
+              <picture>
+                <source type="image/webp" srcset="assets/termekvilag/hero_slider/8-900.webp">
+                <img src="assets/termekvilag/hero_slider/8.png" alt="Layero kiemelt alkotás — lámpa" loading="eager">
+              </picture>
+            </div>
+            <div class="gl-featured__body">
+              <p class="gl-featured__kicker">Kiemelt alkotás &nbsp;· Június</p>
+              <h2 class="gl-featured__title">Lumé lámpa<br><em>amikor a fény<br>formát kap.</em></h2>
+              <p class="gl-featured__desc">Organikus mintázatú, 3D nyomtatott hangulatlámpa — nappal karakteres design tárgy, este meleg fényével különleges atmoszférát teremt.</p>
+              <div class="gl-featured__facts">
+                <div class="gl-featured__fact"><strong>32 óra</strong><small>nyomtatás</small></div>
+                <div class="gl-featured__fact"><strong>Prémium PLA</strong><small>anyag</small></div>
+                <div class="gl-featured__fact"><strong>Kézi</strong><small>utómunka</small></div>
+              </div>
+              <a class="gl-featured__cta" href="egyedi-rendeles.html">
+                Saját lámpa rendelése
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── VIDEÓK ─────────────────────────────────────────────── -->
+      <section class="gl-section" data-gl="all videok">
+        <div class="gl-shell">
+          <div class="gl-section-hd">
+            <h2 class="gl-section-title">Videók<em> — nyomtatás közben</em></h2>
+            <span class="gl-count">10 videó</span>
+          </div>
+
+          <div class="gl-vtabs">
+            <button class="gl-vtab is-on" data-vtab="gyartas">Gyártási videók</button>
+            <button class="gl-vtab" data-vtab="prez">Prezentációs</button>
+          </div>
+
+          <!-- Gyártási videók -->
+          <div class="gl-vgrid" id="gl-vgrid-gyartas">
+            <!-- JS builds these -->
+          </div>
+
+          <!-- Prezentációs (placeholder) -->
+          <div class="gl-vgrid" id="gl-vgrid-prez" hidden>
+            <div class="gl-placeholder-card">
+              <span>▶</span>
+              Prezentációs videók hamarosan érkeznek —<br>termékbemutatók, stúdiófelvételek.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── TERMÉKFOTÓK ─────────────────────────────────────────── -->
+      <section class="gl-section" data-gl="all termekek">
+        <div class="gl-shell">
+          <div class="gl-section-hd">
+            <h2 class="gl-section-title">Termékfotók</h2>
+            <span class="gl-count" id="gl-photo-count">— alkotás</span>
+          </div>
+          <div class="gl-masonry" id="gl-photo-grid">
+
+            <!-- Hero slider 1–17 -->
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/1.png">
+              <picture><source type="image/webp" srcset="assets/termekvilag/hero_slider/1-480.webp"><img src="assets/termekvilag/hero_slider/1.png" alt="" loading="lazy"></picture>
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/2.png">
+              <picture><source type="image/webp" srcset="assets/termekvilag/hero_slider/2-480.webp"><img src="assets/termekvilag/hero_slider/2.png" alt="" loading="lazy"></picture>
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/3.png">
+              <picture><source type="image/webp" srcset="assets/termekvilag/hero_slider/3-480.webp"><img src="assets/termekvilag/hero_slider/3.png" alt="" loading="lazy"></picture>
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/4.png">
+              <picture><source type="image/webp" srcset="assets/termekvilag/hero_slider/4-480.webp"><img src="assets/termekvilag/hero_slider/4.png" alt="" loading="lazy"></picture>
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/5.png">
+              <picture><source type="image/webp" srcset="assets/termekvilag/hero_slider/5-480.webp"><img src="assets/termekvilag/hero_slider/5.png" alt="" loading="lazy"></picture>
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/6.png">
+              <picture><source type="image/webp" srcset="assets/termekvilag/hero_slider/6-480.webp"><img src="assets/termekvilag/hero_slider/6.png" alt="" loading="lazy"></picture>
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/7.png">
+              <picture><source type="image/webp" srcset="assets/termekvilag/hero_slider/7-480.webp"><img src="assets/termekvilag/hero_slider/7.png" alt="" loading="lazy"></picture>
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/8.png">
+              <picture><source type="image/webp" srcset="assets/termekvilag/hero_slider/8-900.webp"><img src="assets/termekvilag/hero_slider/8.png" alt="" loading="lazy"></picture>
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/9.png">
+              <picture><source type="image/webp" srcset="assets/termekvilag/hero_slider/9-480.webp"><img src="assets/termekvilag/hero_slider/9.png" alt="" loading="lazy"></picture>
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/10.png">
+              <picture><source type="image/webp" srcset="assets/termekvilag/hero_slider/10-480.webp"><img src="assets/termekvilag/hero_slider/10.png" alt="" loading="lazy"></picture>
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/11.png">
+              <picture><source type="image/webp" srcset="assets/termekvilag/hero_slider/11-900.webp"><img src="assets/termekvilag/hero_slider/11.png" alt="" loading="lazy"></picture>
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/12.png">
+              <picture><source type="image/webp" srcset="assets/termekvilag/hero_slider/12-480.webp"><img src="assets/termekvilag/hero_slider/12.png" alt="" loading="lazy"></picture>
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/13.png">
+              <img src="assets/termekvilag/hero_slider/13.png" alt="" loading="lazy">
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/14.png">
+              <img src="assets/termekvilag/hero_slider/14.png" alt="" loading="lazy">
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/15.png">
+              <img src="assets/termekvilag/hero_slider/15.png" alt="" loading="lazy">
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/16.png">
+              <img src="assets/termekvilag/hero_slider/16.png" alt="" loading="lazy">
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/17.png">
+              <img src="assets/termekvilag/hero_slider/17.png" alt="" loading="lazy">
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+
+            <!-- Dekoraciok -->
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/dekoraciok/hero-1-Yul9sRLGP0h1.png">
+              <picture><source type="image/webp" srcset="assets/termekvilag/dekoraciok/hero-1-Yul9sRLGP0h1-800.webp"><img src="assets/termekvilag/dekoraciok/hero-1-Yul9sRLGP0h1.png" alt="" loading="lazy"></picture>
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/dekoraciok/hero-1-Qr9oXFYE8fYQ.png">
+              <picture><source type="image/webp" srcset="assets/termekvilag/dekoraciok/hero-1-Qr9oXFYE8fYQ-800.webp"><img src="assets/termekvilag/dekoraciok/hero-1-Qr9oXFYE8fYQ.png" alt="" loading="lazy"></picture>
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/dekoraciok/544586641_122105787950995565_5779650224825615213_n.jpg">
+              <img src="assets/termekvilag/dekoraciok/544586641_122105787950995565_5779650224825615213_n.jpg" alt="" loading="lazy">
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/dekoraciok/611589176_122124562772995565_2838307060490523390_n.jpg">
+              <img src="assets/termekvilag/dekoraciok/611589176_122124562772995565_2838307060490523390_n.jpg" alt="" loading="lazy">
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/dekoraciok/612171558_122124562898995565_3291961570208272080_n.jpg">
+              <img src="assets/termekvilag/dekoraciok/612171558_122124562898995565_3291961570208272080_n.jpg" alt="" loading="lazy">
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+
+            <!-- Céges munkák -->
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/ceges-megoldasok/635a6049-fef7-4b1b-aba8-75cf158d28c5.jpg">
+              <img src="assets/termekvilag/ceges-megoldasok/635a6049-fef7-4b1b-aba8-75cf158d28c5.jpg" alt="" loading="lazy">
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/ceges-megoldasok/2b270d60-ab57-4fdd-a4dd-91a1ffe02b71.jpg">
+              <img src="assets/termekvilag/ceges-megoldasok/2b270d60-ab57-4fdd-a4dd-91a1ffe02b71.jpg" alt="" loading="lazy">
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/ceges-megoldasok/84765293-ee96-487c-b0c8-63693593ba6b.jpg">
+              <img src="assets/termekvilag/ceges-megoldasok/84765293-ee96-487c-b0c8-63693593ba6b.jpg" alt="" loading="lazy">
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/ceges-megoldasok/c03ddc6b-50f6-4fa5-8f3a-e61ff6dd9b54.jpg">
+              <img src="assets/termekvilag/ceges-megoldasok/c03ddc6b-50f6-4fa5-8f3a-e61ff6dd9b54.jpg" alt="" loading="lazy">
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/ceges-megoldasok/9fa8265c-3f89-48e6-b8c8-e5fdf75c3a22.jpg">
+              <img src="assets/termekvilag/ceges-megoldasok/9fa8265c-3f89-48e6-b8c8-e5fdf75c3a22.jpg" alt="" loading="lazy">
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/ceges-megoldasok/5f3c0fa5-c5f7-4bf6-8f75-29c0de041b21.jpg">
+              <img src="assets/termekvilag/ceges-megoldasok/5f3c0fa5-c5f7-4bf6-8f75-29c0de041b21.jpg" alt="" loading="lazy">
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/ceges-megoldasok/31939abe-68c9-4c6b-a4f0-40e37d15a066.jpg">
+              <img src="assets/termekvilag/ceges-megoldasok/31939abe-68c9-4c6b-a4f0-40e37d15a066.jpg" alt="" loading="lazy">
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/ceges-megoldasok/99cdb2e2-d9ac-4942-9f70-2497972bbe3b.jpg">
+              <img src="assets/termekvilag/ceges-megoldasok/99cdb2e2-d9ac-4942-9f70-2497972bbe3b.jpg" alt="" loading="lazy">
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/ceges-megoldasok/20cf18db-3472-4298-b30d-0a59968b1e3c.jpg">
+              <img src="assets/termekvilag/ceges-megoldasok/20cf18db-3472-4298-b30d-0a59968b1e3c.jpg" alt="" loading="lazy">
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/ceges-megoldasok/d7392297-c554-4749-a344-f47e7fc5618c.jpg">
+              <img src="assets/termekvilag/ceges-megoldasok/d7392297-c554-4749-a344-f47e7fc5618c.jpg" alt="" loading="lazy">
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+            <div class="gl-photo" data-lb-group="termekek" data-lb-src="assets/termekvilag/ceges-megoldasok/542702584_122105728322995565_1807554181121349208_n (2).jpg">
+              <img src="assets/termekvilag/ceges-megoldasok/542702584_122105728322995565_1807554181121349208_n (2).jpg" alt="" loading="lazy">
+              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+            </div>
+
+          </div><!-- /gl-masonry -->
+        </div>
+      </section>
+
+      <!-- ── GYÁRTÁS ─────────────────────────────────────────────── -->
+      <section class="gl-section" data-gl="all gyartas">
+        <div class="gl-shell">
+          <div class="gl-section-hd">
+            <h2 class="gl-section-title">Gyártás<em> — folyamat &amp; műhely</em></h2>
+          </div>
+
+          <div class="gl-process-grid" id="gl-process-grid">
+            <div class="gl-process-item" data-lb-group="gyartas" data-lb-src="assets/images/lamp-process/01-original-photo.webp">
+              <img src="assets/images/lamp-process/01-original-photo.webp" alt="Gyártási folyamat — eredeti fotó" loading="lazy">
+              <div class="gl-process-item__label">Eredeti fotó</div>
+            </div>
+            <div class="gl-process-item" data-lb-group="gyartas" data-lb-src="assets/images/lamp-process/02-processed-sketch.webp">
+              <img src="assets/images/lamp-process/02-processed-sketch.webp" alt="Gyártási folyamat — digitális vázlat" loading="lazy">
+              <div class="gl-process-item__label">Digitális vázlat</div>
+            </div>
+            <div class="gl-process-item" data-lb-group="gyartas" data-lb-src="assets/images/lamp-process/03-finished-lamp.webp">
+              <img src="assets/images/lamp-process/03-finished-lamp.webp" alt="Gyártási folyamat — kész lámpa" loading="lazy">
+              <div class="gl-process-item__label">Kész alkotás</div>
+            </div>
+          </div>
+
+          <!-- Műhely fotók placeholder -->
+          <div class="gl-workshop-placeholder" style="margin-top: 10px;">
+            <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="rgba(255,255,255,.4)" stroke-width="1.4" display="block" style="margin: 0 auto 12px;"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+            <p>Műhely fotók hamarosan — valódi képek a nyomtatói környezetből.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── KATEGÓRIÁK ─────────────────────────────────────────── -->
+      <section class="gl-section" data-gl="all kategoriak">
+        <div class="gl-shell">
+          <div class="gl-section-hd">
+            <h2 class="gl-section-title">Kategóriák</h2>
+            <span class="gl-count">10 kategória</span>
+          </div>
+          <div id="gl-kat-mount"></div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ── LIGHTBOX ──────────────────────────────────────────────── -->
+    <div class="gl-lb" id="gl-lb" role="dialog" aria-modal="true" aria-label="Galéria nézet">
+      <button class="gl-lb__close" id="gl-lb-close" aria-label="Bezárás">✕</button>
+      <button class="gl-lb__nav gl-lb__prev" id="gl-lb-prev" aria-label="Előző">‹</button>
+      <div class="gl-lb__media" id="gl-lb-media"></div>
+      <button class="gl-lb__nav gl-lb__next" id="gl-lb-next" aria-label="Következő">›</button>
+      <div class="gl-lb__counter" id="gl-lb-counter"></div>
+    </div>
+
+    <footer class="site-footer"><div class="container footer__bottom"><p>© 2025–2026 Layero · layero.ro · Minden jog fenntartva.</p><div><a href="termekvilag.html">Termékvilág</a><a href="egyedi-rendeles.html">Egyedi rendelés</a><a href="cegeknek.html">Cégeknek</a><a href="galeria.html">Galéria</a><a href="rolunk.html">Rólunk</a><a href="kapcsolat.html">Kapcsolat</a><a href="adatvedelem.html">Adatvédelem</a><a href="aszf.html">ÁSZF</a><a href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer">Shop →</a></div></div></footer>
+
+    <script src="script.js"></script>
+    <script src="galeria-data.js"></script>
+    <script>
+    (function() {
+
+      // ── VIDEO ADATOK ──────────────────────────────────────────
+      var VIDEOS = [
+        { num: '01', title: 'Fekete kis sárkány', src: 'assets/videos/nyomtatas/Fekete kis sarkany.mp4' },
+        { num: '02', title: 'Nagy sárkány',        src: 'assets/videos/nyomtatas/nagy sarkany.mp4' },
+        { num: '03', title: 'TNT',                 src: 'assets/videos/nyomtatas/tnt.mp4' },
+        { num: '04', title: 'Szemüvegtartó',       src: 'assets/videos/nyomtatas/szemuveg tarto.mp4' },
+        { num: '05', title: 'Csontváz',            src: 'assets/videos/nyomtatas/Csontvaz.mp4' },
+        { num: '06', title: 'Kis kék dinó',        src: 'assets/videos/nyomtatas/kis kek dino.mp4' },
+        { num: '07', title: 'Kis piros dinó',      src: 'assets/videos/nyomtatas/kis piros dino.mp4' },
+        { num: '08', title: 'Papírtartó',          src: 'assets/videos/nyomtatas/dekor papir tarto.mp4' },
+        { num: '09', title: 'Étlaptartó',          src: 'assets/videos/nyomtatas/etlap tarto.mp4' },
+        { num: '10', title: 'Bagoly',              src: 'assets/videos/nyomtatas/bagoly.mp4' },
+      ];
+
+      // ── BUILD VIDEO CARDS ─────────────────────────────────────
+      var vgrid = document.getElementById('gl-vgrid-gyartas');
+      VIDEOS.forEach(function(item, i) {
+        var card = document.createElement('div');
+        card.className = 'gl-vcard';
+        card.setAttribute('data-video-idx', i);
+
+        var vid = document.createElement('video');
+        vid.src = item.src;
+        vid.preload = 'metadata';
+        vid.muted = true;
+        vid.playsInline = true;
+        vid.addEventListener('loadedmetadata', function() { vid.currentTime = 0.5; });
+
+        var shade = document.createElement('div');
+        shade.className = 'gl-vcard__shade';
+
+        var play = document.createElement('div');
+        play.className = 'gl-vcard__play';
+        play.innerHTML = '<svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><polygon points="5 3 19 12 5 21 5 3"/></svg>';
+
+        var meta = document.createElement('div');
+        meta.className = 'gl-vcard__meta';
+        meta.innerHTML = '<span class="gl-vcard__num">' + item.num + '</span><span class="gl-vcard__title">' + item.title + '</span>';
+
+        card.appendChild(vid);
+        card.appendChild(shade);
+        card.appendChild(play);
+        card.appendChild(meta);
+        card.addEventListener('click', function() { openVideoLb(i); });
+        vgrid.appendChild(card);
+      });
+
+      // ── VIDEO SUB-TABS ────────────────────────────────────────
+      document.querySelectorAll('.gl-vtab').forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          document.querySelectorAll('.gl-vtab').forEach(function(b) { b.classList.remove('is-on'); });
+          btn.classList.add('is-on');
+          var tab = btn.getAttribute('data-vtab');
+          document.getElementById('gl-vgrid-gyartas').hidden = (tab !== 'gyartas');
+          document.getElementById('gl-vgrid-prez').hidden    = (tab !== 'prez');
+        });
+      });
+
+      // ── MAIN TAB FILTERING ────────────────────────────────────
+      var tabBtns = document.querySelectorAll('.gl-tab');
+      var sections = document.querySelectorAll('.gl-section[data-gl]');
+
+      tabBtns.forEach(function(btn) {
+        btn.addEventListener('click', function() {
+          tabBtns.forEach(function(b) { b.classList.remove('is-on'); b.setAttribute('aria-selected','false'); });
+          btn.classList.add('is-on'); btn.setAttribute('aria-selected','true');
+          var filter = btn.getAttribute('data-filter');
+          sections.forEach(function(sec) {
+            var tags = sec.getAttribute('data-gl').split(' ');
+            sec.hidden = !(filter === 'all' || tags.indexOf(filter) > -1);
+          });
+        });
+      });
+
+      // ── PHOTO COUNT ───────────────────────────────────────────
+      var photoCount = document.querySelectorAll('#gl-photo-grid .gl-photo').length;
+      var countEl = document.getElementById('gl-photo-count');
+      if (countEl) countEl.textContent = photoCount + ' alkotás';
+
+      // ── LIGHTBOX STATE ────────────────────────────────────────
+      var lb       = document.getElementById('gl-lb');
+      var lbMedia  = document.getElementById('gl-lb-media');
+      var lbCtr    = document.getElementById('gl-lb-counter');
+      var lbClose  = document.getElementById('gl-lb-close');
+      var lbPrev   = document.getElementById('gl-lb-prev');
+      var lbNext   = document.getElementById('gl-lb-next');
+      var lbMode   = 'img'; // 'img' | 'video'
+      var lbImages = [];
+      var lbIdx    = 0;
+
+      function lbOpen() {
+        lb.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+      }
+      function lbClose_() {
+        lb.classList.remove('is-open');
+        document.body.style.overflow = '';
+        lbMedia.innerHTML = '';
+        lbMode = 'img';
+      }
+
+      // Image lightbox
+      function openImgLb(group, startIdx) {
+        var items = Array.from(document.querySelectorAll('[data-lb-group="' + group + '"]'));
+        lbImages = items.map(function(el) { return el.getAttribute('data-lb-src'); });
+        lbMode = 'img'; lbIdx = startIdx;
+        renderImg();
+        lbOpen();
+      }
+      function renderImg() {
+        var img = lbMedia.querySelector('.gl-lb__img');
+        if (!img) {
+          lbMedia.innerHTML = '<img class="gl-lb__img" src="" alt="">';
+          img = lbMedia.querySelector('.gl-lb__img');
+        }
+        img.classList.add('fade');
+        setTimeout(function() {
+          img.src = lbImages[lbIdx];
+          lbCtr.textContent = (lbIdx + 1) + ' / ' + lbImages.length;
+          img.classList.remove('fade');
+        }, 180);
+        lbPrev.hidden = lbImages.length <= 1;
+        lbNext.hidden = lbImages.length <= 1;
+      }
+
+      // Video lightbox
+      function openVideoLb(idx) {
+        lbMode = 'video'; lbIdx = idx;
+        lbImages = VIDEOS.map(function(v) { return v.src; });
+        renderVideo();
+        lbOpen();
+      }
+      function renderVideo() {
+        lbMedia.innerHTML = '<video class="gl-lb__video" controls autoplay playsinline></video>';
+        var v = lbMedia.querySelector('video');
+        v.src = VIDEOS[lbIdx].src;
+        lbCtr.textContent = VIDEOS[lbIdx].title + ' — ' + (lbIdx + 1) + ' / ' + VIDEOS.length;
+        lbPrev.hidden = false; lbNext.hidden = false;
+        v.play().catch(function(){});
+      }
+
+      function lbGo(dir) {
+        lbIdx = ((lbIdx + dir) % lbImages.length + lbImages.length) % lbImages.length;
+        if (lbMode === 'video') renderVideo(); else renderImg();
+      }
+
+      lbClose.addEventListener('click', lbClose_);
+      lbPrev.addEventListener('click',  function(e) { e.stopPropagation(); lbGo(-1); });
+      lbNext.addEventListener('click',  function(e) { e.stopPropagation(); lbGo(+1); });
+      lb.addEventListener('click', function(e) { if (e.target === lb) lbClose_(); });
+      document.addEventListener('keydown', function(e) {
+        if (!lb.classList.contains('is-open')) return;
+        if (e.key === 'ArrowLeft')  lbGo(-1);
+        if (e.key === 'ArrowRight') lbGo(+1);
+        if (e.key === 'Escape')     lbClose_();
+      });
+
+      // Touch swipe on lightbox
+      (function() {
+        var sx = 0;
+        lbMedia.addEventListener('touchstart', function(e) { sx = e.touches[0].clientX; }, { passive: true });
+        lbMedia.addEventListener('touchend', function(e) {
+          var dx = e.changedTouches[0].clientX - sx;
+          if (Math.abs(dx) > 50) lbGo(dx < 0 ? 1 : -1);
+        });
+      })();
+
+      // ── KATEGÓRIÁK renderelése (galeria-data.js-ből) ───────────
+      var katMount = document.getElementById('gl-kat-mount');
+      if (katMount && typeof GALERIA_KATEGORIAK !== 'undefined') {
+        GALERIA_KATEGORIAK.forEach(function(kat) {
+          var sec = document.createElement('div');
+          sec.className = 'gl-kat-section';
+
+          var hd = document.createElement('div');
+          hd.className = 'gl-kat-header';
+          hd.innerHTML =
+            '<span class="gl-kat-num">' + kat.szam + '</span>' +
+            '<div class="gl-kat-titlewrap">' +
+              '<h3 class="gl-kat-title">' + kat.cim + '</h3>' +
+              '<p class="gl-kat-desc">' + kat.leiras + '</p>' +
+            '</div>' +
+            '<span class="gl-kat-count">' + kat.kepek.length + ' kép</span>';
+          sec.appendChild(hd);
+
+          if (kat.kepek.length) {
+            var grid = document.createElement('div');
+            grid.className = 'gl-kat-grid';
+            var groupName = 'kat-' + kat.id;
+            kat.kepek.forEach(function(fname) {
+              var src = 'assets/galeria/kepek/' + kat.id + '/' + fname;
+              var item = document.createElement('div');
+              item.className = 'gl-kat-photo';
+              item.setAttribute('data-lb-group', groupName);
+              item.setAttribute('data-lb-src', src);
+              item.innerHTML = '<img src="' + src + '" alt="' + kat.cim + '" loading="lazy">';
+              grid.appendChild(item);
+            });
+            sec.appendChild(grid);
+          } else {
+            var empty = document.createElement('div');
+            empty.className = 'gl-kat-empty';
+            empty.textContent = 'Képek hamarosan érkeznek ebbe a kategóriába.';
+            sec.appendChild(empty);
+          }
+
+          katMount.appendChild(sec);
+        });
+      }
+
+      // ── PHOTO click handlers ──────────────────────────────────
+      var photoGroups = {};
+      document.querySelectorAll('[data-lb-group]').forEach(function(el) {
+        var group = el.getAttribute('data-lb-group');
+        if (!photoGroups[group]) photoGroups[group] = [];
+        photoGroups[group].push(el);
+        el.addEventListener('click', function() {
+          var idx = photoGroups[group].indexOf(el);
+          openImgLb(group, idx);
+        });
+      });
+
+    })();
+    </script>
+  </body>
+</html>

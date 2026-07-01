@@ -1,0 +1,197 @@
+/*
+ * tv-theme.css — Layero termékvilág téma, belső oldalak
+ * Betöltés: styles.css UTÁN, minden inner page-en
+ */
+
+/* ── 1. Betűtípusok ─────────────────────────────────────────────── */
+:root {
+  --font-display: 'Fraunces', 'Cormorant Garamond', Georgia, serif;
+  --font-ui:      'Space Grotesk', 'Sora', 'Inter', Arial, sans-serif;
+}
+
+/* ── 2. Háttér: egységes, fixált — nincs görgetési törés ────────── */
+body {
+  background-color: #020913 !important;
+  background-image:
+    radial-gradient(circle at 0% 18%,   rgba(10, 148, 199, 0.2),   transparent 32%),
+    radial-gradient(circle at 92% 14%,  rgba(255, 157, 54, 0.001), transparent 34%),
+    linear-gradient(90deg, rgba(0, 214, 255, 0.055), transparent 42%, rgba(255, 119, 22, 0.001)),
+    linear-gradient(180deg, rgba(2, 9, 19, 0.18), rgba(2, 9, 19, 0.78)) !important;
+  background-attachment: fixed !important;
+  background-size: cover !important;
+}
+
+/* ── 3. body::before: dot grid texture (fix, nem scrollozik) ────── */
+body::before {
+  background:
+    repeating-radial-gradient(circle at 38% 22%, rgba(255,255,255,.018) 0 1px, transparent 1px 8px) !important;
+  mix-blend-mode: normal !important;
+  opacity: 0.5 !important;
+}
+
+/* ── 3b. body::after: nincs külön réteg ────────────────────────── */
+body::after {
+  display: none !important;
+}
+
+/* ── 4. SEAMLESS BACKGROUND — zónák és törések eltávolítása ────── */
+
+/* Hero: egységes háttér — minden saját réteg ki, isolation reset */
+.subpage-hero {
+  --subpage-hero-bottom: 0px !important;
+  isolation: auto !important;
+  z-index: auto !important;
+  min-height: 0 !important;
+  padding: 148px 0 56px !important;   /* header clearance + kompakt */
+}
+.subpage-hero--compact {
+  padding: 138px 0 44px !important;
+}
+.subpage-hero__bg,
+.subpage-hero__fx,
+.subpage-hero__canvas {
+  display: none !important;
+}
+.subpage-hero__shade {
+  background: none !important;
+}
+.subpage-hero::after {
+  background: none !important;
+}
+
+/* Main: ne legyen külön stacking context, ::before ne sötétítse zonákra */
+.subpage-main {
+  isolation: auto !important;
+  z-index: auto !important;
+  padding-top: 0 !important;
+}
+.subpage-main::before {
+  display: none !important;
+}
+
+/* Szekciók: semmi saját háttér */
+.subpage-section,
+.subpage-section--tight,
+.subpage-section--no-rule,
+.stats,
+.contact-grid,
+.contact-section {
+  background: none !important;
+}
+
+/* Kártyák: nagyon finom glass, nem opaque sötét */
+.page-card {
+  background: rgba(255,255,255,.03) !important;
+  border-color: rgba(255,255,255,.07) !important;
+}
+.page-card--pad {
+  background: rgba(255,255,255,.03) !important;
+}
+
+/* Alapítói idézet panel */
+.founder-quote {
+  background: none !important;
+}
+
+/* Contact panel */
+.contact-panel,
+.contact-info-panel {
+  background: rgba(255,255,255,.025) !important;
+  border-color: rgba(255,255,255,.07) !important;
+}
+
+/* Header ──────────────────────────────────────────────────────── */
+.site-header {
+  background: linear-gradient(180deg, rgba(2,8,18,.96), rgba(2,8,18,.68)) !important;
+  border-bottom: 1px solid rgba(255,255,255,.06) !important;
+  backdrop-filter: blur(18px) !important;
+  padding: 11px 0 !important;
+}
+
+/* ── 5. Subpage kicker → amber ──────────────────────────────────── */
+.subpage-kicker {
+  color: #f4b860 !important;
+  font-family: var(--font-ui) !important;
+  font-size: .72rem !important;
+  font-weight: 600 !important;
+  letter-spacing: .24em !important;
+}
+
+/* ── 6. Section eyebrow cimkék: pill → amber vonal ─────────────── */
+[class*="__eyebrow"] {
+  display:       inline-flex !important;
+  align-items:   center !important;
+  gap:           .7em !important;
+  padding:       0 !important;
+  border:        none !important;
+  border-radius: 0 !important;
+  background:    none !important;
+  box-shadow:    none !important;
+  min-height:    auto !important;
+  font-family:   var(--font-ui) !important;
+  font-size:     .72rem !important;
+  font-weight:   600 !important;
+  letter-spacing:.26em !important;
+  text-transform:uppercase !important;
+  color:         #f4b860 !important;
+  margin-bottom: 16px !important;
+}
+[class*="__eyebrow"] span { display: none !important; }
+[class*="__eyebrow"]::before {
+  content:    "" !important;
+  display:    block !important;
+  width:      22px !important;
+  height:     1px !important;
+  background: linear-gradient(90deg, #f4b860, transparent) !important;
+  flex-shrink:0 !important;
+}
+
+/* ── 7. Subpage hero szöveg ──────────────────────────────────────── */
+.subpage-title {
+  font-family: var(--font-display) !important;
+  font-weight: 500 !important;
+}
+
+/* ── 8. Section headings ─────────────────────────────────────────── */
+.subpage-heading,
+.mini-title,
+h2.subpage-heading {
+  font-family: var(--font-display) !important;
+}
+
+/* ── 9. Subpage hero shader: teljesen átlátszó ──────────────────── */
+.subpage-hero__shade {
+  background: none !important;
+  display: none !important;
+}
+
+/* ── 10. Subpage section elválasztó → amber tónus ──────────────── */
+.subpage-section::before {
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(244,184,96,.10) 38%,
+    rgba(244,184,96,.14) 50%,
+    rgba(244,184,96,.10) 62%,
+    transparent 100%
+  ) !important;
+}
+
+/* ── 11. Subpage hero ::after — nincs sötét overlay ────────────── */
+.subpage-hero::after {
+  background: none !important;
+  display: none !important;
+}
+
+/* ── 12. Stat kártyák amber badge ───────────────────────────────── */
+.stats__badge {
+  background:  rgba(244,184,96,.12) !important;
+  border-color:rgba(244,184,96,.25) !important;
+  color:       #f4b860 !important;
+}
+.stats__num { color: rgba(255,255,255,.96) !important; }
+
+/* ── 13. Subpage-main padding kiigazítás ────────────────────────── */
+.subpage-main {
+  padding-top: 0 !important;
+}

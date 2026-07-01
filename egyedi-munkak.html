@@ -1,14 +1,24 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="hu">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Layero egyedi munkák - személyre szabott 3D ajándékok, tárgyak és prémium szoborszerű alkotások.">
-    <title>Egyedi munkák | Layero 3D Design</title>
+    <meta name="description" content="Layero egyedi munkák - személyre szabott 3D ajándékok, tárgyak és prémium alkotások.">
+    <title>Munkáink | Layero 3D Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Sora:wght@300;400;500;600&display=swap">
+    <link rel="canonical" href="https://layero.ro/egyedi-munkak.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Munkáink | Layero 3D Design">
+    <meta property="og:url" content="https://layero.ro/egyedi-munkak.html">
+    <meta property="og:image" content="https://layero.ro/assets/images/lamp-process/03-finished-lamp.webp">
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,400;9..144,1,500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="tv-theme.css">
   </head>
-  <body>
-    <header class="site-header motion-load" style="--load-delay: 80ms">
+  <body class="munkak-showcase-page">
+    <header class="site-header motion-load" style="--load-delay:80ms">
       <div class="header-shell">
         <a class="logo" href="index.html" aria-label="Layero 3D Design főoldal">
           <img class="logo__brand-mark" src="assets/layero-logo-mark-from-source.png" alt="" width="240" height="237">
@@ -18,112 +28,227 @@
           <span class="sr-only">Menü megnyitása</span><span class="nav-toggle__line" aria-hidden="true"></span>
         </button>
         <nav class="site-nav" id="site-navigation" aria-label="Főmenü">
-          <a href="vizio.html">Vízió</a>
-          <a href="egyedi-munkak.html" aria-current="page">Egyedi munkák</a>
+          <a href="index.html">Főoldal</a>
+          <a href="egyedi-munkak.html" aria-current="page">Munkáink</a>
           <a href="inspiracio.html">Inspiráció</a>
           <a href="tudastar.html">Tudástár</a>
-          <a href="hogyan-mukodik.html">Hogyan működik</a>
           <a href="rolunk.html">Rólunk</a>
+          <a href="kapcsolat.html">Kapcsolat</a>
         </nav>
-        <a class="btn btn--outline header-cta" href="kapcsolat.html">Belépés a shopba <span aria-hidden="true">→</span></a>
+        <a class="btn btn--outline header-cta" href="kapcsolat.html">EGYEDI MUNKÁT SZERETNÉK <span aria-hidden="true">→</span></a>
       </div>
     </header>
 
-    <main class="subpage-main">
-      <section class="subpage-hero" aria-labelledby="page-title">
-        <div class="subpage-hero__bg" aria-hidden="true"></div>
-        <div class="subpage-hero__fx" aria-hidden="true">
-          <span class="subpage-hero__scan"></span>
-          <span class="subpage-hero__grid-bg"></span>
-        </div>
-        <div class="subpage-hero__shade" aria-hidden="true"></div>
-        <div class="subpage-shell subpage-hero__grid">
-          <div class="subpage-hero__copy">
-            <h1 class="subpage-title" id="page-title">Egyedi <span>munkák</span></h1>
-            <p class="subpage-lead">Az ötleteidet személyre szabott 3D alkotásokká formáljuk, precízen és céllal.</p>
+    <main class="munkak-showcase">
+      <section class="munkak-showcase-hero" aria-labelledby="munkak-h1">
+        <div class="munkak-shell munkak-showcase-hero__grid">
+          <div class="munkak-showcase-hero__copy">
+            <p class="munkak-showcase-kicker">Valódi történetek, egyedi alkotások</p>
+            <h1 id="munkak-h1">Munkáink</h1>
+            <p class="munkak-showcase-lead">Ötletekből <span>valóság.</span></p>
+            <p class="munkak-showcase-desc">Minden projekt mögött egy történet, egy elképzelés és egyedi megvalósítás áll. Nézd meg, hogyan kelnek életre az ötletek a 3D nyomtatás segítségével.</p>
+            <div class="munkak-showcase-stats" aria-label="Layero számok">
+              <div class="munkak-showcase-stat">
+                <span aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/><circle cx="12" cy="12" r="9"/></svg></span>
+                <strong>1000+</strong>
+                <small>elkészült projekt</small>
+              </div>
+              <div class="munkak-showcase-stat">
+                <span aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 19V7l8-4 8 4v12"/><path d="M8 21V11h8v10"/></svg></span>
+                <strong>500+</strong>
+                <small>elégedett ügyfél</small>
+              </div>
+              <div class="munkak-showcase-stat">
+                <span aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+                <strong>20 000+</strong>
+                <small>nyomtatott óra</small>
+              </div>
+              <div class="munkak-showcase-stat">
+                <span aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M20.8 4.6a5.5 5.5 0 0 0-7.8 0L12 5.6l-1-1a5.5 5.5 0 0 0-7.8 7.8l1 1L12 21l7.8-7.6 1-1a5.5 5.5 0 0 0 0-7.8Z"/></svg></span>
+                <strong>99%</strong>
+                <small>visszatérő ügyfél</small>
+              </div>
+            </div>
           </div>
-          <div class="subpage-hero__media" aria-hidden="true"></div>
-        </div>
-      </section>
 
-      <section class="subpage-section">
-        <div class="subpage-shell">
-          <p class="subpage-heading">Szolgáltatásaink</p>
-          <h2 class="mini-title" style="text-align:center">A te történetedre szabva. <span>Tartósra</span> alkotva.</h2>
-          <div class="page-card-grid page-card-grid--3" style="margin-top:28px">
-            <article class="page-card page-card--pad">
-              <img class="page-icon" src="assets/images/how-command/new-icon-gift.webp" alt="">
-              <h3>Személyre szabott ajándékok</h3>
-              <p>Gondosan megalkotott, jelentéssel teli tárgyak az élet különleges pillanataihoz.</p>
-              <a class="page-card__link" href="szemelyre-szabott-ajandekok.html">Tovább <span aria-hidden="true">→</span></a>
-            </article>
-            <article class="page-card page-card--pad">
-              <img class="page-icon" src="assets/images/how-command/icon-cube.png" alt="">
-              <h3>Egyedi tárgyak</h3>
-              <p>Egyedi formák, amelyek a te elképzelésed és igényeid köré tervezünk.</p>
-              <a class="page-card__link" href="kapcsolat.html">Tovább <span aria-hidden="true">→</span></a>
-            </article>
-            <article class="page-card page-card--pad">
-              <img class="page-icon" src="assets/images/how-command/icon-location.png" alt="">
-              <h3>Prémium 3D szobrok</h3>
-              <p>Nagy részletgazdagságú alkotások, amelyek művészi érzést és érzelmet közvetítenek.</p>
-              <a class="page-card__link" href="markaknak-es-alkotoknak.html">Tovább <span aria-hidden="true">→</span></a>
-            </article>
+          <div class="munkak-showcase-hero__stage" aria-hidden="true">
+            <img class="munkak-hero-product munkak-hero-product--lamp" src="assets/images/lume-lampa-feature-900.webp" alt="">
+            <img class="munkak-hero-product munkak-hero-product--heart" src="assets/images/layero-wire-heart-sculpture.webp" alt="">
+            <img class="munkak-hero-product munkak-hero-product--plaque" src="assets/images/personalized-father-plaque.webp" alt="">
           </div>
         </div>
       </section>
 
-      <section class="subpage-section subpage-section--tight">
-        <div class="subpage-shell">
-          <p class="subpage-heading">Egyedi munkák példái</p>
-          <div class="page-card-grid page-card-grid--3">
-            <article class="page-card">
-              <div class="page-card__media"><img src="assets/images/custom-family-nameplate.webp" alt="Egyedi névtábla"></div>
-              <div class="page-card__body"><h3>Névtáblák</h3><p>Személyre szabott nevek és logók, hogy igazán kitűnj.</p></div>
+      <section class="munkak-audience" aria-labelledby="munkak-audience-title">
+        <div class="munkak-shell">
+          <div class="munkak-section-heading">
+            <p>Kinek készítjük?</p>
+            <h2 id="munkak-audience-title">Különböző ügyfelek, különböző történetek</h2>
+          </div>
+
+          <div class="munkak-audience-grid">
+            <article class="munkak-audience-card">
+              <span class="munkak-audience-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg></span>
+              <img src="assets/images/lamp-process/03-finished-lamp.webp" alt="Kutyus portré lámpa">
+              <div>
+                <h3>Magánszemélyeknek</h3>
+                <p>Személyes ajándékok, emlékek, családi történetek, szeretettel készítve.</p>
+                <a href="szemelyre-szabott-ajandekok.html">Megnézem <span aria-hidden="true">→</span></a>
+              </div>
             </article>
-            <article class="page-card">
-              <div class="page-card__media"><img src="assets/images/personalized-father-plaque.webp" alt="Emléktárgy"></div>
-              <div class="page-card__body"><h3>Emlékdarabok</h3><p>Emlékezz és tisztelegj időtálló, jelentéssel teli alkotásokkal.</p></div>
+
+            <article class="munkak-audience-card">
+              <span class="munkak-audience-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M3 21h18"/><path d="M5 21V7h14v14"/><path d="M9 7V4h6v3"/></svg></span>
+              <img src="assets/images/custom-family-nameplate.webp" alt="Layero névtábla">
+              <div>
+                <h3>Cégeknek &amp; márkáknak</h3>
+                <p>Logózott termékek, céges ajándékok, megjelenítő és promóciós megoldások.</p>
+                <a href="markaknak-es-alkotoknak.html">Megnézem <span aria-hidden="true">→</span></a>
+              </div>
             </article>
-            <article class="page-card">
-              <div class="page-card__media"><img src="assets/images/decorative-lattice-ornament.webp" alt="Dekoratív tárgy"></div>
-              <div class="page-card__body"><h3>Dekoratív tárgyak</h3><p>Emeld ki a teret egyedi, inspiráló dekorációval.</p></div>
+
+            <article class="munkak-audience-card">
+              <span class="munkak-audience-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M4 21V9l8-6 8 6v12"/><path d="M9 21v-8h6v8"/></svg></span>
+              <img src="assets/images/categories/layero-category-graduation-gift-v2-760.webp" alt="Intézményi emléktárgy">
+              <div>
+                <h3>Intézmények &amp; közösségek</h3>
+                <p>Egyházak, iskolák, alapítványok és szervezetek számára készített munkák.</p>
+                <a href="kapcsolat.html">Megnézem <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+
+            <article class="munkak-audience-card">
+              <span class="munkak-audience-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M9 18h6"/><path d="M10 22h4"/><path d="M12 2a7 7 0 0 1 5 12l-1 2H8l-1-2A7 7 0 0 1 12 2Z"/></svg></span>
+              <img src="assets/images/categories/layero-category-custom-figure-v2-760.webp" alt="Egyedi figurális szobor">
+              <div>
+                <h3>Alkotóknak &amp; kreatív projektekhez</h3>
+                <p>Tervezők, művészek, hobbialkotók egyedi terveinek megvalósítása.</p>
+                <a href="markaknak-es-alkotoknak.html">Megnézem <span aria-hidden="true">→</span></a>
+              </div>
+            </article>
+
+            <article class="munkak-audience-card">
+              <span class="munkak-audience-card__icon" aria-hidden="true"><svg viewBox="0 0 24 24"><rect x="4" y="5" width="16" height="16" rx="2"/><path d="M16 3v4M8 3v4M4 11h16"/></svg></span>
+              <img src="assets/images/decorative-lattice-ornament.webp" alt="Ünnepi dísz gömb">
+              <div>
+                <h3>Eseményekre &amp; alkalmakra</h3>
+                <p>Ünnepek, rendezvények, díjátadók, megemlékezések különleges tárgyai.</p>
+                <a href="kapcsolat.html">Megnézem <span aria-hidden="true">→</span></a>
+              </div>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="subpage-section">
-        <div class="subpage-shell split-section">
-          <div>
-            <p class="subpage-kicker">Megközelítésünk</p>
-            <h2 class="mini-title">Egy együttműködő folyamat, <span>rád</span> szabva.</h2>
-            <p class="mini-copy">A koncepciótól a megvalósításig szorosan együtt dolgozunk veled, hogy minden részlet a te elképzelésedet tükrözze.</p>
-          </div>
-          <div class="process-line">
-            <article class="process-node"><span class="process-node__icon"><img src="assets/images/how-command/icon-magnify.png" alt=""></span><h3>1. Oszd meg az ötleted</h3><p>Mondd el a víziód és igényeid.</p></article>
-            <article class="process-node"><span class="process-node__icon"><img src="assets/images/how-command/icon-sliders.png" alt=""></span><h3>2. Együtt tervezünk</h3><p>Koncepciókat alakítunk és finomítunk.</p></article>
-            <article class="process-node"><span class="process-node__icon"><img src="assets/images/how-command/icon-cube.png" alt=""></span><h3>3. Életre keltjük</h3><p>Fejlett 3D nyomtatással készítjük el.</p></article>
-            <article class="process-node"><span class="process-node__icon"><img src="assets/images/how-command/icon-shield-check.png" alt=""></span><h3>4. Átadjuk</h3><p>Gondosan elkészítve, hosszú használatra.</p></article>
+      <section class="munkak-filter-section" aria-label="Szűrés terméktípus szerint">
+        <div class="munkak-shell">
+          <div class="munkak-filterbar">
+            <span class="munkak-filterbar__label">Szűrés terméktípus szerint</span>
+            <div class="munkak-chips" role="group" aria-label="Szűrők" id="munkak-filters">
+              <button class="munkak-chip is-active" type="button" data-filter="*"><span class="munkak-chip__icon" aria-hidden="true"><img src="assets/images/category-icons/badge-ajandek.png" alt="" loading="lazy"></span><span>Összes</span></button>
+            </div>
           </div>
         </div>
       </section>
 
-      <section class="subpage-section subpage-section--tight">
-        <div class="subpage-shell wide-cta">
-          <h2 class="mini-title">Alkossunk valami igazán <span>egyedit.</span></h2>
-          <p>Oszd meg velünk az ötleted, és életre keltjük - gondosan megalkotva, neked tervezve.</p>
-          <a class="btn btn--primary" href="kapcsolat.html">Egyedi megrendelés kérése <span aria-hidden="true">→</span></a>
+      <section class="munkak-featured" aria-labelledby="kiemelt-cim">
+        <div class="munkak-shell">
+          <div class="munkak-featured__head">
+            <h2 id="kiemelt-cim">Kiemelt munkáink</h2>
+            <a href="kapcsolat.html">Összes munka megtekintése <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="munkak-carousel" id="munkak-grid" aria-live="polite" aria-label="Kiemelt munkák"></div>
+        </div>
+      </section>
+
+      <section class="munkak-story" aria-labelledby="munkak-story-title">
+        <div class="munkak-shell munkak-story__panel">
+          <div class="munkak-story__copy">
+            <h2 id="munkak-story-title">Egy történet a kezdetektől a megvalósításig</h2>
+            <p>Nézd meg, hogyan lesz egy ötletből kézzelfogható alkotás.</p>
+            <ol class="munkak-steps">
+              <li><strong>1. Ötlet</strong><span>Az elképzelést megbeszéljük.</span></li>
+              <li><strong>2. Tervezés</strong><span>3D modell és látványterv készül.</span></li>
+              <li><strong>3. Nyomtatás</strong><span>Prémium minőségű gyártás.</span></li>
+              <li><strong>4. Utómunka</strong><span>Finomítás, festés, összeállítás.</span></li>
+              <li><strong>5. Kész termék</strong><span>Egyedi, személyre szabott alkotás.</span></li>
+            </ol>
+          </div>
+          <div class="munkak-story__visual" aria-label="Fotóból kész lámpa folyamat">
+            <figure>
+              <img src="assets/images/lamp-process/01-original-photo.webp" alt="Kiinduló fotó">
+              <figcaption>Kiinduló fotó</figcaption>
+            </figure>
+            <span aria-hidden="true">→</span>
+            <figure>
+              <img src="assets/images/lamp-process/02-processed-sketch.webp" alt="3D modell">
+              <figcaption>3D modell</figcaption>
+            </figure>
+            <span aria-hidden="true">→</span>
+            <figure>
+              <img src="assets/images/lamp-process/03-finished-lamp.webp" alt="Kész lámpa">
+              <figcaption>Kész lámpa</figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="munkak-testimonials" aria-labelledby="munkak-testimonials-title">
+        <div class="munkak-shell">
+          <div class="munkak-featured__head">
+            <h2 id="munkak-testimonials-title">Rólunk mondták</h2>
+            <a href="kapcsolat.html">További vélemények <span aria-hidden="true">→</span></a>
+          </div>
+          <div class="munkak-testimonial-grid">
+            <article class="munkak-testimonial">
+              <p>“A fotólámpa a kutyusomról minden várakozásomat felülmúlta. Csodálatos munka, köszönöm!”</p>
+              <div><span>★★★★★</span><strong>Kovács Éva</strong></div>
+              <img src="assets/images/lamp-process/03-finished-lamp.webp" alt="">
+            </article>
+            <article class="munkak-testimonial">
+              <p>“A céges logós display tökéletes lett, mindenki megdicsérte a kiállításon. Professzionális és gyors munka.”</p>
+              <div><span>★★★★★</span><strong>Nagy Péter</strong></div>
+              <img src="assets/images/categories/layero-category-qr-display-v2-760.webp" alt="">
+            </article>
+            <article class="munkak-testimonial">
+              <p>“Az iskolai ballagásra rendelt emléktáblák gyönyörűek lettek. A gyerekek és a szülők is imádták!”</p>
+              <div><span>★★★★★</span><strong>Szabó Mária</strong></div>
+              <img src="assets/images/categories/layero-category-graduation-gift-v2-760.webp" alt="">
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="munkak-bottom-cta" aria-labelledby="munkak-cta-h">
+        <div class="munkak-shell">
+          <div class="munkak-bottom-cta__panel">
+            <img src="assets/images/layero-wire-heart-sculpture.webp" alt="">
+            <div>
+              <h2 id="munkak-cta-h">Láttál valamit, ami inspirált?</h2>
+              <p>Meséld el az ötleted, és mi megvalósítjuk!</p>
+            </div>
+            <a class="btn btn--primary" href="kapcsolat.html">EGYEDI MUNKÁT SZERETNÉK <span aria-hidden="true">→</span></a>
+            <a class="btn btn--outline" href="kapcsolat.html">KAPCSOLATFELVÉTEL</a>
+          </div>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="container footer__bottom">
-        <p>© 2024 Layero 3D Design. Minden jog fenntartva.</p>
-        <div><a href="vizio.html">Vízió</a><a href="egyedi-munkak.html">Egyedi munkák</a><a href="inspiracio.html">Inspiráció</a><a href="tudastar.html">Tudástár</a><a href="hogyan-mukodik.html">Hogyan működik</a><a href="rolunk.html">Rólunk</a></div>
+        <p>© 2025-2026 Layero · layero.ro · Minden jog fenntartva.</p>
+        <div>
+          <a href="egyedi-munkak.html">Munkáink</a>
+          <a href="inspiracio.html">Inspiráció</a>
+          <a href="tudastar.html">Tudástár</a>
+          <a href="rolunk.html">Rólunk</a>
+          <a href="kapcsolat.html">Kapcsolat</a>
+          <a href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer">Shop →</a>
+        </div>
       </div>
     </footer>
+
     <script src="script.js"></script>
+    <script type="module" src="munkak.js"></script>
   </body>
 </html>

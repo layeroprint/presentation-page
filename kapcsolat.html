@@ -1,27 +1,208 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="hu">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Kapcsolat és projekt indítás a Layero 3D Design műhellyel.">
     <title>Kapcsolat | Layero 3D Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Sora:wght@300;400;500;600&display=swap">
+    <link rel="canonical" href="https://layero.ro/kapcsolat.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Layero 3D Design">
+    <meta property="og:title" content="Kapcsolat | Layero 3D Design">
+    <meta property="og:description" content="Indíts projektet a Layero 3D Design műhellyel – személyre szabott ajándékok és egyedi alkotások.">
+    <meta property="og:url" content="https://layero.ro/kapcsolat.html">
+    <meta property="og:image" content="https://layero.ro/assets/images/personalized-father-plaque.webp">
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,400;9..144,1,500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="tv-theme.css">
+    <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js"}}</script>
   </head>
   <body>
-    <header class="site-header motion-load" style="--load-delay: 80ms"><div class="header-shell"><a class="logo" href="index.html"><img class="logo__brand-mark" src="assets/layero-logo-mark-from-source.png" alt="" width="240" height="237"><img class="logo__brand-wordmark" src="assets/layero-logo-wordmark-from-source.png" alt="Layero 3D Design" width="493" height="171"></a><button class="nav-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" data-nav-toggle><span class="sr-only">Menü megnyitása</span><span class="nav-toggle__line" aria-hidden="true"></span></button><nav class="site-nav" id="site-navigation" aria-label="Főmenü"><a href="vizio.html">Vízió</a><a href="egyedi-munkak.html">Egyedi munkák</a><a href="inspiracio.html">Inspiráció</a><a href="tudastar.html">Tudástár</a><a href="hogyan-mukodik.html">Hogyan működik</a><a href="rolunk.html">Rólunk</a></nav><a class="btn btn--outline header-cta" href="kapcsolat.html" aria-current="page">Kapcsolat / projekt indítása <span aria-hidden="true">→</span></a></div></header>
+    <header class="site-header motion-load" style="--load-delay: 80ms"><div class="header-shell"><a class="logo" href="index.html"><img class="logo__brand-mark" src="assets/layero-logo-mark-from-source.png" alt="" width="240" height="237"><img class="logo__brand-wordmark" src="assets/layero-logo-wordmark-from-source.png" alt="Layero 3D Design" width="493" height="171"></a><button class="nav-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" data-nav-toggle><span class="sr-only">Menü megnyitása</span><span class="nav-toggle__line" aria-hidden="true"></span></button><nav class="site-nav" id="site-navigation" aria-label="Főmenü"><a href="termekvilag.html">Termékvilág</a><a href="egyedi-rendeles.html">Egyedi rendelés</a><a href="cegeknek.html">Cégeknek</a><a href="galeria.html">Galéria</a><a href="rolunk.html">Rólunk</a><a href="kapcsolat.html" aria-current="page">Kapcsolat</a></nav><a class="btn btn--outline header-cta" href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer">Üzlet <span aria-hidden="true">→</span></a></div></header>
+
     <main class="subpage-main">
-      <section class="subpage-hero subpage-hero--compact" aria-labelledby="page-title">
-        <div class="subpage-hero__bg" aria-hidden="true"></div>
+      <!-- HERO -->
+      <section class="subpage-hero subpage-hero--compact" aria-labelledby="page-title"
+        style="--subpage-hero-position: 72% 38%">
+        <canvas class="subpage-hero__canvas" data-three-canvas="subpage" aria-hidden="true"></canvas><div class="subpage-hero__bg" aria-hidden="true"></div>
         <div class="subpage-hero__fx" aria-hidden="true">
           <span class="subpage-hero__scan"></span>
           <span class="subpage-hero__grid-bg"></span>
         </div>
         <div class="subpage-hero__shade" aria-hidden="true"></div>
-        <div class="subpage-shell subpage-hero__grid"><div class="subpage-hero__copy"><h1 class="subpage-title" id="page-title">Indíts egy <span>projektet.</span></h1><p class="subpage-lead">Alkossunk együtt valami rendkívülit.</p><p class="mini-copy">Oszd meg az ötleted, és csapatunk a koncepciótól a megvalósításig végigvezet az úton - precizitással, szenvedéllyel és céllal.</p></div><div class="subpage-hero__media" aria-hidden="true"></div></div></section>
-      <section class="subpage-section"><div class="subpage-shell contact-grid"><section class="contact-panel" aria-labelledby="contact-form-title"><p class="subpage-heading" id="contact-form-title">Mesélj a projektedről</p><form class="contact-form" action="mailto:hello@layero3d.hu" method="post" enctype="text/plain"><label>Teljes név<input name="name" type="text" placeholder="Neved"></label><label>E-mail cím<input name="email" type="email" placeholder="te@pelda.hu"></label><label>Projekt típusa<select name="type"><option>Válassz projekt típust</option><option>Személyre szabott ajándék</option><option>Egyedi megrendelés</option><option>Márkaprojekt</option></select></label><label>Mesélj a projektedről<textarea name="message" placeholder="Oszd meg az ötletedet, céljaidat és minden részletet, ami segít megérteni az elképzelésedet..."></textarea></label><button class="btn btn--primary" type="submit">Projektigény beküldése <span aria-hidden="true">→</span></button></form></section><aside class="contact-panel contact-list"><div class="contact-list__item"><img src="assets/images/how-command/icon-arrow-right.png" alt=""><div><h3>Kapcsolat</h3><a href="mailto:hello@layero3d.hu">hello@layero3d.hu</a><p>Általában 24 órán belül válaszolunk.</p></div></div><div class="contact-list__item"><img src="assets/images/how-command/icon-location.png" alt=""><div><h3>Látogass el a stúdiónkba</h3><p>Layero 3D Design Stúdió<br>Románia / Magyarország</p></div></div><div><h3 class="subpage-heading" style="text-align:left;margin-bottom:14px">Kövess minket</h3><div class="socials"><a href="#">in</a><a href="#">ig</a><a href="#">dr</a></div></div></aside></div></section>
-      <section class="subpage-section subpage-section--tight"><div class="subpage-shell"><p class="subpage-heading">Mit alkothatunk együtt?</p><div class="page-card-grid page-card-grid--3"><article class="page-card page-card--pad"><img class="page-icon" src="assets/images/how-command/new-icon-gift.webp" alt=""><h3>Személyre szabott ajándék</h3><p>Jelentéssel teli, emlékezetes, kifejezetten nekik készítve.</p><a class="page-card__link" href="szemelyre-szabott-ajandekok.html">Tovább <span aria-hidden="true">→</span></a></article><article class="page-card page-card--pad"><img class="page-icon" src="assets/images/how-command/icon-cube.png" alt=""><h3>Egyedi megrendelés</h3><p>A te ötleted, a mi precizitásunk. Közösen felépítve.</p><a class="page-card__link" href="egyedi-munkak.html">Tovább <span aria-hidden="true">→</span></a></article><article class="page-card page-card--pad"><img class="page-icon" src="assets/images/how-command/icon-location.png" alt=""><h3>Márkaprojekt</h3><p>Emeld magasabb szintre a márkádat egyedi 3D alkotásokkal.</p><a class="page-card__link" href="markaknak-es-alkotoknak.html">Tovább <span aria-hidden="true">→</span></a></article></div></div></section>
-      <section class="subpage-section subpage-section--tight"><div class="subpage-shell wide-cta"><h2 class="mini-title">Készen állsz valami <span>rendkívülit</span> alkotni?</h2><p>Csapatunk készen áll, hogy az ötletedből időtálló 3D alkotást hozzon létre - szenvedéllyel, precizitással és céllal.</p><a class="btn btn--primary" href="mailto:hello@layero3d.hu">Projekt indítása <span aria-hidden="true">→</span></a></div></section>
+        <div class="subpage-shell">
+          <div class="subpage-hero__copy">
+            <h1 class="subpage-title" id="page-title">Indíts egy <span>projektet.</span></h1>
+            <p class="subpage-lead">Alkossunk együtt valami rendkívülit.</p>
+            <p class="mini-copy">Oszd meg az ötleted, és csapatunk a koncepciótól a megvalósításig végigvezet az úton — precizitással, szenvedéllyel és céllal.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- CONTACT GRID -->
+      <section class="subpage-section">
+        <div class="subpage-shell contact-grid">
+          <!-- Form panel -->
+          <section class="contact-panel" aria-labelledby="contact-form-title">
+            <p class="subpage-heading" style="text-align:left;margin-bottom:22px" id="contact-form-title">Mesélj a projektedről</p>
+            <form class="contact-form" action="mailto:hello@layero.ro" method="post" enctype="text/plain">
+              <label>Teljes név<input name="name" type="text" placeholder="Neved" autocomplete="name" required></label>
+              <label>E-mail cím<input name="email" type="email" placeholder="te@pelda.hu" autocomplete="email" inputmode="email" required></label>
+              <label>Telefon<input name="phone" type="tel" placeholder="+40..." autocomplete="tel"></label>
+              <label>Projekt típusa
+                <select name="type" required>
+                  <option value="">Válassz projekt típust</option>
+                  <option>Tematikus lámpa</option>
+                  <option>Kulcstartó</option>
+                  <option>Dekoráció</option>
+                  <option>Céges megoldás</option>
+                  <option>Gyűjtői darab</option>
+                  <option>Egyedi megrendelés</option>
+                </select>
+              </label>
+              <label>Mesélj a projektedről<textarea name="message" placeholder="Oszd meg az ötletedet, céljaidat és minden részletet, ami segít megérteni az elképzelésedet..." minlength="20" required></textarea></label>
+              <button class="btn btn--primary" type="submit">Projektigény beküldése <span aria-hidden="true">→</span></button>
+              <p class="contact-form__note">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+                Az adataid biztonságban vannak, és soha nem osztjuk meg őket.
+              </p>
+            </form>
+          </section>
+
+          <!-- Info panel -->
+          <aside class="contact-panel contact-info-panel">
+            <p class="subpage-heading" style="text-align:left;margin-bottom:22px">Kapcsolat</p>
+
+            <div class="contact-info-row">
+              <span class="contact-info-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+              </span>
+              <div>
+                <a href="mailto:hello@layero.ro" class="contact-info-link">hello@layero.ro</a>
+                <p class="contact-info-sub">Általában 24 órán belül válaszolunk.</p>
+              </div>
+            </div>
+
+            <div class="contact-info-row">
+              <span class="contact-info-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.7 19.7 0 0 1-8.6-3.1 19.3 19.3 0 0 1-6-6A19.7 19.7 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1.9.3 1.8.6 2.6a2 2 0 0 1-.5 2.1L8 9.6a16 16 0 0 0 6.4 6.4l1.2-1.2a2 2 0 0 1 2.1-.5c.8.3 1.7.5 2.6.6a2 2 0 0 1 1.7 2Z"/></svg>
+              </span>
+              <div>
+                <p class="contact-info-label" style="margin-bottom:4px">Telefon</p>
+                <p class="contact-info-sub">Telefonos visszahíváshoz add meg a számod az űrlapon.</p>
+              </div>
+            </div>
+
+            <div class="contact-info-divider" aria-hidden="true"></div>
+
+            <p class="contact-info-label">Kövess minket</p>
+            <div class="socials socials--icons">
+              <a href="https://www.linkedin.com/company/layero3d" target="_blank" rel="noopener noreferrer" class="socials__btn" aria-label="LinkedIn (új lapon nyílik)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              </a>
+              <a href="https://www.instagram.com/layero3d" target="_blank" rel="noopener noreferrer" class="socials__btn" aria-label="Instagram (új lapon nyílik)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+              </a>
+              <a href="https://dribbble.com/layero3d" target="_blank" rel="noopener noreferrer" class="socials__btn" aria-label="Dribbble (új lapon nyílik)">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M8.56 2.75c4.37 6.03 6.02 9.42 8.03 17.72m2.54-15.38c-3.72 4.35-8.94 5.66-16.88 5.85m19.5 1.9c-3.5-.93-6.63-.82-8.94 0-2.58.92-5.01 2.86-7.44 6.32"/></svg>
+              </a>
+            </div>
+
+            <div class="contact-info-divider" aria-hidden="true"></div>
+
+            <div class="contact-info-row">
+              <span class="contact-info-icon" aria-hidden="true">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 2C8.69 2 6 4.69 6 8c0 5.25 6 13 6 13s6-7.75 6-13c0-3.31-2.69-6-6-6z"/><circle cx="12" cy="8" r="2"/></svg>
+              </span>
+              <div>
+                <p class="contact-info-label" style="margin-bottom:4px">Látogass el a stúdiónkba</p>
+                <p class="contact-info-sub">Layero 3D Design Stúdió<br>Satu Mare, Románia</p>
+              </div>
+            </div>
+            <a class="btn btn--outline btn--sm" href="https://maps.google.com/?q=Satu+Mare+Romania" target="_blank" rel="noopener noreferrer" style="margin-top:12px;width:100%;justify-content:center">Megnyitás térképen <span aria-hidden="true">→</span></a>
+
+            <div class="contact-info-divider" aria-hidden="true"></div>
+
+            <p class="contact-info-label">Elérhetőség és szállítás</p>
+            <p class="contact-info-sub">Elérhetőségi idő: munkanapokon, egyeztetés alapján.</p>
+            <p class="contact-info-sub">Minimum rendelés: 100 lej.</p>
+            <p class="contact-info-sub">200 lej felett ingyenes országos kiszállítás Romániában.</p>
+            <p class="contact-info-sub">Átlagos elkészítési idő: kb. 1 hét.</p>
+          </aside>
+        </div>
+      </section>
+
+      <!-- MIT ALKOTHATUNK EGYÜTT -->
+      <section class="subpage-section subpage-section--tight">
+        <div class="subpage-shell">
+          <p class="subpage-heading">Mit alkothatunk együtt?</p>
+          <div class="page-card-grid page-card-grid--3">
+            <article class="page-card page-card--pad">
+              <img class="page-icon" src="assets/images/how-command/new-icon-gift.webp" alt="">
+              <h3>Személyre szabott ajándék</h3>
+              <p>Jelentéssel teli, emlékezetes, kifejezetten nekik készítve.</p>
+              <a class="page-card__link" href="egyedi-rendeles.html">Tovább <span aria-hidden="true">→</span></a>
+            </article>
+            <article class="page-card page-card--pad">
+              <img class="page-icon" src="assets/images/how-command/icon-cube.png" alt="">
+              <h3>Egyedi megrendelés</h3>
+              <p>A te ötleted, a mi precizitásunk. Közösen felépítve.</p>
+              <a class="page-card__link" href="termekvilag.html">Tovább <span aria-hidden="true">→</span></a>
+            </article>
+            <article class="page-card page-card--pad">
+              <img class="page-icon" src="assets/images/branded-3d-object-emblem.webp" alt="">
+              <h3>Márkaprojekt</h3>
+              <p>Emeld magasabb szintre a márkádat egyedi 3D alkotásokkal.</p>
+              <a class="page-card__link" href="cegeknek.html">Tovább <span aria-hidden="true">→</span></a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- 24 ÓRA BANNER -->
+      <section class="subpage-section subpage-section--tight">
+        <div class="subpage-shell">
+          <div class="response-banner">
+            <div class="response-banner__left">
+              <span class="response-banner__icon" aria-hidden="true">
+                <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              </span>
+              <div>
+                <p class="response-banner__label">Értékeljük az idődet</p>
+                <p class="response-banner__value">24 órán <span>belül válaszolunk.</span></p>
+              </div>
+            </div>
+            <p class="response-banner__text">Minden megkeresést személyesen átnéz a csapatunk. Nem sablonválaszt, hanem valódi visszajelzést kapsz.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- FINAL CTA -->
+      <section class="subpage-section subpage-section--tight">
+        <div class="subpage-shell contact-final-cta">
+          <div class="contact-final-cta__media" aria-hidden="true">
+            <img src="assets/images/layero-wire-heart-sculpture.webp" alt="">
+          </div>
+          <div class="contact-final-cta__copy">
+            <p class="subpage-kicker">Keltsük életre az elképzelésedet</p>
+            <h2 class="mini-title">Készen állsz valami <span>rendkívülit</span> alkotni?</h2>
+            <p class="mini-copy">Csapatunk készen áll, hogy az ötletedből időtálló 3D alkotást hozzon létre — szenvedéllyel, precizitással és céllal.</p>
+            <a class="btn btn--primary" href="mailto:hello@layero.ro">Projekt indítása <span aria-hidden="true">→</span></a>
+          </div>
+        </div>
+      </section>
     </main>
-    <footer class="site-footer"><div class="container footer__bottom"><p>© 2024 Layero 3D Design. Minden jog fenntartva.</p><div><a href="vizio.html">Vízió</a><a href="egyedi-munkak.html">Egyedi munkák</a><a href="inspiracio.html">Inspiráció</a><a href="tudastar.html">Tudástár</a><a href="hogyan-mukodik.html">Hogyan működik</a><a href="rolunk.html">Rólunk</a></div></div></footer><script src="script.js"></script>
+
+    <footer class="site-footer">
+      <div class="container footer__bottom">
+        <p>© 2025–2026 Layero · layero.ro · Minden jog fenntartva.</p>
+        <div><a href="termekvilag.html">Termékvilág</a><a href="egyedi-rendeles.html">Egyedi rendelés</a><a href="cegeknek.html">Cégeknek</a><a href="galeria.html">Galéria</a><a href="rolunk.html">Rólunk</a><a href="kapcsolat.html">Kapcsolat</a><a href="adatvedelem.html">Adatvédelem</a><a href="aszf.html">ÁSZF</a><a href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer">Shop →</a></div>
+      </div>
+    </footer>
+    <script src="script.js"></script>
+    <script type="module" src="three-scene.js"></script>
   </body>
 </html>

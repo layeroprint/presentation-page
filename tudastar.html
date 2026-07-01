@@ -1,11 +1,24 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="hu">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Layero Tudástár - történetek, tippek, kategóriák és inspirációk prémium 3D alkotásokhoz.">
     <title>Tudástár | Layero 3D Design</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Sora:wght@300;400;500;600&display=swap">
+    <link rel="canonical" href="https://layero.ro/tudastar.html">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Layero 3D Design">
+    <meta property="og:title" content="Tudástár | Layero 3D Design">
+    <meta property="og:description" content="3D design cikkek, ajándékötletek, anyagismeret és műhelytitkok a Layero csapatától.">
+    <meta property="og:url" content="https://layero.ro/tudastar.html">
+    <meta property="og:image" content="https://layero.ro/assets/images/parametric-vase-object.webp">
     <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,400;9..144,1,500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="tv-theme.css">
+    <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js"}}</script>
   </head>
   <body>
     <header class="site-header motion-load" style="--load-delay: 80ms">
@@ -18,20 +31,19 @@
           <span class="sr-only">Menü megnyitása</span><span class="nav-toggle__line" aria-hidden="true"></span>
         </button>
         <nav class="site-nav" id="site-navigation" aria-label="Főmenü">
-          <a href="vizio.html">Vízió</a>
-          <a href="egyedi-munkak.html">Egyedi munkák</a>
+          <a href="egyedi-munkak.html">Munkáink</a>
           <a href="inspiracio.html">Inspiráció</a>
           <a href="tudastar.html" aria-current="page">Tudástár</a>
-          <a href="hogyan-mukodik.html">Hogyan működik</a>
           <a href="rolunk.html">Rólunk</a>
+          <a href="kapcsolat.html">Kapcsolat</a>
         </nav>
-        <a class="btn btn--outline header-cta" href="kapcsolat.html">Belépés a shopba <span aria-hidden="true">→</span></a>
+        <a class="btn btn--outline header-cta" href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer">Shop megnyitása <span aria-hidden="true">→</span></a>
       </div>
     </header>
 
     <main class="subpage-main knowledge-page">
       <section class="subpage-hero subpage-hero--compact knowledge-hero" aria-labelledby="page-title">
-        <div class="subpage-hero__bg" aria-hidden="true"></div>
+        <canvas class="subpage-hero__canvas" data-three-canvas="subpage" aria-hidden="true"></canvas><div class="subpage-hero__bg" aria-hidden="true"></div>
         <div class="subpage-hero__fx" aria-hidden="true">
           <span class="subpage-hero__scan"></span>
           <span class="subpage-hero__grid-bg"></span>
@@ -170,9 +182,9 @@
             <h2 class="mini-title">Friss tippek és inspirációk a <span>műhelyből.</span></h2>
             <p>Iratkozz fel hírlevelünkre, és havonta küldünk inspirációt, tippeket és exkluzív betekintést a Layero világába.</p>
           </div>
-          <form class="knowledge-newsletter__form" action="mailto:hello@layero3d.hu" method="post" enctype="text/plain">
+          <form class="knowledge-newsletter__form" action="mailto:hello@layero.ro" method="post" enctype="text/plain">
             <label class="sr-only" for="knowledge-email">E-mail címed</label>
-            <input id="knowledge-email" name="email" type="email" placeholder="E-mail címed">
+            <input id="knowledge-email" name="email" type="email" placeholder="E-mail címed" autocomplete="email" inputmode="email" required>
             <button class="btn btn--primary" type="submit">Feliratkozom <span aria-hidden="true">→</span></button>
             <small>Bármikor leiratkozhatsz. Adataidat bizalmasan kezeljük.</small>
           </form>
@@ -182,10 +194,11 @@
 
     <footer class="site-footer">
       <div class="container footer__bottom">
-        <p>© 2024 Layero 3D Design. Minden jog fenntartva.</p>
-        <div><a href="vizio.html">Vízió</a><a href="egyedi-munkak.html">Egyedi munkák</a><a href="inspiracio.html">Inspiráció</a><a href="tudastar.html">Tudástár</a><a href="hogyan-mukodik.html">Hogyan működik</a><a href="rolunk.html">Rólunk</a></div>
+        <p>© 2025–2026 Layero · layero.ro · Minden jog fenntartva.</p>
+        <div><a href="egyedi-munkak.html">Munkáink</a><a href="inspiracio.html">Inspiráció</a><a href="tudastar.html">Tudástár</a><a href="rolunk.html">Rólunk</a><a href="kapcsolat.html">Kapcsolat</a><a href="adatvedelem.html">Adatvédelem</a><a href="aszf.html">ÁSZF</a><a href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer">Shop →</a></div>
       </div>
     </footer>
-    <script src="script.js?v=knowledge-filter"></script>
+    <script src="script.js"></script>
+    <script type="module" src="three-scene.js"></script>
   </body>
 </html>

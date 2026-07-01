@@ -1,0 +1,7 @@
+Ide tedd a Gyujtoi / rajongoi darabok kategoria kepeit.
+
+A galeria automatikusan ezeket a fajlneveket keresi:
+01.webp, 02.webp, 03.webp ... 12.webp
+
+Tamogatott kiterjesztesek: webp, jpg, jpeg, png.
+Javaslat: hasznalj webp formatumot es 1100 px koruli szelesseget.

@@ -1,15 +1,335 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="hu">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Layero 3D Design - szemelyre szabott ajandekok, egyedi 3D alkotasok es premium megrendelesek.">
     <title>Layero 3D Design</title>
-    <link rel="preload" href="assets/images/hero-layero-futuristic-tunnel-900.webp" as="image" media="(max-width: 720px)">
-    <link rel="preload" href="assets/images/hero-layero-futuristic-tunnel-1200.webp" as="image" media="(min-width: 721px) and (max-width: 1060px)">
-    <link rel="preload" href="assets/images/hero-layero-futuristic-tunnel-1600.webp" as="image" media="(min-width: 1061px)">
-    <link rel="preload" href="assets/images/hero-local-romania-transparent-720.webp" as="image" media="(min-width: 1061px)">
+    <link rel="preload" href="assets/images/index_hero_mobile-480.webp" as="image" media="(max-width: 420px)">
+    <link rel="preload" href="assets/images/index_hero_mobile-720.webp" as="image" media="(min-width: 421px) and (max-width: 720px)">
+    <link rel="preload" href="assets/images/Layero_hero_image-1200.webp" as="image" media="(min-width: 721px) and (max-width: 1180px)">
+    <link rel="preload" href="assets/images/Layero_hero_image-1448.webp" as="image" media="(min-width: 1181px) and (max-width: 1919px)">
+    <link rel="preload" href="assets/images/Layero_hero_image.webp" as="image" media="(min-width: 1920px)">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Sora:wght@300;400;500;600&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,400;9..144,1,500&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+    <link rel="canonical" href="https://layero.ro/">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Layero 3D Design">
+    <meta property="og:title" content="Layero 3D Design | Személyre szabott 3D alkotások">
+    <meta property="og:description" content="Személyre szabott ajándékok, egyedi 3D alkotások és rendelésre készült különleges darabok, prémium részletességgel.">
+    <meta property="og:url" content="https://layero.ro/">
+    <meta property="og:image" content="https://layero.ro/assets/images/Layero_hero_image-1448.webp">
     <link rel="stylesheet" href="styles.css">
+    <style>
+      /* ══ index.html — termékvilág stílus-hangolás ══════════════════
+         Inline overrides a styles.css után, ezért nagyobb specifikusság
+         szükségtelenül fölülírja az egész fájlt.
+      ═══════════════════════════════════════════════════════════════ */
+
+      /* 1. Fontok: Fraunces display + Space Grotesk UI */
+      :root {
+        --font-display: 'Fraunces', 'Cormorant Garamond', Georgia, serif;
+        --font-ui:      'Space Grotesk', 'Sora', 'Inter', Arial, sans-serif;
+      }
+
+      /* 2. Háttér */
+      body {
+        background: linear-gradient(180deg, #04090f 0%, #06101b 50%, #04090f 100%) !important;
+      }
+
+      /* 3. body::before: ambient glow foltok — visszafogott opacitás */
+      body::before {
+        background:
+          radial-gradient(42% 34% at 87%  7%,  rgba(244,184,96,.17),  transparent 70%),
+          radial-gradient(40% 32% at  5% 15%,  rgba(108,176,216,.15), transparent 70%),
+          radial-gradient(46% 38% at 80% 90%,  rgba(224,145,58,.10),  transparent 72%),
+          radial-gradient(38% 34% at 12% 82%,  rgba(108,176,216,.06), transparent 72%) !important;
+        opacity: .7 !important;
+        mix-blend-mode: normal !important;
+      }
+
+      /* 3b. body::after: szabályos dot rács + élgradiensek (concentrikus körök csíkot okoznának) */
+      body::after {
+        content: "";
+        position: fixed;
+        inset: 0;
+        z-index: 0;
+        pointer-events: none;
+        opacity: .65;
+        background:
+          linear-gradient(90deg, rgba(90,168,216,.06), transparent 38%, transparent 66%, rgba(244,184,96,.05)),
+          repeating-radial-gradient(circle at 40% 20%, rgba(255,255,255,.022) 0 1px, transparent 1px 7px);
+      }
+
+      /* 4. Header: sötétebb, blur, vékony elválasztó */
+      .site-header {
+        background: linear-gradient(180deg, rgba(2,8,18,.94), rgba(2,8,18,.62)) !important;
+        border-bottom: 1px solid rgba(255,255,255,.06) !important;
+        backdrop-filter: blur(16px) !important;
+        padding: 11px 0 !important;
+      }
+
+      /* 5. Section eyebrow cimkék — termékvilág stílus (amber vonal + uppercase) */
+      .categories__eyebrow,
+      .photo-process__eyebrow,
+      .customer-reviews__eyebrow,
+      .community__eyebrow {
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: .7em !important;
+        padding: 0 !important;
+        border: none !important;
+        border-radius: 0 !important;
+        background: none !important;
+        box-shadow: none !important;
+        min-height: auto !important;
+        font-family: var(--font-ui) !important;
+        font-size: .72rem !important;
+        font-weight: 600 !important;
+        letter-spacing: .26em !important;
+        text-transform: uppercase !important;
+        color: #f4b860 !important;
+        margin: 0 0 18px !important;
+      }
+      /* a korábbi cyan pont-span-eket elrejtjük */
+      .categories__eyebrow span,
+      .photo-process__eyebrow span,
+      .customer-reviews__eyebrow span,
+      .community__eyebrow span { display: none !important; }
+      /* bal oldali amber vonal */
+      .categories__eyebrow::before,
+      .photo-process__eyebrow::before,
+      .customer-reviews__eyebrow::before,
+      .community__eyebrow::before {
+        content: "" !important;
+        display: block !important;
+        width: 26px !important;
+        height: 1px !important;
+        background: linear-gradient(90deg, #f4b860, transparent) !important;
+        flex-shrink: 0 !important;
+      }
+
+      /* 6. Section főcímek: Fraunces kicsit nagyobb optikai méret */
+      .categories__header h2,
+      .photo-process__header h2,
+      .how-command__header h2,
+      .customer-reviews__header h2,
+      .community__header h2 {
+        font-family: var(--font-display) !important;
+        font-style: normal !important;
+      }
+
+      /* 7. Hero h1 — Fraunces */
+      .hero h1 {
+        font-family: var(--font-display) !important;
+        font-weight: 600 !important;
+        letter-spacing: -.02em !important;
+      }
+      /* az "egyedi stílusban." span megtartja az italic Fraunces-t */
+      .hero h1 span {
+        font-style: italic !important;
+        font-weight: 500 !important;
+      }
+
+      /* 8. Egységes háttér — minden szekció átlátszó, body-háttér szűr át */
+      .hero {
+        background: none !important;
+        overflow: visible !important;
+      }
+      /* Hero bg 10vh-val túlnyúlik lefelé — van hol megcsinálni az összemosást */
+      .hero__bg {
+        height: 110vh !important;
+        min-height: 110vh !important;
+      }
+      /* Hero alján hero::after-t nem használjuk (z-index:-1, a fotó alatt van) */
+      .hero::after {
+        background: none !important;
+      }
+      /* hero__shade: eredeti styles.css értéket hagyjuk, nincs override */
+      /* Hero fotó: enyhébb mask, a shade végzi a sötétítést */
+      .hero__bg {
+        mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 100%) !important;
+        -webkit-mask-image: linear-gradient(180deg, #000 0%, #000 55%, transparent 100%) !important;
+      }
+      @media (min-width: 768px) {
+        .hero__bg {
+          z-index: -4 !important;
+          background-image: var(--hero-photo) !important;
+          background-position: center 68% !important;
+          background-size: cover !important;
+          background-blend-mode: normal !important;
+          filter: none !important;
+        }
+      }
+      /* Szekciók közötti átmenet */
+      .categories {
+        --categories-transition-overlap: clamp(50px, 5vw, 100px);
+      }
+
+      /* page-decor pseudo-elemek: ciánkék/amber/fehér glow forrásai — nullázva */
+      .page-decor::before,
+      .page-decor::after {
+        background: none !important;
+        opacity: 0 !important;
+      }
+
+      /* Trust badge-ek lejjebb */
+      .hero__trust {
+        margin-top: 48px !important;
+      }
+
+      /* photo-process */
+      .photo-process {
+        z-index: 5 !important;
+        padding: 80px 0 80px !important;
+      }
+
+      /* Szekcik: box-shadow inset csíkok eltávolítása + átlátszó háttér */
+      .categories,
+      .customer-reviews,
+      .community {
+        position: relative !important;
+        z-index: 1 !important;
+        background: none !important;
+        background-image: none !important;
+        box-shadow: none !important;
+      }
+      .how-command {
+        z-index: 6 !important;
+        margin-top: -92px !important;
+        padding: 168px 0 80px !important;
+        background: none !important;
+        background-image: none !important;
+        box-shadow: none !important;
+      }
+      .photo-process {
+        background: none !important;
+        background-image: none !important;
+        box-shadow: none !important;
+      }
+      .categories::before,
+      .categories::after,
+      .photo-process::before,
+      .how-command::before,
+      .customer-reviews::before,
+      .community::before,
+      .photo-process::after,
+      .how-command::after,
+      .customer-reviews::after,
+      .community::after {
+        background: none !important;
+        opacity: 0 !important;
+      }
+
+
+      /* 9. Kategória kártyák (category-card) szöveg */
+      .category-card__text strong {
+        font-family: var(--font-display) !important;
+        font-size: 1.08rem !important;
+        font-weight: 500 !important;
+      }
+
+
+      /* ── Photo-process scroll animáció ─────────────────────────── */
+      .photo-process--animated .pp-anim {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.55s ease, transform 0.55s ease;
+      }
+      .photo-process--animated .pp-anim.pp-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* ── Scroll progress bar ─────────────────────────────────────── */
+      .sp {
+        position: fixed;
+        left: 24px;
+        top: 50%;
+        transform: translateY(-50%);
+        z-index: 800;
+        display: none;
+        align-items: center;
+        opacity: 0;
+        transition: opacity 1s ease;
+        pointer-events: none;
+      }
+      @media (min-width: 1600px) { .sp { display: flex; } }
+      .sp.sp--visible {
+        opacity: 1;
+        pointer-events: all;
+      }
+      .sp__track {
+        position: relative;
+        width: 1px;
+        height: 48vh;
+        background: rgba(255,255,255,.09);
+      }
+      .sp__fill {
+        position: absolute;
+        top: 0; left: 0;
+        width: 100%;
+        height: 0%;
+        background: linear-gradient(180deg, rgba(0,229,255,.55) 0%, rgba(244,184,96,.55) 100%);
+        will-change: height;
+        transition: height .12s linear;
+      }
+      .sp__orb {
+        position: absolute;
+        left: 50%;
+        top: 0%;
+        transform: translate(-50%, -50%);
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        background: #f4b860;
+        box-shadow: 0 0 0 1.5px rgba(244,184,96,.25), 0 0 8px rgba(244,184,96,.5);
+        will-change: top;
+        transition: top .12s linear;
+        z-index: 2;
+      }
+      /* tick marks */
+      .sp__mark {
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 7px;
+        height: 1px;
+        background: rgba(255,255,255,.18);
+        cursor: pointer;
+        z-index: 1;
+        transition: background .3s;
+      }
+      .sp__mark--passed { background: rgba(244,184,96,.4); }
+      /* section label — appears to the right on hover */
+      .sp__mark::after {
+        content: attr(data-label);
+        position: absolute;
+        left: calc(100% + 11px);
+        top: 50%;
+        transform: translateY(-50%) translateX(-5px);
+        white-space: nowrap;
+        font-family: var(--font-ui, 'Space Grotesk', sans-serif);
+        font-size: .58rem;
+        font-weight: 500;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,.28);
+        opacity: 0;
+        transition: opacity .3s, color .3s, transform .3s;
+        pointer-events: none;
+      }
+      .sp:hover .sp__mark::after {
+        opacity: 1;
+        transform: translateY(-50%) translateX(0);
+      }
+      .sp:hover .sp__mark--passed::after { color: rgba(244,184,96,.65); }
+      .sp__mark:hover::after {
+        color: rgba(244,184,96,.9) !important;
+      }
+    </style>
   </head>
   <body>
     <svg class="icon-sprite" aria-hidden="true" focusable="false">
@@ -22,6 +342,10 @@
         <path d="M12 8v13"></path>
         <path d="M3 12h18"></path>
         <path d="M7.5 8A3 3 0 1 1 12 4.4 3 3 0 1 1 16.5 8"></path>
+      </symbol>
+      <symbol id="icon-camera" viewBox="0 0 24 24">
+        <path d="M4 8.5A2.5 2.5 0 0 1 6.5 6H8l1.4-2h5.2L16 6h1.5A2.5 2.5 0 0 1 20 8.5v8A2.5 2.5 0 0 1 17.5 19h-11A2.5 2.5 0 0 1 4 16.5v-8Z"></path>
+        <circle cx="12" cy="12.5" r="3.2"></circle>
       </symbol>
       <symbol id="icon-cube" viewBox="0 0 24 24">
         <path d="m12 2 9 5v10l-9 5-9-5V7l9-5Z"></path>
@@ -41,9 +365,21 @@
         <path d="m17 3 4 4L8 20l-5 1 1-5L17 3Z"></path>
         <path d="m15 5 4 4"></path>
       </symbol>
+      <symbol id="icon-star" viewBox="0 0 24 24">
+        <path d="m12 3 2.7 5.5 6.1.9-4.4 4.3 1 6.1L12 16.9 6.6 19.8l1-6.1-4.4-4.3 6.1-.9L12 3Z"></path>
+      </symbol>
+      <symbol id="icon-truck" viewBox="0 0 24 24">
+        <path d="M3 6h11v9H3z"></path>
+        <path d="M14 9h3.5L21 12.5V15h-7"></path>
+        <circle cx="7" cy="18" r="2"></circle>
+        <circle cx="17" cy="18" r="2"></circle>
+      </symbol>
       <symbol id="icon-clock" viewBox="0 0 24 24">
         <circle cx="12" cy="12" r="8"></circle>
         <path d="M12 7v5l3 2"></path>
+      </symbol>
+      <symbol id="icon-heart" viewBox="0 0 24 24">
+        <path d="M12 20.2 4.6 13a5 5 0 0 1 7.1-7.1l.3.3.3-.3a5 5 0 0 1 7.1 7.1L12 20.2Z"></path>
       </symbol>
       <symbol id="icon-shield" viewBox="0 0 24 24">
         <path d="M12 3 19 6v5c0 4.4-2.8 7.9-7 10-4.2-2.1-7-5.6-7-10V6l7-3Z"></path>
@@ -108,6 +444,72 @@
         <path d="M6 6l12 12"></path>
         <path d="M18 6 6 18"></path>
       </symbol>
+      <symbol id="icon-qr" viewBox="0 0 24 24">
+        <rect x="3" y="3" width="7" height="7" rx="1"></rect>
+        <rect x="14" y="3" width="7" height="7" rx="1"></rect>
+        <rect x="3" y="14" width="7" height="7" rx="1"></rect>
+        <path d="M14 14h3v3h-3z"></path>
+        <path d="M20 17h1"></path>
+        <path d="M17 20v1"></path>
+        <path d="M20 21h1v-1"></path>
+      </symbol>
+      <symbol id="icon-bulb" viewBox="0 0 24 24">
+        <path d="M9 18h6"></path>
+        <path d="M10 21h4"></path>
+        <path d="M12 3a6.5 6.5 0 0 0-3.8 11.8c.5.4.8 1 .8 1.7v.5h6v-.5c0-.7.3-1.3.8-1.7A6.5 6.5 0 0 0 12 3Z"></path>
+      </symbol>
+      <symbol id="icon-vase" viewBox="0 0 24 24">
+        <path d="M9 3h6"></path>
+        <path d="M10 3v3.5L7.5 10A5 5 0 0 0 7 13v6a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-6a5 5 0 0 0-.5-3L14 6.5V3"></path>
+      </symbol>
+      <symbol id="icon-key" viewBox="0 0 24 24">
+        <circle cx="8" cy="15" r="4.5"></circle>
+        <path d="M11.3 11.8 20 3"></path>
+        <path d="m16.5 6.5 3 3"></path>
+        <path d="m14 9 3 3"></path>
+      </symbol>
+      <symbol id="icon-figure" viewBox="0 0 24 24">
+        <circle cx="12" cy="6" r="3"></circle>
+        <path d="M5 21v-2a7 7 0 0 1 14 0v2"></path>
+      </symbol>
+      <symbol id="icon-graduation" viewBox="0 0 24 24">
+        <path d="m12 4 9 4.5-9 4.5-9-4.5L12 4Z"></path>
+        <path d="M7 10.8v4.4c0 1.8 2.2 3.3 5 3.3s5-1.5 5-3.3v-4.4"></path>
+        <path d="M21 8.5V15"></path>
+      </symbol>
+      <symbol id="icon-wine" viewBox="0 0 24 24">
+        <path d="M7 3h10l-1 8a4 4 0 0 1-8 0L7 3Z"></path>
+        <path d="M12 15v6"></path>
+        <path d="M8.5 21h7"></path>
+      </symbol>
+      <symbol id="icon-chip" viewBox="0 0 24 24">
+        <rect x="7" y="7" width="10" height="10" rx="1.5"></rect>
+        <path d="M9 7V3"></path>
+        <path d="M15 7V3"></path>
+        <path d="M9 21v-4"></path>
+        <path d="M15 21v-4"></path>
+        <path d="M7 9H3"></path>
+        <path d="M7 15H3"></path>
+        <path d="M21 9h-4"></path>
+        <path d="M21 15h-4"></path>
+      </symbol>
+      <symbol id="icon-users" viewBox="0 0 24 24">
+        <circle cx="9" cy="8" r="3.2"></circle>
+        <path d="M3 20v-1.4c0-2.5 2.7-4.2 6-4.2s6 1.7 6 4.2V20"></path>
+        <path d="M16 7.2a3 3 0 0 1 0 5.6"></path>
+        <path d="M18.5 14.6c2 .4 3.5 1.7 3.5 3.4V20"></path>
+      </symbol>
+      <symbol id="icon-bell" viewBox="0 0 24 24">
+        <path d="M6 10.5a6 6 0 1 1 12 0v4l2 3H4l2-3v-4Z"></path>
+        <path d="M9.5 20a2.5 2.5 0 0 0 5 0"></path>
+      </symbol>
+      <symbol id="icon-wrench" viewBox="0 0 24 24">
+        <path d="M14.7 6.3a4 4 0 0 0-5.6 5.6L4 17l3 3 5.1-5.1a4 4 0 0 0 5.6-5.6l-2.3 2.3-2-2 2.3-2.3Z"></path>
+      </symbol>
+      <symbol id="icon-lock" viewBox="0 0 24 24">
+        <rect x="5" y="11" width="14" height="9" rx="2"></rect>
+        <path d="M8 11V7.5a4 4 0 0 1 8 0V11"></path>
+      </symbol>
     </svg>
 
     <header class="site-header motion-load" style="--load-delay: 80ms">
@@ -118,21 +520,21 @@
         </a>
 
         <button class="nav-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" data-nav-toggle>
-          <span class="sr-only">Menu megnyitasa</span>
+          <span class="sr-only">Menü megnyitása</span>
           <svg class="icon" aria-hidden="true"><use href="#icon-menu"></use></svg>
         </button>
 
         <nav class="site-nav" id="site-navigation" aria-label="Főmenü">
-          <a href="vizio.html">Vízió</a>
-          <a href="egyedi-munkak.html">Egyedi munkák</a>
-          <a href="inspiracio.html">Inspiráció</a>
-          <a href="tudastar.html">Tudástár</a>
-          <a href="hogyan-mukodik.html">Hogyan működik</a>
+          <a href="termekvilag.html">Termékvilág</a>
+          <a href="egyedi-rendeles.html">Egyedi rendelés</a>
+          <a href="cegeknek.html">Cégeknek</a>
+          <a href="galeria.html">Galéria</a>
           <a href="rolunk.html">Rólunk</a>
+          <a href="kapcsolat.html">Kapcsolat</a>
         </nav>
 
-        <a class="btn btn--outline header-cta" href="kapcsolat.html" aria-label="Belépés a Layero shopba">
-          Belépés a shopba
+        <a class="btn btn--outline header-cta" href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer" aria-label="Layero online üzlet megnyitása">
+          Üzlet
           <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
         </a>
       </div>
@@ -147,97 +549,204 @@
       </div>
       <section class="hero" aria-labelledby="hero-title">
         <div class="hero__bg" aria-hidden="true"></div>
-        <div class="hero__fx" aria-hidden="true">
-          <span class="hero__scan"></span>
-          <span class="hero__grid"></span>
-        </div>
         <div class="hero__shade" aria-hidden="true"></div>
 
-        <aside class="hero-local" aria-label="Helyi gyártás Satu Mare-ben">
-          <div class="hero-local__scene">
-            <div class="hero-local__card">
-              <picture class="hero-local__picture">
-                <source media="(max-width: 720px)" srcset="assets/images/hero-local-romania-transparent-460.webp">
-                <img class="hero-local__img" src="assets/images/hero-local-romania-transparent-720.webp" alt="Románia térképe Satu Mare helyi gyártás jelöléssel" width="720" height="720">
-              </picture>
-              <span class="hero-local__marker">Satu Mare</span>
-            </div>
-          </div>
-        </aside>
-
-        <aside class="hero-flow" aria-label="Layero termékkategóriák">
-          <span class="hero-flow__arrow" aria-hidden="true">⌃</span>
-          <a class="hero-flow__item" href="egyedi-munkak.html">
-            <img src="assets/images/layero-wire-heart-sculpture.webp" alt="">
-            <span>Szobrok</span>
-          </a>
-          <a class="hero-flow__item" href="egyedi-munkak.html">
-            <img src="assets/images/parametric-vase-object.webp" alt="">
-            <span>Vázák</span>
-          </a>
-          <a class="hero-flow__item" href="inspiracio.html">
-            <img src="assets/images/decorative-lattice-ornament.webp" alt="">
-            <span>Dekorációk</span>
-          </a>
-          <a class="hero-flow__item" href="tudastar.html#muhelytitkok">
-            <img src="assets/images/lume-lampa-feature-900.webp" alt="">
-            <span>Lámpák</span>
-          </a>
-          <span class="hero-flow__arrow" aria-hidden="true">⌄</span>
-        </aside>
-
         <div class="hero__content">
-          <img class="hero__logo motion-load" style="--load-delay: 280ms" src="assets/layero-logo.png" alt="Layero 3D Design" width="512" height="497">
-          <h1 class="motion-load" style="--load-delay: 460ms" id="hero-title">Az ötleted formát ölt, <span>rétegről rétegre.</span></h1>
-          <p class="hero__lead motion-load" style="--load-delay: 600ms">Személyre szabott ajándékok, egyedi 3D alkotások és rendelésre készült különleges darabok, prémium részletességgel és modern kivitelezéssel megalkotva.</p>
-          <div class="hero__actions motion-load" style="--load-delay: 740ms" aria-label="Fő műveletek">
-            <a class="btn btn--primary" href="kapcsolat.html">Egyedi megrendelés kérése</a>
-            <a class="btn btn--ghost" href="egyedi-munkak.html">
-              Belépés a shopba
-              <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+          <div class="hero__headline">
+            <p class="hero__eyebrow motion-load" style="--load-delay: 280ms">Egyedi. Kézzelfogható. Rólad szól.</p>
+            <h1 class="motion-load" style="--load-delay: 460ms" id="hero-title">Prémium 3D ajándékok <span>egyedi stílusban.</span></h1>
+          </div>
+
+          <div class="hero__body">
+            <p class="hero__lead motion-load" style="--load-delay: 600ms">Személyre szabott dekorációk, ajándékok és különleges 3D alkotások modern technológiával, gondos kivitelezéssel és látványos megjelenéssel.</p>
+            <div class="hero__actions motion-load" style="--load-delay: 740ms" aria-label="Fő műveletek">
+              <a class="btn btn--primary" href="egyedi-rendeles.html">Egyedi rendelés</a>
+              <a class="btn btn--ghost" href="termekvilag.html">Termékvilág</a>
+            </div>
+            <img class="hero__local-badge motion-load" style="--load-delay: 820ms" src="assets/images/hero-local-product-badge.png" alt="Helyi termék, Romániában gyártva, Szatmárnémetiben készül" width="1361" height="511">
+          </div>
+        </div>
+
+        <div class="hero__trust" aria-label="Layero előnyök">
+          <article class="hero-trust motion-load" style="--load-delay: 860ms">
+            <span class="hero-trust__icon" aria-hidden="true">
+              <svg class="icon"><use href="#icon-shield"></use></svg>
+            </span>
+            <span class="hero-trust__copy">
+              <strong>Prémium minőség</strong>
+              <span>Tartós, igényes alapanyagok</span>
+            </span>
+          </article>
+          <article class="hero-trust motion-load" style="--load-delay: 940ms">
+            <span class="hero-trust__icon" aria-hidden="true">
+              <svg class="icon"><use href="#icon-users"></use></svg>
+            </span>
+            <span class="hero-trust__copy">
+              <strong>Egyedi és személyre szabott</strong>
+              <span>Neked készül, rólad szól</span>
+            </span>
+          </article>
+          <article class="hero-trust motion-load" style="--load-delay: 1020ms">
+            <span class="hero-trust__icon" aria-hidden="true">
+              <svg class="icon"><use href="#icon-package"></use></svg>
+            </span>
+            <span class="hero-trust__copy">
+              <strong>Gyors átfutás</strong>
+              <span>Általában 5–10 munkanap</span>
+            </span>
+          </article>
+          <article class="hero-trust motion-load" style="--load-delay: 1100ms">
+            <span class="hero-trust__icon" aria-hidden="true">
+              <svg class="icon"><use href="#icon-star"></use></svg>
+            </span>
+            <span class="hero-trust__copy">
+              <strong>Látványos megjelenés</strong>
+              <span>Modern dekoráció minden alkalomra</span>
+            </span>
+          </article>
+        </div>
+      </section>
+
+      <section class="categories section" id="directions" aria-labelledby="categories-title">
+        <div class="categories__shell">
+          <div class="categories__header">
+            <p class="categories__eyebrow"><span></span>Irányok<span></span></p>
+            <h2 id="categories-title">Egy stúdió. <span>Több irány.</span></h2>
+            <p>Személyes történetek, dekor tárgyak és márkaalkotások ugyanazzal a prémium szemlélettel.</p>
+          </div>
+
+          <div class="categories__grid" data-categories-grid>
+            <a class="category-card" href="termekvilag.html" data-category="lamps">
+              <img src="assets/images/categories/layero-category-new-tematikus-lampak-1100.webp" alt="Tematikus világító lámpák programozós, kutyás, sportos és hobbi motívumokkal" loading="lazy" width="1100" height="825">
+              <span class="category-card__label">
+                <svg class="icon" aria-hidden="true"><use href="#icon-bulb"></use></svg>
+                <span class="category-card__text">
+                  <strong>Tematikus lámpák</strong>
+                  <small>Több világító lámpa együtt: programozós, kutyás, sportos, általános hobbi témák.</small>
+                </span>
+              </span>
+            </a>
+            <a class="category-card" href="termekvilag.html" data-category="keychains">
+              <img src="assets/images/categories/layero-category-new-kulcstartok-1100.webp" alt="Több kis kulcstartó sötét tálcán cián fényben" loading="lazy" width="1100" height="825">
+              <span class="category-card__label">
+                <svg class="icon" aria-hidden="true"><use href="#icon-key"></use></svg>
+                <span class="category-card__text">
+                  <strong>Kulcstartók</strong>
+                  <small>Több kis kulcstartó sötét tálcán, cián fényben.</small>
+                </span>
+              </span>
+            </a>
+            <a class="category-card" href="termekvilag.html" data-category="decor">
+              <img src="assets/images/categories/layero-category-new-dekoraciok-1100.webp" alt="Virágok, vázák, szezonális dekorok és modern lakásdekor elemek" loading="lazy" width="1100" height="825">
+              <span class="category-card__label">
+                <svg class="icon" aria-hidden="true"><use href="#icon-vase"></use></svg>
+                <span class="category-card__text">
+                  <strong>Dekorációk</strong>
+                  <small>Virágok, vázák, szezonális dekorok, modern lakásdekor.</small>
+                </span>
+              </span>
+            </a>
+            <a class="category-card" href="termekvilag.html" data-category="collectibles">
+              <img src="assets/images/categories/layero-category-new-gyujtoi-darabok-1100.webp" alt="Fantasy, gamer, sci-fi, sport és filmhangulatú gyűjtői tárgyak" loading="lazy" width="1100" height="825">
+              <span class="category-card__label">
+                <svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg>
+                <span class="category-card__text">
+                  <strong>Gyűjtői darabok</strong>
+                  <small>Általános fantasy, gamer, sci-fi, sport és filmhangulatú tárgyak, konkrét brand nélkül.</small>
+                </span>
+              </span>
+            </a>
+            <a class="category-card" href="cegeknek.html" data-category="business">
+              <img src="assets/images/categories/layero-category-new-ceges-megoldasok-1100.webp" alt="QR-kódos tábla, logós display, céges ajándék és asztali tartó" loading="lazy" width="1100" height="825">
+              <span class="category-card__label">
+                <svg class="icon" aria-hidden="true"><use href="#icon-qr"></use></svg>
+                <span class="category-card__text">
+                  <strong>Céges megoldások</strong>
+                  <small>QR-kódos tábla, logós display, céges ajándék, asztali tartó.</small>
+                </span>
+              </span>
+            </a>
+            <a class="category-card" href="egyedi-rendeles.html" data-category="custom-order">
+              <img src="assets/images/categories/layero-category-new-egyedi-rendeles-1100.webp" alt="Egyedi rendelés látványtervvel és kész világító lámpa hangulattal" loading="lazy" width="1100" height="825">
+              <span class="category-card__label">
+                <svg class="icon" aria-hidden="true"><use href="#icon-figure"></use></svg>
+                <span class="category-card__text">
+                  <strong>Egyedi rendelés</strong>
+                  <small>Egy látványterv és kész termék hangulat, például fotó/ötletből kész lámpa.</small>
+                </span>
+              </span>
             </a>
           </div>
+
+          <a class="categories__cta" href="termekvilag.html">
+            Termékvilág megtekintése
+            <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+          </a>
         </div>
       </section>
 
-      <section class="statement section" id="vision" aria-labelledby="statement-title">
-        <div class="container statement__grid">
-          <div class="statement__copy">
-            <p class="eyebrow">Többet alkotunk tárgyaknál.</p>
-            <h2 id="statement-title">A személyes történetek <span style="color:#00dfff">formát kapnak.</span></h2>
-            <p class="statement__body">Egy név, egy emlék, egy fontos dátum vagy egy egyedi elképzelés — nálunk ezekből születnek meg azok a prémium 3D alkotások, amelyek nemcsak szépek, hanem jelentést is hordoznak. Minden darab egy gondolatból indul, és gondos tervezés után válik kézzelfoghatóvá.</p>
+      <section class="photo-process photo-process--animated section" id="lamp-process" aria-labelledby="photo-process-title">
+        <div class="photo-process__shell">
+          <div class="photo-process__header">
+            <p class="photo-process__eyebrow"><span></span>Munkafolyamat<span></span></p>
+            <h2 id="photo-process-title">A fotóból a <span>kész lámpáig</span></h2>
+            <p>Így alakul át egy emlék személyre szabott, világító ajándékká.</p>
           </div>
-          <div class="statement__visual" aria-hidden="true">
-            <img src="assets/images/layero-wire-heart-sculpture.webp" alt="" loading="lazy">
-          </div>
-        </div>
-      </section>
 
-      <section class="services section" id="works" aria-labelledby="services-title">
-        <div class="container">
-          <h2 class="section-title" id="services-title">Egyedi irányok, prémium kivitelben</h2>
-          <div class="services__grid">
-            <article class="service-card">
-              <svg class="service-card__icon" aria-hidden="true"><use href="#icon-gift"></use></svg>
-              <div>
-                <h3>Személyre szabott ajándékok</h3>
-                <p>Jelentéssel teli, emlékezetes, kifejezetten nekik készítve.</p>
+          <div class="photo-process__steps" aria-label="Fotóból kész lámpa folyamat">
+            <article class="photo-process__card pp-anim">
+              <div class="photo-process__tag">
+                <svg class="icon" aria-hidden="true"><use href="#icon-camera"></use></svg>
+                Nyersanyag
               </div>
+              <figure class="photo-process__media photo-process__media--photo">
+                <img src="assets/images/lamp-process/01-original-photo.webp" alt="Eredeti fotó három kutyáról karácsonyi háttér előtt" loading="lazy">
+              </figure>
+              <h3><span>1.</span> Eredeti fotó</h3>
             </article>
-            <article class="service-card">
-              <svg class="service-card__icon" aria-hidden="true"><use href="#icon-cube"></use></svg>
-              <div>
-                <h3>Egyedi megrendelések</h3>
-                <p>A te ötleted, a mi precizitásunk. Közösen megalkotva.</p>
+
+            <span class="photo-process__arrow pp-anim" aria-hidden="true">
+              <svg class="icon"><use href="#icon-arrow-right"></use></svg>
+            </span>
+
+            <article class="photo-process__card pp-anim">
+              <div class="photo-process__tag">
+                <svg class="icon" aria-hidden="true"><use href="#icon-pen"></use></svg>
+                Vázlat
               </div>
+              <figure class="photo-process__media photo-process__media--sketch">
+                <img src="assets/images/lamp-process/02-processed-sketch.webp" alt="Fekete-fehér feldolgozott lámpavázlat kutyákkal" loading="lazy">
+              </figure>
+              <h3><span>2.</span> Feldolgozott vázlat</h3>
             </article>
-            <article class="service-card">
-              <svg class="service-card__icon" aria-hidden="true"><use href="#icon-sculpture"></use></svg>
-              <div>
-                <h3>Prémium 3D alkotások</h3>
-                <p>Szenvedéllyel és precizitással megalkotott innovatív formák.</p>
+
+            <span class="photo-process__arrow pp-anim" aria-hidden="true">
+              <svg class="icon"><use href="#icon-arrow-right"></use></svg>
+            </span>
+
+            <article class="photo-process__card pp-anim">
+              <div class="photo-process__tag">
+                <svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg>
+                Kész termék
               </div>
+              <figure class="photo-process__media photo-process__media--lamp">
+                <img src="assets/images/lamp-process/03-finished-lamp.webp" alt="Elkészült világító kutyás 3D lámpa" loading="lazy">
+              </figure>
+              <h3><span>3.</span> Kinyomtatott kész lámpa</h3>
             </article>
+          </div>
+
+          <a class="photo-process__cta pp-anim" href="kapcsolat.html">
+            <svg class="icon" aria-hidden="true"><use href="#icon-gift"></use></svg>
+            Saját lámpát szeretnék
+            <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+          </a>
+
+          <div class="photo-process__benefits pp-anim" aria-label="Fotóból kész lámpa előnyök">
+            <span><svg class="icon" aria-hidden="true"><use href="#icon-shield"></use></svg>Prémium minőség</span>
+            <span><svg class="icon" aria-hidden="true"><use href="#icon-spark"></use></svg>Személyre szabott</span>
+            <span><svg class="icon" aria-hidden="true"><use href="#icon-truck"></use></svg>Gyors és biztonságos szállítás</span>
+            <span><svg class="icon" aria-hidden="true"><use href="#icon-gift"></use></svg>Tökéletes ajándék</span>
           </div>
         </div>
       </section>
@@ -294,7 +803,7 @@
               <img src="assets/images/how-command/step-05-delivery.webp" alt="" aria-hidden="true" loading="lazy">
               <div>
                 <h3>5. Kiszállítás</h3>
-                <p>Prémium csomagolásban, biztonságosan előkészítve küldjük el hozzád.</p>
+                <p>Biztonságos futárral, gondosan előkészítve érkezik meg hozzád.</p>
               </div>
             </article>
           </div>
@@ -323,97 +832,153 @@
             <article class="how-command__benefit">
               <img src="assets/images/how-command/new-icon-gift.webp" alt="" aria-hidden="true" loading="lazy">
               <div>
-                <h3>Prémium csomagolás</h3>
-                <p>Igényes megjelenés belül és kívül - tökéletes ajándéknak is.</p>
+                <h3>Gyors visszajelzés</h3>
+                <p>Minden lépésnél értesítünk — közvetlen kommunikáció a rendeléstől az átvételig.</p>
               </div>
             </article>
           </div>
-
-          <a class="btn btn--primary how-command__cta" href="kapcsolat.html">
-            Saját terméket szeretnék
-            <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
-          </a>
         </div>
       </section>
 
-      <section class="gallery section" id="inspiration" aria-labelledby="gallery-title">
-        <div class="container">
-          <p class="eyebrow eyebrow--center">Személyessé tett ötletek</p>
-          <h2 class="sr-only" id="gallery-title">Inspirációs galéria</h2>
-          <div class="gallery__grid" aria-label="Layero inspirációs vizuálok">
-            <figure class="gallery-card">
-              <img src="assets/images/personalized-father-plaque.webp" alt="Világító akril ajándék plakett apának" loading="lazy">
-            </figure>
-            <figure class="gallery-card">
-              <img src="assets/images/custom-family-nameplate.webp" alt="Egyedi családi névtábla meleg fényben" loading="lazy">
-            </figure>
-            <figure class="gallery-card">
-              <img src="assets/images/parametric-vase-object.webp" alt="Sötét parametrikus 3D váza" loading="lazy">
-            </figure>
-            <figure class="gallery-card">
-              <img src="assets/images/branded-3d-object-emblem.webp" alt="Márkázott fémes 3D objektum embléma" loading="lazy">
-            </figure>
-            <figure class="gallery-card">
-              <img src="assets/images/decorative-lattice-ornament.webp" alt="Dekoratív filigrán rácsos dísztárgy" loading="lazy">
-            </figure>
+      <section class="customer-reviews section" id="velemenyek" aria-labelledby="reviews-title">
+        <div class="customer-reviews__shell">
+          <div class="customer-reviews__header">
+            <p class="customer-reviews__eyebrow"><span></span>Vásárlói vélemények<span></span></p>
+            <h2 id="reviews-title">Akiknek már <span>formát öltött</span> az ötletük.</h2>
+            <p>Rövid visszajelzések személyes ajándékokról, céges megrendelésekről és egyedi Layero tárgyakról.</p>
           </div>
 
-          <div class="monthly-creation" id="monthly-creation" aria-labelledby="monthly-title">
-            <div class="monthly-creation__panel">
-              <div class="monthly-creation__content">
-                <p class="monthly-creation__kicker">Hónap alkotása <span aria-hidden="true">•</span> Június</p>
-                <h3 id="monthly-title">Lumé lámpa <span>amikor a <em>fény formát</em> kap</span></h3>
-                <p>Egy organikus mintázatú, 3D nyomtatott hangulatlámpa, amely nappal karakteres design tárgy, este pedig meleg fényével különleges atmoszférát teremt.</p>
-
-                <div class="monthly-creation__facts" aria-label="Lumé lámpa jellemzői">
-                  <div class="monthly-creation__fact">
-                    <span><svg class="icon" aria-hidden="true"><use href="#icon-clock"></use></svg></span>
-                    <strong>32 óra</strong>
-                    <small>nyomtatás</small>
-                  </div>
-                  <div class="monthly-creation__fact">
-                    <span><svg class="icon" aria-hidden="true"><use href="#icon-shield"></use></svg></span>
-                    <strong>Prémium</strong>
-                    <small>PLA</small>
-                  </div>
-                  <div class="monthly-creation__fact">
-                    <span><svg class="icon" aria-hidden="true"><use href="#icon-pen"></use></svg></span>
-                    <strong>Kézi</strong>
-                    <small>utómunka</small>
-                  </div>
-                  <div class="monthly-creation__fact">
-                    <span><svg class="icon" aria-hidden="true"><use href="#icon-spark"></use></svg></span>
-                    <strong>Hangulatfény</strong>
-                  </div>
-                </div>
-
-                <a class="btn btn--ghost monthly-creation__story" href="tudastar.html#muhelytitkok">
-                  Megnézem a történetét
-                  <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
-                </a>
+          <div class="customer-reviews__grid">
+            <article class="customer-review-card">
+              <div class="customer-review-card__stars" aria-label="5 csillagos értékelés">
+                <svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg>
+                <svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg>
+                <svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg>
+                <svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg>
+                <svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg>
               </div>
+              <blockquote>„A lámpa élőben még személyesebb lett, mint a látványterven. Ajándéknak szántuk, de végül mindenki percekig csak nézte.”</blockquote>
+              <footer>
+                <strong>Egyedi lámpa vásárlója</strong>
+                <span>Névre szóló ajándék</span>
+              </footer>
+            </article>
+
+            <article class="customer-review-card">
+              <div class="customer-review-card__stars" aria-label="5 csillagos értékelés">
+                <svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg>
+                <svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg>
+                <svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg>
+                <svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg>
+                <svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg>
+              </div>
+              <blockquote>„A kulcstartók aprók, mégis nagyon igényesek. Pont ilyen kis, emlékezetes ajándékot kerestünk a csapatnak.”</blockquote>
+              <footer>
+                <strong>Céges megrendelő</strong>
+                <span>Kis szériás ajándék</span>
+              </footer>
+            </article>
+
+            <article class="customer-review-card">
+              <div class="customer-review-card__stars" aria-label="5 csillagos értékelés">
+                <svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg>
+                <svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg>
+                <svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg>
+                <svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg>
+                <svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg>
+              </div>
+              <blockquote>„A QR display stabil, szép és illik a hely hangulatához. Sokkal profibb benyomást ad, mint egy sima nyomtatott tábla.”</blockquote>
+              <footer>
+                <strong>Vendéglátós ügyfél</strong>
+                <span>QR-kódos asztali tábla</span>
+              </footer>
+            </article>
+          </div>
+        </div>
+      </section>
+      <section class="community section" id="community" aria-labelledby="community-title">
+        <div class="community__shell">
+          <div class="community__header">
+            <p class="community__eyebrow"><span></span>Közösség<span></span></p>
+            <h2 id="community-title">Maradj közel az <span>új ötletekhez.</span></h2>
+            <p>Exkluzív inspirációk, első hozzáférés új alkotásokhoz és kulisszák mögötti tartalmak.</p>
+          </div>
+
+          <div class="community__grid">
+            <div class="community__signup">
+              <p class="community__signup-title">
+                <svg class="icon" aria-hidden="true"><use href="#icon-users"></use></svg>
+                <span>Csatlakozz a Layero Körhöz</span>
+              </p>
+              <p class="community__signup-copy">Heti inspiráció, új megjelenések, alkotói történetek és különleges ajánlatok – csak feliratkozóinknak.</p>
+
+              <form class="community__form" data-community-form novalidate>
+                <label class="community__field">
+                  <svg class="icon" aria-hidden="true"><use href="#icon-mail"></use></svg>
+                  <input type="email" name="email" placeholder="Add meg az e-mail címed" required>
+                </label>
+                <button class="community__submit" type="submit">
+                  Csatlakozom
+                </button>
+              </form>
+              <p class="community__success" data-community-success hidden>
+                <svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>
+                <span>Köszönjük! Hamarosan jönnek az első ötletek.</span>
+              </p>
+
+              <p class="community__privacy">
+                <svg class="icon" aria-hidden="true"><use href="#icon-lock"></use></svg>
+                <span>Az adataid biztonságban vannak. Bármikor leiratkozhatsz.</span>
+              </p>
             </div>
 
-            <a class="btn btn--ghost monthly-creation__more" href="inspiracio.html">
-              Továbbiak megtekintése
-              <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
-            </a>
+            <div class="community__side">
+              <div class="community__benefits">
+                <article class="community__benefit">
+                  <span class="community__benefit-icon"><svg class="icon" aria-hidden="true"><use href="#icon-bell"></use></svg></span>
+                  <h3>Elsőként értesülsz</h3>
+                  <p>Értesítünk az új alkotásokról, előrendelésekről és különleges lehetőségekről.</p>
+                </article>
+                <article class="community__benefit">
+                  <span class="community__benefit-icon"><svg class="icon" aria-hidden="true"><use href="#icon-gift"></use></svg></span>
+                  <h3>Exkluzív dropok</h3>
+                  <p>Csak a kör tagjai férnek hozzá limitált kiadásokhoz és egyedi ajánlatokhoz.</p>
+                </article>
+                <article class="community__benefit">
+                  <span class="community__benefit-icon"><svg class="icon" aria-hidden="true"><use href="#icon-wrench"></use></svg></span>
+                  <h3>Műhelytitkok</h3>
+                  <p>Kulisszák mögötti tartalmak, alkotói sztorik és tervezési folyamatok.</p>
+                </article>
+              </div>
+
+              <div class="community__teaser">
+                <p class="community__teaser-label">
+                  <svg class="icon" aria-hidden="true"><use href="#icon-spark"></use></svg>
+                  <span>Egy kis ízelítő, ami rád vár</span>
+                </p>
+                <div class="community__teaser-track">
+                  <img src="assets/images/categories/layero-category-design-lamp-v2-760.webp" alt="">
+                  <img src="assets/images/categories/layero-category-branded-keychain-v2-760.webp" alt="">
+                  <img src="assets/images/categories/layero-category-milestone-gift-v2-760.webp" alt="">
+                  <img src="assets/images/categories/layero-category-qr-display-v2-760.webp" alt="">
+                  <img src="assets/images/categories/layero-category-minimal-decor-v2-760.webp" alt="">
+                </div>
+                <button class="community__teaser-next" type="button" aria-label="Következő képek">
+                  <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+                </button>
+              </div>
+            </div>
           </div>
+
+          <button class="community__cta" type="button" data-community-focus>
+            Csatlakozom a Layero Körhöz
+            <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+          </button>
         </div>
       </section>
 
-      <section class="final-cta section" id="contact" aria-labelledby="cta-title">
-        <div class="container">
-          <div class="final-cta__panel">
-            <h2 id="cta-title">Alkossunk valami <span>igazán egyedit.</span></h2>
-            <p>Minden projekt egy beszélgetéssel kezdődik. Oszd meg az ötleted, és alkossunk valami felejthetetlent.</p>
-            <a class="btn btn--primary" href="kapcsolat.html">
-              Projekt indítása
-              <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
-            </a>
-          </div>
-        </div>
-      </section>
+
+
     </main>
 
     <footer class="site-footer" id="about">
@@ -423,47 +988,49 @@
             <img class="logo__brand-mark" src="assets/layero-logo-mark-from-source.png" alt="" width="240" height="237">
             <img class="logo__brand-wordmark" src="assets/layero-logo-wordmark-from-source.png" alt="Layero 3D Design" width="493" height="171">
           </a>
-          <p>Egyedi 3D alkotások és személyre szabott ajándékok modern technológiával és szenvedéllyel készítve.</p>
+          <p>Prémium 3D design stúdió Satu Mare-ből. Egyedi alkotások, személyes történetekre szabva.</p>
+          <a class="btn btn--outline btn--sm" href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer" style="margin-top:18px;width:fit-content">shop.layero.ro →</a>
         </div>
-        <nav class="footer__links" aria-label="Gyors linkek">
-          <h2>Gyors linkek</h2>
-          <a href="index.html">Főoldal</a>
-          <a href="egyedi-munkak.html">Egyedi munkák</a>
-          <a href="inspiracio.html">Inspiráció</a>
-          <a href="tudastar.html">Tudástár</a>
-          <a href="hogyan-mukodik.html">Hogyan működik</a>
+        <nav class="footer__links" aria-label="Oldalak">
+          <h2>Oldalak</h2>
+          <a href="termekvilag.html">Termékvilág</a>
+          <a href="egyedi-rendeles.html">Egyedi rendelés</a>
+          <a href="cegeknek.html">Cégeknek</a>
+          <a href="galeria.html">Galéria</a>
           <a href="rolunk.html">Rólunk</a>
+          <a href="kapcsolat.html">Kapcsolat</a>
         </nav>
         <nav class="footer__links" aria-label="Szolgáltatások">
-          <h2>Szolgáltatások</h2>
-          <a href="szemelyre-szabott-ajandekok.html">Személyre szabott ajándékok</a>
-          <a href="egyedi-munkak.html">Egyedi megrendelések</a>
-          <a href="egyedi-munkak.html">Prémium 3D alkotások</a>
-          <a href="markaknak-es-alkotoknak.html">Céges megrendelések</a>
+          <h2>Irányok</h2>
+          <a href="termekvilag.html">Termékvilág</a>
+          <a href="egyedi-rendeles.html">Egyedi rendelés</a>
+          <a href="cegeknek.html">Céges megoldások</a>
+          <a href="galeria.html">Galéria</a>
+          <a href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer">Online shop →</a>
         </nav>
         <div class="footer__contact">
           <h2>Kapcsolat</h2>
-          <a href="mailto:hello@layero3d.hu">hello@layero3d.hu</a>
-          <a href="tel:+36701234567">+36 70 123 4567</a>
-          <span>Magyarország</span>
+          <a href="mailto:hello@layero.ro">hello@layero.ro</a>
+          <span>Satu Mare, Románia</span>
           <div class="socials" aria-label="Közösségi linkek">
-            <a href="#" aria-label="LinkedIn">
+            <a href="https://www.linkedin.com/company/layero3d" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (új lapon nyílik)">
               <svg class="icon" aria-hidden="true"><use href="#icon-linkedin"></use></svg>
             </a>
-            <a href="#" aria-label="Instagram">
+            <a href="https://www.instagram.com/layero3d" target="_blank" rel="noopener noreferrer" aria-label="Instagram (új lapon nyílik)">
               <svg class="icon" aria-hidden="true"><use href="#icon-instagram"></use></svg>
             </a>
-            <a href="#" aria-label="Dribbble">
+            <a href="https://dribbble.com/layero3d" target="_blank" rel="noopener noreferrer" aria-label="Dribbble (új lapon nyílik)">
               <svg class="icon" aria-hidden="true"><use href="#icon-dribbble"></use></svg>
             </a>
           </div>
         </div>
       </div>
       <div class="container footer__bottom">
-        <p>© 2024 Layero 3D Design. Minden jog fenntartva.</p>
+        <p>© 2025–2026 Layero · <a href="https://layero.ro" style="color:inherit">layero.ro</a> · Minden jog fenntartva.</p>
         <div>
-          <a href="#">Adatvédelmi tájékoztató</a>
-          <a href="#">Általános szerződési feltételek</a>
+          <a href="adatvedelem.html">Adatvédelmi tájékoztató</a>
+          <a href="aszf.html">ÁSZF</a>
+          <a href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer">shop.layero.ro</a>
         </div>
       </div>
     </footer>
@@ -490,8 +1057,8 @@
         </div>
         <div class="newsletter-modal__copy">
           <p class="eyebrow">Newsletter b&oacute;nusz</p>
-          <h2 id="newsletter-title">&Uacute;j felhaszn&aacute;l&oacute;k&eacute;nt kapsz <span>10% kedvezm&eacute;nyt.</span></h2>
-          <p id="newsletter-description">Iratkozz fel a Layero h&iacute;rlev&eacute;lre, &eacute;s azonnal megkapod az els&#337; egyedi 3D rendel&eacute;sedhez haszn&aacute;lhat&oacute; kuponk&oacute;dot.</p>
+          <h2 id="newsletter-title">&Uacute;j vev&#337;k&eacute;nt kapsz <span>10% kedvezm&eacute;nyt.</span></h2>
+          <p id="newsletter-description">Iratkozz fel, &eacute;s azonnal megkapod a kuponk&oacute;dot — haszn&aacute;ld els&#337; rendelésedhez a <a href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer" style="color:var(--gold)">shop.layero.ro</a>-n.</p>
 
           <form class="newsletter-form" data-newsletter-form novalidate>
             <label for="newsletter-name">N&eacute;v</label>
@@ -531,5 +1098,113 @@
     </div>
 
     <script src="script.js"></script>
+    <script>
+      /* pp-anim: photo-process staggered reveal */
+      (function () {
+        var items = document.querySelectorAll('.photo-process--animated .pp-anim');
+        if (!items.length || !window.IntersectionObserver) return;
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              var el = entry.target;
+              var idx = Array.prototype.indexOf.call(items, el);
+              setTimeout(function () { el.classList.add('pp-visible'); }, idx * 140);
+              io.unobserve(el);
+            }
+          });
+        }, { threshold: 0.15 });
+        items.forEach(function (el) { io.observe(el); });
+      })();
+
+    </script>
+
+    <!-- Scroll Progress Bar -->
+    <aside class="sp" id="sp" aria-label="Görgetési pozíció jelző" aria-hidden="true">
+      <div class="sp__track" id="sp-track">
+        <div class="sp__fill" id="sp-fill"></div>
+        <div class="sp__orb"  id="sp-orb"></div>
+      </div>
+    </aside>
+
+    <script>
+    (function () {
+      var SP_SECTIONS = [
+        { id: 'hero',        label: 'Kezdőlap'    },
+        { id: 'directions',  label: 'Irányok'     },
+        { id: 'lamp-process',label: 'Folyamat'    },
+        { id: 'process',     label: 'Megrendelés' },
+        { id: 'velemenyek',  label: 'Vélemények'  },
+        { id: 'community',   label: 'Közösség'    },
+        { id: 'stats',       label: 'Számokban'   },
+        { id: 'contact',     label: 'Kapcsolat'   },
+      ];
+
+      var sp    = document.getElementById('sp');
+      var fill  = document.getElementById('sp-fill');
+      var orb   = document.getElementById('sp-orb');
+      var track = document.getElementById('sp-track');
+      if (!sp || !fill || !orb) return;
+
+      /* inject section markers after page load (needs real offsets) */
+      var marks = [];
+      function buildMarkers() {
+        var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        SP_SECTIONS.forEach(function (s) {
+          var el = document.getElementById(s.id);
+          if (!el) return;
+          var pct = Math.round((el.offsetTop / maxScroll) * 100);
+          pct = Math.max(0, Math.min(100, pct));
+          var dot = document.createElement('button');
+          dot.className = 'sp__mark';
+          dot.setAttribute('data-label', s.label);
+          dot.setAttribute('type', 'button');
+          dot.setAttribute('aria-label', s.label + ' ugrás');
+          dot.style.top = pct + '%';
+          dot._pct = pct;
+          dot.addEventListener('click', function () {
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+          });
+          track.appendChild(dot);
+          marks.push(dot);
+        });
+      }
+
+      /* update fill height, orb position and passed-state on markers */
+      var raf = null;
+      function update() {
+        var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+        if (maxScroll <= 0) return;
+        var pct = Math.min(100, (window.scrollY / maxScroll) * 100);
+
+        fill.style.height = pct + '%';
+        orb.style.top = pct + '%';
+
+        marks.forEach(function (dot) {
+          if (pct >= dot._pct) {
+            dot.classList.add('sp__mark--passed');
+          } else {
+            dot.classList.remove('sp__mark--passed');
+          }
+        });
+
+        /* show bar after 2% scroll */
+        if (pct > 1.5) {
+          sp.classList.add('sp--visible');
+        } else {
+          sp.classList.remove('sp--visible');
+        }
+      }
+
+      window.addEventListener('scroll', function () {
+        if (raf) return;
+        raf = requestAnimationFrame(function () { raf = null; update(); });
+      }, { passive: true });
+
+      window.addEventListener('load', function () {
+        buildMarkers();
+        update();
+      });
+    })();
+    </script>
   </body>
 </html>

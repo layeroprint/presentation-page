@@ -1,0 +1,837 @@
+<!doctype html>
+<html lang="hu">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Layero termékvilág - tematikus lámpák, kulcstartók, dekorációk, céges megoldások és gyűjtői darabok.">
+  <title>Termékvilág | Layero 3D Design</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="canonical" href="https://layero.ro/termekvilag.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Layero 3D Design">
+  <meta property="og:title" content="Termékvilág | Layero 3D Design">
+  <meta property="og:description" content="Fedezd fel, milyen 3D nyomtatott tárgyakat készít a Layero.">
+  <meta property="og:url" content="https://layero.ro/termekvilag.html">
+  <meta property="og:image" content="https://layero.ro/assets/images/categories/layero-category-new-tematikus-lampak-1100.webp">
+  <!-- site-wide CSS — only loaded for header & footer styles -->
+  <link rel="stylesheet" href="styles.css">
+  <style>
+    /* ============================================================
+       termékvilág — kategoriak_2 design, Layero header/footer-rel
+       ============================================================ */
+
+    /* --- header felülírás: sötétebb, sűrűbb blur — accent (cyan) érintetlen marad --- */
+    .site-header {
+      background: linear-gradient(180deg, rgba(5,11,20,.94), rgba(5,11,20,.65)) !important;
+      border-bottom: 1px solid rgba(255,255,255,.06) !important;
+      backdrop-filter: blur(16px) !important;
+      padding: 11px 0 !important;
+    }
+    :root{
+      --ink:#0a0d13;--ink-2:#0f131c;--ink-3:#151b27;--ink-edge:#222a3a;
+      --glow:#f4b860;--glow-deep:#e0913a;--cyan:#6cb0d8;
+      --cream:#f2ecdf;--muted:#8b94a8;--muted-2:#5f697d;
+      --maxw:1180px;--r:18px;
+    }
+
+    /* --- háttér felülírása (styles.css-t semlegesítjük) --- */
+    body {
+      background: linear-gradient(180deg,#04090f 0%,#06101b 50%,#04090f 100%) !important;
+      color: var(--cream);
+      overflow-x: hidden;
+    }
+    body::before {
+      background:
+        radial-gradient(42% 34% at 87% 7%,  rgba(244,184,96,.17),  transparent 70%),
+        radial-gradient(40% 32% at 5%  15%, rgba(108,176,216,.15), transparent 70%),
+        radial-gradient(46% 38% at 80% 90%, rgba(224,145,58,.10),  transparent 72%),
+        radial-gradient(38% 34% at 12% 82%, rgba(108,176,216,.06), transparent 72%) !important;
+      opacity: .7 !important;
+      mix-blend-mode: normal !important;
+    }
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      pointer-events: none;
+      opacity: .7;
+      background:
+        linear-gradient(90deg, rgba(90,168,216,.06), transparent 38%, transparent 66%, rgba(244,184,96,.05)),
+        repeating-radial-gradient(circle at 40% 20%, rgba(255,255,255,.022) 0 1px, transparent 1px 7px);
+    }
+
+    /* --- design layout helpers --- */
+    .tv-wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 28px; position: relative; z-index: 1; }
+    img { display: block; max-width: 100%; }
+
+    .eyebrow {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: .72rem; font-weight: 600; letter-spacing: .26em;
+      text-transform: uppercase; color: var(--glow);
+      display: inline-flex; align-items: center; gap: .7em;
+    }
+    .eyebrow::before { content: ""; width: 26px; height: 1px; background: linear-gradient(90deg,var(--glow),transparent); }
+
+    /* --- hero --- */
+    .tv-hero { padding: 88px 0 18px; } /* fixed header (~64px) + 24px lélegzetvétel */
+    .tv-hero h1 {
+      font-family: 'Fraunces', serif; font-weight: 600;
+      font-size: clamp(2.6rem,6.2vw,4.6rem); line-height: 1.02;
+      letter-spacing: -.02em; margin: .42em 0 .4em; max-width: 15ch;
+    }
+    .tv-hero h1 .lit { color: var(--glow); font-style: italic; font-weight: 500; text-shadow: 0 0 38px rgba(244,184,96,.4); }
+    .tv-hero .lede { font-size: 1.16rem; color: #d8d2c6; max-width: 60ch; line-height: 1.7; }
+    .tv-hero .lede + .lede { margin-top: 1em; font-size: 1.04rem; color: var(--muted); }
+
+    /* --- hero marquee slider --- */
+    .hero-slider {
+      margin-top: 48px;
+      overflow: hidden;
+      -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%);
+      mask-image: linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%);
+    }
+    .hero-slider__track {
+      display: flex; gap: 12px; width: max-content;
+      animation: hs-roll 55s linear infinite;
+    }
+    .hero-slider:hover .hero-slider__track { animation-play-state: paused; }
+    @keyframes hs-roll {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+    .hero-slider__item {
+      flex: 0 0 170px; border-radius: 14px; overflow: hidden;
+      border: 1px solid rgba(255,255,255,.06); aspect-ratio: 3/4;
+      cursor: pointer; background: none; padding: 0; position: relative;
+      transition: border-color .35s;
+    }
+    .hero-slider__item::after {
+      content: ""; position: absolute; inset: 0; pointer-events: none;
+      background: linear-gradient(180deg, transparent 55%, rgba(4,9,15,.5));
+      transition: opacity .35s;
+    }
+    .hero-slider__item:hover { border-color: rgba(244,184,96,.36); }
+    .hero-slider__item:hover::after { opacity: 0; }
+    .hero-slider__item img {
+      display: block; width: 100%; height: 100%; object-fit: cover;
+      filter: saturate(.88) brightness(.8);
+      transition: filter .45s, transform .65s;
+      pointer-events: none;
+    }
+    .hero-slider__item:hover img { filter: saturate(1) brightness(1); transform: scale(1.05); }
+
+    /* --- lightbox --- */
+    .hs-lb {
+      position: fixed; inset: 0; z-index: 9999;
+      background: rgba(4,9,15,.94); backdrop-filter: blur(20px);
+      display: flex; align-items: center; justify-content: center; gap: 18px;
+      opacity: 0; pointer-events: none; transition: opacity .28s;
+    }
+    .hs-lb.is-open { opacity: 1; pointer-events: all; }
+    .hs-lb__img {
+      display: block; max-width: min(820px, 82vw); max-height: 86vh;
+      object-fit: contain; border-radius: 14px;
+      box-shadow: 0 60px 120px rgba(0,0,0,.65), 0 0 0 1px rgba(255,255,255,.06) inset;
+    }
+    .hs-lb__nav {
+      flex: 0 0 44px; height: 44px; border-radius: 50%;
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1);
+      color: rgba(255,255,255,.65); font-size: 22px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s, color .2s, border-color .2s;
+    }
+    .hs-lb__nav:hover { background: rgba(244,184,96,.18); color: var(--glow); border-color: rgba(244,184,96,.3); }
+    .hs-lb__close {
+      position: absolute; top: 20px; right: 20px;
+      background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.1);
+      color: rgba(255,255,255,.65); border-radius: 50%;
+      width: 38px; height: 38px; font-size: 18px; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s, color .2s;
+    }
+    .hs-lb__close:hover { background: rgba(244,184,96,.18); color: var(--glow); }
+    .hs-lb__counter {
+      position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%);
+      font-family: 'Space Grotesk', sans-serif; font-size: .75rem; letter-spacing: .1em;
+      color: rgba(255,255,255,.32);
+    }
+
+    /* --- jump nav (sticky alatt a headerrel) --- */
+    .jump {
+      position: sticky;
+      top: 74px; /* Layero header magassága */
+      z-index: 30;
+      padding: 14px 0;
+      backdrop-filter: blur(14px);
+      background: linear-gradient(180deg,rgba(5,11,20,.94),rgba(5,11,20,.74));
+      border-top: 1px solid rgba(255,255,255,.05);
+      border-bottom: 1px solid rgba(255,255,255,.06);
+    }
+    .jump-row { display: flex; flex-wrap: wrap; gap: 10px; }
+    @media(max-width:760px){
+      .jump-row { flex-wrap: nowrap; overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+      .jump-row::-webkit-scrollbar { display: none; }
+    }
+    .jump a {
+      white-space: nowrap; font-family: 'Space Grotesk', sans-serif; font-size: .86rem;
+      font-weight: 500; padding: .62em 1.05em; border-radius: 999px;
+      background: var(--ink-3); border: 1px solid var(--ink-edge); color: #dcd6ca;
+      transition: border-color .3s, color .3s, background .3s, transform .3s;
+      text-decoration: none;
+    }
+    .jump a:hover, .jump a:focus-visible { border-color: var(--glow); color: var(--glow); transform: translateY(-2px); outline: none; }
+    .jump a.active { border-color: transparent; color: #2a1c08; background: linear-gradient(180deg,var(--glow),var(--glow-deep)); }
+
+    /* --- category rows --- */
+    .cats { padding: 34px 0 20px; }
+    .cat { padding: 54px 0; border-top: 1px solid rgba(255,255,255,.07); scroll-margin-top: 150px; }
+    .cat:first-child { border-top: none; }
+    .cat-grid { display: grid; grid-template-columns: 1.04fr 1fr; gap: 54px; align-items: center; }
+    .cat:nth-child(even) .cat-media { order: 2; }
+
+    .cat-body .num {
+      font-family: 'Space Grotesk', sans-serif; font-size: .72rem;
+      letter-spacing: .16em; text-transform: uppercase; color: var(--cyan);
+      display: block; margin: 0;
+    }
+    .cat-body h2 {
+      font-family: 'Fraunces', serif; font-weight: 600;
+      font-size: clamp(1.8rem,3.8vw,2.7rem); line-height: 1.08;
+      letter-spacing: -.01em; margin: .5em 0 .55em; color: var(--cream);
+    }
+    .cat-body p { color: #cfc9bd; margin-top: .85em; line-height: 1.72; font-size: .98rem; }
+    .cat-body p:first-of-type { color: #ddd7cb; font-size: 1.06rem; }
+
+    .cat-link {
+      display: inline-flex; align-items: center; gap: .55em; margin-top: 1.7em;
+      font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: .92rem;
+      color: var(--glow); text-decoration: none; transition: gap .3s;
+    }
+    .cat-link svg { width: 16px; height: 16px; flex-shrink: 0; transition: transform .3s; }
+    .cat-link:hover { gap: .85em; }
+    .cat-link:hover svg { transform: translateX(3px); }
+    .cat-link:focus-visible { outline: 2px solid var(--cyan); outline-offset: 4px; border-radius: 6px; }
+
+    /* --- slider (nagy kép + csúszó thumb csík) --- */
+    .cat-media { position: relative; overflow: hidden; }
+    .sldr-main { position: relative; border-radius: 20px; }
+    .cat-media::before {
+      content: ""; position: absolute; left: 50%; top: 28%; transform: translateX(-50%);
+      width: 70%; height: 55%; border-radius: 50%; z-index: 0; pointer-events: none;
+      background: radial-gradient(closest-side,rgba(244,184,96,.28),rgba(244,184,96,.06) 55%,transparent 75%);
+      filter: blur(20px);
+    }
+    /* crossfade — két egymásra rakott kép */
+    .sldr-imgs {
+      position: relative; z-index: 1; border-radius: 18px; overflow: hidden;
+      aspect-ratio: 4/3;
+      box-shadow: 0 36px 70px -30px rgba(0,0,0,.9), 0 0 0 1px rgba(255,255,255,.05) inset;
+    }
+    .sldr-img {
+      position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
+      opacity: 0; transition: opacity .75s ease;
+    }
+    .sldr-img.is-active { opacity: 1; }
+    .sldr-strip { position: relative; z-index: 2; overflow: hidden; margin-top: 12px; border-radius: 12px; width: 100%; }
+    .sldr-rail { display: flex; gap: 12px; transition: transform .48s cubic-bezier(.4,0,.2,1); }
+    .sldr-thumb {
+      flex: 0 0 var(--sldr-tw, 80px); width: var(--sldr-tw, 80px);
+      border-radius: 12px; overflow: hidden;
+      border: 1.5px solid rgba(255,255,255,.07); aspect-ratio: 1/1;
+      padding: 0; cursor: pointer; background: none;
+      transition: border-color .3s, box-shadow .3s;
+    }
+    .sldr-thumb img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+      filter: saturate(.9) brightness(.72); transition: filter .35s; pointer-events: none;
+    }
+    .sldr-thumb:hover img, .sldr-thumb.is-on img { filter: saturate(1.05) brightness(1); }
+    .sldr-thumb.is-on { border-color: rgba(244,184,96,.8); box-shadow: 0 0 18px rgba(244,184,96,.2); }
+
+    /* nav gombok */
+    .sldr-nav {
+      position: absolute; top: 50%; transform: translateY(-50%); z-index: 3;
+      width: 34px; height: 34px; border-radius: 50%;
+      background: rgba(4,9,15,.6); border: 1px solid rgba(255,255,255,.13);
+      color: rgba(255,255,255,.85); font-size: 1.15rem; line-height: 1;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      opacity: 0; transition: opacity .2s, background .2s, border-color .2s;
+      backdrop-filter: blur(6px); padding: 0;
+    }
+    .sldr-main:hover .sldr-nav, .sldr-main:focus-within .sldr-nav { opacity: 1; }
+    .sldr-nav:hover { background: rgba(244,184,96,.18); border-color: rgba(244,184,96,.45); color: #f4b860; }
+    .sldr-prev { left: 10px; }
+    .sldr-next { right: 10px; }
+
+    /* képszámláló */
+    .sldr-counter {
+      position: absolute; bottom: 12px; right: 12px; z-index: 3;
+      font-family: 'Space Grotesk', sans-serif; font-size: .68rem; font-weight: 600;
+      letter-spacing: .08em; color: rgba(255,255,255,.72);
+      background: rgba(4,9,15,.55); backdrop-filter: blur(6px);
+      border-radius: 20px; padding: 3px 10px; pointer-events: none;
+    }
+
+    /* galéria gomb */
+    .sldr-gallery-btn {
+      position: absolute; bottom: 12px; left: 12px; z-index: 3;
+      font-family: 'Space Grotesk', sans-serif; font-size: .67rem; font-weight: 600;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: rgba(255,255,255,.7); background: rgba(4,9,15,.55);
+      backdrop-filter: blur(6px); border-radius: 20px; padding: 3px 10px;
+      border: 1px solid rgba(255,255,255,.1); cursor: pointer;
+      transition: color .2s, border-color .2s;
+    }
+    .sldr-gallery-btn:hover { color: #f4b860; border-color: rgba(244,184,96,.45); }
+
+    /* lightbox galéria modal */
+    .sldr-modal {
+      position: fixed; inset: 0; z-index: 900;
+      background: rgba(2,6,14,.97);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; pointer-events: none; transition: opacity .28s ease;
+      cursor: zoom-out;
+    }
+    .sldr-modal.is-open { opacity: 1; pointer-events: all; }
+    .sldr-modal__close {
+      position: fixed; top: 20px; right: 20px; z-index: 10;
+      width: 40px; height: 40px; border-radius: 50%;
+      background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.1);
+      color: rgba(255,255,255,.5); font-size: .95rem; cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background .2s, color .2s;
+    }
+    .sldr-modal__close:hover { background: rgba(255,255,255,.13); color: #fff; }
+    .sldr-modal__img-wrap {
+      max-width: calc(100vw - 160px); max-height: 88vh;
+      position: relative; cursor: default;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .sldr-modal__main {
+      max-width: 100%; max-height: 88vh;
+      object-fit: contain; display: block; border-radius: 8px;
+      transition: opacity .16s ease;
+    }
+    .sldr-modal__main.lb-fade { opacity: 0; }
+    /* Nav gombok — képernyő bal/jobb szélén */
+    .sldr-modal__nav {
+      position: fixed; top: 50%; transform: translateY(-50%); z-index: 10;
+      width: 52px; height: 52px; border-radius: 50%;
+      background: rgba(8,16,28,.7); border: 1px solid rgba(255,255,255,.12);
+      color: rgba(255,255,255,.8); font-size: 1.7rem; line-height: 1;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      transition: background .2s, border-color .2s, color .2s; padding: 0;
+      backdrop-filter: blur(8px);
+    }
+    .sldr-modal__nav:hover { background: rgba(244,184,96,.14); border-color: rgba(244,184,96,.35); color: #f4b860; }
+    .sldr-modal__prev { left: 18px; }
+    .sldr-modal__next { right: 18px; }
+    /* Számláló alul középen */
+    .sldr-modal__counter {
+      position: fixed; bottom: 26px; left: 50%; transform: translateX(-50%);
+      font-family: 'Space Grotesk', sans-serif; font-size: .8rem; font-weight: 500;
+      letter-spacing: .12em; color: rgba(255,255,255,.35);
+      pointer-events: none;
+    }
+
+    @media(max-width:860px){
+      .cat-grid { grid-template-columns: 1fr; gap: 30px; }
+      .cat:nth-child(even) .cat-media, .cat-media { order: -1; }
+    }
+    @media(max-width:640px){
+      .cats { padding-top: 20px; }
+      .cat { padding: 40px 0; }
+    }
+
+    /* --- closing CTA --- */
+    .tv-closing { padding: 70px 0 110px; text-align: center; }
+    .tv-closing-inner { position: relative; max-width: 720px; margin: 0 auto; }
+    .tv-closing-inner::before {
+      content: ""; position: absolute; left: 50%; top: -20px; transform: translateX(-50%);
+      width: 340px; height: 340px; border-radius: 50%; z-index: -1;
+      background: radial-gradient(closest-side,rgba(244,184,96,.16),transparent 70%);
+    }
+    .tv-closing h2 {
+      font-family: 'Fraunces', serif; font-weight: 600;
+      font-size: clamp(2rem,4.6vw,3rem); line-height: 1.08; letter-spacing: -.015em;
+      margin-bottom: .5em; color: var(--cream);
+    }
+    .tv-closing p { color: #cfc9bd; font-size: 1.12rem; max-width: 52ch; margin: 0 auto 2em; line-height: 1.7; }
+    .cta-row { display: flex; gap: .9rem; flex-wrap: wrap; justify-content: center; }
+    .tv-btn {
+      font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: .92rem;
+      padding: .95em 1.7em; border-radius: 999px; cursor: pointer; border: 1px solid transparent;
+      transition: transform .25s, box-shadow .25s; display: inline-flex; align-items: center; gap: .6em;
+      text-decoration: none;
+    }
+    .tv-btn-primary { background: linear-gradient(180deg,var(--glow),var(--glow-deep)); color: #2a1c08; box-shadow: 0 8px 30px -8px rgba(244,184,96,.6); }
+    .tv-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 38px -8px rgba(244,184,96,.8); }
+    .tv-btn-ghost { border-color: rgba(255,255,255,.16); color: var(--cream); }
+    .tv-btn-ghost:hover { border-color: var(--glow); color: var(--glow); }
+    .tv-btn:focus-visible { outline: 2px solid var(--cyan); outline-offset: 3px; }
+
+    /* --- reveal animation --- */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity .8s ease, transform .8s cubic-bezier(.2,.7,.2,1); }
+    .reveal.in { opacity: 1; transform: none; }
+    @media(prefers-reduced-motion:reduce){ .reveal { opacity: 1; transform: none; transition: none; } }
+  </style>
+</head>
+<body>
+
+  <header class="site-header motion-load" style="--load-delay: 80ms"><div class="header-shell"><a class="logo" href="index.html" aria-label="Layero 3D Design főoldal"><img class="logo__brand-mark" src="assets/layero-logo-mark-from-source.png" alt="" width="240" height="237"><img class="logo__brand-wordmark" src="assets/layero-logo-wordmark-from-source.png" alt="Layero 3D Design" width="493" height="171"></a><button class="nav-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" data-nav-toggle><span class="sr-only">Menü megnyitása</span><span class="nav-toggle__line" aria-hidden="true"></span></button><nav class="site-nav" id="site-navigation" aria-label="Főmenü"><a href="termekvilag.html" aria-current="page">Termékvilág</a><a href="egyedi-rendeles.html">Egyedi rendelés</a><a href="cegeknek.html">Cégeknek</a><a href="galeria.html">Galéria</a><a href="rolunk.html">Rólunk</a><a href="kapcsolat.html">Kapcsolat</a></nav><a class="btn btn--outline header-cta" href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer">Üzlet <span aria-hidden="true">→</span></a></div></header>
+
+  <!-- Hero intro -->
+  <section class="tv-hero">
+    <div class="tv-wrap">
+      <span class="eyebrow">Kategóriák</span>
+      <h1>Minden termék egy <span class="lit">történetből</span> indul.</h1>
+      <p class="lede">Egy kedvenc témából, egy különleges alkalomból, egy logóból, egy névből vagy egy ötletből. Legyen szó világító lámpáról, kulcstartóról, dekorációról, céges ajándékról vagy rajongói darabról — a célunk ugyanaz: olyan egyedi tárgyakat készíteni, amelyek személyesek, látványosak és emlékezetesek.</p>
+      <p class="lede">A termékeink ajándéknak, dekorációnak, céges megjelenéshez vagy saját használatra is ideálisak. Böngéssz a kategóriák között, válassz témát, vagy keress minket egyedi elképzeléssel.</p>
+      <div class="hero-slider" aria-label="Layero termékhangulatok">
+        <div class="hero-slider__track"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Jump nav -->
+  <nav class="jump" aria-label="Ugrás kategóriához">
+    <div class="tv-wrap jump-row">
+      <a href="#lampak">Tematikus lámpák</a>
+      <a href="#kulcstartok">Kulcstartók</a>
+      <a href="#dekoraciok">Dekorációk</a>
+      <a href="#ceges">Céges megoldások</a>
+      <a href="#rajongoi">Gyűjtői / rajongói</a>
+      <a href="#egyedi">Egyedi rendelés</a>
+    </div>
+  </nav>
+
+  <div class="cats tv-wrap">
+
+    <!-- 1. Tematikus lámpák -->
+    <section class="cat reveal" id="lampak">
+      <div class="cat-grid">
+        <div class="cat-media" data-slider="lampak"></div>
+        <div class="cat-body">
+          <span class="num">Világítás</span>
+          <h2>Tematikus lámpák</h2>
+          <p>Egyedi hangulatvilágítások, amelyek egyszerre működnek dekorációként, személyes ajándékként és látványos emléktárgyként. Legyen szó kedvenc filmről, játékról, sportról, hobbiról, házi kedvencről vagy különleges alkalomról, ezek a lámpák teljesen más szintre emelik a személyre szabott ajándékozást.</p>
+          <p>Olyan világító dísztárgyak, amelyek névvel, évszámmal, motívummal, sziluettel vagy egyedi grafikával is elkészíthetők. Tökéletes választás születésnapra, névnapra, évfordulóra, karácsonyra, gyerekszobába, gamer sarokba, irodába vagy akár egy különleges emlék megőrzésére.</p>
+          <p>A céljuk, hogy ne csak fényt adjanak, hanem történetet is meséljenek. Egy jól eltalált design azonnal személyessé teszi a teret, és minden bekapcsoláskor felidéz egy kedves emléket, hobbit vagy élményt.</p>
+          <a class="cat-link" href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer">Tovább a tematikus lámpákhoz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. Kulcstartók -->
+    <section class="cat reveal" id="kulcstartok">
+      <div class="cat-grid">
+        <div class="cat-media" data-slider="kulcstartok"></div>
+        <div class="cat-body">
+          <span class="num">Apró, mégis személyes</span>
+          <h2>Kulcstartók</h2>
+          <p>Kis méretük ellenére rendkívül karakteres és sokoldalú ajándéktárgyak. Ideálisak azoknak, akik valami apró, mégis személyes meglepetést keresnek — barátoknak, családtagoknak, kollégáknak, vásárlóknak vagy rajongói közösségeknek.</p>
+          <p>Készülhetnek tematikus, logós, névre szóló, hobbihoz vagy érdeklődési körhöz kapcsolódó darabok. Egy jól megtervezett kulcstartó nemcsak praktikus használati tárgy, hanem egy kis darab személyes stílus is, amely nap mint nap velünk van.</p>
+          <p>Kiváló választás rendezvényekre, céges ajándékként, csapatoknak, kluboknak, rajongói közösségeknek vagy egyedi megrendelésre. Könnyen személyre szabhatók, kis helyen is látványosak, és remekül működnek önállóan vagy egy nagyobb ajándékcsomag kiegészítőjeként.</p>
+          <a class="cat-link" href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer">Tovább a kulcstartókhoz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 3. Dekorációk -->
+    <section class="cat reveal" id="dekoraciok">
+      <div class="cat-grid">
+        <div class="cat-media" data-slider="dekoraciok"></div>
+        <div class="cat-body">
+          <span class="num">Lakás &amp; tér</span>
+          <h2>Dekorációk</h2>
+          <p>Azoknak szól, akik szeretnének valami látványosat, egyedit és hangulatosat vinni az otthonukba, irodájukba vagy üzlethelyiségükbe. Ezek nem egyszerű dísztárgyak, hanem karakteres kiegészítők, amelyek különleges atmoszférát teremtenek.</p>
+          <p>Helyet kaphatnak virágok, vázák, szezonális dekorok, modern lakásdíszek, asztali kiegészítők, falra vagy polcra helyezhető elemek, valamint egyedi alkalmakra készített darabok is. Akár letisztult, elegáns, akár látványosabb, tematikus megjelenésről van szó, a cél mindig a környezet feldobása.</p>
+          <p>Kiválóan illenek nappaliba, hálószobába, előszobába, étterembe, irodába vagy ajándéktárgyként különleges alkalmakra. Egy jól megválasztott dekoráció nemcsak kitölti a teret, hanem személyiséget is ad neki.</p>
+          <a class="cat-link" href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer">Tovább a dekorációkhoz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. Céges megoldások -->
+    <section class="cat reveal" id="ceges">
+      <div class="cat-grid">
+        <div class="cat-media" data-slider="ceges"></div>
+        <div class="cat-body">
+          <span class="num">Üzleti megjelenés</span>
+          <h2>Céges megoldások</h2>
+          <p>Vállalkozásoknak, vendéglátóhelyeknek, üzleteknek, márkáknak és rendezvényszervezőknek kínál egyedi, látványos és praktikus termékeket. A cél, hogy a vállalkozás arculata ne csak online vagy nyomtatott anyagokon jelenjen meg, hanem kézzelfogható, emlékezetes formában is.</p>
+          <p>Ide tartozhatnak logós displayek, QR-kódos táblák, asztali tartók, céges kulcstartók, ajándéktárgyak, pultdekorációk, információs táblák vagy egyedi megrendelésre készített arculati elemek. Különösen hasznosak éttermeknek, kávézóknak, szalonoknak, üzleteknek, kiállítóknak és szolgáltatóknak.</p>
+          <p>Egy igényesen elkészített céges dekoráció vagy ajándéktárgy erősíti a márka megjelenését, profibb benyomást kelt, és segít, hogy a vásárlók, vendégek vagy partnerek könnyebben emlékezzenek a vállalkozásra.</p>
+          <a class="cat-link" href="cegeknek.html">Tovább a céges megoldásokhoz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 5. Gyűjtői / rajongói darabok -->
+    <section class="cat reveal" id="rajongoi">
+      <div class="cat-grid">
+        <div class="cat-media" data-slider="rajongoi"></div>
+        <div class="cat-body">
+          <span class="num">Rajongóknak</span>
+          <h2>Gyűjtői / rajongói darabok</h2>
+          <p>Azoknak készült, akik szeretnék kedvenc témáikat, világukat vagy hangulatukat egyedi tárgyak formájában viszontlátni. Fantasy, gamer, sci-fi, sport, filmek, sorozatok vagy saját ötletek alapján készülő darabok is helyet kaphatnak itt.</p>
+          <p>Ezek elsősorban nem hivatalos márkatermékek, hanem saját karakterrel rendelkező, inspirált, egyedi hangulatú alkotások. A cél, hogy a rajongás, a kedvenc univerzum vagy a személyes érdeklődési kör látványos, dekoratív és ajándékozható formában jelenjen meg.</p>
+          <p>Tökéletes választás gyűjtőknek, gamereknek, filmrajongóknak, sportkedvelőknek vagy bárkinek, aki szereti az egyedi, témára épülő tárgyakat. Jól mutatnak polcon, íróasztalon, gamer setupban, vitrinben vagy ajándékként.</p>
+          <a class="cat-link" href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer">Tovább a rajongói darabokhoz <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- 6. Egyedi rendelés -->
+    <section class="cat reveal" id="egyedi">
+      <div class="cat-grid">
+        <div class="cat-media" data-slider="egyedi"></div>
+        <div class="cat-body">
+          <span class="num">Személyre szabott</span>
+          <h2>Egyedi rendelés</h2>
+          <p>Azoknak szól, akiknek van egy saját ötletük, fotójuk, logójuk vagy különleges témájuk, és szeretnék azt kézzelfogható, látványos formában viszontlátni. Itt nem kész sablonból kell választani: a termék a megrendelő igényei alapján, személyre szabottan készül el.</p>
+          <p>Legyen szó fényképből készült lámpáról, céges logóval ellátott ajándékról, egyedi grafikáról, alkalomhoz illő dekorációról vagy teljesen saját ötletről — a folyamat minden esetben az elképzelésből indul. A cél, hogy a végeredmény ne csak szép legyen, hanem valóban személyes és emlékezetes.</p>
+          <p>Akár csak egy hangulat, egy kép, egy név vagy egy rövid ötlet áll rendelkezésre, abból is készülhet látványterv és végül egy kész, egyedi termék, amely rólad, a megajándékozottról vagy a márkádról szól.</p>
+          <a class="cat-link" href="egyedi-rendeles.html">Tovább az egyedi rendeléshez <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Closing CTA -->
+  <section class="tv-closing">
+    <div class="tv-wrap">
+      <div class="tv-closing-inner reveal">
+        <h2>Nincs meg a témád? Indulj egy ötletből.</h2>
+        <p>Válassz a kategóriák közül, vagy keress minket egy saját elképzeléssel — egy névvel, egy képpel vagy egy rövid gondolattal is el tudunk indulni.</p>
+        <div class="cta-row">
+          <a class="tv-btn tv-btn-primary" href="egyedi-rendeles.html">Egyedi ötletem van</a>
+          <a class="tv-btn tv-btn-ghost" href="#lampak">Vissza a kategóriákhoz</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- lightbox -->
+  <div class="hs-lb" role="dialog" aria-modal="true" aria-label="Képgaléria">
+    <button class="hs-lb__close" aria-label="Bezárás">&#x2715;</button>
+    <button class="hs-lb__nav" id="lb-prev" aria-label="Előző">&#x2039;</button>
+    <img class="hs-lb__img" src="" alt="">
+    <button class="hs-lb__nav" id="lb-next" aria-label="Következő">&#x203a;</button>
+    <div class="hs-lb__counter"></div>
+  </div>
+
+  <footer class="site-footer"><div class="container footer__bottom"><p>© 2025–2026 Layero · layero.ro · Minden jog fenntartva.</p><div><a href="termekvilag.html">Termékvilág</a><a href="egyedi-rendeles.html">Egyedi rendelés</a><a href="cegeknek.html">Cégeknek</a><a href="galeria.html">Galéria</a><a href="rolunk.html">Rólunk</a><a href="kapcsolat.html">Kapcsolat</a><a href="adatvedelem.html">Adatvédelem</a><a href="aszf.html">ÁSZF</a><a href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer">Shop →</a></div></div></footer>
+
+  <script src="script.js"></script>
+  <script>
+    // ── reveal animation ──────────────────────────────────────────
+    const obs = new IntersectionObserver((es) => {
+      es.forEach(e => { if (e.isIntersecting) { e.target.classList.add('in'); obs.unobserve(e.target); } });
+    }, { threshold: .12 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+
+    // ── jump nav active state ─────────────────────────────────────
+    const jumpLinks = [...document.querySelectorAll('.jump a')];
+    const byId = Object.fromEntries(jumpLinks.map(a => [a.getAttribute('href').slice(1), a]));
+    const spy = new IntersectionObserver((es) => {
+      es.forEach(e => {
+        if (!e.isIntersecting) return;
+        jumpLinks.forEach(a => a.classList.remove('active'));
+        const activeLink = byId[e.target.id];
+        if (activeLink) {
+          activeLink.classList.add('active');
+          const row = activeLink.closest('.jump-row');
+          if (row && row.scrollWidth > row.clientWidth) {
+            row.scrollTo({ left: activeLink.offsetLeft - (row.clientWidth - activeLink.offsetWidth) / 2, behavior: 'smooth' });
+          }
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    document.querySelectorAll('.cat[id]').forEach(s => spy.observe(s));
+
+    // ── image sliders ─────────────────────────────────────────────
+    const SLIDER_IMAGES = {
+      lampak: [
+        'assets/images/categories/layero-category-new-tematikus-lampak-1100.webp',
+        'assets/images/categories/layero-category-themed-lamp-760.webp',
+        'assets/images/categories/layero-category-design-lamp-760.webp',
+        'assets/images/categories/layero-category-sport-gift-760.webp',
+      ],
+      kulcstartok: [
+        'assets/images/categories/layero-category-new-kulcstartok-1100.webp',
+        'assets/images/categories/layero-category-branded-keychain-760.webp',
+        'assets/images/categories/layero-category-nameplate-760.webp',
+        'assets/images/categories/layero-category-keepsake-760.webp',
+      ],
+      dekoraciok: [
+        'assets/termekvilag/dekoraciok/544586641_122105787950995565_5779650224825615213_n.jpg',
+        'assets/termekvilag/dekoraciok/611589176_122124562772995565_2838307060490523390_n.jpg',
+        'assets/termekvilag/dekoraciok/612171558_122124562898995565_3291961570208272080_n.jpg',
+        'assets/termekvilag/dekoraciok/hero-1-Qr9oXFYE8fYQ.png',
+        'assets/termekvilag/dekoraciok/hero-1-Yul9sRLGP0h1.png',
+        'assets/images/categories/layero-category-new-dekoraciok-1100.webp',
+      ],
+      ceges: [
+        'assets/termekvilag/ceges-megoldasok/20cf18db-3472-4298-b30d-0a59968b1e3c.jpg',
+        'assets/termekvilag/ceges-megoldasok/2b270d60-ab57-4fdd-a4dd-91a1ffe02b71.jpg',
+        'assets/termekvilag/ceges-megoldasok/31939abe-68c9-4c6b-a4f0-40e37d15a066.jpg',
+        'assets/termekvilag/ceges-megoldasok/542702584_122105728322995565_1807554181121349208_n (2).jpg',
+        'assets/termekvilag/ceges-megoldasok/5f3c0fa5-c5f7-4bf6-8f75-29c0de041b21.jpg',
+        'assets/termekvilag/ceges-megoldasok/635a6049-fef7-4b1b-aba8-75cf158d28c5.jpg',
+        'assets/termekvilag/ceges-megoldasok/84765293-ee96-487c-b0c8-63693593ba6b.jpg',
+        'assets/termekvilag/ceges-megoldasok/99cdb2e2-d9ac-4942-9f70-2497972bbe3b.jpg',
+        'assets/termekvilag/ceges-megoldasok/9fa8265c-3f89-48e6-b8c8-e5fdf75c3a22.jpg',
+        'assets/termekvilag/ceges-megoldasok/c03ddc6b-50f6-4fa5-8f3a-e61ff6dd9b54.jpg',
+        'assets/termekvilag/ceges-megoldasok/d7392297-c554-4749-a344-f47e7fc5618c.jpg',
+      ],
+      rajongoi: [
+        'assets/images/categories/layero-category-new-gyujtoi-darabok-1100.webp',
+        'assets/images/categories/layero-category-custom-figure-760.webp',
+        'assets/images/categories/layero-category-sport-gift-760.webp',
+        'assets/images/categories/layero-category-tech-creation-760.webp',
+      ],
+      egyedi: [
+        'assets/images/categories/layero-category-new-egyedi-rendeles-1100.webp',
+        'assets/images/categories/layero-category-prototype-760.webp',
+        'assets/images/categories/layero-category-custom-figure-760.webp',
+        'assets/images/categories/layero-category-milestone-gift-760.webp',
+      ],
+    };
+
+    const VISIBLE = 4; // thumbs visible at once
+
+    // ── lightbox modal (egy közös) ────────────────────────────────
+    const modal = document.createElement('div');
+    modal.className = 'sldr-modal';
+    modal.setAttribute('role', 'dialog');
+    modal.setAttribute('aria-modal', 'true');
+    modal.innerHTML =
+      '<button class="sldr-modal__close" aria-label="Bezárás">&#x2715;</button>' +
+      '<button class="sldr-modal__nav sldr-modal__prev" aria-label="Előző">&#x2039;</button>' +
+      '<div class="sldr-modal__img-wrap"><img class="sldr-modal__main" src="" alt=""></div>' +
+      '<button class="sldr-modal__nav sldr-modal__next" aria-label="Következő">&#x203a;</button>' +
+      '<div class="sldr-modal__counter"></div>';
+    document.body.appendChild(modal);
+
+    let lbImages = [], lbIdx = 0;
+    const lbImg     = modal.querySelector('.sldr-modal__main');
+    const lbCounter = modal.querySelector('.sldr-modal__counter');
+
+    function lbShow(idx) {
+      lbIdx = ((idx % lbImages.length) + lbImages.length) % lbImages.length;
+      lbImg.classList.add('lb-fade');
+      setTimeout(function() {
+        lbImg.src = lbImages[lbIdx];
+        lbCounter.textContent = (lbIdx + 1) + ' / ' + lbImages.length;
+        lbImg.classList.remove('lb-fade');
+      }, 160);
+    }
+
+    function lbOpen(images, startIdx) {
+      lbImages = images;
+      lbIdx = startIdx;
+      lbImg.src = images[startIdx];
+      lbCounter.textContent = (startIdx + 1) + ' / ' + images.length;
+      modal.classList.add('is-open');
+    }
+
+    modal.querySelector('.sldr-modal__close').addEventListener('click', () => modal.classList.remove('is-open'));
+    modal.querySelector('.sldr-modal__prev').addEventListener('click', () => lbShow(lbIdx - 1));
+    modal.querySelector('.sldr-modal__next').addEventListener('click', () => lbShow(lbIdx + 1));
+    modal.addEventListener('click', (e) => { if (e.target === modal) modal.classList.remove('is-open'); });
+    document.addEventListener('keydown', (e) => {
+      if (!modal.classList.contains('is-open')) return;
+      if (e.key === 'ArrowLeft')  lbShow(lbIdx - 1);
+      if (e.key === 'ArrowRight') lbShow(lbIdx + 1);
+      if (e.key === 'Escape')     modal.classList.remove('is-open');
+    });
+
+    // húzás / swipe — egér és érintőképernyő
+    (function() {
+      var startX = 0, startY = 0, dragging = false, THRESHOLD = 50;
+
+      function onStart(x, y) { startX = x; startY = y; dragging = true; }
+      function onEnd(x) {
+        if (!dragging) return;
+        dragging = false;
+        var dx = x - startX;
+        if (Math.abs(dx) < THRESHOLD) return;
+        if (dx < 0) lbShow(lbIdx + 1); else lbShow(lbIdx - 1);
+      }
+
+      var wrap = modal.querySelector('.sldr-modal__img-wrap');
+      wrap.addEventListener('mousedown',  (e) => { e.preventDefault(); onStart(e.clientX, e.clientY); wrap.style.cursor = 'grabbing'; });
+      window.addEventListener('mouseup',  (e) => { onEnd(e.clientX); wrap.style.cursor = 'grab'; });
+      wrap.addEventListener('touchstart', (e) => { onStart(e.touches[0].clientX, e.touches[0].clientY); }, { passive: true });
+      wrap.addEventListener('touchend',   (e) => { onEnd(e.changedTouches[0].clientX); });
+      wrap.style.cursor = 'grab';
+    })();
+
+    // ── slider init ───────────────────────────────────────────────
+    function initSlider(el) {
+      const key = el.dataset.slider;
+      const images = SLIDER_IMAGES[key];
+      if (!images || !images.length) return;
+      const n = images.length;
+      let cur = 0, active = 'a', thumbW = 0, timer = null;
+
+      el.innerHTML =
+        '<div class="sldr-main">' +
+          '<div class="sldr-imgs" style="cursor:zoom-in" title="Megnyitás galériában">' +
+            '<img class="sldr-img sldr-img-a is-active" src="' + images[0] + '" alt="">' +
+            '<img class="sldr-img sldr-img-b" src="" alt="">' +
+          '</div>' +
+          '<button class="sldr-nav sldr-prev" type="button" aria-label="Előző">&#x2039;</button>' +
+          '<button class="sldr-nav sldr-next" type="button" aria-label="Következő">&#x203a;</button>' +
+          '<span class="sldr-counter">1 / ' + n + '</span>' +
+          '<button class="sldr-gallery-btn" type="button">&#x2261; ' + n + ' kép</button>' +
+        '</div>' +
+        '<div class="sldr-strip"><div class="sldr-rail">' +
+        images.map((src, i) =>
+          '<button class="sldr-thumb' + (i === 0 ? ' is-on' : '') + '" data-i="' + i + '" type="button">' +
+          '<img src="' + src + '" alt="" loading="lazy"></button>'
+        ).join('') +
+        '</div></div>';
+
+      const imgA       = el.querySelector('.sldr-img-a');
+      const imgB       = el.querySelector('.sldr-img-b');
+      const imgsWrap   = el.querySelector('.sldr-imgs');
+      const rail       = el.querySelector('.sldr-rail');
+      const thumbs     = [...el.querySelectorAll('.sldr-thumb')];
+      const counter    = el.querySelector('.sldr-counter');
+      const galleryBtn = el.querySelector('.sldr-gallery-btn');
+      const prevBtn    = el.querySelector('.sldr-prev');
+      const nextBtn    = el.querySelector('.sldr-next');
+
+      function computeThumbW() {
+        const tw = Math.floor((el.offsetWidth - 12 * (VISIBLE - 1)) / VISIBLE);
+        if (tw <= 0) return;
+        el.style.setProperty('--sldr-tw', tw + 'px');
+        thumbW = tw + 12;
+      }
+      computeThumbW();
+      window.addEventListener('load', computeThumbW, { once: true });
+
+      function slideRail(idx) {
+        if (thumbW <= 0) computeThumbW();
+        const offset = Math.max(0, Math.min(n - VISIBLE, idx - Math.floor(VISIBLE / 2)));
+        rail.style.transform = 'translateX(-' + (offset * thumbW) + 'px)';
+      }
+
+      function goTo(idx) {
+        const prev = cur;
+        cur = ((idx % n) + n) % n;
+        if (prev === cur) return;
+
+        // crossfade: töltjük a háttér képet, majd felcseréljük
+        const front = active === 'a' ? imgA : imgB;
+        const back  = active === 'a' ? imgB : imgA;
+        back.src = images[cur];
+        back.classList.add('is-active');
+        front.classList.remove('is-active');
+        active = active === 'a' ? 'b' : 'a';
+
+        thumbs[prev].classList.remove('is-on');
+        thumbs[cur].classList.add('is-on');
+        slideRail(cur);
+        counter.textContent = (cur + 1) + ' / ' + n;
+      }
+
+      const start = () => { timer = setInterval(() => goTo(cur + 1), 3000); };
+      const stop  = () => { clearInterval(timer); };
+
+      thumbs.forEach((t, i) => t.addEventListener('click', () => { stop(); goTo(i); start(); }));
+      prevBtn.addEventListener('click', () => { stop(); goTo(cur - 1); start(); });
+      nextBtn.addEventListener('click', () => { stop(); goTo(cur + 1); start(); });
+      el.addEventListener('mouseenter', stop);
+      el.addEventListener('mouseleave', start);
+
+      // drag navigáció a főképen
+      var dragStartX = 0, isDrag = false, DRAG_THRESHOLD = 50;
+      imgsWrap.addEventListener('mousedown', (e) => {
+        dragStartX = e.clientX; isDrag = false;
+        imgsWrap.style.cursor = 'grabbing';
+        e.preventDefault();
+      });
+      window.addEventListener('mouseup', (e) => {
+        if (!dragStartX) return;
+        var dx = e.clientX - dragStartX;
+        if (Math.abs(dx) >= DRAG_THRESHOLD) {
+          isDrag = true;
+          stop(); goTo(dx < 0 ? cur + 1 : cur - 1); start();
+        }
+        dragStartX = 0;
+        imgsWrap.style.cursor = 'grab';
+      });
+      imgsWrap.style.cursor = 'grab';
+
+      imgsWrap.addEventListener('click', (e) => { if (!isDrag) { stop(); lbOpen(images, cur); } isDrag = false; });
+      galleryBtn.addEventListener('click', () => { stop(); lbOpen(images, cur); });
+
+      start();
+    }
+
+    document.querySelectorAll('[data-slider]').forEach(initSlider);
+
+    // ── hero marquee + lightbox ───────────────────────────────────
+    (function() {
+      const HS_IMGS = Array.from({length: 17}, (_, i) => `assets/termekvilag/hero_slider/${i+1}.png`);
+      const track = document.querySelector('.hero-slider__track');
+      const lb    = document.querySelector('.hs-lb');
+      const lbImg = lb.querySelector('.hs-lb__img');
+      const lbCtr = lb.querySelector('.hs-lb__counter');
+      let lbIdx   = 0;
+
+      // build track — duplicate for seamless loop
+      function makeItem(src, realIdx) {
+        const btn = document.createElement('button');
+        btn.className = 'hero-slider__item';
+        btn.type = 'button';
+        btn.setAttribute('aria-label', `Kép megnyitása ${realIdx + 1}`);
+        const img = document.createElement('img');
+        img.src = src; img.alt = ''; img.loading = 'lazy';
+        btn.appendChild(img);
+        btn.addEventListener('click', () => openLb(realIdx));
+        return btn;
+      }
+      [...HS_IMGS, ...HS_IMGS].forEach((src, i) => track.appendChild(makeItem(src, i % HS_IMGS.length)));
+
+      // lightbox
+      function openLb(idx) {
+        lbIdx = idx;
+        lbImg.src = HS_IMGS[lbIdx];
+        lbCtr.textContent = `${lbIdx + 1} / ${HS_IMGS.length}`;
+        lb.classList.add('is-open');
+        document.body.style.overflow = 'hidden';
+        lbImg.focus && lbImg.focus();
+      }
+      function closeLb() {
+        lb.classList.remove('is-open');
+        document.body.style.overflow = '';
+      }
+      function navLb(dir) {
+        lbIdx = ((lbIdx + dir) + HS_IMGS.length) % HS_IMGS.length;
+        lbImg.style.opacity = '0';
+        setTimeout(() => { lbImg.src = HS_IMGS[lbIdx]; lbImg.style.opacity = '1'; }, 140);
+        lbCtr.textContent = `${lbIdx + 1} / ${HS_IMGS.length}`;
+      }
+
+      lb.querySelector('.hs-lb__close').addEventListener('click', closeLb);
+      document.getElementById('lb-prev').addEventListener('click', () => navLb(-1));
+      document.getElementById('lb-next').addEventListener('click', () => navLb(1));
+      lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+      document.addEventListener('keydown', e => {
+        if (!lb.classList.contains('is-open')) return;
+        if (e.key === 'Escape')     closeLb();
+        if (e.key === 'ArrowLeft')  navLb(-1);
+        if (e.key === 'ArrowRight') navLb(1);
+      });
+    })();
+  </script>
+</body>
+</html>
