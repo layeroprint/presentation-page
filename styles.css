@@ -397,6 +397,10 @@ select {
   min-width: 0;
 }
 
+.header-top__motto span {
+  color: #00e5ff;
+}
+
 .header-top__contact {
   display: flex;
   align-items: center;
@@ -406,7 +410,7 @@ select {
 }
 
 .header-top__contact a {
-  color: rgba(255, 255, 255, 0.76);
+  color: rgb(244 184 96 / 85%);
   transition: color 180ms ease;
 }
 
