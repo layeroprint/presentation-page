@@ -1,10 +1,10 @@
 {
-  "version": "20260703-mobile-icons-1",
-  "description": "Mobile icon sizing release for the index delivery benefits section.",
+  "version": "20260703-mobile-icons-2",
+  "description": "Larger mobile icon release for the index delivery benefits section.",
   "updatedAt": "2026-07-03",
   "assets": {
-    "styles": "styles.css?v=20260703-mobile-icons-1",
-    "script": "script.js?v=20260703-mobile-icons-1",
-    "theme": "tv-theme.css?v=20260703-mobile-icons-1"
+    "styles": "styles.css?v=20260703-mobile-icons-2",
+    "script": "script.js?v=20260703-mobile-icons-2",
+    "theme": "tv-theme.css?v=20260703-mobile-icons-2"
   }
 }
