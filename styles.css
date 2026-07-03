@@ -7811,7 +7811,8 @@ body.nav-open .nav-toggle__bars::after {
   }
 
   .how-command {
-    padding: 52px 0 56px;
+    margin-top: -58px !important;
+    padding: 40px 0 50px !important;
   }
 
   .how-command__shell {
