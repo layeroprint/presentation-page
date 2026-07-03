@@ -1731,16 +1731,26 @@
 
         <button class="nav-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" data-nav-toggle>
           <span class="sr-only">Menü megnyitása</span>
-          <svg class="icon" aria-hidden="true"><use href="#icon-menu"></use></svg>
+          <span class="nav-toggle__bars" aria-hidden="true"></span>
         </button>
 
         <nav class="site-nav" id="site-navigation" aria-label="Főmenü">
-          <a href="termekvilag.html">Termékvilág</a>
-          <a href="egyedi-rendeles.html">Egyedi rendelés</a>
-          <a href="cegeknek.html">Cégeknek</a>
-          <a href="galeria.html">Galéria</a>
-          <a href="rolunk.html">Rólunk</a>
-          <a href="kapcsolat.html">Kapcsolat</a>
+          <div class="site-nav__mobile-head">
+            <span>Layero navigáció</span>
+            <strong>Válassz irányt</strong>
+          </div>
+          <div class="site-nav__links">
+            <a href="termekvilag.html">Termékvilág</a>
+            <a href="egyedi-rendeles.html">Egyedi rendelés</a>
+            <a href="cegeknek.html">Cégeknek</a>
+            <a href="galeria.html">Galéria</a>
+            <a href="rolunk.html">Rólunk</a>
+            <a href="kapcsolat.html">Kapcsolat</a>
+          </div>
+          <div class="site-nav__mobile-cta" aria-label="Gyors műveletek">
+            <a class="btn btn--shop" href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer">Shop</a>
+            <a class="site-nav__contact" href="mailto:hello@layero.ro">hello@layero.ro</a>
+          </div>
         </nav>
 
         <a class="btn btn--outline header-cta" href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer" aria-label="Layero online üzlet megnyitása">
@@ -1749,6 +1759,7 @@
         </a>
       </div>
     </header>
+    <div class="site-nav-backdrop" data-nav-close aria-hidden="true"></div>
 
     <main id="top">
       <div class="page-decor" aria-hidden="true">

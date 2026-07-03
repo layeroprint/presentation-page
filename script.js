@@ -1,5 +1,38 @@
 const navToggle = document.querySelector("[data-nav-toggle]");
+const siteNav = document.querySelector(".site-nav");
+
+navToggle?.querySelector(".nav-toggle__line")?.classList.replace("nav-toggle__line", "nav-toggle__bars");
+
+if (siteNav && !siteNav.querySelector(".site-nav__links")) {
+  const mobileHead = document.createElement("div");
+  mobileHead.className = "site-nav__mobile-head";
+  mobileHead.innerHTML = "<span>Layero navigáció</span><strong>Válassz irányt</strong>";
+
+  const linkWrap = document.createElement("div");
+  linkWrap.className = "site-nav__links";
+  [...siteNav.querySelectorAll(":scope > a")].forEach((link) => linkWrap.appendChild(link));
+
+  const mobileCta = document.createElement("div");
+  mobileCta.className = "site-nav__mobile-cta";
+  mobileCta.setAttribute("aria-label", "Gyors műveletek");
+  mobileCta.innerHTML = '<a class="btn btn--shop" href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer">Shop</a><a class="site-nav__contact" href="mailto:hello@layero.ro">hello@layero.ro</a>';
+
+  siteNav.append(mobileHead, linkWrap, mobileCta);
+}
+
+let navClosers = [...document.querySelectorAll("[data-nav-close]")];
+
+if (navToggle && !navClosers.length) {
+  const navBackdrop = document.createElement("div");
+  navBackdrop.className = "site-nav-backdrop";
+  navBackdrop.dataset.navClose = "";
+  navBackdrop.setAttribute("aria-hidden", "true");
+  document.body.insertBefore(navBackdrop, document.querySelector("main"));
+  navClosers = [navBackdrop];
+}
+
 const navLinks = document.querySelectorAll(".site-nav a");
+const navToggleLabel = navToggle?.querySelector(".sr-only");
 const newsletterModal = document.querySelector("[data-newsletter-modal]");
 const newsletterPanel = newsletterModal?.querySelector(".newsletter-modal__panel");
 const newsletterOpeners = document.querySelectorAll("[data-newsletter-open]");
@@ -52,14 +85,27 @@ if (heroFlowTrack && !heroFlowTrack.dataset.loopReady) {
 function setNavOpen(isOpen) {
   document.body.classList.toggle("nav-open", isOpen);
   navToggle?.setAttribute("aria-expanded", String(isOpen));
+  if (navToggleLabel) {
+    navToggleLabel.textContent = isOpen ? "Menü bezárása" : "Menü megnyitása";
+  }
 }
 
 navToggle?.addEventListener("click", () => {
   setNavOpen(!document.body.classList.contains("nav-open"));
 });
 
+navClosers.forEach((closer) => {
+  closer.addEventListener("click", () => setNavOpen(false));
+});
+
 navLinks.forEach((link) => {
   link.addEventListener("click", () => setNavOpen(false));
+});
+
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 1060 && document.body.classList.contains("nav-open")) {
+    setNavOpen(false);
+  }
 });
 
 window.addEventListener("keydown", (event) => {
