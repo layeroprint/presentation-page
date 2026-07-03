@@ -410,8 +410,22 @@ select {
 }
 
 .header-top__contact a {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
   color: rgb(244 184 96 / 85%);
   transition: color 180ms ease;
+}
+
+.header-top__icon {
+  width: 14px;
+  height: 14px;
+  flex: 0 0 auto;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
 }
 
 .header-top__contact a:hover,

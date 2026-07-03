@@ -1,10 +1,10 @@
 {
-  "version": "20260703-header-motto-1",
-  "description": "Header motto highlight release with amber contact links.",
+  "version": "20260703-header-icons-1",
+  "description": "Header contact icon release with highlighted motto and amber links.",
   "updatedAt": "2026-07-03",
   "assets": {
-    "styles": "styles.css?v=20260703-header-motto-1",
-    "script": "script.js?v=20260703-header-motto-1",
-    "theme": "tv-theme.css?v=20260703-header-motto-1"
+    "styles": "styles.css?v=20260703-header-icons-1",
+    "script": "script.js?v=20260703-header-icons-1",
+    "theme": "tv-theme.css?v=20260703-header-icons-1"
   }
 }
