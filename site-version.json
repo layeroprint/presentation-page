@@ -1,10 +1,10 @@
 {
-  "version": "20260703-cachefix-1",
-  "description": "Cache-busting release for mobile index, shared footer styles, and navigation updates.",
+  "version": "20260703-imgopt-1",
+  "description": "Image-optimized release for mobile index assets, shared footer styles, and navigation updates.",
   "updatedAt": "2026-07-03",
   "assets": {
-    "styles": "styles.css?v=20260703-cachefix-1",
-    "script": "script.js?v=20260703-cachefix-1",
-    "theme": "tv-theme.css?v=20260703-cachefix-1"
+    "styles": "styles.css?v=20260703-imgopt-1",
+    "script": "script.js?v=20260703-imgopt-1",
+    "theme": "tv-theme.css?v=20260703-imgopt-1"
   }
 }
