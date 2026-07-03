@@ -7890,6 +7890,16 @@ body.nav-open .nav-toggle__bars::after {
     min-height: 0;
   }
 
+  .how-command__step > img {
+    inset: 0 !important;
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+    opacity: 0.8 !important;
+    filter: saturate(1.05) contrast(1.08) brightness(0.96) !important;
+  }
+
   .how-command__step div {
     padding: 112px 24px 24px;
   }
@@ -7921,9 +7931,11 @@ body.nav-open .nav-toggle__bars::after {
   }
 
   .how-command__benefit img {
-    width: 58px;
-    height: 58px;
-    margin-left: -8px;
+    width: 52px !important;
+    height: 52px !important;
+    margin: 0 !important;
+    transform: scale(1.5) !important;
+    transform-origin: center !important;
   }
 
   .service-card {
