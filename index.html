@@ -263,46 +263,94 @@
       }
       .sp__track {
         position: relative;
-        width: 1px;
+        width: 2px;
         height: 48vh;
-        background: rgba(255,255,255,.09);
+        background: rgba(255,255,255,.07);
+        border-radius: 2px;
       }
+      /* a "kinyomtatott" fonál — rétegvonalakkal, mint a 3D nyomtatás */
       .sp__fill {
         position: absolute;
         top: 0; left: 0;
         width: 100%;
         height: 0%;
-        background: linear-gradient(180deg, rgba(0,229,255,.55) 0%, rgba(244,184,96,.55) 100%);
+        border-radius: 2px;
+        background:
+          repeating-linear-gradient(180deg, rgba(255,255,255,.4) 0 1px, transparent 1px 6px),
+          linear-gradient(180deg, rgba(108,176,216,.75) 0%, #f4b860 100%);
+        box-shadow: 0 0 12px rgba(244,184,96,.35);
         will-change: height;
         transition: height .12s linear;
       }
+      /* nyomtatófej: izzó orb pulzáló gyűrűvel */
       .sp__orb {
         position: absolute;
         left: 50%;
         top: 0%;
         transform: translate(-50%, -50%);
-        width: 5px;
-        height: 5px;
+        width: 9px;
+        height: 9px;
         border-radius: 50%;
-        background: #f4b860;
-        box-shadow: 0 0 0 1.5px rgba(244,184,96,.25), 0 0 8px rgba(244,184,96,.5);
+        background: radial-gradient(circle at 40% 35%, #ffe2b0, #f4b860 60%, #e0913a);
+        box-shadow: 0 0 0 2.5px rgba(244,184,96,.2), 0 0 16px rgba(244,184,96,.9);
         will-change: top;
         transition: top .12s linear;
-        z-index: 2;
+        z-index: 3;
       }
-      /* tick marks */
+      .sp__orb::after {
+        content: '';
+        position: absolute; inset: -7px;
+        border-radius: 50%;
+        border: 1px solid rgba(244,184,96,.45);
+        animation: sp-ping 2.2s ease-out infinite;
+      }
+      @keyframes sp-ping {
+        0%   { transform: scale(.5); opacity: 1; }
+        100% { transform: scale(1.7); opacity: 0; }
+      }
+      /* élő százalék-kijelzés a fej mellett */
+      .sp__pct {
+        position: absolute;
+        left: 16px;
+        top: 0%;
+        transform: translateY(-50%);
+        font-family: var(--font-ui);
+        font-size: .58rem;
+        font-weight: 700;
+        letter-spacing: .12em;
+        color: rgba(244,184,96,.9);
+        text-shadow: 0 0 10px rgba(244,184,96,.45);
+        white-space: nowrap;
+        transition: top .12s linear;
+        pointer-events: none;
+        z-index: 3;
+      }
+      /* tick marks: pontok, teljesítve arany izzással */
       .sp__mark {
         position: absolute;
         left: 50%;
         transform: translate(-50%, -50%);
         width: 7px;
-        height: 1px;
-        background: rgba(255,255,255,.18);
+        height: 7px;
+        border-radius: 50%;
+        border: none;
+        padding: 0;
+        background: rgba(255,255,255,.14);
         cursor: pointer;
-        z-index: 1;
-        transition: background .3s;
+        z-index: 2;
+        transition: background .3s, box-shadow .3s, transform .25s;
       }
-      .sp__mark--passed { background: rgba(244,184,96,.4); }
+      .sp__mark:hover { transform: translate(-50%, -50%) scale(1.45); }
+      .sp__mark--passed {
+        background: #f4b860;
+        box-shadow: 0 0 10px rgba(244,184,96,.6);
+      }
+      /* az aktuális szekció címkéje mindig látszik */
+      .sp__mark--active::after {
+        opacity: 1 !important;
+        color: rgba(244,184,96,.92) !important;
+        transform: translateY(-50%) translateX(0) !important;
+      }
       /* section label — appears to the right on hover */
       .sp__mark::after {
         content: attr(data-label);
@@ -328,6 +376,695 @@
       .sp:hover .sp__mark--passed::after { color: rgba(244,184,96,.65); }
       .sp__mark:hover::after {
         color: rgba(244,184,96,.9) !important;
+      }
+
+      /* ── Vélemények polish ─────────────────────────────────────── */
+      .customer-reviews__rating {
+        display: inline-flex; align-items: center; gap: 12px;
+        margin: 20px auto 0; padding: 8px 20px; border-radius: 999px;
+        border: 1px solid rgba(244,184,96,.3);
+        background: rgba(244,184,96,.06);
+        font-family: var(--font-ui); font-size: .8rem; font-weight: 600;
+        letter-spacing: .04em; color: #f2ecdf;
+      }
+      .customer-reviews__rating i {
+        font-style: normal; color: #f4b860; letter-spacing: .12em;
+        text-shadow: 0 0 14px rgba(244,184,96,.5);
+      }
+      .customer-review-card {
+        border: 1px solid rgba(255,255,255,.08) !important;
+        border-radius: 18px !important;
+        background: linear-gradient(160deg, rgba(15,19,28,.6), rgba(8,12,20,.78)) !important;
+        box-shadow: 0 24px 56px -28px rgba(0,0,0,.7) !important;
+        transition: border-color .28s ease, transform .28s ease, box-shadow .28s ease !important;
+      }
+      .customer-review-card:hover {
+        border-color: rgba(244,184,96,.34) !important;
+        transform: translateY(-4px);
+        box-shadow: 0 34px 70px -28px rgba(0,0,0,.85) !important;
+      }
+      .customer-review-card__stars .icon {
+        color: #f4b860 !important;
+        filter: drop-shadow(0 0 6px rgba(244,184,96,.4));
+      }
+
+      /* ── Kategória kártyák: arany hover derengés ───────────────── */
+      .category-card:hover {
+        box-shadow: 0 24px 60px -24px rgba(0,0,0,.8), 0 0 44px -8px rgba(244,184,96,.2) !important;
+        border-color: rgba(244,184,96,.32) !important;
+      }
+
+      /* ── Hogyan jut el hozzád: fejezet-look + felizzó lépések ──── */
+      .how-command__header h2 span {
+        color: #f4b860 !important; font-style: italic !important; font-weight: 500 !important;
+        text-shadow: 0 0 26px rgba(244,184,96,.35) !important;
+      }
+      .how-command__step {
+        position: relative !important; overflow: hidden !important;
+        transition: transform .25s ease, border-color .5s ease, box-shadow .5s ease !important;
+      }
+      /* óriás kontúros lépésszám a kártya sarkában (JS szúrja be) */
+      .hc-num {
+        position: absolute; top: -14px; right: 8px; z-index: 1;
+        font-family: var(--font-display); font-size: 4.6rem; font-weight: 600; line-height: 1;
+        color: transparent;
+        -webkit-text-stroke: 1.5px rgba(255,255,255,.1);
+        pointer-events: none; user-select: none;
+        transition: -webkit-text-stroke-color .6s ease;
+      }
+      .how-command__step h3 {
+        font-family: var(--font-display) !important; font-weight: 600 !important;
+        font-size: 1.32rem !important; letter-spacing: -.01em !important;
+        line-height: 1.2 !important;
+        color: #f2ecdf !important;
+      }
+      .how-command__step p {
+        font-family: var(--font-ui) !important;
+        font-size: .88rem !important; line-height: 1.7 !important;
+        color: rgba(255,255,255,.55) !important;
+      }
+      .how-command__step:hover { transform: translateY(-4px); }
+      /* szekvenciális felvillanás görgetéskor — a keret visszatér az alapszínre */
+      .how-command__step.hc-lit {
+        animation: hc-flash 1.5s ease-out 1;
+      }
+      .how-command__step.hc-lit .hc-num {
+        -webkit-text-stroke-color: rgba(244,184,96,.35);
+      }
+      @keyframes hc-flash {
+        0%   { box-shadow: 0 0 0 0 rgba(244,184,96,.45); }
+        30%  { border-color: rgba(244,184,96,.6); }
+        100% { box-shadow: 0 0 0 28px rgba(244,184,96,0); }
+      }
+      .how-command__step:hover {
+        border-color: rgba(244,184,96,.45) !important;
+        box-shadow: 0 24px 56px -24px rgba(0,0,0,.8), 0 0 34px -8px rgba(244,184,96,.2) !important;
+      }
+
+      /* Miért különleges? — arany divider + kártya hover */
+      .how-command__divider strong {
+        font-family: var(--font-display) !important; font-style: italic !important;
+        font-weight: 500 !important; color: #f4b860 !important;
+        text-shadow: 0 0 20px rgba(244,184,96,.3) !important;
+      }
+      .how-command__divider span {
+        background: linear-gradient(90deg, transparent, rgba(244,184,96,.45)) !important;
+      }
+      .how-command__divider span:last-child {
+        background: linear-gradient(90deg, rgba(244,184,96,.45), transparent) !important;
+      }
+      .how-command__benefit {
+        transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease !important;
+      }
+      .how-command__benefit:hover {
+        transform: translateY(-3px);
+        border-color: rgba(244,184,96,.35) !important;
+        box-shadow: 0 20px 48px -20px rgba(0,0,0,.75), 0 0 28px -8px rgba(244,184,96,.16) !important;
+      }
+      .how-command__benefit h3 { color: #f4b860 !important; }
+      @media (prefers-reduced-motion: reduce) {
+        .how-command__step.hc-lit { animation: none; }
+      }
+
+      /* ── Záró CTA band ─────────────────────────────────────────── */
+      .ix-cta { padding: 30px 0 110px; position: relative; z-index: 1; }
+      .ix-cta__shell { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+      .ix-cta__band {
+        position: relative; text-align: center;
+        padding: clamp(48px, 6vw, 80px) clamp(24px, 5vw, 60px);
+        border: 1px solid rgba(244,184,96,.22);
+        border-radius: 24px; overflow: hidden;
+        background:
+          radial-gradient(ellipse at 50% 0%, rgba(244,184,96,.15), transparent 62%),
+          linear-gradient(180deg, rgba(20,22,28,.9), rgba(8,12,20,.92));
+        box-shadow: 0 40px 90px -40px rgba(0,0,0,.9);
+      }
+      .ix-cta__band h2 {
+        font-family: var(--font-display); font-weight: 600; color: #f2ecdf;
+        font-size: clamp(2rem, 4.4vw, 3.1rem); line-height: 1.08;
+        letter-spacing: -.015em; margin: 0 0 16px;
+      }
+      .ix-cta__band h2 span { color: #f4b860; font-style: italic; font-weight: 500; }
+      .ix-cta__band > p { max-width: 560px; margin: 0 auto 30px; color: #cfc9bd; line-height: 1.72; }
+      .ix-cta__actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+      .ix-cta__trust {
+        display: flex; flex-wrap: wrap; gap: 10px 28px; justify-content: center;
+        margin-top: 36px; padding-top: 26px;
+        border-top: 1px solid rgba(244,184,96,.14);
+      }
+      .ix-cta__trust span {
+        display: inline-flex; align-items: center; gap: 7px;
+        font-family: var(--font-ui); font-size: .74rem; font-weight: 600;
+        letter-spacing: .04em; color: rgba(255,255,255,.62);
+      }
+      .ix-cta__trust .icon { width: 14px; height: 14px; color: #f4b860; flex: 0 0 auto; }
+
+      /* ── Stats: egységes háttér + arany/kék arculat ────────────── */
+      .stats { background: none !important; box-shadow: none !important; }
+      .stats::before, .stats::after { display: none !important; }
+      .stats__shell::before {
+        content: ''; position: absolute; top: -30px; left: 50%;
+        transform: translateX(-50%);
+        width: 680px; height: 360px; border-radius: 50%;
+        background: radial-gradient(closest-side, rgba(244,184,96,.1), transparent 70%);
+        filter: blur(54px); z-index: -1; pointer-events: none;
+      }
+      .stats__eyebrow {
+        display: inline-flex !important; align-items: center !important; gap: .7em !important;
+        padding: 0 !important; border: none !important; border-radius: 0 !important;
+        background: none !important; box-shadow: none !important; min-height: auto !important;
+        font-family: var(--font-ui) !important; font-size: .72rem !important; font-weight: 600 !important;
+        letter-spacing: .26em !important; text-transform: uppercase !important;
+        color: #f4b860 !important; margin: 0 0 18px !important;
+      }
+      .stats__eyebrow span { display: none !important; }
+      .stats__eyebrow::before {
+        content: "" !important; display: block !important;
+        width: 26px !important; height: 1px !important;
+        background: linear-gradient(90deg, #f4b860, transparent) !important;
+        flex-shrink: 0 !important;
+      }
+      .stats__header h2 { font-family: var(--font-display) !important; }
+      .stats__header h2 span {
+        color: #f4b860 !important; font-style: italic !important; font-weight: 500 !important;
+        text-shadow: 0 0 26px rgba(244,184,96,.35) !important;
+      }
+      .stats__item {
+        border: 1px solid rgba(244,184,96,.16) !important;
+        border-radius: 20px !important;
+        background: linear-gradient(160deg, rgba(15,19,28,.6), rgba(8,12,20,.78)) !important;
+        box-shadow: 0 24px 56px -28px rgba(0,0,0,.7) !important;
+      }
+      .stats__item:hover {
+        border-color: rgba(244,184,96,.42) !important;
+        box-shadow: 0 34px 70px -28px rgba(0,0,0,.85), 0 0 34px -8px rgba(244,184,96,.2) !important;
+      }
+      .stats__badge {
+        border-color: rgba(108,176,216,.35) !important;
+        background:
+          radial-gradient(circle at 50% 30%, rgba(108,176,216,.14), transparent 70%),
+          rgba(2,8,18,.6) !important;
+        box-shadow: 0 0 0 6px rgba(108,176,216,.05), 0 0 24px rgba(108,176,216,.14) !important;
+      }
+      .stats__item:hover .stats__badge {
+        border-color: rgba(108,176,216,.6) !important;
+        box-shadow: 0 0 0 6px rgba(108,176,216,.09), 0 0 32px rgba(108,176,216,.24) !important;
+      }
+      .stats__icon {
+        color: #6cb0d8 !important;
+        filter: drop-shadow(0 0 8px rgba(108,176,216,.4)) !important;
+      }
+      .stats__num { text-shadow: 0 0 24px rgba(244,184,96,.25) !important; }
+      .stats__plus { color: #f4b860 !important; }
+
+      /* ── CTA szekció: a régi #contact háttér semlegesítése ─────── */
+      #contact, .ix-cta {
+        background: none !important;
+        background-image: none !important;
+        background-color: transparent !important;
+        box-shadow: none !important;
+      }
+
+      /* ── CTA band: lélegző fény-orbok ──────────────────────────── */
+      .ix-cta__band::before, .ix-cta__band::after {
+        content: ''; position: absolute; border-radius: 50%;
+        pointer-events: none; filter: blur(48px); z-index: 0;
+      }
+      .ix-cta__band::before {
+        top: -90px; left: -70px; width: 320px; height: 320px;
+        background: radial-gradient(closest-side, rgba(244,184,96,.2), transparent 70%);
+        animation: ix-orb 11s ease-in-out infinite;
+      }
+      .ix-cta__band::after {
+        bottom: -100px; right: -80px; width: 360px; height: 360px;
+        background: radial-gradient(closest-side, rgba(108,176,216,.16), transparent 70%);
+        animation: ix-orb 14s ease-in-out infinite reverse;
+      }
+      @keyframes ix-orb {
+        0%, 100% { transform: translate(0, 0); }
+        50%      { transform: translate(22px, 16px); }
+      }
+      .ix-cta__band > * { position: relative; z-index: 1; }
+      @media (prefers-reduced-motion: reduce) {
+        .ix-cta__band::before, .ix-cta__band::after { animation: none; }
+      }
+
+      /* ── Fotóból lámpa: transzformációs színpad ────────────────── */
+      .ppx {
+        display: grid;
+        grid-template-columns: minmax(300px, 420px) 1fr;
+        gap: clamp(28px, 4vw, 64px);
+        align-items: center;
+        margin-top: 44px;
+      }
+      @media (max-width: 900px) {
+        .ppx { grid-template-columns: 1fr; gap: 24px; }
+        .ppx__stage { order: -1; }
+      }
+      .ppx__list { display: grid; gap: 8px; }
+      .ppx__step {
+        position: relative;
+        display: grid; grid-template-columns: auto 1fr; gap: 18px;
+        align-items: start; text-align: left;
+        padding: 18px 20px 24px;
+        border-radius: 16px;
+        background: none; border: 1px solid transparent;
+        cursor: pointer;
+        transition: background .3s, border-color .3s;
+      }
+      .ppx__step:hover { background: rgba(255,255,255,.03); }
+      .ppx__step.is-on {
+        background: rgba(10,16,28,.55);
+        border-color: rgba(0,229,255,.18);
+      }
+      .ppx__step:last-child.is-on { border-color: rgba(244,184,96,.3); }
+      .ppx__num {
+        font-family: var(--font-display);
+        font-size: 1.7rem; font-weight: 600; line-height: 1.05;
+        color: transparent;
+        -webkit-text-stroke: 1px rgba(255,255,255,.25);
+        transition: color .35s, -webkit-text-stroke-color .35s;
+      }
+      .ppx__step.is-on .ppx__num { color: #00e5ff; -webkit-text-stroke-color: transparent; }
+      .ppx__step:last-child.is-on .ppx__num { color: #f4b860; }
+      .ppx__body strong {
+        display: block;
+        font-family: var(--font-display);
+        font-size: 1.18rem; font-weight: 600;
+        color: rgba(255,255,255,.9);
+        margin-bottom: 5px;
+        transition: color .3s;
+      }
+      .ppx__step.is-on .ppx__body strong { color: #fff; }
+      .ppx__body small {
+        display: block;
+        font-family: var(--font-ui);
+        font-size: .84rem; line-height: 1.62;
+        color: rgba(255,255,255,.46);
+      }
+      /* story-szerű progress csík az aktív lépés alján */
+      .ppx__bar {
+        position: absolute; left: 20px; right: 20px; bottom: 11px;
+        height: 2px; border-radius: 2px; overflow: hidden;
+        background: rgba(255,255,255,.08);
+        opacity: 0; transition: opacity .3s;
+        display: block; font-style: normal;
+      }
+      .ppx__step.is-on .ppx__bar { opacity: 1; }
+      .ppx__bar i {
+        display: block; height: 100%; width: 0;
+        background: linear-gradient(90deg, #00e5ff, #f4b860);
+      }
+      .ppx__step.is-on .ppx__bar i { animation: ppx-bar 4.2s linear forwards; }
+      @keyframes ppx-bar { to { width: 100%; } }
+
+      /* a színpad */
+      .ppx__stage {
+        position: relative;
+        aspect-ratio: 4 / 3;
+        border-radius: 20px; overflow: hidden;
+        border: 1px solid rgba(255,255,255,.09);
+        background: rgba(4,10,20,.6);
+        box-shadow: 0 40px 80px -32px rgba(0,0,0,.85);
+        transition: box-shadow .9s ease, border-color .9s ease;
+      }
+      .ppx__stage.is-lamp {
+        border-color: rgba(244,184,96,.35);
+        box-shadow: 0 40px 80px -32px rgba(0,0,0,.85), 0 0 90px -14px rgba(255,196,110,.4);
+      }
+      .ppx__img {
+        position: absolute; inset: 0;
+        width: 100%; height: 100%; object-fit: cover;
+        opacity: 0; transition: opacity .65s ease;
+      }
+      .ppx__img.is-on { opacity: 1; }
+      .ppx__img--lamp { filter: brightness(.3) saturate(.65); }
+      .ppx__img--lamp.is-on { animation: ppx-lamp-on 1.9s ease-out .3s forwards; }
+      /* valósághű felkapcsolás: villan, megbicsaklik, bemelegszik */
+      @keyframes ppx-lamp-on {
+        0%   { filter: brightness(.3)  saturate(.65); }
+        16%  { filter: brightness(.88) saturate(.95); }
+        24%  { filter: brightness(.38) saturate(.7); }
+        36%  { filter: brightness(1.02) saturate(1.05); }
+        44%  { filter: brightness(.72) saturate(.9); }
+        58%  { filter: brightness(1.05) saturate(1.08); }
+        100% { filter: brightness(1.07) saturate(1.1); }
+      }
+      .ppx__tag {
+        position: absolute; top: 14px; left: 14px; z-index: 2;
+        display: inline-flex; align-items: center; gap: 7px;
+        padding: 6px 14px; border-radius: 999px;
+        background: rgba(4,9,15,.66); backdrop-filter: blur(8px);
+        border: 1px solid rgba(0,229,255,.3);
+        font-family: var(--font-ui); font-size: .68rem; font-weight: 700;
+        letter-spacing: .14em; text-transform: uppercase;
+        color: #00e5ff;
+        transition: color .4s, border-color .4s;
+      }
+      .ppx__tag.is-warm { color: #f4b860; border-color: rgba(244,184,96,.42); }
+      .ppx__count {
+        position: absolute; bottom: 12px; right: 14px; z-index: 2;
+        font-family: var(--font-ui); font-size: .66rem; font-weight: 600;
+        letter-spacing: .12em; color: rgba(255,255,255,.55);
+        background: rgba(4,9,15,.6); backdrop-filter: blur(8px);
+        border-radius: 999px; padding: 4px 11px;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .ppx__img--lamp { filter: none; }
+        .ppx__img--lamp.is-on { animation: none; }
+        .ppx__step.is-on .ppx__bar i { animation: none; width: 100%; }
+      }
+
+      /* ── Layero Kör (community) turbó ──────────────────────────── */
+      .community__header h2 span {
+        color: #f4b860 !important; font-style: italic !important; font-weight: 500 !important;
+        text-shadow: 0 0 26px rgba(244,184,96,.35) !important;
+      }
+      .community__signup {
+        border: 1px solid rgba(244,184,96,.22) !important;
+        border-radius: 22px !important;
+        background:
+          radial-gradient(ellipse at 18% 0%, rgba(244,184,96,.1), transparent 60%),
+          linear-gradient(160deg, rgba(15,19,28,.72), rgba(8,12,20,.86)) !important;
+        box-shadow: 0 30px 64px -30px rgba(0,0,0,.8) !important;
+      }
+      .community__signup-title { font-family: var(--font-display) !important; color: #f2ecdf !important; }
+      .community__signup-title .icon { color: #f4b860 !important; }
+      .community__signup-copy { color: #cfc9bd !important; }
+      .community__perks {
+        list-style: none; margin: 20px 0 24px; padding: 0;
+        display: grid; gap: 11px;
+      }
+      .community__perks li {
+        display: flex; align-items: flex-start; gap: 10px;
+        font-family: var(--font-ui); font-size: .85rem; line-height: 1.5;
+        color: rgba(255,255,255,.62);
+      }
+      .community__perks .icon {
+        width: 15px; height: 15px; flex: 0 0 auto; margin-top: 2px;
+        color: #f4b860;
+      }
+      .community__perks b { color: #f4b860; font-weight: 700; }
+      .community__field {
+        border: 1px solid rgba(255,255,255,.14) !important;
+        background: rgba(6,10,18,.55) !important;
+        border-radius: 12px !important;
+        transition: border-color .2s, box-shadow .2s !important;
+      }
+      .community__field:focus-within {
+        border-color: rgba(244,184,96,.5) !important;
+        box-shadow: 0 0 0 3px rgba(244,184,96,.1) !important;
+      }
+      .community__field .icon { color: rgba(244,184,96,.7) !important; }
+      .community__submit {
+        background: linear-gradient(180deg, #f4b860, #e0913a) !important;
+        color: #2a1c08 !important; border: none !important;
+        border-radius: 999px !important; font-weight: 700 !important;
+        box-shadow: 0 8px 30px -8px rgba(244,184,96,.55) !important;
+        transition: box-shadow .25s, transform .25s !important;
+      }
+      .community__submit:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 14px 38px -8px rgba(244,184,96,.8) !important;
+      }
+      .community__privacy { color: rgba(255,255,255,.4) !important; }
+      .community__privacy .icon { color: #f4b860 !important; }
+
+      /* előny kártyák */
+      .community__benefit {
+        border: 1px solid rgba(255,255,255,.08) !important;
+        border-radius: 20px !important;
+        background: linear-gradient(160deg, rgba(15,19,28,.6), rgba(8,12,20,.78)) !important;
+        transition: border-color .28s, transform .28s, box-shadow .28s !important;
+      }
+      .community__benefit:hover {
+        transform: translateY(-4px);
+        border-color: rgba(244,184,96,.34) !important;
+        box-shadow: 0 26px 56px -26px rgba(0,0,0,.85), 0 0 30px -8px rgba(244,184,96,.16) !important;
+      }
+      .community__benefit h3 { font-family: var(--font-display) !important; color: #f2ecdf !important; }
+      .community__benefit p { color: rgba(255,255,255,.5) !important; }
+      .community__benefit-icon {
+        border: 1px solid rgba(244,184,96,.4) !important;
+        background: radial-gradient(circle at 50% 30%, rgba(244,184,96,.14), transparent 70%), rgba(2,8,18,.6) !important;
+        box-shadow: 0 0 22px rgba(244,184,96,.14) !important;
+        color: #f4b860 !important;
+      }
+      .community__benefit:nth-child(2) .community__benefit-icon {
+        border-color: rgba(108,176,216,.4) !important;
+        background: radial-gradient(circle at 50% 30%, rgba(108,176,216,.14), transparent 70%), rgba(2,8,18,.6) !important;
+        box-shadow: 0 0 22px rgba(108,176,216,.16) !important;
+        color: #6cb0d8 !important;
+      }
+
+      /* ízelítő sáv */
+      .community__teaser {
+        border: 1px solid rgba(108,176,216,.2) !important;
+        border-radius: 20px !important;
+        background: linear-gradient(160deg, rgba(15,19,28,.55), rgba(8,12,20,.72)) !important;
+      }
+      .community__teaser-label { color: #f4b860 !important; font-family: var(--font-ui) !important; }
+      .community__teaser-label .icon { color: #f4b860 !important; }
+      .community__teaser-track img {
+        border: 1px solid rgba(255,255,255,.07);
+        transition: transform .35s ease, border-color .35s ease;
+      }
+      .community__teaser-track img:hover {
+        transform: scale(1.04);
+        border-color: rgba(244,184,96,.4);
+      }
+      .community__teaser-next {
+        border-color: rgba(244,184,96,.35) !important;
+        color: #f4b860 !important;
+        transition: background .2s, box-shadow .2s !important;
+      }
+      .community__teaser-next:hover {
+        background: rgba(244,184,96,.14) !important;
+        box-shadow: 0 0 20px rgba(244,184,96,.25) !important;
+      }
+
+      /* nagy alsó CTA gomb */
+      .community__cta {
+        background: linear-gradient(180deg, #f4b860, #e0913a) !important;
+        color: #2a1c08 !important; border: none !important;
+        box-shadow: 0 8px 30px -8px rgba(244,184,96,.55) !important;
+        transition: box-shadow .25s, transform .25s !important;
+      }
+      .community__cta:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 16px 42px -8px rgba(244,184,96,.8) !important;
+      }
+      .community__cta .icon { color: #2a1c08 !important; }
+
+      /* ── Footer profi ──────────────────────────────────────────── */
+      .site-footer {
+        position: relative;
+        background: linear-gradient(180deg, rgba(2,8,18,0) 0%, rgba(4,9,15,.75) 30%, rgba(2,6,12,.95) 100%) !important;
+        border-top: none !important;
+      }
+      .site-footer::before {
+        content: ''; position: absolute; top: 0; left: 50%;
+        transform: translateX(-50%);
+        width: min(1100px, 86%); height: 1px;
+        background: linear-gradient(90deg, transparent, rgba(244,184,96,.45), transparent);
+      }
+      .site-footer::after {
+        content: ''; position: absolute; top: -40px; left: 50%;
+        transform: translateX(-50%);
+        width: min(560px, 88vw); height: 200px; border-radius: 50%;
+        background: radial-gradient(closest-side, rgba(244,184,96,.07), transparent 70%);
+        filter: blur(40px); pointer-events: none;
+      }
+      .footer__grid { position: relative; z-index: 1; }
+      .footer__brand p { color: #cfc9bd !important; }
+      .footer__brand .btn {
+        border-color: rgba(244,184,96,.4) !important;
+        color: #f4b860 !important;
+        transition: background .2s, box-shadow .2s, transform .2s !important;
+      }
+      .footer__brand .btn:hover {
+        background: rgba(244,184,96,.1) !important;
+        box-shadow: 0 0 24px -4px rgba(244,184,96,.3) !important;
+        transform: translateY(-2px);
+      }
+      .footer__links h2, .footer__contact h2 {
+        color: #f4b860 !important;
+        font-family: var(--font-ui) !important;
+        letter-spacing: .2em !important;
+      }
+      .footer__links a, .footer__contact > a {
+        color: rgba(255,255,255,.55) !important;
+        transition: color .2s ease, transform .2s ease !important;
+      }
+      .footer__links a:hover, .footer__contact > a:hover {
+        color: #f4b860 !important;
+        transform: translateX(3px);
+      }
+      .footer__contact span { color: rgba(255,255,255,.45) !important; }
+      .footer__contact .socials a {
+        border-color: rgba(255,255,255,.14) !important;
+        color: rgba(255,255,255,.6) !important;
+        transition: border-color .2s, color .2s, transform .2s, box-shadow .2s !important;
+      }
+      .footer__contact .socials a:hover {
+        border-color: rgba(244,184,96,.5) !important;
+        color: #f4b860 !important;
+        transform: translateY(-2px);
+        box-shadow: 0 0 18px rgba(244,184,96,.2) !important;
+      }
+      .footer__bottom { position: relative; z-index: 1; color: rgba(255,255,255,.35) !important; }
+      .footer__bottom a { transition: color .2s !important; }
+      .footer__bottom a:hover { color: #f4b860 !important; }
+
+      /* ── Newsletter FAB (lebegő címke) ─────────────────────────── */
+      .newsletter-fab {
+        border: 1px solid rgba(244,184,96,.42) !important;
+        background: linear-gradient(160deg, rgba(22,24,30,.97), rgba(8,12,20,.97)) !important;
+        border-radius: 999px !important;
+        box-shadow: 0 18px 44px -12px rgba(0,0,0,.8), 0 0 26px -6px rgba(244,184,96,.35) !important;
+        backdrop-filter: blur(10px) !important;
+        animation: fab-breathe 3.2s ease-in-out infinite;
+        transition: transform .25s ease, box-shadow .25s ease !important;
+      }
+      .newsletter-fab:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 24px 54px -12px rgba(0,0,0,.85), 0 0 44px -4px rgba(244,184,96,.55) !important;
+        animation-play-state: paused;
+      }
+      @keyframes fab-breathe {
+        0%, 100% { box-shadow: 0 18px 44px -12px rgba(0,0,0,.8), 0 0 22px -6px rgba(244,184,96,.3); }
+        50%      { box-shadow: 0 18px 44px -12px rgba(0,0,0,.8), 0 0 40px -4px rgba(244,184,96,.55); }
+      }
+      .newsletter-fab__icon {
+        background: linear-gradient(180deg, #f4b860, #e0913a) !important;
+        border: none !important;
+        color: #2a1c08 !important;
+        box-shadow: 0 6px 18px -4px rgba(244,184,96,.5) !important;
+      }
+      .newsletter-fab__icon .icon { color: #2a1c08 !important; }
+      .newsletter-fab strong { color: #f4b860 !important; }
+      .newsletter-fab small { color: rgba(255,255,255,.45) !important; }
+
+      /* ── Newsletter modal wow ──────────────────────────────────── */
+      .newsletter-modal__panel {
+        border: 1px solid rgba(244,184,96,.28) !important;
+        border-radius: 24px !important;
+        box-shadow: 0 60px 130px -40px rgba(0,0,0,.95), 0 0 90px -24px rgba(244,184,96,.2) !important;
+        overflow: hidden !important;
+      }
+      .newsletter-modal__visual {
+        background:
+          radial-gradient(ellipse at 50% 40%, rgba(244,184,96,.14), transparent 65%),
+          linear-gradient(160deg, rgba(15,19,28,.9), rgba(6,10,18,.95)) !important;
+      }
+      .newsletter-modal__visual .icon {
+        color: #f4b860 !important;
+        filter: drop-shadow(0 0 18px rgba(244,184,96,.5));
+        animation: nl-mail-float 5s ease-in-out infinite;
+      }
+      @keyframes nl-mail-float {
+        0%, 100% { transform: translateY(0); }
+        50%      { transform: translateY(-8px); }
+      }
+      .newsletter-modal__visual span {
+        border: 1px solid rgba(244,184,96,.5) !important;
+        color: #f4b860 !important;
+        background: rgba(244,184,96,.08) !important;
+        letter-spacing: .22em !important;
+        animation: nl-code-glow 2.8s ease-in-out infinite;
+      }
+      @keyframes nl-code-glow {
+        0%, 100% { box-shadow: 0 0 12px rgba(244,184,96,.15); }
+        50%      { box-shadow: 0 0 26px rgba(244,184,96,.45); }
+      }
+      .newsletter-modal__copy .eyebrow { color: #f4b860 !important; }
+      .newsletter-modal__copy h2 { font-family: var(--font-display) !important; }
+      .newsletter-modal__copy h2 span {
+        color: #f4b860 !important; font-style: italic !important; font-weight: 500 !important;
+        text-shadow: 0 0 24px rgba(244,184,96,.35) !important;
+      }
+      .newsletter-form input[type="text"],
+      .newsletter-form input[type="email"] {
+        border: 1px solid rgba(255,255,255,.14) !important;
+        border-radius: 12px !important;
+        background: rgba(6,10,18,.55) !important;
+        color: #f2ecdf !important;
+        transition: border-color .2s, box-shadow .2s !important;
+      }
+      .newsletter-form input[type="text"]:focus,
+      .newsletter-form input[type="email"]:focus {
+        border-color: rgba(244,184,96,.5) !important;
+        box-shadow: 0 0 0 3px rgba(244,184,96,.1) !important;
+        outline: none !important;
+      }
+      .newsletter-form__consent input[type="checkbox"] { accent-color: #f4b860 !important; }
+      .newsletter-form .btn--primary {
+        background: linear-gradient(180deg, #f4b860, #e0913a) !important;
+        color: #2a1c08 !important; border: none !important;
+        box-shadow: 0 8px 30px -8px rgba(244,184,96,.55) !important;
+        transition: box-shadow .25s, transform .25s !important;
+      }
+      .newsletter-form .btn--primary:hover {
+        transform: translateY(-1px);
+        box-shadow: 0 14px 40px -8px rgba(244,184,96,.8) !important;
+      }
+      .newsletter-form .btn--primary .icon { color: #2a1c08 !important; }
+      .newsletter-modal__close:hover { color: #f4b860 !important; border-color: rgba(244,184,96,.4) !important; }
+      .newsletter-success__code {
+        border: 1px dashed rgba(244,184,96,.55) !important;
+        color: #f4b860 !important;
+        background: rgba(244,184,96,.07) !important;
+        letter-spacing: .24em !important;
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .newsletter-fab, .newsletter-modal__visual .icon, .newsletter-modal__visual span { animation: none !important; }
+      }
+
+      /* ── Scroll reveal ─────────────────────────────────────────── */
+      .ixr {
+        opacity: 0; transform: translateY(24px);
+        transition: opacity .7s ease, transform .7s cubic-bezier(.22,.9,.3,1);
+      }
+      .ixr.is-in { opacity: 1; transform: none; }
+      @media (prefers-reduced-motion: reduce) {
+        .ixr { opacity: 1; transform: none; transition: none; }
+      }
+
+      /* ── Mobil finomhangolás ───────────────────────────────────── */
+      @media (max-width: 640px) {
+        /* rendelési lépések: kisebb ghost szám, ne érjen a szövegbe */
+        .hc-num { font-size: 3.2rem; top: -10px; right: 6px; }
+
+        /* ppx színpad: kompaktabb lépések */
+        .ppx { margin-top: 28px; gap: 18px; }
+        .ppx__step { padding: 13px 14px 20px; gap: 12px; }
+        .ppx__num { font-size: 1.3rem; }
+        .ppx__body strong { font-size: 1.02rem; }
+        .ppx__body small { font-size: .8rem; }
+        .ppx__bar { left: 14px; right: 14px; bottom: 9px; }
+
+        /* értékelés badge: férjen el egy sorban */
+        .customer-reviews__rating {
+          font-size: .68rem; padding: 7px 14px; gap: 8px;
+          text-align: center;
+        }
+
+        /* stats: kisebb derengés */
+        .stats__shell::before { width: 90vw; }
+
+        /* CTA band: szellősebb trust sor, kisebb orbok */
+        .ix-cta { padding-bottom: 80px; }
+        .ix-cta__band { border-radius: 20px; }
+        .ix-cta__trust { gap: 9px 18px; margin-top: 28px; padding-top: 22px; }
+        .ix-cta__band::before { width: 220px; height: 220px; top: -70px; left: -60px; }
+        .ix-cta__band::after { width: 240px; height: 240px; bottom: -80px; right: -70px; }
+
+        /* community: perk lista kompaktabb */
+        .community__perks { margin: 16px 0 20px; gap: 9px; }
+        .community__perks li { font-size: .8rem; }
+
+        /* footer hairline teljes szélesség */
+        .site-footer::before { width: 90%; }
       }
     </style>
   </head>
@@ -547,7 +1284,7 @@
         <span class="page-decor__item page-decor__item--vortex"></span>
         <span class="page-decor__item page-decor__item--ribbon"></span>
       </div>
-      <section class="hero" aria-labelledby="hero-title">
+      <section class="hero" id="hero" aria-labelledby="hero-title">
         <div class="hero__bg" aria-hidden="true"></div>
         <div class="hero__shade" aria-hidden="true"></div>
 
@@ -693,47 +1430,41 @@
             <p>Így alakul át egy emlék személyre szabott, világító ajándékká.</p>
           </div>
 
-          <div class="photo-process__steps" aria-label="Fotóból kész lámpa folyamat">
-            <article class="photo-process__card pp-anim">
-              <div class="photo-process__tag">
-                <svg class="icon" aria-hidden="true"><use href="#icon-camera"></use></svg>
-                Nyersanyag
-              </div>
-              <figure class="photo-process__media photo-process__media--photo">
-                <img src="assets/images/lamp-process/01-original-photo.webp" alt="Eredeti fotó három kutyáról karácsonyi háttér előtt" loading="lazy">
-              </figure>
-              <h3><span>1.</span> Eredeti fotó</h3>
-            </article>
+          <div class="ppx pp-anim" id="ppx" aria-label="Fotóból kész lámpa folyamat">
+            <div class="ppx__list" role="tablist" aria-label="Folyamat lépései">
+              <button class="ppx__step is-on" type="button" data-ppx="0" role="tab" aria-selected="true">
+                <span class="ppx__num" aria-hidden="true">01</span>
+                <span class="ppx__body">
+                  <strong>Az emlék</strong>
+                  <small>Egy kedves fotó, ahogy van. Nem kell tökéletesnek lennie — ebből indulunk.</small>
+                </span>
+                <i class="ppx__bar" aria-hidden="true"><i></i></i>
+              </button>
+              <button class="ppx__step" type="button" data-ppx="1" role="tab" aria-selected="false">
+                <span class="ppx__num" aria-hidden="true">02</span>
+                <span class="ppx__body">
+                  <strong>A terv</strong>
+                  <small>Kézzel dolgozzuk fel: letisztult, fényre komponált vázlat készül belőle.</small>
+                </span>
+                <i class="ppx__bar" aria-hidden="true"><i></i></i>
+              </button>
+              <button class="ppx__step" type="button" data-ppx="2" role="tab" aria-selected="false">
+                <span class="ppx__num" aria-hidden="true">03</span>
+                <span class="ppx__body">
+                  <strong>A fény</strong>
+                  <small>Rétegről rétegre nyomtatjuk — és az emlék minden este világít.</small>
+                </span>
+                <i class="ppx__bar" aria-hidden="true"><i></i></i>
+              </button>
+            </div>
 
-            <span class="photo-process__arrow pp-anim" aria-hidden="true">
-              <svg class="icon"><use href="#icon-arrow-right"></use></svg>
-            </span>
-
-            <article class="photo-process__card pp-anim">
-              <div class="photo-process__tag">
-                <svg class="icon" aria-hidden="true"><use href="#icon-pen"></use></svg>
-                Vázlat
-              </div>
-              <figure class="photo-process__media photo-process__media--sketch">
-                <img src="assets/images/lamp-process/02-processed-sketch.webp" alt="Fekete-fehér feldolgozott lámpavázlat kutyákkal" loading="lazy">
-              </figure>
-              <h3><span>2.</span> Feldolgozott vázlat</h3>
-            </article>
-
-            <span class="photo-process__arrow pp-anim" aria-hidden="true">
-              <svg class="icon"><use href="#icon-arrow-right"></use></svg>
-            </span>
-
-            <article class="photo-process__card pp-anim">
-              <div class="photo-process__tag">
-                <svg class="icon" aria-hidden="true"><use href="#icon-star"></use></svg>
-                Kész termék
-              </div>
-              <figure class="photo-process__media photo-process__media--lamp">
-                <img src="assets/images/lamp-process/03-finished-lamp.webp" alt="Elkészült világító kutyás 3D lámpa" loading="lazy">
-              </figure>
-              <h3><span>3.</span> Kinyomtatott kész lámpa</h3>
-            </article>
+            <div class="ppx__stage" id="ppx-stage">
+              <img class="ppx__img is-on" src="assets/images/lamp-process/01-original-photo.webp" alt="Eredeti fotó három kutyáról karácsonyi háttér előtt">
+              <img class="ppx__img" src="assets/images/lamp-process/02-processed-sketch.webp" alt="Fekete-fehér feldolgozott lámpavázlat kutyákkal" loading="lazy">
+              <img class="ppx__img ppx__img--lamp" src="assets/images/lamp-process/03-finished-lamp.webp" alt="Elkészült világító kutyás 3D lámpa" loading="lazy">
+              <span class="ppx__tag" id="ppx-tag">Nyersanyag</span>
+              <span class="ppx__count" id="ppx-count">1 / 3</span>
+            </div>
           </div>
 
           <a class="photo-process__cta pp-anim" href="kapcsolat.html">
@@ -774,36 +1505,36 @@
             <article class="how-command__step">
               <img src="assets/images/how-command/step-01-selection.webp" alt="" aria-hidden="true" loading="lazy">
               <div>
-                <h3>1. Választás</h3>
-                <p>Fedezd fel a lehetőségeket, és válaszd ki azt az alapot, amely legjobban illik az ötletedhez.</p>
+                <h3>Válassz irányt</h3>
+                <p>Böngéssz a termékvilágban, vagy indulj a saját ötletedből — egy kép, egy név, egy gondolat is elég.</p>
               </div>
             </article>
             <article class="how-command__step">
               <img src="assets/images/how-command/step-02-customization.webp" alt="" aria-hidden="true" loading="lazy">
               <div>
-                <h3>2. Testreszabás</h3>
-                <p>Add meg a nevet, méretet, színeket és minden fontos személyes részletet.</p>
+                <h3>Szabd magadra</h3>
+                <p>Név, méret, szín, felirat — minden részlet úgy készül, ahogy te elképzelted.</p>
               </div>
             </article>
             <article class="how-command__step">
               <img src="assets/images/how-command/step-03-confirmation.webp" alt="" aria-hidden="true" loading="lazy">
               <div>
-                <h3>3. Visszaigazolás</h3>
-                <p>Átnézzük az elképzelést, pontosítjuk a részleteket, majd visszaigazoljuk a rendelést.</p>
+                <h3>Egyeztetünk</h3>
+                <p>Átnézzük az elképzelést, pontosítjuk a részleteket — a gyártás csak akkor indul, ha minden stimmel.</p>
               </div>
             </article>
             <article class="how-command__step">
               <img src="assets/images/how-command/step-04-production.webp" alt="" aria-hidden="true" loading="lazy">
               <div>
-                <h3>4. Gyártás</h3>
-                <p>Helyi műhelyben, gondos beállításokkal és rétegről rétegre készítjük el a terméket.</p>
+                <h3>Rétegről rétegre</h3>
+                <p>Saját műhelyünkben nyomtatjuk, kézzel dolgozzuk fel és ellenőrizzük minden darabját.</p>
               </div>
             </article>
             <article class="how-command__step">
               <img src="assets/images/how-command/step-05-delivery.webp" alt="" aria-hidden="true" loading="lazy">
               <div>
-                <h3>5. Kiszállítás</h3>
-                <p>Biztonságos futárral, gondosan előkészítve érkezik meg hozzád.</p>
+                <h3>Hozzád érkezik</h3>
+                <p>Gondosan csomagolva, biztonságos futárral — országszerte, 200 lej felett ingyen.</p>
               </div>
             </article>
           </div>
@@ -846,6 +1577,7 @@
             <p class="customer-reviews__eyebrow"><span></span>Vásárlói vélemények<span></span></p>
             <h2 id="reviews-title">Akiknek már <span>formát öltött</span> az ötletük.</h2>
             <p>Rövid visszajelzések személyes ajándékokról, céges megrendelésekről és egyedi Layero tárgyakról.</p>
+            <p class="customer-reviews__rating"><i>★★★★★</i> 5.0 átlagos értékelés · 1000+ elégedett vásárló</p>
           </div>
 
           <div class="customer-reviews__grid">
@@ -896,6 +1628,46 @@
           </div>
         </div>
       </section>
+      <section class="stats" id="stats" aria-labelledby="stats-title-index">
+        <div class="stats__shell">
+          <div class="stats__header">
+            <p class="stats__eyebrow"><span></span>Eredményeink<span></span></p>
+            <h2 id="stats-title-index">Számokban is <span>mérhető tapasztalat.</span></h2>
+            <p style="margin-top:16px; color:rgba(255,255,255,.45); font-size:.92rem; max-width:520px; margin-left:auto; margin-right:auto; line-height:1.65">Számunkra a 3D nyomtatás nem kísérlet, hanem napi szintű alkotói és gyártási munka.</p>
+          </div>
+          <div class="stats__grid">
+            <article class="stats__item">
+              <span class="stats__badge">
+                <svg class="icon stats__icon" aria-hidden="true"><use href="#icon-printer"></use></svg>
+              </span>
+              <strong class="stats__num" data-count-to="20000">0</strong>
+              <span class="stats__label">Nyomtatott óra</span>
+            </article>
+            <article class="stats__item">
+              <span class="stats__badge">
+                <svg class="icon stats__icon" aria-hidden="true"><use href="#icon-package"></use></svg>
+              </span>
+              <strong class="stats__num" data-count-to="500" data-count-unit="kg">0</strong>
+              <span class="stats__label">Felhasznált anyag</span>
+            </article>
+            <article class="stats__item">
+              <span class="stats__badge">
+                <svg class="icon stats__icon" aria-hidden="true"><use href="#icon-cube"></use></svg>
+              </span>
+              <strong class="stats__num" data-count-to="5000">0</strong>
+              <span class="stats__label">Elkészült termék</span>
+            </article>
+            <article class="stats__item">
+              <span class="stats__badge">
+                <svg class="icon stats__icon" aria-hidden="true"><use href="#icon-heart"></use></svg>
+              </span>
+              <strong class="stats__num" data-count-to="1000">0</strong>
+              <span class="stats__label">Elégedett vásárló</span>
+            </article>
+          </div>
+        </div>
+      </section>
+
       <section class="community section" id="community" aria-labelledby="community-title">
         <div class="community__shell">
           <div class="community__header">
@@ -911,6 +1683,13 @@
                 <span>Csatlakozz a Layero Körhöz</span>
               </p>
               <p class="community__signup-copy">Heti inspiráció, új megjelenések, alkotói történetek és különleges ajánlatok – csak feliratkozóinknak.</p>
+
+              <ul class="community__perks">
+                <li><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg><span><b>-10% kupon</b> az első rendelésedre</span></li>
+                <li><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg><span>Elsőként látod az új alkotásokat</span></li>
+                <li><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg><span>Csak tagoknak szóló limitált ajánlatok</span></li>
+                <li><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg><span>Kulisszák mögötti műhelytartalmak</span></li>
+              </ul>
 
               <form class="community__form" data-community-form novalidate>
                 <label class="community__field">
@@ -977,7 +1756,24 @@
         </div>
       </section>
 
-
+      <section class="ix-cta" id="contact" aria-labelledby="ix-cta-title">
+        <div class="ix-cta__shell">
+          <div class="ix-cta__band">
+            <h2 id="ix-cta-title">Van egy ötleted? <span>Valósítsuk meg együtt.</span></h2>
+            <p>Akár ajándékba, akár magadnak, akár a cégednek — küldd el az elképzelésed, és pár napon belül kézzelfogható tárggyá formáljuk.</p>
+            <div class="ix-cta__actions">
+              <a class="btn btn--primary" href="egyedi-rendeles.html">Egyedi rendelés indítása <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg></a>
+              <a class="btn btn--ghost" href="kapcsolat.html">Kapcsolatfelvétel</a>
+            </div>
+            <div class="ix-cta__trust" aria-label="Garanciáink">
+              <span><svg class="icon" aria-hidden="true"><use href="#icon-shield"></use></svg>Prémium minőség</span>
+              <span><svg class="icon" aria-hidden="true"><use href="#icon-clock"></use></svg>Válasz 24 órán belül</span>
+              <span><svg class="icon" aria-hidden="true"><use href="#icon-truck"></use></svg>Ingyenes szállítás 200 lej felett</span>
+              <span><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg>Hivatalos SRL háttér</span>
+            </div>
+          </div>
+        </div>
+      </section>
 
     </main>
 
@@ -1116,6 +1912,126 @@
         items.forEach(function (el) { io.observe(el); });
       })();
 
+      /* ixr: szekció-elemek lépcsőzetes reveal animációja */
+      (function () {
+        var els = [];
+        document.querySelectorAll(
+          '.category-card, .how-command__step, .how-command__benefit, ' +
+          '.customer-review-card, .community__benefit, .stats__item, .ix-cta__band'
+        ).forEach(function (el, i) {
+          el.classList.add('ixr');
+          el.style.transitionDelay = ((i % 6) * 60) + 'ms';
+          els.push(el);
+        });
+        if ('IntersectionObserver' in window) {
+          var io2 = new IntersectionObserver(function (entries) {
+            entries.forEach(function (en) {
+              if (en.isIntersecting) {
+                en.target.classList.add('is-in');
+                io2.unobserve(en.target);
+              }
+            });
+          }, { rootMargin: '0px 0px -6% 0px', threshold: 0.05 });
+          els.forEach(function (el) { io2.observe(el); });
+        } else {
+          els.forEach(function (el) { el.classList.add('is-in'); });
+        }
+      })();
+
+      /* ppx: fotóból lámpa transzformációs színpad */
+      (function () {
+        var root = document.getElementById('ppx');
+        if (!root) return;
+        var steps = Array.prototype.slice.call(root.querySelectorAll('.ppx__step'));
+        var imgs  = Array.prototype.slice.call(root.querySelectorAll('.ppx__img'));
+        var stage = document.getElementById('ppx-stage');
+        var tag   = document.getElementById('ppx-tag');
+        var count = document.getElementById('ppx-count');
+        var TAGS  = ['Nyersanyag', 'Vázlat', 'Kész termék'];
+        var cur = 0, timer = null, DUR = 4200;
+
+        function restartBar(step) {
+          var bar = step.querySelector('.ppx__bar i');
+          if (!bar) return;
+          bar.style.animation = 'none';
+          void bar.offsetWidth;
+          bar.style.animation = '';
+          bar.style.animationPlayState = '';
+        }
+
+        function go(i) {
+          steps[cur].classList.remove('is-on');
+          steps[cur].setAttribute('aria-selected', 'false');
+          imgs[cur].classList.remove('is-on');
+          cur = ((i % steps.length) + steps.length) % steps.length;
+          steps[cur].classList.add('is-on');
+          steps[cur].setAttribute('aria-selected', 'true');
+          imgs[cur].classList.add('is-on');
+          stage.classList.toggle('is-lamp', cur === 2);
+          tag.textContent = TAGS[cur];
+          tag.classList.toggle('is-warm', cur === 2);
+          count.textContent = (cur + 1) + ' / ' + steps.length;
+          restartBar(steps[cur]);
+        }
+
+        function start() { stop(); timer = setInterval(function () { go(cur + 1); }, DUR); }
+        function stop()  { clearInterval(timer); timer = null; }
+
+        steps.forEach(function (s, i) {
+          s.addEventListener('click', function () { stop(); go(i); start(); });
+        });
+        root.addEventListener('mouseenter', function () {
+          stop();
+          var bar = steps[cur].querySelector('.ppx__bar i');
+          if (bar) bar.style.animationPlayState = 'paused';
+        });
+        root.addEventListener('mouseleave', function () {
+          restartBar(steps[cur]);
+          start();
+        });
+
+        /* csak akkor pörögjön, amikor látszik */
+        if ('IntersectionObserver' in window) {
+          var ioPpx = new IntersectionObserver(function (entries) {
+            entries.forEach(function (en) {
+              if (en.isIntersecting) { restartBar(steps[cur]); start(); }
+              else stop();
+            });
+          }, { threshold: 0.3 });
+          ioPpx.observe(root);
+        } else {
+          start();
+        }
+      })();
+
+      /* hc-lit: a rendelési lépések sorban "felgyulladnak" görgetéskor */
+      (function () {
+        var grid = document.querySelector('.how-command__steps');
+        var steps = document.querySelectorAll('.how-command__step');
+        if (!grid || !steps.length) return;
+        steps.forEach(function (s, i) {
+          var n = document.createElement('span');
+          n.className = 'hc-num';
+          n.textContent = '0' + (i + 1);
+          n.setAttribute('aria-hidden', 'true');
+          s.appendChild(n);
+        });
+        function light() {
+          steps.forEach(function (s, i) {
+            setTimeout(function () { s.classList.add('hc-lit'); }, 350 + i * 240);
+          });
+        }
+        if ('IntersectionObserver' in window) {
+          var io3 = new IntersectionObserver(function (entries) {
+            entries.forEach(function (en) {
+              if (en.isIntersecting) { io3.disconnect(); light(); }
+            });
+          }, { threshold: 0.25 });
+          io3.observe(grid);
+        } else {
+          light();
+        }
+      })();
     </script>
 
     <!-- Scroll Progress Bar -->
@@ -1123,6 +2039,7 @@
       <div class="sp__track" id="sp-track">
         <div class="sp__fill" id="sp-fill"></div>
         <div class="sp__orb"  id="sp-orb"></div>
+        <span class="sp__pct" id="sp-pct">0%</span>
       </div>
     </aside>
 
@@ -1170,6 +2087,7 @@
       }
 
       /* update fill height, orb position and passed-state on markers */
+      var pctEl = document.getElementById('sp-pct');
       var raf = null;
       function update() {
         var maxScroll = document.documentElement.scrollHeight - window.innerHeight;
@@ -1178,14 +2096,22 @@
 
         fill.style.height = pct + '%';
         orb.style.top = pct + '%';
+        if (pctEl) {
+          pctEl.style.top = pct + '%';
+          pctEl.textContent = Math.round(pct) + '%';
+        }
 
+        var lastPassed = null;
         marks.forEach(function (dot) {
+          dot.classList.remove('sp__mark--active');
           if (pct >= dot._pct) {
             dot.classList.add('sp__mark--passed');
+            lastPassed = dot;
           } else {
             dot.classList.remove('sp__mark--passed');
           }
         });
+        if (lastPassed) lastPassed.classList.add('sp__mark--active');
 
         /* show bar after 2% scroll */
         if (pct > 1.5) {

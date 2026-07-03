@@ -384,6 +384,173 @@
         background: radial-gradient(50% 70% at 50% 50%, rgba(244,184,96,.07), transparent 70%);
         pointer-events: none;
       }
+
+      /* ── WOW: hero chipek ─────────────────────────────────────── */
+      .ro-hero-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+      .ro-hero-chips span {
+        display: inline-flex; align-items: center; gap: 7px;
+        padding: 7px 15px; border-radius: 999px;
+        background: rgba(8,13,22,.6); backdrop-filter: blur(8px);
+        border: 1px solid rgba(108,176,216,.28);
+        font-family: 'Space Grotesk', sans-serif; font-size: .74rem; font-weight: 600;
+        letter-spacing: .04em; color: rgba(255,255,255,.75);
+      }
+      .ro-hero-chips span svg { flex: 0 0 auto; color: #6cb0d8; }
+      .ro-hero-chips span.gold { border-color: rgba(244,184,96,.3); }
+      .ro-hero-chips span.gold svg { color: #f4b860; }
+
+      /* ── WOW: manifesto idézet ───────────────────────────────── */
+      .ro-quote-banner { padding: 84px 0 56px; }
+      .ro-quote-banner__inner { position: relative; }
+      .ro-quote-banner__mark {
+        position: absolute; top: -66px; left: 50%; transform: translateX(-50%);
+        font-family: 'Fraunces', Georgia, serif; font-size: 10rem; line-height: 1;
+        color: transparent; -webkit-text-stroke: 1.5px rgba(244,184,96,.2);
+        pointer-events: none; user-select: none; z-index: 0;
+      }
+      .ro-quote-banner__text { position: relative; z-index: 1; font-size: clamp(1.6rem, 3.3vw, 2.55rem); }
+      .ro-quote-banner__rule {
+        width: 84px; height: 1px; margin: 30px auto 0;
+        background: linear-gradient(90deg, transparent, rgba(244,184,96,.65), transparent);
+      }
+
+      /* ── WOW: küldetés & vízió üvegpanelek ───────────────────── */
+      .ro-mv { grid-template-columns: 1fr 1fr; gap: 22px; }
+      .ro-mv__divider { display: none; }
+      .ro-mv__item {
+        padding: 42px 44px; border-radius: 20px;
+        position: relative; overflow: hidden;
+        border: 1px solid rgba(244,184,96,.15);
+        background: linear-gradient(160deg, rgba(15,19,28,.6), rgba(8,12,20,.78));
+        box-shadow: 0 24px 56px -28px rgba(0,0,0,.7);
+        transition: border-color .3s, transform .3s, box-shadow .3s;
+      }
+      .ro-mv__item:hover {
+        border-color: rgba(244,184,96,.36); transform: translateY(-4px);
+        box-shadow: 0 34px 70px -28px rgba(0,0,0,.85);
+      }
+      .ro-mv__item::before {
+        content: ''; position: absolute; top: -28%; right: -18%;
+        width: 62%; height: 62%; border-radius: 50%;
+        background: radial-gradient(closest-side, rgba(244,184,96,.11), transparent 70%);
+        filter: blur(32px); pointer-events: none;
+      }
+      .ro-mv__item:last-child { border-color: rgba(108,176,216,.18); }
+      .ro-mv__item:last-child:hover { border-color: rgba(108,176,216,.4); }
+      .ro-mv__item:last-child::before {
+        background: radial-gradient(closest-side, rgba(108,176,216,.13), transparent 70%);
+      }
+      .ro-mv__item:last-child .ro-mv__bar { background: linear-gradient(90deg, #6cb0d8, rgba(108,176,216,0)); }
+      .ro-mv__item:last-child .ro-mv__title em { color: #6cb0d8; }
+      @media (max-width: 700px) { .ro-mv { grid-template-columns: 1fr; } }
+
+      /* ── WOW: founder kép beágyazás ──────────────────────────── */
+      .ro-founder__img-wrap { overflow: visible; border-radius: 18px; }
+      .ro-founder__img-wrap::before {
+        content: ''; position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%,-50%);
+        width: 105%; height: 95%; border-radius: 50%;
+        background: radial-gradient(closest-side, rgba(244,184,96,.14), transparent 72%);
+        filter: blur(46px); z-index: 0; pointer-events: none;
+      }
+      .ro-founder__img-wrap img {
+        position: relative; z-index: 1; border-radius: 18px;
+        animation: ro-float 9s ease-in-out infinite;
+        box-shadow: 0 40px 80px -30px rgba(0,0,0,.85);
+      }
+      .ro-founder__img-wrap::after { z-index: 2; border-radius: 18px; }
+      .ro-founder__chip {
+        position: absolute; bottom: 16px; left: -14px; z-index: 3;
+        display: inline-flex; align-items: center; gap: 8px;
+        padding: 10px 16px; border-radius: 14px;
+        background: rgba(8,13,22,.76); backdrop-filter: blur(10px);
+        border: 1px solid rgba(244,184,96,.3);
+        font-family: 'Space Grotesk', sans-serif; font-size: .74rem; font-weight: 600;
+        color: rgba(255,255,255,.85); white-space: nowrap;
+        box-shadow: 0 18px 44px -14px rgba(0,0,0,.75);
+        animation: ro-bob 7s ease-in-out infinite;
+        pointer-events: none;
+      }
+      .ro-founder__chip svg { color: #f4b860; flex: 0 0 auto; }
+      @keyframes ro-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+      @keyframes ro-bob   { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+      /* ── WOW: galéria sáv hover ──────────────────────────────── */
+      .ro-gallery-strip__item { position: relative; transition: border-color .3s, box-shadow .3s; }
+      .ro-gallery-strip__item:hover {
+        border-color: rgba(244,184,96,.4);
+        box-shadow: 0 14px 38px -10px rgba(0,0,0,.65), 0 0 28px -6px rgba(244,184,96,.18);
+      }
+
+      /* ── BEFORE/AFTER lámpa összehasonlító ───────────────────── */
+      .ro-ba {
+        --pos: 50%;
+        cursor: ew-resize; user-select: none; -webkit-user-select: none;
+        touch-action: pan-y;
+        aspect-ratio: 4 / 5;
+      }
+      .ro-ba img { animation: none !important; }
+      .ro-ba > .ro-ba__img {
+        position: relative; z-index: 1;
+        width: 100%; height: 100%; object-fit: cover;
+        border-radius: 18px; display: block;
+        pointer-events: none;
+      }
+      .ro-ba__top {
+        position: absolute; inset: 0; z-index: 2;
+        clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+        border-radius: 18px; overflow: hidden;
+        pointer-events: none;
+      }
+      .ro-ba__top .ro-ba__img {
+        width: 100%; height: 100%; object-fit: cover; display: block;
+        box-shadow: none;
+      }
+      .ro-ba__handle {
+        position: absolute; top: 0; bottom: 0; left: var(--pos);
+        transform: translateX(-50%); z-index: 6; width: 2px;
+        background: linear-gradient(180deg, transparent, rgba(244,184,96,.85) 12%, rgba(244,184,96,.85) 88%, transparent);
+        pointer-events: none;
+      }
+      .ro-ba__grip {
+        position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+        width: 46px; height: 46px; border-radius: 50%;
+        background: rgba(8,13,22,.82); border: 1px solid rgba(244,184,96,.5);
+        backdrop-filter: blur(8px);
+        display: flex; align-items: center; justify-content: center; gap: 4px;
+        color: #f4b860; font-size: 1.05rem; font-weight: 700; line-height: 1;
+        box-shadow: 0 10px 30px -8px rgba(0,0,0,.8), 0 0 24px -6px rgba(244,184,96,.35);
+        animation: ro-grip-pulse 2.6s ease-in-out infinite;
+      }
+      .ro-ba.was-dragged .ro-ba__grip { animation: none; }
+      @keyframes ro-grip-pulse {
+        0%, 100% { box-shadow: 0 10px 30px -8px rgba(0,0,0,.8), 0 0 20px -6px rgba(244,184,96,.3); }
+        50%      { box-shadow: 0 10px 30px -8px rgba(0,0,0,.8), 0 0 34px -4px rgba(244,184,96,.6); }
+      }
+      .ro-ba__tag {
+        position: absolute; top: 14px; z-index: 5;
+        padding: 5px 13px; border-radius: 999px;
+        font-family: 'Space Grotesk', sans-serif; font-size: .62rem; font-weight: 700;
+        letter-spacing: .14em; text-transform: uppercase;
+        background: rgba(8,13,22,.72); backdrop-filter: blur(8px);
+        border: 1px solid rgba(255,255,255,.14); color: rgba(255,255,255,.7);
+        pointer-events: none;
+      }
+      .ro-ba__tag--on { left: 14px; border-color: rgba(244,184,96,.45); color: #f4b860; }
+      .ro-ba__tag--off { right: 14px; }
+      .ro-ba .ro-founder__chip { z-index: 7; }
+      @media (prefers-reduced-motion: reduce) { .ro-ba__grip { animation: none; } }
+
+      /* ── SCROLL REVEAL ───────────────────────────────────────── */
+      .rox-reveal {
+        opacity: 0; transform: translateY(24px);
+        transition: opacity .7s ease, transform .7s cubic-bezier(.22,.9,.3,1);
+      }
+      .rox-reveal.is-in { opacity: 1; transform: none; }
+      @media (prefers-reduced-motion: reduce) {
+        .rox-reveal { opacity: 1; transform: none; transition: none; }
+        .ro-founder__img-wrap img, .ro-founder__chip { animation: none; }
+      }
     </style>
   </head>
   <body>
@@ -402,8 +569,26 @@
         <div class="subpage-hero__shade" aria-hidden="true"></div>
         <div class="subpage-shell">
           <div class="subpage-hero__copy subpage-hero__copy--wide">
-            <h1 class="subpage-title" id="page-title">A <span>Layeróról</span></h1>
+            <h1 class="subpage-title" id="page-title">Műhely, ahol az ötlet <span>formát kap.</span></h1>
             <p class="subpage-lead">Prémium 3D design és egyedi alkotóműhely Szatmárnémetiben / Satu Mare-ben — ahol személyes ötletekből, céges elképzelésekből és különleges ajándékokból kézzelfogható, időtálló alkotások születnek.</p>
+            <div class="ro-hero-chips">
+              <span class="gold">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Szatmárnémeti / Satu Mare
+              </span>
+              <span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 20h20M4 20V8l8-5 8 5v12M9 20v-6h6v6"/></svg>
+                Saját műhely
+              </span>
+              <span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                Hivatalos SRL
+              </span>
+              <span class="gold">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+                Prémium kivitelezés
+              </span>
+            </div>
           </div>
         </div>
       </section>
@@ -411,9 +596,11 @@
       <!-- ── MOTTÓ BANNER ──────────────────────────────────────────── -->
       <section class="ro-quote-banner">
         <div class="ro-quote-banner__inner">
+          <span class="ro-quote-banner__mark" aria-hidden="true">„</span>
           <p class="ro-quote-banner__text">
             „Nem tömegtermékeket készítünk. Minden darab <em>rétegről rétegre</em> épül fel — először gondolatként, majd digitális tervként, végül precízen kivitelezett alkotásként."
           </p>
+          <div class="ro-quote-banner__rule" aria-hidden="true"></div>
         </div>
       </section>
 
@@ -612,8 +799,20 @@
       <!-- ── ALAPÍTÓI GONDOLAT ──────────────────────────────────────── -->
       <section class="subpage-section">
         <div class="subpage-shell ro-founder">
-          <div class="ro-founder__img-wrap">
-            <picture><source type="image/webp" srcset="assets/termekvilag/hero_slider/11-900.webp"><img src="assets/termekvilag/hero_slider/11.png" alt="Layero alkotás közelről" loading="lazy"></picture>
+          <div class="ro-founder__img-wrap ro-ba" id="ro-ba" role="img" aria-label="Egyedi Jurassic Park lámpa — húzd az elválasztót a le- és felkapcsolt állapot összehasonlításához">
+            <img class="ro-ba__img" src="assets/rolunk/JP-off-900.webp" alt="" draggable="false" loading="lazy">
+            <div class="ro-ba__top" aria-hidden="true">
+              <img class="ro-ba__img" src="assets/rolunk/JP-on-900.webp" alt="" draggable="false" loading="lazy">
+            </div>
+            <div class="ro-ba__handle" aria-hidden="true">
+              <span class="ro-ba__grip">‹›</span>
+            </div>
+            <span class="ro-ba__tag ro-ba__tag--on" aria-hidden="true">Felkapcsolva</span>
+            <span class="ro-ba__tag ro-ba__tag--off" aria-hidden="true">Lekapcsolva</span>
+            <span class="ro-founder__chip" aria-hidden="true">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              Kézzel, szívvel, rétegről rétegre
+            </span>
           </div>
           <div>
             <p class="subpage-kicker">Alapítói gondolat</p>
@@ -794,6 +993,16 @@
       var openBtn = document.getElementById('wg-open-btn');
       if (openBtn) openBtn.addEventListener('click', function() { lbOpen(wgImages, 0); });
 
+      // "néhány alkotásunk" sáv → lightbox
+      var stripItems = Array.from(document.querySelectorAll('.ro-gallery-strip__item'));
+      var stripImgs = stripItems.map(function(el) {
+        var img = el.querySelector('img');
+        return img.currentSrc || img.src;
+      });
+      stripItems.forEach(function(el, i) {
+        el.addEventListener('click', function() { lbOpen(stripImgs, i); });
+      });
+
       // lightbox controls
       lbClose.addEventListener('click', function() { lb.classList.remove('is-open'); });
       lbPrev.addEventListener('click',  function() { lbShow(idx - 1); });
@@ -822,6 +1031,60 @@
         if (e.key === 'ArrowRight') lbShow(idx + 1);
         if (e.key === 'Escape')     lb.classList.remove('is-open');
       });
+    })();
+
+    // ── BEFORE/AFTER lámpa csúszka ────────────────────────────────
+    (function() {
+      var ba = document.getElementById('ro-ba');
+      if (!ba) return;
+      var dragging = false;
+
+      function setPos(clientX) {
+        var r = ba.getBoundingClientRect();
+        var p = (clientX - r.left) / r.width;
+        p = Math.min(Math.max(p, 0.05), 0.95);
+        ba.style.setProperty('--pos', (p * 100).toFixed(2) + '%');
+      }
+
+      ba.addEventListener('pointerdown', function(e) {
+        dragging = true;
+        ba.classList.add('was-dragged');
+        if (ba.setPointerCapture) { try { ba.setPointerCapture(e.pointerId); } catch(err) {} }
+        setPos(e.clientX);
+        e.preventDefault();
+      });
+      ba.addEventListener('pointermove', function(e) {
+        if (dragging) setPos(e.clientX);
+      });
+      ba.addEventListener('pointerup', function() { dragging = false; });
+      ba.addEventListener('pointercancel', function() { dragging = false; });
+    })();
+
+    // ── SCROLL REVEAL ─────────────────────────────────────────────
+    (function() {
+      var els = [];
+      document.querySelectorAll(
+        '.ro-quote-banner__inner, .ro-ws__text, .ro-wg__item, .ro-vp, ' +
+        '.ro-mv__item, .ro-val, .ro-founder__img-wrap, .ro-founder > div:last-child, ' +
+        '.ro-gallery-strip__item, .stats__item'
+      ).forEach(function(el, i) {
+        el.classList.add('rox-reveal');
+        el.style.transitionDelay = ((i % 8) * 50) + 'ms';
+        els.push(el);
+      });
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function(entries) {
+          entries.forEach(function(en) {
+            if (en.isIntersecting) {
+              en.target.classList.add('is-in');
+              io.unobserve(en.target);
+            }
+          });
+        }, { rootMargin: '0px 0px -6% 0px', threshold: 0.05 });
+        els.forEach(function(el) { io.observe(el); });
+      } else {
+        els.forEach(function(el) { el.classList.add('is-in'); });
+      }
     })();
     </script>
   </body>

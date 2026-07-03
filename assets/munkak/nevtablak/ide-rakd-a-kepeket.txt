@@ -1,1 +1,0 @@
-Ebbe a mappaba kell rakni a kategoria kepekeit (.webp, .jpg, .png). A munkak-data.json fajlban kell hivatkozni rajuk: assets/munkak/KATEGORIANEV/kep-neve.webp

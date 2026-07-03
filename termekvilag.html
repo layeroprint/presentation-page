@@ -86,10 +86,38 @@
     .tv-hero .lede { font-size: 1.16rem; color: #d8d2c6; max-width: 60ch; line-height: 1.7; }
     .tv-hero .lede + .lede { margin-top: 1em; font-size: 1.04rem; color: var(--muted); }
 
-    /* --- hero marquee slider --- */
+    /* --- hero: arany derengés a cím mögött --- */
+    .tv-hero .tv-wrap { position: relative; }
+    .tv-hero__orb {
+      position: absolute; top: -60px; left: -140px;
+      width: 520px; height: 520px; border-radius: 50%;
+      pointer-events: none; z-index: -1;
+      background: radial-gradient(closest-side, rgba(244,184,96,.13), transparent 70%);
+      filter: blur(64px);
+    }
+
+    /* --- hero stat számlálók --- */
+    .tv-hero-stats {
+      display: flex; gap: 42px; flex-wrap: wrap;
+      margin-top: 30px; padding-top: 24px;
+      border-top: 1px solid rgba(244,184,96,.16);
+    }
+    .tv-hero-stat strong {
+      display: block; font-family: 'Fraunces', serif;
+      font-size: 2.1rem; font-weight: 600; line-height: 1; color: var(--cream);
+    }
+    .tv-hero-stat strong i { font-style: normal; color: var(--glow); }
+    .tv-hero-stat small {
+      display: block; margin-top: 6px;
+      font-family: 'Space Grotesk', sans-serif; font-size: .6rem; font-weight: 600;
+      letter-spacing: .2em; text-transform: uppercase; color: var(--muted);
+    }
+
+    /* --- hero marquee slider: két sor, döntve, ellentétes irány --- */
     .hero-slider {
-      margin-top: 48px;
+      margin-top: 54px;
       overflow: hidden;
+      transform: rotate(-1.2deg) scale(1.02);
       -webkit-mask-image: linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%);
       mask-image: linear-gradient(90deg, transparent 0%, black 6%, black 94%, transparent 100%);
     }
@@ -97,10 +125,19 @@
       display: flex; gap: 12px; width: max-content;
       animation: hs-roll 55s linear infinite;
     }
+    .hero-slider__track--b {
+      margin-top: 12px;
+      animation-duration: 70s;
+      animation-direction: reverse;
+    }
     .hero-slider:hover .hero-slider__track { animation-play-state: paused; }
     @keyframes hs-roll {
       0%   { transform: translateX(0); }
       100% { transform: translateX(-50%); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .hero-slider__track { animation: none; }
+      .hero-slider { transform: none; }
     }
     .hero-slider__item {
       flex: 0 0 170px; border-radius: 14px; overflow: hidden;
@@ -346,6 +383,95 @@
       .cat { padding: 40px 0; }
     }
 
+    /* --- kategória "fejezet" design --- */
+    .cat { position: relative; padding: 76px 0; }
+    .cat + .cat {
+      border-top: 1px solid transparent;
+      border-image: linear-gradient(90deg, transparent 4%, rgba(244,184,96,.22) 50%, transparent 96%) 1;
+    }
+
+    /* óriás kontúros fejezetszám a szöveg mögött */
+    .cat-body { position: relative; }
+    .cat-ghost {
+      position: absolute; top: -64px; right: -8px; z-index: 0;
+      font-family: 'Fraunces', serif; font-weight: 600; line-height: 1;
+      font-size: clamp(6.5rem, 12vw, 10rem);
+      color: transparent;
+      -webkit-text-stroke: 1.5px rgba(244,184,96,.14);
+      pointer-events: none; user-select: none;
+    }
+    .cat--cyan .cat-ghost { -webkit-text-stroke-color: rgba(108,176,216,.16); }
+
+    /* váltakozó akcentus az eyebrow-n */
+    .cat--gold .cat-body .num { color: var(--glow); }
+    .cat--cyan .cat-body .num { color: var(--cyan); }
+    .cat-body .num b { font-weight: 700; letter-spacing: .12em; margin-right: .6em; }
+
+    /* kulcsszó chipek */
+    .cat-tags { display: flex; flex-wrap: wrap; gap: 7px; margin: 16px 0 0; position: relative; z-index: 1; }
+    .cat-tags span {
+      padding: 4.5px 13px; border-radius: 999px;
+      font-family: 'Space Grotesk', sans-serif; font-size: .66rem; font-weight: 600;
+      letter-spacing: .08em; text-transform: uppercase;
+      border: 1px solid rgba(108,176,216,.28); color: var(--cyan);
+      background: rgba(108,176,216,.06);
+    }
+    .cat-tags span.g {
+      border-color: rgba(244,184,96,.28); color: var(--glow);
+      background: rgba(244,184,96,.06);
+    }
+
+    /* galéria: keretes panel, enyhén döntve lebeg, hoverre kiegyenesedik */
+    .cat-grid > * { min-width: 0; }
+    .cat-media {
+      overflow: visible;
+      padding: 14px;
+      border: 1px solid rgba(244,184,96,.22);
+      border-radius: 26px;
+      background: linear-gradient(180deg, rgba(15,19,28,.55), rgba(8,12,20,.68));
+      box-shadow: 0 30px 64px -30px rgba(0,0,0,.8), 0 0 0 1px rgba(255,255,255,.03) inset;
+      transform: rotate(-1.4deg);
+      transition: transform .65s cubic-bezier(.22,.9,.3,1), border-color .4s, box-shadow .4s;
+    }
+    .cat--cyan .cat-media { border-color: rgba(108,176,216,.24); }
+    .cat:nth-child(even) .cat-media { transform: rotate(1.4deg); }
+    .cat-grid:hover .cat-media { transform: rotate(0deg); }
+    .cat--gold .cat-media:hover { border-color: rgba(244,184,96,.4); }
+    .cat--cyan .cat-media:hover { border-color: rgba(108,176,216,.45); }
+    @media (prefers-reduced-motion: reduce) {
+      .cat-media, .cat:nth-child(even) .cat-media { transform: none; }
+    }
+
+    /* fő kép hover: arany derengés */
+    .sldr-imgs { transition: box-shadow .45s; }
+    .cat-media:hover .sldr-imgs {
+      box-shadow: 0 36px 70px -30px rgba(0,0,0,.9),
+                  0 0 64px -10px rgba(244,184,96,.2),
+                  0 0 0 1px rgba(255,255,255,.06) inset;
+    }
+    .cat--cyan .cat-media:hover .sldr-imgs {
+      box-shadow: 0 36px 70px -30px rgba(0,0,0,.9),
+                  0 0 64px -10px rgba(108,176,216,.22),
+                  0 0 0 1px rgba(255,255,255,.06) inset;
+    }
+    .cat--cyan .cat-media::before {
+      background: radial-gradient(closest-side, rgba(108,176,216,.24), rgba(108,176,216,.05) 55%, transparent 75%);
+    }
+
+    /* jump nav sorszámok */
+    .jump a i {
+      font-style: normal; font-weight: 700; font-size: .72em;
+      letter-spacing: .08em; margin-right: .55em; color: var(--glow);
+      transition: color .3s;
+    }
+    .jump a.active i { color: #2a1c08; }
+
+    @media(max-width:860px){
+      .cat-ghost { font-size: 5.2rem; top: -44px; }
+      .cat-media, .cat:nth-child(even) .cat-media { transform: none !important; }
+      .cat-media { padding: 10px; border-radius: 20px; }
+    }
+
     /* --- closing CTA --- */
     .tv-closing { padding: 70px 0 110px; text-align: center; }
     .tv-closing-inner { position: relative; max-width: 720px; margin: 0 auto; }
@@ -386,12 +512,20 @@
   <!-- Hero intro -->
   <section class="tv-hero">
     <div class="tv-wrap">
+      <span class="tv-hero__orb" aria-hidden="true"></span>
       <span class="eyebrow">Kategóriák</span>
       <h1>Minden termék egy <span class="lit">történetből</span> indul.</h1>
       <p class="lede">Egy kedvenc témából, egy különleges alkalomból, egy logóból, egy névből vagy egy ötletből. Legyen szó világító lámpáról, kulcstartóról, dekorációról, céges ajándékról vagy rajongói darabról — a célunk ugyanaz: olyan egyedi tárgyakat készíteni, amelyek személyesek, látványosak és emlékezetesek.</p>
       <p class="lede">A termékeink ajándéknak, dekorációnak, céges megjelenéshez vagy saját használatra is ideálisak. Böngéssz a kategóriák között, válassz témát, vagy keress minket egyedi elképzeléssel.</p>
+      <div class="tv-hero-stats">
+        <div class="tv-hero-stat"><strong><span data-tv-count="6">0</span></strong><small>kategória</small></div>
+        <div class="tv-hero-stat"><strong><span data-tv-count="5000">0</span><i>+</i></strong><small>elkészült termék</small></div>
+        <div class="tv-hero-stat"><strong><span data-tv-count="1000">0</span><i>+</i></strong><small>elégedett vásárló</small></div>
+        <div class="tv-hero-stat"><strong><span data-tv-count="100">0</span><i>%</i></strong><small>egyedi gyártás</small></div>
+      </div>
       <div class="hero-slider" aria-label="Layero termékhangulatok">
-        <div class="hero-slider__track"></div>
+        <div class="hero-slider__track hero-slider__track--a"></div>
+        <div class="hero-slider__track hero-slider__track--b"></div>
       </div>
     </div>
   </section>
@@ -399,24 +533,31 @@
   <!-- Jump nav -->
   <nav class="jump" aria-label="Ugrás kategóriához">
     <div class="tv-wrap jump-row">
-      <a href="#lampak">Tematikus lámpák</a>
-      <a href="#kulcstartok">Kulcstartók</a>
-      <a href="#dekoraciok">Dekorációk</a>
-      <a href="#ceges">Céges megoldások</a>
-      <a href="#rajongoi">Gyűjtői / rajongói</a>
-      <a href="#egyedi">Egyedi rendelés</a>
+      <a href="#lampak"><i>01</i>Tematikus lámpák</a>
+      <a href="#kulcstartok"><i>02</i>Kulcstartók</a>
+      <a href="#dekoraciok"><i>03</i>Dekorációk</a>
+      <a href="#ceges"><i>04</i>Céges megoldások</a>
+      <a href="#rajongoi"><i>05</i>Gyűjtői / rajongói</a>
+      <a href="#egyedi"><i>06</i>Egyedi rendelés</a>
     </div>
   </nav>
 
   <div class="cats tv-wrap">
 
     <!-- 1. Tematikus lámpák -->
-    <section class="cat reveal" id="lampak">
+    <section class="cat cat--gold reveal" id="lampak">
       <div class="cat-grid">
         <div class="cat-media" data-slider="lampak"></div>
         <div class="cat-body">
-          <span class="num">Világítás</span>
+          <span class="cat-ghost" aria-hidden="true">01</span>
+          <span class="num"><b>01</b>Világítás</span>
           <h2>Tematikus lámpák</h2>
+          <div class="cat-tags">
+            <span class="g">Névre szóló</span>
+            <span>LED világítás</span>
+            <span>Gyerekszoba</span>
+            <span class="g">Gamer sarok</span>
+          </div>
           <p>Egyedi hangulatvilágítások, amelyek egyszerre működnek dekorációként, személyes ajándékként és látványos emléktárgyként. Legyen szó kedvenc filmről, játékról, sportról, hobbiról, házi kedvencről vagy különleges alkalomról, ezek a lámpák teljesen más szintre emelik a személyre szabott ajándékozást.</p>
           <p>Olyan világító dísztárgyak, amelyek névvel, évszámmal, motívummal, sziluettel vagy egyedi grafikával is elkészíthetők. Tökéletes választás születésnapra, névnapra, évfordulóra, karácsonyra, gyerekszobába, gamer sarokba, irodába vagy akár egy különleges emlék megőrzésére.</p>
           <p>A céljuk, hogy ne csak fényt adjanak, hanem történetet is meséljenek. Egy jól eltalált design azonnal személyessé teszi a teret, és minden bekapcsoláskor felidéz egy kedves emléket, hobbit vagy élményt.</p>
@@ -426,12 +567,19 @@
     </section>
 
     <!-- 2. Kulcstartók -->
-    <section class="cat reveal" id="kulcstartok">
+    <section class="cat cat--cyan reveal" id="kulcstartok">
       <div class="cat-grid">
         <div class="cat-media" data-slider="kulcstartok"></div>
         <div class="cat-body">
-          <span class="num">Apró, mégis személyes</span>
+          <span class="cat-ghost" aria-hidden="true">02</span>
+          <span class="num"><b>02</b>Apró, mégis személyes</span>
           <h2>Kulcstartók</h2>
+          <div class="cat-tags">
+            <span>Logós</span>
+            <span class="g">Névre szóló</span>
+            <span>Rendezvényre</span>
+            <span>Csapatoknak</span>
+          </div>
           <p>Kis méretük ellenére rendkívül karakteres és sokoldalú ajándéktárgyak. Ideálisak azoknak, akik valami apró, mégis személyes meglepetést keresnek — barátoknak, családtagoknak, kollégáknak, vásárlóknak vagy rajongói közösségeknek.</p>
           <p>Készülhetnek tematikus, logós, névre szóló, hobbihoz vagy érdeklődési körhöz kapcsolódó darabok. Egy jól megtervezett kulcstartó nemcsak praktikus használati tárgy, hanem egy kis darab személyes stílus is, amely nap mint nap velünk van.</p>
           <p>Kiváló választás rendezvényekre, céges ajándékként, csapatoknak, kluboknak, rajongói közösségeknek vagy egyedi megrendelésre. Könnyen személyre szabhatók, kis helyen is látványosak, és remekül működnek önállóan vagy egy nagyobb ajándékcsomag kiegészítőjeként.</p>
@@ -441,12 +589,19 @@
     </section>
 
     <!-- 3. Dekorációk -->
-    <section class="cat reveal" id="dekoraciok">
+    <section class="cat cat--gold reveal" id="dekoraciok">
       <div class="cat-grid">
         <div class="cat-media" data-slider="dekoraciok"></div>
         <div class="cat-body">
-          <span class="num">Lakás &amp; tér</span>
+          <span class="cat-ghost" aria-hidden="true">03</span>
+          <span class="num"><b>03</b>Lakás &amp; tér</span>
           <h2>Dekorációk</h2>
+          <div class="cat-tags">
+            <span class="g">Lakásdekor</span>
+            <span>Szezonális</span>
+            <span>Vázák &amp; kaspók</span>
+            <span class="g">Ünnepi</span>
+          </div>
           <p>Azoknak szól, akik szeretnének valami látványosat, egyedit és hangulatosat vinni az otthonukba, irodájukba vagy üzlethelyiségükbe. Ezek nem egyszerű dísztárgyak, hanem karakteres kiegészítők, amelyek különleges atmoszférát teremtenek.</p>
           <p>Helyet kaphatnak virágok, vázák, szezonális dekorok, modern lakásdíszek, asztali kiegészítők, falra vagy polcra helyezhető elemek, valamint egyedi alkalmakra készített darabok is. Akár letisztult, elegáns, akár látványosabb, tematikus megjelenésről van szó, a cél mindig a környezet feldobása.</p>
           <p>Kiválóan illenek nappaliba, hálószobába, előszobába, étterembe, irodába vagy ajándéktárgyként különleges alkalmakra. Egy jól megválasztott dekoráció nemcsak kitölti a teret, hanem személyiséget is ad neki.</p>
@@ -456,12 +611,19 @@
     </section>
 
     <!-- 4. Céges megoldások -->
-    <section class="cat reveal" id="ceges">
+    <section class="cat cat--cyan reveal" id="ceges">
       <div class="cat-grid">
         <div class="cat-media" data-slider="ceges"></div>
         <div class="cat-body">
-          <span class="num">Üzleti megjelenés</span>
+          <span class="cat-ghost" aria-hidden="true">04</span>
+          <span class="num"><b>04</b>Üzleti megjelenés</span>
           <h2>Céges megoldások</h2>
+          <div class="cat-tags">
+            <span>QR + NFC display</span>
+            <span class="g">Logós ajándék</span>
+            <span>Pultdekoráció</span>
+            <span>Kis &amp; nagy széria</span>
+          </div>
           <p>Vállalkozásoknak, vendéglátóhelyeknek, üzleteknek, márkáknak és rendezvényszervezőknek kínál egyedi, látványos és praktikus termékeket. A cél, hogy a vállalkozás arculata ne csak online vagy nyomtatott anyagokon jelenjen meg, hanem kézzelfogható, emlékezetes formában is.</p>
           <p>Ide tartozhatnak logós displayek, QR-kódos táblák, asztali tartók, céges kulcstartók, ajándéktárgyak, pultdekorációk, információs táblák vagy egyedi megrendelésre készített arculati elemek. Különösen hasznosak éttermeknek, kávézóknak, szalonoknak, üzleteknek, kiállítóknak és szolgáltatóknak.</p>
           <p>Egy igényesen elkészített céges dekoráció vagy ajándéktárgy erősíti a márka megjelenését, profibb benyomást kelt, és segít, hogy a vásárlók, vendégek vagy partnerek könnyebben emlékezzenek a vállalkozásra.</p>
@@ -471,12 +633,19 @@
     </section>
 
     <!-- 5. Gyűjtői / rajongói darabok -->
-    <section class="cat reveal" id="rajongoi">
+    <section class="cat cat--gold reveal" id="rajongoi">
       <div class="cat-grid">
         <div class="cat-media" data-slider="rajongoi"></div>
         <div class="cat-body">
-          <span class="num">Rajongóknak</span>
+          <span class="cat-ghost" aria-hidden="true">05</span>
+          <span class="num"><b>05</b>Rajongóknak</span>
           <h2>Gyűjtői / rajongói darabok</h2>
+          <div class="cat-tags">
+            <span class="g">Gamer</span>
+            <span>Film &amp; sorozat</span>
+            <span>Fantasy</span>
+            <span class="g">Sport</span>
+          </div>
           <p>Azoknak készült, akik szeretnék kedvenc témáikat, világukat vagy hangulatukat egyedi tárgyak formájában viszontlátni. Fantasy, gamer, sci-fi, sport, filmek, sorozatok vagy saját ötletek alapján készülő darabok is helyet kaphatnak itt.</p>
           <p>Ezek elsősorban nem hivatalos márkatermékek, hanem saját karakterrel rendelkező, inspirált, egyedi hangulatú alkotások. A cél, hogy a rajongás, a kedvenc univerzum vagy a személyes érdeklődési kör látványos, dekoratív és ajándékozható formában jelenjen meg.</p>
           <p>Tökéletes választás gyűjtőknek, gamereknek, filmrajongóknak, sportkedvelőknek vagy bárkinek, aki szereti az egyedi, témára épülő tárgyakat. Jól mutatnak polcon, íróasztalon, gamer setupban, vitrinben vagy ajándékként.</p>
@@ -486,12 +655,19 @@
     </section>
 
     <!-- 6. Egyedi rendelés -->
-    <section class="cat reveal" id="egyedi">
+    <section class="cat cat--cyan reveal" id="egyedi">
       <div class="cat-grid">
         <div class="cat-media" data-slider="egyedi"></div>
         <div class="cat-body">
-          <span class="num">Személyre szabott</span>
+          <span class="cat-ghost" aria-hidden="true">06</span>
+          <span class="num"><b>06</b>Személyre szabott</span>
           <h2>Egyedi rendelés</h2>
+          <div class="cat-tags">
+            <span>Fotóból lámpa</span>
+            <span class="g">Saját ötlet</span>
+            <span>Látványterv</span>
+            <span class="g">Névre szóló</span>
+          </div>
           <p>Azoknak szól, akiknek van egy saját ötletük, fotójuk, logójuk vagy különleges témájuk, és szeretnék azt kézzelfogható, látványos formában viszontlátni. Itt nem kész sablonból kell választani: a termék a megrendelő igényei alapján, személyre szabottan készül el.</p>
           <p>Legyen szó fényképből készült lámpáról, céges logóval ellátott ajándékról, egyedi grafikáról, alkalomhoz illő dekorációról vagy teljesen saját ötletről — a folyamat minden esetben az elképzelésből indul. A cél, hogy a végeredmény ne csak szép legyen, hanem valóban személyes és emlékezetes.</p>
           <p>Akár csak egy hangulat, egy kép, egy név vagy egy rövid ötlet áll rendelkezésre, abból is készülhet látványterv és végül egy kész, egyedi termék, amely rólad, a megajándékozottról vagy a márkádról szól.</p>
@@ -709,13 +885,16 @@
       const nextBtn    = el.querySelector('.sldr-next');
 
       function computeThumbW() {
-        const tw = Math.floor((el.offsetWidth - 12 * (VISIBLE - 1)) / VISIBLE);
+        const strip = el.querySelector('.sldr-strip');
+        const inner = (strip && strip.clientWidth) || el.clientWidth;
+        const tw = Math.floor((inner - 12 * (VISIBLE - 1)) / VISIBLE);
         if (tw <= 0) return;
         el.style.setProperty('--sldr-tw', tw + 'px');
         thumbW = tw + 12;
       }
       computeThumbW();
       window.addEventListener('load', computeThumbW, { once: true });
+      window.addEventListener('resize', computeThumbW);
 
       function slideRail(idx) {
         if (thumbW <= 0) computeThumbW();
@@ -781,13 +960,14 @@
     // ── hero marquee + lightbox ───────────────────────────────────
     (function() {
       const HS_IMGS = Array.from({length: 17}, (_, i) => `assets/termekvilag/hero_slider/${i+1}.png`);
-      const track = document.querySelector('.hero-slider__track');
+      const trackA = document.querySelector('.hero-slider__track--a');
+      const trackB = document.querySelector('.hero-slider__track--b');
       const lb    = document.querySelector('.hs-lb');
       const lbImg = lb.querySelector('.hs-lb__img');
       const lbCtr = lb.querySelector('.hs-lb__counter');
       let lbIdx   = 0;
 
-      // build track — duplicate for seamless loop
+      // build tracks — 4 kópia a folytonos loophoz széles kijelzőn is
       function makeItem(src, realIdx) {
         const btn = document.createElement('button');
         btn.className = 'hero-slider__item';
@@ -799,7 +979,13 @@
         btn.addEventListener('click', () => openLb(realIdx));
         return btn;
       }
-      [...HS_IMGS, ...HS_IMGS].forEach((src, i) => track.appendChild(makeItem(src, i % HS_IMGS.length)));
+      function fillTrack(track, list) {
+        for (let c = 0; c < 4; c++) {
+          list.forEach((src) => track.appendChild(makeItem(src, HS_IMGS.indexOf(src))));
+        }
+      }
+      fillTrack(trackA, HS_IMGS.slice(0, 9));
+      fillTrack(trackB, HS_IMGS.slice(9));
 
       // lightbox
       function openLb(idx) {
@@ -830,6 +1016,27 @@
         if (e.key === 'Escape')     closeLb();
         if (e.key === 'ArrowLeft')  navLb(-1);
         if (e.key === 'ArrowRight') navLb(1);
+      });
+    })();
+
+    // ── hero stat számlálók ───────────────────────────────────────
+    (function() {
+      function countUp(el, target) {
+        var t0 = null, dur = 1400, done = false;
+        function step(ts) {
+          if (done) return;
+          if (!t0) t0 = ts;
+          var p = Math.min(1, (ts - t0) / dur);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(eased * target);
+          if (p < 1) requestAnimationFrame(step); else done = true;
+        }
+        requestAnimationFrame(step);
+        // rejtett fülön a rAF nem fut — garantált végérték
+        setTimeout(function() { if (!done) { done = true; el.textContent = target; } }, dur + 400);
+      }
+      document.querySelectorAll('[data-tv-count]').forEach(function(el) {
+        countUp(el, parseInt(el.getAttribute('data-tv-count'), 10) || 0);
       });
     })();
   </script>

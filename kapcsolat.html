@@ -19,11 +19,199 @@
     <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,400;9..144,1,500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="tv-theme.css">
     <script type="importmap">{"imports":{"three":"https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js"}}</script>
+    <style>
+      /* ── Kapcsolat oldal — arany/kék arculat ─────────────────── */
+      :root {
+        --glow: #f4b860; --glow-deep: #e0913a;
+        --kp-blue: #6cb0d8;
+        --cream: #f2ecdf; --muted: #b9b2a4;
+      }
+
+      /* hero trust chipek */
+      .kp-hero-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+      .kp-hero-chips span {
+        display: inline-flex; align-items: center; gap: 7px;
+        padding: 7px 15px; border-radius: 999px;
+        background: rgba(8,13,22,.6); backdrop-filter: blur(8px);
+        border: 1px solid rgba(108,176,216,.28);
+        font-family: 'Space Grotesk', sans-serif; font-size: .74rem; font-weight: 600;
+        letter-spacing: .04em; color: rgba(255,255,255,.75);
+      }
+      .kp-hero-chips span svg { flex: 0 0 auto; color: var(--kp-blue); }
+      .kp-hero-chips span.gold { border-color: rgba(244,184,96,.3); }
+      .kp-hero-chips span.gold svg { color: var(--glow); }
+
+      /* bizalom statisztika-sáv */
+      .kp-stats {
+        display: flex; flex-wrap: wrap; gap: 22px 18px;
+        justify-content: space-between;
+        padding: 28px 36px; border-radius: 20px;
+        border: 1px solid rgba(244,184,96,.16);
+        background: linear-gradient(160deg, rgba(15,19,28,.6), rgba(8,12,20,.78));
+        box-shadow: 0 24px 56px -28px rgba(0,0,0,.7);
+      }
+      .kp-stat { display: flex; align-items: center; gap: 14px; }
+      .kp-stat__ic {
+        display: grid; place-items: center; width: 46px; height: 46px; flex: 0 0 auto;
+        border: 1px solid rgba(108,176,216,.32); border-radius: 13px;
+        background: rgba(108,176,216,.09); color: var(--kp-blue);
+      }
+      .kp-stat strong {
+        display: block; font-family: 'Fraunces', Georgia, serif;
+        font-size: 1.55rem; font-weight: 600; line-height: 1.05; color: var(--cream);
+      }
+      .kp-stat strong i { font-style: normal; color: var(--glow); }
+      .kp-stat small {
+        display: block; margin-top: 3px;
+        font-family: 'Space Grotesk', sans-serif; font-size: .6rem; font-weight: 600;
+        letter-spacing: .18em; text-transform: uppercase; color: var(--muted);
+      }
+
+      /* panelek */
+      .kp-main .contact-panel {
+        border: 1px solid rgba(255,255,255,.08) !important;
+        border-radius: 20px;
+        background: rgba(15,19,28,.64) !important;
+      }
+      .kp-form-title {
+        margin: 0 0 6px;
+        font-family: 'Fraunces', Georgia, serif; font-weight: 600; color: var(--cream);
+        font-size: clamp(1.4rem, 2.6vw, 1.85rem); line-height: 1.15; letter-spacing: -.01em;
+      }
+      .kp-form-hint { margin: 6px 0 22px; color: #cfc9bd; line-height: 1.65; font-size: .92rem; }
+      .kp-main .contact-form label {
+        color: #cbc4b6; text-transform: none; letter-spacing: .02em;
+        font-weight: 600; font-size: .82rem; font-family: 'Space Grotesk', sans-serif;
+      }
+      .kp-main .contact-form input,
+      .kp-main .contact-form select,
+      .kp-main .contact-form textarea {
+        border: 1px solid rgba(255,255,255,.12);
+        border-radius: 12px;
+        background: rgba(6,10,18,.5);
+        color: var(--cream);
+      }
+      .kp-main .contact-form input:focus,
+      .kp-main .contact-form select:focus,
+      .kp-main .contact-form textarea:focus {
+        border-color: rgba(244,184,96,.5);
+        box-shadow: 0 0 0 3px rgba(244,184,96,.1);
+        background: rgba(244,184,96,.03);
+      }
+      .kp-main .contact-form select option { background: #0f131c; color: var(--cream); }
+      .kp-main .btn--primary {
+        color: #2a1c08;
+        background: linear-gradient(180deg, var(--glow), var(--glow-deep));
+        box-shadow: 0 8px 30px -8px rgba(244,184,96,.55);
+      }
+      .kp-main .btn--primary::before { display: none; }
+      .kp-main .btn--primary:hover, .kp-main .btn--primary:focus-visible {
+        box-shadow: 0 14px 38px -8px rgba(244,184,96,.8);
+      }
+      .kp-main .contact-form__note { color: var(--muted); }
+      .kp-main .contact-form__note svg { color: var(--glow); }
+
+      /* info panel */
+      .kp-main .contact-info-icon {
+        border: 1px solid rgba(108,176,216,.32); border-radius: 12px;
+        background: rgba(108,176,216,.09); color: var(--kp-blue);
+      }
+      .kp-main .contact-info-link { color: var(--cream); transition: color .2s; }
+      .kp-main .contact-info-link:hover { color: var(--glow); }
+      .kp-main .contact-info-label { color: var(--glow); }
+      .kp-main .contact-info-sub { color: #cfc9bd; }
+      .kp-main .contact-info-divider { background: rgba(244,184,96,.14); }
+      .kp-main .socials__btn { transition: border-color .2s, color .2s, transform .2s; }
+      .kp-main .socials__btn:hover { border-color: var(--glow); color: var(--glow); transform: translateY(-2px); }
+
+      /* mit alkothatunk kártyák */
+      .kp-main .page-card {
+        border: 1px solid rgba(255,255,255,.07);
+        border-radius: 18px;
+        background: rgba(15,19,28,.66);
+        transition: border-color 220ms ease, box-shadow 220ms ease, transform 220ms ease;
+      }
+      .kp-main .page-card:hover {
+        border-color: rgba(244,184,96,.3);
+        box-shadow: 0 26px 60px -28px rgba(0,0,0,.85); transform: translateY(-3px);
+      }
+      .kp-main .page-card h3 {
+        font-family: 'Fraunces', Georgia, serif; font-weight: 600;
+        text-transform: none; letter-spacing: 0; font-size: 1.14rem; color: var(--cream);
+      }
+      .kp-main .page-card p { color: #cfc9bd; }
+      .kp-main .page-card__link { color: var(--glow); }
+
+      /* 24 óra banner */
+      .kp-main .response-banner {
+        border: 1px solid rgba(244,184,96,.22);
+        border-radius: 22px;
+        background:
+          radial-gradient(ellipse at 18% 0%, rgba(244,184,96,.13), transparent 60%),
+          linear-gradient(180deg, rgba(20,22,28,.9), rgba(8,12,20,.92));
+        box-shadow: 0 30px 64px -30px rgba(0,0,0,.8);
+      }
+      .kp-main .response-banner__icon { color: var(--glow); }
+      .kp-main .response-banner__label { color: var(--muted); }
+      .kp-main .response-banner__value { color: var(--cream); font-family: 'Fraunces', Georgia, serif; }
+      .kp-main .response-banner__value span { color: var(--glow); font-style: italic; }
+      .kp-main .response-banner__text { color: #cfc9bd; }
+
+      /* záró CTA — beágyazott kép */
+      .kp-main .contact-final-cta__media {
+        position: relative; overflow: visible;
+        border: none; background: none; box-shadow: none;
+      }
+      .kp-main .contact-final-cta__media::before {
+        content: ''; position: absolute; top: 50%; left: 50%;
+        transform: translate(-50%,-50%);
+        width: 100%; height: 90%; border-radius: 50%;
+        background: radial-gradient(closest-side, rgba(244,184,96,.15), transparent 72%);
+        filter: blur(48px); z-index: 0; pointer-events: none;
+      }
+      .kp-main .contact-final-cta__media img {
+        position: relative; z-index: 1;
+        border-radius: 0; box-shadow: none;
+        animation: kp-float 9s ease-in-out infinite;
+        -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%),
+                            linear-gradient(to bottom, transparent 0%, black 10%, black 84%, transparent 100%);
+        -webkit-mask-composite: source-in;
+        mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%),
+                    linear-gradient(to bottom, transparent 0%, black 10%, black 84%, transparent 100%);
+        mask-composite: intersect;
+      }
+      .kp-cta-chip {
+        position: absolute; bottom: 12%; left: 2%; z-index: 2;
+        display: inline-flex; align-items: center; gap: 8px;
+        padding: 10px 16px; border-radius: 14px;
+        background: rgba(8,13,22,.76); backdrop-filter: blur(10px);
+        border: 1px solid rgba(244,184,96,.3);
+        font-family: 'Space Grotesk', sans-serif; font-size: .74rem; font-weight: 600;
+        color: rgba(255,255,255,.85); white-space: nowrap;
+        box-shadow: 0 18px 44px -14px rgba(0,0,0,.75);
+        animation: kp-bob 7s ease-in-out infinite;
+        pointer-events: none;
+      }
+      .kp-cta-chip svg { color: var(--glow); flex: 0 0 auto; }
+      @keyframes kp-float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+      @keyframes kp-bob   { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+
+      /* scroll reveal */
+      .kpx-reveal {
+        opacity: 0; transform: translateY(24px);
+        transition: opacity .7s ease, transform .7s cubic-bezier(.22,.9,.3,1);
+      }
+      .kpx-reveal.is-in { opacity: 1; transform: none; }
+      @media (prefers-reduced-motion: reduce) {
+        .kpx-reveal { opacity: 1; transform: none; transition: none; }
+        .kp-main .contact-final-cta__media img, .kp-cta-chip { animation: none; }
+      }
+    </style>
   </head>
   <body>
     <header class="site-header motion-load" style="--load-delay: 80ms"><div class="header-shell"><a class="logo" href="index.html"><img class="logo__brand-mark" src="assets/layero-logo-mark-from-source.png" alt="" width="240" height="237"><img class="logo__brand-wordmark" src="assets/layero-logo-wordmark-from-source.png" alt="Layero 3D Design" width="493" height="171"></a><button class="nav-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" data-nav-toggle><span class="sr-only">Menü megnyitása</span><span class="nav-toggle__line" aria-hidden="true"></span></button><nav class="site-nav" id="site-navigation" aria-label="Főmenü"><a href="termekvilag.html">Termékvilág</a><a href="egyedi-rendeles.html">Egyedi rendelés</a><a href="cegeknek.html">Cégeknek</a><a href="galeria.html">Galéria</a><a href="rolunk.html">Rólunk</a><a href="kapcsolat.html" aria-current="page">Kapcsolat</a></nav><a class="btn btn--outline header-cta" href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer">Üzlet <span aria-hidden="true">→</span></a></div></header>
 
-    <main class="subpage-main">
+    <main class="subpage-main kp-main">
       <!-- HERO -->
       <section class="subpage-hero subpage-hero--compact" aria-labelledby="page-title"
         style="--subpage-hero-position: 72% 38%">
@@ -38,16 +226,59 @@
             <h1 class="subpage-title" id="page-title">Indíts egy <span>projektet.</span></h1>
             <p class="subpage-lead">Alkossunk együtt valami rendkívülit.</p>
             <p class="mini-copy">Oszd meg az ötleted, és csapatunk a koncepciótól a megvalósításig végigvezet az úton — precizitással, szenvedéllyel és céllal.</p>
+            <div class="kp-hero-chips">
+              <span class="gold">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+                24 órán belül válaszolunk
+              </span>
+              <span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 6L9 17l-5-5"/></svg>
+                Ingyenes árajánlat
+              </span>
+              <span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                Szatmárnémeti / Satu Mare
+              </span>
+              <span class="gold">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Hivatalos SRL háttér
+              </span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- BIZALOM STATISZTIKÁK -->
+      <section class="subpage-section subpage-section--tight">
+        <div class="subpage-shell">
+          <div class="kp-stats">
+            <div class="kp-stat">
+              <span class="kp-stat__ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+              <div><strong>24<i>h</i></strong><small>válaszidő</small></div>
+            </div>
+            <div class="kp-stat">
+              <span class="kp-stat__ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M16.5 9.4l-9-5.19M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/><path d="M3.27 6.96L12 12.01l8.73-5.05M12 22.08V12"/></svg></span>
+              <div><strong><span data-kp-count="5000">0</span><i>+</i></strong><small>elkészült termék</small></div>
+            </div>
+            <div class="kp-stat">
+              <span class="kp-stat__ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></span>
+              <div><strong><span data-kp-count="1000">0</span><i>+</i></strong><small>elégedett vásárló</small></div>
+            </div>
+            <div class="kp-stat">
+              <span class="kp-stat__ic" aria-hidden="true"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M1 3h13v13H1z"/><path d="M14 8h4l3 3v5h-7z"/><circle cx="6" cy="18.5" r="1.8"/><circle cx="17.5" cy="18.5" r="1.8"/></svg></span>
+              <div><strong>~1 <i>hét</i></strong><small>átlagos gyártás</small></div>
+            </div>
           </div>
         </div>
       </section>
 
       <!-- CONTACT GRID -->
-      <section class="subpage-section">
+      <section class="subpage-section subpage-section--tight">
         <div class="subpage-shell contact-grid">
           <!-- Form panel -->
           <section class="contact-panel" aria-labelledby="contact-form-title">
-            <p class="subpage-heading" style="text-align:left;margin-bottom:22px" id="contact-form-title">Mesélj a projektedről</p>
+            <h2 class="kp-form-title" id="contact-form-title">Mesélj a projektedről</h2>
+            <p class="kp-form-hint">Töltsd ki az űrlapot — 24–48 órán belül személyesen válaszolunk, ingyenes és kötelezettségmentes árajánlattal.</p>
             <form class="contact-form" action="mailto:hello@layero.ro" method="post" enctype="text/plain">
               <label>Teljes név<input name="name" type="text" placeholder="Neved" autocomplete="name" required></label>
               <label>E-mail cím<input name="email" type="email" placeholder="te@pelda.hu" autocomplete="email" inputmode="email" required></label>
@@ -74,7 +305,7 @@
 
           <!-- Info panel -->
           <aside class="contact-panel contact-info-panel">
-            <p class="subpage-heading" style="text-align:left;margin-bottom:22px">Kapcsolat</p>
+            <h2 class="kp-form-title" style="margin-bottom:20px">Kapcsolat</h2>
 
             <div class="contact-info-row">
               <span class="contact-info-icon" aria-hidden="true">
@@ -185,6 +416,10 @@
         <div class="subpage-shell contact-final-cta">
           <div class="contact-final-cta__media" aria-hidden="true">
             <img src="assets/images/layero-wire-heart-sculpture.webp" alt="">
+            <span class="kp-cta-chip">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+              Szívvel, rétegről rétegre
+            </span>
           </div>
           <div class="contact-final-cta__copy">
             <p class="subpage-kicker">Keltsük életre az elképzelésedet</p>
@@ -204,5 +439,53 @@
     </footer>
     <script src="script.js"></script>
     <script type="module" src="three-scene.js"></script>
+    <script>
+    // ── stat számlálók ──────────────────────────────────────────
+    (function() {
+      function countUp(el, target) {
+        var t0 = null, dur = 1400, done = false;
+        function step(ts) {
+          if (done) return;
+          if (!t0) t0 = ts;
+          var p = Math.min(1, (ts - t0) / dur);
+          var eased = 1 - Math.pow(1 - p, 3);
+          el.textContent = Math.round(eased * target);
+          if (p < 1) requestAnimationFrame(step); else done = true;
+        }
+        requestAnimationFrame(step);
+        // rejtett fülön a rAF nem fut — garantált végérték
+        setTimeout(function() { if (!done) { done = true; el.textContent = target; } }, dur + 400);
+      }
+      document.querySelectorAll('[data-kp-count]').forEach(function(el) {
+        countUp(el, parseInt(el.getAttribute('data-kp-count'), 10) || 0);
+      });
+    })();
+
+    // ── scroll reveal ───────────────────────────────────────────
+    (function() {
+      var els = [];
+      document.querySelectorAll(
+        '.kp-stats, .contact-panel, .page-card, .response-banner, ' +
+        '.contact-final-cta__media, .contact-final-cta__copy'
+      ).forEach(function(el, i) {
+        el.classList.add('kpx-reveal');
+        el.style.transitionDelay = ((i % 6) * 60) + 'ms';
+        els.push(el);
+      });
+      if ('IntersectionObserver' in window) {
+        var io = new IntersectionObserver(function(entries) {
+          entries.forEach(function(en) {
+            if (en.isIntersecting) {
+              en.target.classList.add('is-in');
+              io.unobserve(en.target);
+            }
+          });
+        }, { rootMargin: '0px 0px -6% 0px', threshold: 0.05 });
+        els.forEach(function(el) { io.observe(el); });
+      } else {
+        els.forEach(function(el) { el.classList.add('is-in'); });
+      }
+    })();
+    </script>
   </body>
 </html>
