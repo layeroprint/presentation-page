@@ -12537,3 +12537,89 @@ body.inspiration-showcase-page {
 .site-header .header-shell {
   width: min(1880px, calc(100% - var(--header-gutter, clamp(16px, 2.8vw, 44px)) - var(--header-gutter, clamp(16px, 2.8vw, 44px))));
 }
+
+/* ══ Scroll-reaktív fejléc: kompakt üveg állapot + fényvonalak ═══════ */
+
+.site-header {
+  transition: background 320ms ease, box-shadow 320ms ease;
+}
+
+/* alsó él: lassan úszó cián–arany hairline */
+.site-header::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -1px;
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(0, 229, 255, 0.5) 22%, rgba(255, 255, 255, 0.18) 50%, rgba(244, 184, 96, 0.5) 78%, transparent);
+  background-size: 220% 100%;
+  opacity: 0.55;
+  animation: hdr-aurora 9s linear infinite;
+}
+
+@keyframes hdr-aurora {
+  0% { background-position: 0% 0; }
+  100% { background-position: -220% 0; }
+}
+
+body.hdr-scrolled .site-header {
+  background: linear-gradient(180deg, rgba(2, 8, 18, 0.97), rgba(2, 8, 18, 0.84)) !important;
+  box-shadow: 0 18px 44px -22px rgba(0, 0, 0, 0.72);
+}
+
+/* nav underline: kéttónusú fényvonal */
+.site-nav a::after {
+  height: 2px;
+  background: linear-gradient(90deg, var(--cyan, #00e5ff), #f4b860);
+  box-shadow: 0 0 10px rgba(0, 229, 255, 0.32);
+}
+
+/* mottó sáv görgetésnél becsukódik — csak desktopon,
+   mobilon a lenyíló nav a fejléc magasságához van pozicionálva */
+@media (min-width: 721px) {
+  .header-top {
+    max-height: 60px;
+    overflow: hidden;
+    transition: max-height 380ms cubic-bezier(0.4, 0, 0.2, 1), opacity 300ms ease, border-color 300ms ease;
+  }
+
+  body.hdr-scrolled .header-top {
+    max-height: 0;
+    opacity: 0;
+    border-bottom-color: transparent;
+  }
+
+  .header-shell {
+    transition: padding 320ms ease;
+  }
+
+  body.hdr-scrolled .header-shell {
+    padding: 9px 0;
+  }
+
+  .logo__brand-mark,
+  .logo__brand-wordmark {
+    transition: width 320ms ease, height 320ms ease;
+  }
+
+  body.hdr-scrolled .logo__brand-mark {
+    width: 36px;
+    height: 36px;
+  }
+
+  body.hdr-scrolled .logo__brand-wordmark {
+    width: 102px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-header::before { animation: none; }
+
+  .site-header,
+  .header-top,
+  .header-shell,
+  .logo__brand-mark,
+  .logo__brand-wordmark { transition: none; }
+}

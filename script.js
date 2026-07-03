@@ -1119,3 +1119,34 @@ const setupCommunityTeaserSlider = () => {
 };
 
 setupCommunityTeaserSlider();
+
+// ── Scroll-reaktív fejléc: kompakt állapot ───────────────────────────
+const setupHeaderScrollState = () => {
+  const header = document.querySelector(".site-header");
+  if (!header) {
+    return;
+  }
+
+  let ticking = false;
+
+  const update = () => {
+    ticking = false;
+    const y = window.scrollY;
+    // hiszterézis: máshol vált be és ki, így a küszöb körül nem ugrál
+    const compact = document.body.classList.contains("hdr-scrolled");
+    document.body.classList.toggle("hdr-scrolled", compact ? y > 10 : y > 90);
+  };
+
+  const requestUpdate = () => {
+    if (!ticking) {
+      ticking = true;
+      window.requestAnimationFrame(update);
+    }
+  };
+
+  window.addEventListener("scroll", requestUpdate, { passive: true });
+  window.addEventListener("resize", requestUpdate, { passive: true });
+  update();
+};
+
+setupHeaderScrollState();

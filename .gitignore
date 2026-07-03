@@ -12,6 +12,9 @@ source_build/
 -background
 /-background/
 
+# ── Demo webshop ────────────────────────────────────────────────
+shop/
+
 # ── Kimenetek / screenshotok ────────────────────────────────────
 output/
 
