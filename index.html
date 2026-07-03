@@ -73,6 +73,7 @@
 
       /* 5. Section eyebrow cimkék — termékvilág stílus (amber vonal + uppercase) */
       .categories__eyebrow,
+      .lamp-showcase__eyebrow,
       .photo-process__eyebrow,
       .customer-reviews__eyebrow,
       .community__eyebrow {
@@ -95,11 +96,13 @@
       }
       /* a korábbi cyan pont-span-eket elrejtjük */
       .categories__eyebrow span,
+      .lamp-showcase__eyebrow span,
       .photo-process__eyebrow span,
       .customer-reviews__eyebrow span,
       .community__eyebrow span { display: none !important; }
       /* bal oldali amber vonal */
       .categories__eyebrow::before,
+      .lamp-showcase__eyebrow::before,
       .photo-process__eyebrow::before,
       .customer-reviews__eyebrow::before,
       .community__eyebrow::before {
@@ -113,6 +116,7 @@
 
       /* 6. Section főcímek: Fraunces kicsit nagyobb optikai méret */
       .categories__header h2,
+      .lamp-showcase__header h2,
       .photo-process__header h2,
       .how-command__header h2,
       .customer-reviews__header h2,
@@ -241,6 +245,282 @@
       .photo-process--animated .pp-anim.pp-visible {
         opacity: 1;
         transform: translateY(0);
+      }
+
+      /* ── Index lámpa összehasonlító ───────────────────────────── */
+      .lamp-showcase {
+        position: relative;
+        z-index: 4;
+        padding: clamp(76px, 8vw, 122px) 0 clamp(78px, 8vw, 116px);
+        overflow: hidden;
+      }
+      .lamp-showcase__shell {
+        width: min(1180px, calc(100% - 40px));
+        margin: 0 auto;
+      }
+      .lamp-showcase__header {
+        max-width: 760px;
+        margin: 0 auto clamp(38px, 5vw, 64px);
+        text-align: center;
+      }
+      .lamp-showcase__header h2 {
+        margin: 0;
+        font-size: clamp(2.15rem, 5vw, 4.15rem);
+        line-height: .98;
+        color: #f7f1e7;
+      }
+      .lamp-showcase__header h2 span {
+        color: #f4b860;
+        font-style: italic;
+        font-weight: 500;
+        text-shadow: 0 0 26px rgba(244,184,96,.32);
+      }
+      .lamp-showcase__lead {
+        max-width: 640px;
+        margin: 18px auto 0;
+        color: rgba(242,236,223,.64);
+        font-family: var(--font-ui);
+        font-size: clamp(.96rem, 1.4vw, 1.08rem);
+        line-height: 1.75;
+      }
+      .lamp-showcase__body {
+        display: grid;
+        grid-template-columns: minmax(280px, 475px) minmax(0, 1fr);
+        gap: clamp(42px, 6vw, 88px);
+        align-items: center;
+      }
+      .lamp-showcase__visual {
+        --pos: 50%;
+        position: relative;
+        width: min(100%, 475px);
+        margin: 0 auto;
+        aspect-ratio: 4 / 5;
+        border-radius: 18px;
+        cursor: ew-resize;
+        touch-action: pan-y;
+        user-select: none;
+        -webkit-user-select: none;
+      }
+      .lamp-showcase__visual::before {
+        content: "";
+        position: absolute;
+        inset: 4% -5% 1%;
+        border-radius: 28px;
+        background: linear-gradient(180deg, rgba(244,184,96,.13), rgba(108,176,216,.05));
+        filter: blur(36px);
+        opacity: .75;
+        pointer-events: none;
+      }
+      .ro-ba img {
+        animation: none !important;
+        pointer-events: none;
+      }
+      .ro-ba > .ro-ba__img {
+        position: relative;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        border-radius: 18px;
+        display: block;
+        box-shadow: 0 40px 80px -30px rgba(0,0,0,.86);
+      }
+      .ro-ba__top {
+        position: absolute;
+        inset: 0;
+        z-index: 2;
+        clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+        border-radius: 18px;
+        overflow: hidden;
+        pointer-events: none;
+      }
+      .ro-ba__top .ro-ba__img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        box-shadow: none;
+      }
+      .ro-ba__handle {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: var(--pos);
+        z-index: 6;
+        width: 2px;
+        transform: translateX(-50%);
+        background: linear-gradient(180deg, transparent, rgba(244,184,96,.88) 12%, rgba(244,184,96,.88) 88%, transparent);
+        pointer-events: none;
+      }
+      .ro-ba__grip {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 46px;
+        height: 46px;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgba(8,13,22,.84);
+        border: 1px solid rgba(244,184,96,.5);
+        backdrop-filter: blur(8px);
+        color: #f4b860;
+        font-family: var(--font-ui);
+        font-size: 1.05rem;
+        font-weight: 700;
+        line-height: 1;
+        box-shadow: 0 10px 30px -8px rgba(0,0,0,.8), 0 0 24px -6px rgba(244,184,96,.35);
+        animation: ro-grip-pulse 2.6s ease-in-out infinite;
+      }
+      .ro-ba.was-dragged .ro-ba__grip { animation: none; }
+      @keyframes ro-grip-pulse {
+        0%, 100% { box-shadow: 0 10px 30px -8px rgba(0,0,0,.8), 0 0 20px -6px rgba(244,184,96,.3); }
+        50% { box-shadow: 0 10px 30px -8px rgba(0,0,0,.8), 0 0 34px -4px rgba(244,184,96,.58); }
+      }
+      .ro-ba__tag {
+        position: absolute;
+        top: 14px;
+        z-index: 5;
+        padding: 5px 13px;
+        border-radius: 999px;
+        background: rgba(8,13,22,.72);
+        border: 1px solid rgba(255,255,255,.14);
+        backdrop-filter: blur(8px);
+        color: rgba(255,255,255,.7);
+        font-family: var(--font-ui);
+        font-size: .62rem;
+        font-weight: 700;
+        letter-spacing: .14em;
+        text-transform: uppercase;
+        pointer-events: none;
+      }
+      .ro-ba__tag--on {
+        left: 14px;
+        border-color: rgba(244,184,96,.45);
+        color: #f4b860;
+      }
+      .ro-ba__tag--off { right: 14px; }
+      .lamp-showcase__chip {
+        position: absolute;
+        left: -14px;
+        bottom: 16px;
+        z-index: 7;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 16px;
+        border-radius: 14px;
+        background: rgba(8,13,22,.78);
+        border: 1px solid rgba(244,184,96,.3);
+        backdrop-filter: blur(10px);
+        color: rgba(255,255,255,.86);
+        font-family: var(--font-ui);
+        font-size: .74rem;
+        font-weight: 600;
+        white-space: nowrap;
+        box-shadow: 0 18px 44px -14px rgba(0,0,0,.75);
+        pointer-events: none;
+      }
+      .lamp-showcase__chip .icon {
+        width: 15px;
+        height: 15px;
+        color: #f4b860;
+        flex: 0 0 auto;
+      }
+      .lamp-showcase__copy {
+        min-width: 0;
+      }
+      .lamp-showcase__kicker {
+        margin: 0 0 16px;
+        color: #f4b860;
+        font-family: var(--font-ui);
+        font-size: .72rem;
+        font-weight: 700;
+        letter-spacing: .28em;
+        text-transform: uppercase;
+      }
+      .lamp-showcase__quote {
+        margin: 0;
+        max-width: 740px;
+        padding-left: clamp(20px, 2.4vw, 28px);
+        border-left: 2px solid rgba(244,184,96,.55);
+        color: rgba(255,255,255,.86);
+        font-family: var(--font-display);
+        font-size: clamp(1.65rem, 3vw, 2.9rem);
+        font-style: italic;
+        font-weight: 500;
+        line-height: 1.34;
+      }
+      .lamp-showcase__quote span {
+        color: #f4b860;
+        text-shadow: 0 0 24px rgba(244,184,96,.3);
+      }
+      .lamp-showcase__name {
+        margin: 26px 0 4px;
+        color: rgba(255,255,255,.82);
+        font-family: var(--font-ui);
+        font-size: .88rem;
+        font-weight: 700;
+      }
+      .lamp-showcase__role {
+        margin: 0;
+        color: rgba(255,255,255,.36);
+        font-family: var(--font-ui);
+        font-size: .78rem;
+        font-weight: 600;
+        letter-spacing: .08em;
+      }
+      @media (max-width: 860px) {
+        .lamp-showcase {
+          padding: 68px 0 76px;
+        }
+        .lamp-showcase__body {
+          grid-template-columns: 1fr;
+        }
+        .lamp-showcase__copy {
+          text-align: left;
+        }
+      }
+      @media (max-width: 560px) {
+        .lamp-showcase__shell {
+          width: min(100% - 28px, 1180px);
+        }
+        .lamp-showcase__header {
+          text-align: left;
+        }
+        .lamp-showcase__visual {
+          width: min(100%, 420px);
+        }
+        .lamp-showcase__chip {
+          left: 12px;
+          right: 12px;
+          bottom: 12px;
+          justify-content: center;
+          white-space: normal;
+          text-align: center;
+        }
+        .ro-ba__tag {
+          top: 12px;
+          padding: 5px 10px;
+          font-size: .56rem;
+          letter-spacing: .11em;
+        }
+        .ro-ba__tag--on { left: 10px; }
+        .ro-ba__tag--off { right: 10px; }
+        .ro-ba__grip {
+          width: 42px;
+          height: 42px;
+        }
+        .lamp-showcase__quote {
+          padding-left: 18px;
+        }
+      }
+      @media (prefers-reduced-motion: reduce) {
+        .ro-ba__grip {
+          animation: none;
+        }
       }
 
       /* ── Scroll progress bar ─────────────────────────────────────── */
@@ -1422,6 +1702,45 @@
         </div>
       </section>
 
+      <section class="lamp-showcase section" id="lamp-showcase" aria-labelledby="lamp-showcase-title">
+        <div class="lamp-showcase__shell">
+          <div class="lamp-showcase__header">
+            <p class="lamp-showcase__eyebrow"><span></span>Fény előtt / után<span></span></p>
+            <h2 id="lamp-showcase-title">Egy lámpa, <span>két hangulat.</span></h2>
+            <p class="lamp-showcase__lead">Ugyanaz a személyes emlék nappal letisztult dísz, este pedig meleg fényű történet.</p>
+          </div>
+
+          <div class="lamp-showcase__body">
+            <div class="lamp-showcase__visual ro-ba" data-lamp-ba tabindex="0" role="img" aria-label="Egyedi Jurassic Park lámpa felkapcsolt és lekapcsolt állapotának összehasonlítása">
+              <img class="ro-ba__img" src="assets/rolunk/JP-off-900.webp" alt="" draggable="false" loading="lazy" width="900" height="1125">
+              <div class="ro-ba__top" aria-hidden="true">
+                <img class="ro-ba__img" src="assets/rolunk/JP-on-900.webp" alt="" draggable="false" loading="lazy" width="900" height="1125">
+              </div>
+              <div class="ro-ba__handle" aria-hidden="true">
+                <span class="ro-ba__grip">&lsaquo;&rsaquo;</span>
+              </div>
+              <span class="ro-ba__tag ro-ba__tag--on" aria-hidden="true">Felkapcsolva</span>
+              <span class="ro-ba__tag ro-ba__tag--off" aria-hidden="true">Lekapcsolva</span>
+              <span class="lamp-showcase__chip" aria-hidden="true">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                </svg>
+                Kézzel, szívvel, rétegről rétegre
+              </span>
+            </div>
+
+            <div class="lamp-showcase__copy">
+              <p class="lamp-showcase__kicker">Alapítói gondolat</p>
+              <blockquote class="lamp-showcase__quote">
+                „A Layero nem csupán 3D tárgyak készítéséről szól. Arról szól, hogy megragadjuk azt, ami igazán fontos, és valami <span>időtállóvá</span> formáljuk.”
+              </blockquote>
+              <p class="lamp-showcase__name">— A Layero csapata</p>
+              <p class="lamp-showcase__role">Szatmárnémeti / Satu Mare</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="photo-process photo-process--animated section" id="lamp-process" aria-labelledby="photo-process-title">
         <div class="photo-process__shell">
           <div class="photo-process__header">
@@ -1916,7 +2235,8 @@
       (function () {
         var els = [];
         document.querySelectorAll(
-          '.category-card, .how-command__step, .how-command__benefit, ' +
+          '.category-card, .lamp-showcase__header, .lamp-showcase__visual, .lamp-showcase__copy, ' +
+          '.how-command__step, .how-command__benefit, ' +
           '.customer-review-card, .community__benefit, .stats__item, .ix-cta__band'
         ).forEach(function (el, i) {
           el.classList.add('ixr');
@@ -1936,6 +2256,59 @@
         } else {
           els.forEach(function (el) { el.classList.add('is-in'); });
         }
+      })();
+
+      /* lamp-ba: Rólunk oldali lámpa összehasonlító az indexen */
+      (function () {
+        document.querySelectorAll('[data-lamp-ba]').forEach(function (ba) {
+          var dragging = false;
+
+          function setRatio(ratio) {
+            var next = Math.min(Math.max(ratio, 0.05), 0.95);
+            ba.style.setProperty('--pos', (next * 100).toFixed(2) + '%');
+          }
+
+          function setFromX(clientX) {
+            var rect = ba.getBoundingClientRect();
+            if (!rect.width) return;
+            setRatio((clientX - rect.left) / rect.width);
+          }
+
+          function currentRatio() {
+            var value = getComputedStyle(ba).getPropertyValue('--pos');
+            var parsed = parseFloat(value);
+            return Number.isFinite(parsed) ? parsed / 100 : 0.5;
+          }
+
+          ba.addEventListener('pointerdown', function (event) {
+            dragging = true;
+            ba.classList.add('was-dragged');
+            if (ba.setPointerCapture) {
+              try { ba.setPointerCapture(event.pointerId); } catch (err) {}
+            }
+            setFromX(event.clientX);
+            event.preventDefault();
+          });
+
+          ba.addEventListener('pointermove', function (event) {
+            if (dragging) setFromX(event.clientX);
+          });
+
+          ba.addEventListener('pointerup', function () {
+            dragging = false;
+          });
+
+          ba.addEventListener('pointercancel', function () {
+            dragging = false;
+          });
+
+          ba.addEventListener('keydown', function (event) {
+            if (event.key !== 'ArrowLeft' && event.key !== 'ArrowRight') return;
+            ba.classList.add('was-dragged');
+            setRatio(currentRatio() + (event.key === 'ArrowRight' ? 0.05 : -0.05));
+            event.preventDefault();
+          });
+        });
       })();
 
       /* ppx: fotóból lámpa transzformációs színpad */
