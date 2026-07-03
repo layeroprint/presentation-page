@@ -2897,6 +2897,10 @@ select {
 }
 
 @media (max-width: 640px) {
+  .customer-reviews {
+    overflow: hidden;
+  }
+
   .customer-reviews__shell {
     width: min(100% - 32px, var(--content));
   }
@@ -2911,6 +2915,33 @@ select {
     padding: 0 16px;
     font-size: 0.66rem;
     letter-spacing: 0.2em;
+  }
+
+  .customer-reviews__grid {
+    display: flex;
+    grid-template-columns: none;
+    gap: 16px;
+    overflow-x: auto;
+    overflow-y: hidden;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: 0;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    scrollbar-width: none;
+  }
+
+  .customer-reviews__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .customer-review-card {
+    flex: 0 0 100%;
+    width: 100%;
+    scroll-snap-align: center;
+    scroll-snap-stop: always;
+    opacity: 1 !important;
+    transform: none !important;
+    filter: none !important;
   }
 }
 
