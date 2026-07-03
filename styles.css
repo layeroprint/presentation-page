@@ -360,14 +360,63 @@ select {
   left: 0;
   width: 100%;
   z-index: 20;
-  padding: 18px 0;
-  background: linear-gradient(180deg, rgba(2, 8, 18, 0.72), rgba(2, 8, 18, 0.08));
+  padding: 0;
+  background: linear-gradient(180deg, rgba(2, 8, 18, 0.86), rgba(2, 8, 18, 0.32));
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
   backdrop-filter: blur(14px);
 }
 
+.header-top {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.07);
+  background:
+    linear-gradient(90deg, rgba(0, 229, 255, 0.07), transparent 34%, rgba(244, 184, 96, 0.08));
+}
+
+.header-top__inner,
 .header-shell {
-  width: min(var(--stage), calc(100% - 48px));
+  --header-gutter: clamp(16px, 2.8vw, 44px);
+  width: min(1880px, calc(100% - var(--header-gutter) - var(--header-gutter)));
   margin: 0 auto;
+}
+
+.header-top__inner {
+  min-height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  color: rgba(255, 255, 255, 0.66);
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.header-top__motto {
+  margin: 0;
+  min-width: 0;
+}
+
+.header-top__contact {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: clamp(14px, 2vw, 28px);
+  white-space: nowrap;
+}
+
+.header-top__contact a {
+  color: rgba(255, 255, 255, 0.76);
+  transition: color 180ms ease;
+}
+
+.header-top__contact a:hover,
+.header-top__contact a:focus-visible {
+  color: var(--gold);
+}
+
+.header-shell {
+  padding: 14px 0;
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
@@ -7094,7 +7143,7 @@ body.nav-open .nav-toggle__bars::after {
 
   .site-nav {
     position: fixed;
-    top: 74px;
+    top: 102px;
     left: 50%;
     right: auto;
     z-index: 31;
@@ -7102,7 +7151,7 @@ body.nav-open .nav-toggle__bars::after {
     grid-column: 1 / -1;
     gap: 16px;
     width: min(calc(100vw - 28px), 420px);
-    max-height: calc(100dvh - 92px);
+    max-height: calc(100dvh - 118px);
     padding: 18px;
     overflow-y: auto;
     border: 1px solid rgba(0, 229, 255, 0.24);
@@ -7424,12 +7473,38 @@ body.nav-open .nav-toggle__bars::after {
 
 @media (max-width: 720px) {
   .container,
+  .header-top__inner,
   .header-shell {
     width: min(100% - 32px, var(--content));
   }
 
   .site-header {
-    padding: 14px 0;
+    padding: 0;
+  }
+
+  .header-top__inner {
+    min-height: 0;
+    padding: 7px 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 5px;
+    font-size: 0.64rem;
+    line-height: 1.35;
+  }
+
+  .header-top__contact {
+    justify-content: space-between;
+    gap: 12px;
+    font-size: 0.68rem;
+  }
+
+  .header-shell {
+    padding: 10px 0;
+  }
+
+  .site-nav {
+    top: 116px;
+    max-height: calc(100dvh - 130px);
   }
 
   .logo {
@@ -9247,7 +9322,7 @@ body.munkak-reference-page {
 }
 
 .munkak-reference-page .site-header {
-  padding: 22px 0 14px;
+  padding: 0;
   background: linear-gradient(180deg, rgba(1, 7, 16, 0.9), rgba(1, 7, 16, 0.24));
   backdrop-filter: blur(10px);
 }
@@ -9822,7 +9897,7 @@ body.munkak-reference-page {
 }
 
 .munkak-showcase-page .site-header {
-  padding: 18px 0 12px;
+  padding: 0;
   background: linear-gradient(180deg, rgba(1, 6, 14, 0.92), rgba(1, 6, 14, 0.48));
   backdrop-filter: blur(12px);
 }
@@ -10883,7 +10958,7 @@ body.munkak-reference-page {
 }
 
 .inspiration-showcase-page .site-header {
-  padding: 16px 0 10px;
+  padding: 0;
   background: linear-gradient(180deg, rgba(1, 6, 14, 0.94), rgba(1, 6, 14, 0.48));
   backdrop-filter: blur(14px);
 }
@@ -12390,4 +12465,13 @@ body.inspiration-showcase-page {
     radial-gradient(circle at 4% 15%, rgba(18, 230, 255, 0.18), transparent 30%),
     radial-gradient(circle at 88% 8%, rgba(255, 155, 56, 0.18), transparent 28%),
     linear-gradient(180deg, #020711 0%, #06101b 44%, #020711 100%);
+}
+
+.site-header.site-header {
+  padding: 0;
+}
+
+.site-header .header-top__inner,
+.site-header .header-shell {
+  width: min(1880px, calc(100% - var(--header-gutter, clamp(16px, 2.8vw, 44px)) - var(--header-gutter, clamp(16px, 2.8vw, 44px))));
 }
