@@ -1,602 +1,699 @@
 <!doctype html>
 <html lang="hu">
-  <head>
+    <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Layero galéria — termékfotók, gyártási videók, folyamat képek és prezentációs anyagok.">
     <title>Galéria | Layero 3D Design</title>
+    <meta name="description" content="Layero galéria termékfotókkal, gyártási videókkal, folyamatképekkel és friss 3D nyomtatott munkákkal.">
+    <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
+    <meta name="author" content="Layero 3D Design">
+    <meta name="theme-color" content="#050b14">
+    <meta name="color-scheme" content="dark light">
+    <link rel="canonical" href="https://layero.ro/galeria.html">
+    <link rel="alternate" hreflang="hu" href="https://layero.ro/galeria.html">
+    <link rel="alternate" hreflang="x-default" href="https://layero.ro/galeria.html">
+    <link rel="preload" href="assets/galeria/kepek/4-lakasdekor/optimized/first-display.webp" as="image" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Sora:wght@300;400;500;600&display=swap">
-    <link rel="canonical" href="https://layero.ro/galeria.html">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,400;9..144,1,500&family=Sora:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap">
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32x32.png">
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+    <link rel="manifest" href="site.webmanifest">
     <meta property="og:type" content="website">
+    <meta property="og:locale" content="hu_HU">
     <meta property="og:site_name" content="Layero 3D Design">
     <meta property="og:title" content="Galéria | Layero 3D Design">
-    <meta property="og:description" content="Termékfotók, gyártási videók és folyamat képek a Layero 3D Design műhelyéből.">
+    <meta property="og:description" content="Layero galéria termékfotókkal, gyártási videókkal, folyamatképekkel és friss 3D nyomtatott munkákkal.">
     <meta property="og:url" content="https://layero.ro/galeria.html">
-    <meta property="og:image" content="https://layero.ro/assets/images/categories/layero-category-new-gyujtoi-darabok-1100.webp">
-    <link rel="stylesheet" href="styles.css?v=20260703-header-scroll-2">
-    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,400;9..144,1,500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="tv-theme.css?v=20260703-header-icons-1">
-    <style>
-      /* ── GALÉRIA OLDAL ──────────────────────────────────────── */
-      .subpage-main::after { display: none !important; }
-      .gl-hl-gold { color: #f4b860; font-weight: 500; }
-      .gl-hl-blue { color: #6cb0d8; font-weight: 500; }
-
-      /* ── CINEMATIC HERO — úszó fotófolyam háttérrel ─────────── */
-      .glx-hero { position: relative; overflow: hidden; padding: 150px 0 84px; }
-      .glx-hero__marquee {
-        position: absolute; left: -8%; right: -8%; top: -90px; bottom: -90px;
-        display: flex; flex-direction: column; justify-content: center; gap: 16px;
-        transform: rotate(-3deg); z-index: 0; pointer-events: none;
-      }
-      .glx-row { display: flex; gap: 16px; width: max-content; will-change: transform; }
-      .glx-row--a { animation: glx-scroll-l 85s linear infinite; }
-      .glx-row--b { animation: glx-scroll-r 100s linear infinite; }
-      @keyframes glx-scroll-l { to { transform: translateX(-50%); } }
-      @keyframes glx-scroll-r { from { transform: translateX(-50%); } to { transform: translateX(0); } }
-      .glx-row img {
-        height: 255px; width: auto; border-radius: 16px; object-fit: cover;
-        border: 1px solid rgba(255,255,255,.08); display: block;
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .glx-row--a, .glx-row--b { animation: none; }
-      }
-      .glx-hero__veil {
-        position: absolute; inset: 0; z-index: 1; pointer-events: none;
-        background:
-          radial-gradient(110% 80% at 22% 40%, rgba(2,6,16,.66), transparent 62%),
-          linear-gradient(180deg, rgba(2,6,16,.97) 0%, rgba(2,6,16,.68) 36%, rgba(2,6,16,.56) 62%, rgba(2,6,16,.98) 100%);
-      }
-      .glx-hero__inner {
-        position: relative; z-index: 2;
-        display: grid; grid-template-columns: 1fr 340px;
-        gap: 56px; align-items: center;
-      }
-      @media (max-width: 900px) {
-        .glx-hero__inner { grid-template-columns: 1fr; gap: 36px; }
-        .glx-hero { padding-top: 120px; }
-      }
-      .glx-eyebrow {
-        display: inline-flex; align-items: center; gap: 12px;
-        font-family: 'Space Grotesk', sans-serif; font-size: .64rem; font-weight: 700;
-        letter-spacing: .26em; text-transform: uppercase; color: #f4b860;
-      }
-      .glx-eyebrow::before { content: ''; width: 30px; height: 1px; background: linear-gradient(90deg, transparent, #f4b860); }
-      .glx-title {
-        font-family: 'Fraunces', Georgia, serif; font-weight: 600;
-        font-size: clamp(2.6rem, 5.4vw, 4.3rem); line-height: 1.05; letter-spacing: -.03em;
-        color: #fff; margin: 18px 0 20px;
-      }
-      .glx-title em {
-        font-style: italic; font-weight: 500; color: #f4b860;
-        text-shadow: 0 0 46px rgba(244,184,96,.42);
-      }
-      .glx-lead {
-        max-width: 52ch; color: rgba(255,255,255,.58);
-        font-size: 1.04rem; line-height: 1.78; margin: 0;
-      }
-      .glx-stats {
-        display: flex; gap: 40px; flex-wrap: wrap;
-        margin-top: 32px; padding-top: 24px;
-        border-top: 1px solid rgba(244,184,96,.16);
-      }
-      .glx-stat strong {
-        display: block; font-family: 'Fraunces', Georgia, serif;
-        font-size: 2.1rem; font-weight: 600; line-height: 1; color: #f2ecdf;
-      }
-      .glx-stat strong i { font-style: normal; color: #f4b860; }
-      .glx-stat small {
-        display: block; margin-top: 6px;
-        font-family: 'Space Grotesk', sans-serif; font-size: .6rem; font-weight: 600;
-        letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.35);
-      }
-      .glx-motm-wrap { position: relative; }
-      .glx-motm-wrap .gl-motm {
-        background: linear-gradient(160deg, rgba(10,16,28,.82), rgba(6,10,20,.94));
-        backdrop-filter: blur(12px);
-        border-color: rgba(244,184,96,.2);
-      }
-
-      /* ── SCROLL REVEAL ─────────────────────────────────────── */
-      .glx-reveal {
-        opacity: 0; transform: translateY(26px);
-        transition: opacity .7s ease, transform .7s cubic-bezier(.22,.9,.3,1);
-      }
-      .glx-reveal.is-in { opacity: 1; transform: none; }
-      @media (prefers-reduced-motion: reduce) {
-        .glx-reveal { opacity: 1; transform: none; transition: none; }
-      }
-
-      /* Hónap alkotása kártya */
-      .gl-motm {
-        position: relative; border-radius: 18px; overflow: hidden;
-        border: 1px solid rgba(244,184,96,.12);
-        background: linear-gradient(160deg, rgba(10,16,28,.7), rgba(6,10,20,.9));
-        box-shadow: 0 24px 60px -16px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.03) inset;
-      }
-      .gl-motm__img {
-        position: relative; aspect-ratio: 4/3; overflow: hidden;
-      }
-      .gl-motm__img img {
-        width: 100%; height: 100%; object-fit: cover; display: block;
-        transition: transform .5s;
-      }
-      .gl-motm:hover .gl-motm__img img { transform: scale(1.04); }
-      .gl-motm__img::after {
-        content: ''; position: absolute; inset: 0;
-        background: linear-gradient(to top, rgba(6,10,20,.85) 0%, transparent 60%);
-        pointer-events: none;
-      }
-      .gl-motm__badge {
-        position: absolute; top: 14px; left: 14px; z-index: 2;
-        display: inline-flex; align-items: center; gap: 6px;
-        padding: 5px 12px; border-radius: 8px;
-        background: rgba(244,184,96,.12); border: 1px solid rgba(244,184,96,.25);
-        backdrop-filter: blur(8px);
-        font-family: 'Space Grotesk', sans-serif; font-size: .58rem; font-weight: 700;
-        letter-spacing: .18em; text-transform: uppercase; color: #f4b860;
-      }
-      .gl-motm__badge svg { flex-shrink: 0; }
-      .gl-motm__body {
-        padding: 18px 20px 22px; position: relative;
-      }
-      .gl-motm__title {
-        font-family: 'Fraunces', Georgia, serif;
-        font-size: 1.3rem; font-weight: 500; line-height: 1.2;
-        color: rgba(255,255,255,.92); margin: 0 0 6px;
-        letter-spacing: -.01em;
-      }
-      .gl-motm__title em {
-        font-style: italic; color: rgba(255,255,255,.5);
-      }
-      .gl-motm__desc {
-        font-size: .78rem; line-height: 1.65;
-        color: rgba(255,255,255,.4); margin: 0 0 14px;
-      }
-      .gl-motm__facts {
-        display: flex; gap: 16px; margin-bottom: 14px;
-      }
-      .gl-motm__fact {
-        display: flex; flex-direction: column; gap: 1px;
-      }
-      .gl-motm__fact strong {
-        font-family: 'Space Grotesk', sans-serif; font-size: .72rem; font-weight: 700;
-        color: rgba(255,255,255,.7);
-      }
-      .gl-motm__fact small {
-        font-size: .6rem; color: rgba(255,255,255,.28);
-        text-transform: uppercase; letter-spacing: .1em;
-      }
-      .gl-motm__link {
-        display: inline-flex; align-items: center; gap: 6px;
-        font-family: 'Space Grotesk', sans-serif; font-size: .68rem; font-weight: 600;
-        letter-spacing: .12em; text-transform: uppercase;
-        color: rgba(244,184,96,.65); text-decoration: none;
-        transition: color .2s;
-      }
-      .gl-motm__link:hover { color: #f4b860; }
-
-      /* ── TAB NAV ────────────────────────────────────────────── */
-      .gl-tabs-wrap {
-        position: sticky; top: 64px; z-index: 50;
-        background: rgba(2,6,16,.86); backdrop-filter: blur(18px);
-        border-bottom: 1px solid rgba(255,255,255,.06);
-      }
-      .gl-tabs {
-        max-width: 1200px; margin: 0 auto;
-        padding: 13px 24px; display: flex; gap: 8px;
-        justify-content: center;
-        overflow-x: auto; scrollbar-width: none;
-      }
-      @media (max-width: 640px) { .gl-tabs { justify-content: flex-start; } }
-      .gl-tabs::-webkit-scrollbar { display: none; }
-      .gl-tab {
-        flex-shrink: 0; padding: 9px 26px; border-radius: 999px;
-        border: 1px solid rgba(255,255,255,.1);
-        font-family: 'Space Grotesk', sans-serif; font-size: .73rem; font-weight: 600;
-        letter-spacing: .12em; text-transform: uppercase;
-        color: rgba(255,255,255,.45); background: transparent;
-        cursor: pointer;
-        transition: color .22s, border-color .22s, background .22s, box-shadow .22s, transform .22s;
-      }
-      .gl-tab:hover {
-        color: #f4b860; border-color: rgba(244,184,96,.4);
-        background: rgba(244,184,96,.06);
-      }
-      .gl-tab.is-on {
-        color: #2a1c08; border-color: transparent;
-        background: linear-gradient(180deg, #f4b860, #e0913a);
-        box-shadow: 0 8px 26px -8px rgba(244,184,96,.6);
-        transform: translateY(-1px);
-      }
-
-      /* ── SECTION WRAPPERS ──────────────────────────────────── */
-      .gl-section { padding: 60px 0; }
-      .gl-section + .gl-section { padding-top: 0; }
-      .gl-section[hidden] { display: none !important; }
-      .gl-shell { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
-
-      .gl-section-hd {
-        display: flex; align-items: baseline;
-        justify-content: space-between; gap: 16px;
-        margin-bottom: 32px; flex-wrap: wrap;
-      }
-      .gl-section-title {
-        font-family: 'Fraunces', Georgia, serif;
-        font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 500;
-        color: rgba(255,255,255,.9); margin: 0; letter-spacing: -.02em;
-      }
-      .gl-section-title em { font-style: italic; color: rgba(255,255,255,.5); }
-      .gl-count {
-        font-family: 'Space Grotesk', sans-serif; font-size: .68rem; font-weight: 600;
-        letter-spacing: .15em; color: rgba(255,255,255,.25); text-transform: uppercase;
-      }
-
-      /* ── KIEMELT BANNER ─────────────────────────────────────── */
-      .gl-featured {
-        display: grid; grid-template-columns: 1.25fr 1fr;
-        min-height: 500px; border-radius: 20px; overflow: hidden;
-        border: 1px solid rgba(255,255,255,.07);
-      }
-      @media (max-width: 860px) { .gl-featured { grid-template-columns: 1fr; } }
-      .gl-featured__media { position: relative; overflow: hidden; min-height: 280px; }
-      .gl-featured__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
-      .gl-featured__media::after {
-        content: ''; position: absolute; inset: 0;
-        background: linear-gradient(90deg, transparent 60%, rgba(4,10,22,.6));
-        pointer-events: none;
-      }
-      .gl-featured__body {
-        padding: 52px 56px;
-        background: linear-gradient(140deg, rgba(8,18,36,1), rgba(4,10,22,1));
-        display: flex; flex-direction: column; justify-content: center; gap: 0;
-      }
-      @media (max-width: 860px) { .gl-featured__body { padding: 36px 28px; } }
-      .gl-featured__kicker {
-        font-family: 'Space Grotesk', sans-serif; font-size: .64rem; font-weight: 700;
-        letter-spacing: .24em; text-transform: uppercase;
-        color: #f4b860; margin: 0 0 20px;
-        display: flex; align-items: center; gap: 10px;
-      }
-      .gl-featured__kicker::before { content: ''; width: 28px; height: 1px; background: #f4b860; }
-      .gl-featured__title {
-        font-family: 'Fraunces', Georgia, serif;
-        font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 500;
-        line-height: 1.1; color: #fff; margin: 0 0 18px; letter-spacing: -.03em;
-      }
-      .gl-featured__title em { font-style: italic; color: rgba(255,255,255,.65); }
-      .gl-featured__desc {
-        font-size: .87rem; line-height: 1.78; color: rgba(255,255,255,.42);
-        margin: 0 0 36px; max-width: 340px;
-      }
-      .gl-featured__facts { display: flex; gap: 28px; flex-wrap: wrap; margin-bottom: 36px; }
-      .gl-featured__fact { display: flex; flex-direction: column; gap: 2px; }
-      .gl-featured__fact strong {
-        font-family: 'Space Grotesk', sans-serif; font-size: .8rem; font-weight: 700;
-        color: rgba(255,255,255,.75);
-      }
-      .gl-featured__fact small {
-        font-size: .68rem; color: rgba(255,255,255,.32); text-transform: uppercase;
-        letter-spacing: .1em;
-      }
-      .gl-featured__cta {
-        display: inline-flex; align-items: center; gap: 8px;
-        font-family: 'Space Grotesk', sans-serif; font-size: .72rem; font-weight: 600;
-        letter-spacing: .14em; text-transform: uppercase;
-        color: rgba(255,255,255,.45); text-decoration: none; transition: color .2s;
-      }
-      .gl-featured__cta:hover { color: #f4b860; }
-
-      /* ── VIDEO RÁCS ─────────────────────────────────────────── */
-      .gl-vtabs { display: flex; gap: 6px; margin-bottom: 28px; }
-      .gl-vtab {
-        padding: 6px 16px; border-radius: 20px;
-        border: 1px solid rgba(255,255,255,.1);
-        font-family: 'Space Grotesk', sans-serif; font-size: .68rem; font-weight: 600;
-        letter-spacing: .12em; text-transform: uppercase;
-        color: rgba(255,255,255,.38); background: none; cursor: pointer;
-        transition: color .2s, border-color .2s, background .2s;
-      }
-      .gl-vtab.is-on { color: #f4b860; border-color: rgba(244,184,96,.4); background: rgba(244,184,96,.07); }
-
-      .gl-vgrid {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 8px;
-      }
-      @media (max-width: 1100px) { .gl-vgrid { grid-template-columns: repeat(4, 1fr); } }
-      @media (max-width: 760px)  { .gl-vgrid { grid-template-columns: repeat(3, 1fr); } }
-      @media (max-width: 480px)  { .gl-vgrid { grid-template-columns: repeat(2, 1fr); } }
-
-      .gl-vcard {
-        aspect-ratio: 9/16; position: relative;
-        border-radius: 14px; overflow: hidden;
-        cursor: pointer; border: 1px solid rgba(255,255,255,.07);
-        background: rgba(6,14,28,.8);
-        transition: border-color .28s, transform .28s, box-shadow .28s;
-      }
-      .gl-vcard:hover {
-        border-color: rgba(244,184,96,.4);
-        transform: translateY(-4px);
-        box-shadow: 0 20px 48px -12px rgba(0,0,0,.7);
-      }
-      .gl-vcard > video {
-        width: 100%; height: 100%; object-fit: cover;
-        display: block; pointer-events: none;
-      }
-      .gl-vcard__shade {
-        position: absolute; inset: 0;
-        background: linear-gradient(to top, rgba(2,6,18,.85) 0%, rgba(2,6,18,.15) 50%, transparent 100%);
-      }
-      .gl-vcard__play {
-        position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-        width: 44px; height: 44px; border-radius: 50%;
-        background: rgba(255,255,255,.1); border: 1.5px solid rgba(255,255,255,.25);
-        display: flex; align-items: center; justify-content: center;
-        color: #fff; backdrop-filter: blur(6px);
-        opacity: 0; transition: opacity .22s; z-index: 2;
-      }
-      .gl-vcard:hover .gl-vcard__play { opacity: 1; }
-      .gl-vcard__meta {
-        position: absolute; bottom: 0; left: 0; right: 0;
-        padding: 10px 12px; z-index: 2;
-      }
-      .gl-vcard__num {
-        font-family: 'Space Grotesk', sans-serif; font-size: .52rem; font-weight: 700;
-        letter-spacing: .22em; color: rgba(244,184,96,.65); display: block; margin-bottom: 2px;
-      }
-      .gl-vcard__title {
-        font-family: 'Space Grotesk', sans-serif; font-size: .7rem; font-weight: 600;
-        color: rgba(255,255,255,.8); white-space: nowrap;
-        overflow: hidden; text-overflow: ellipsis;
-      }
-
-      .gl-placeholder-card {
-        border-radius: 14px; padding: 60px 36px;
-        border: 1px dashed rgba(255,255,255,.1);
-        text-align: center; color: rgba(255,255,255,.22);
-        font-family: 'Space Grotesk', sans-serif; font-size: .72rem; letter-spacing: .14em;
-        text-transform: uppercase; line-height: 1.8;
-        grid-column: 1 / -1;
-      }
-      .gl-placeholder-card span { display: block; font-size: 1.4rem; margin-bottom: 12px; opacity: .3; }
-
-      /* ── KATEGÓRIA AL-SZŰRŐK ─────────────────────────────────── */
-      .gl-cat-filters {
-        display: flex; flex-wrap: wrap; gap: 6px;
-        margin-bottom: 24px; padding-bottom: 18px;
-        border-bottom: 1px solid rgba(255,255,255,.06);
-      }
-      .gl-cat-pill {
-        padding: 6px 16px; border-radius: 20px;
-        border: 1px solid rgba(255,255,255,.1);
-        font-family: 'Space Grotesk', sans-serif; font-size: .68rem; font-weight: 600;
-        letter-spacing: .1em; text-transform: uppercase;
-        color: rgba(255,255,255,.38); background: none; cursor: pointer;
-        transition: color .2s, border-color .2s, background .2s;
-        white-space: nowrap;
-      }
-      .gl-cat-pill:hover {
-        color: rgba(255,255,255,.65); border-color: rgba(255,255,255,.2);
-      }
-      .gl-cat-pill.is-on {
-        color: #f4b860; border-color: rgba(244,184,96,.4);
-        background: rgba(244,184,96,.07);
-      }
-
-      /* ── MASONRY (termékek) ──────────────────────────────────── */
-      .gl-masonry { columns: 4; column-gap: 8px; }
-      @media (max-width: 1000px) { .gl-masonry { columns: 3; } }
-      @media (max-width: 640px)  { .gl-masonry { columns: 2; } }
-
-      /* JS-oszlopos mód: parallax-hoz külön oszlop-wrapperek */
-      .gl-masonry.glx-cols { display: flex; gap: 8px; align-items: flex-start; }
-      .glx-col {
-        flex: 1; min-width: 0;
-        display: flex; flex-direction: column; gap: 8px;
-        will-change: transform;
-      }
-      .glx-cols .gl-photo { margin-bottom: 0; }
-
-      .gl-photo {
-        break-inside: avoid; margin-bottom: 8px;
-        border-radius: 10px; overflow: hidden;
-        position: relative; cursor: zoom-in;
-        border: 1px solid rgba(255,255,255,.06);
-        transition: border-color .28s, box-shadow .28s, filter .35s, transform .18s ease-out;
-      }
-      .gl-photo:hover {
-        border-color: rgba(244,184,96,.38);
-        box-shadow: 0 12px 36px -8px rgba(0,0,0,.6), 0 0 32px -6px rgba(244,184,96,.18);
-      }
-      .gl-photo img { width: 100%; height: auto; display: block; transition: transform .45s; }
-      .gl-photo:hover img { transform: scale(1.04); }
-      .gl-photo__overlay {
-        position: absolute; inset: 0; opacity: 0;
-        background: rgba(244,184,96,.06);
-        display: flex; align-items: center; justify-content: center;
-        transition: opacity .28s;
-      }
-      .gl-photo:hover .gl-photo__overlay { opacity: 1; }
-      .gl-photo__zoom { color: rgba(255,255,255,.5); }
-
-      /* ── Kurzort követő arany fényfolt + spotlight sötétítés ── */
-      .gl-photo::after,
-      .gl-kat-photo::after,
-      .gl-process-item::after {
-        content: ""; position: absolute; inset: 0; pointer-events: none;
-        z-index: 2; opacity: 0;
-        background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 50%), rgba(244,184,96,.2), transparent 58%);
-        transition: opacity .3s;
-      }
-      .gl-photo:hover::after,
-      .gl-kat-photo:hover::after,
-      .gl-process-item:hover::after { opacity: 1; }
-
-      @media (hover: hover) and (pointer: fine) {
-        .gl-kat-photo, .gl-process-item { transition: border-color .28s, box-shadow .28s, filter .35s, transform .18s ease-out; }
-        .gl-masonry:hover .gl-photo:not(:hover),
-        .gl-kat-grid:hover .gl-kat-photo:not(:hover),
-        .gl-process-grid:hover .gl-process-item:not(:hover) {
-          filter: brightness(.58) saturate(.75);
+    <meta property="og:image" content="https://layero.ro/assets/galeria/kepek/4-lakasdekor/optimized/first-display.webp">
+    <meta property="og:image:alt" content="Layero 3D Design egyedi 3D alkotás">
+    <meta property="og:image:width" content="1100">
+    <meta property="og:image:height" content="825">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Galéria | Layero 3D Design">
+    <meta name="twitter:description" content="Layero galéria termékfotókkal, gyártási videókkal, folyamatképekkel és friss 3D nyomtatott munkákkal.">
+    <meta name="twitter:image" content="https://layero.ro/assets/galeria/kepek/4-lakasdekor/optimized/first-display.webp">
+    <link rel="stylesheet" href="styles.css?v=20260704-seo-perf-1">
+    <link rel="stylesheet" href="tv-theme.css?v=20260704-seo-perf-1">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "@id": "https://layero.ro/#organization",
+          "name": "Layero 3D Design",
+          "url": "https://layero.ro/",
+          "logo": "https://layero.ro/assets/layero-logo-mark-from-source.png",
+          "image": "https://layero.ro/assets/galeria/kepek/4-lakasdekor/optimized/first-display.webp",
+          "email": "hello@layero.ro",
+          "telephone": "+40756642387",
+          "sameAs": [
+            "https://www.instagram.com/layero3d"
+          ],
+          "contactPoint": [
+            {
+              "@type": "ContactPoint",
+              "contactType": "customer support",
+              "telephone": "+40756642387",
+              "email": "hello@layero.ro",
+              "availableLanguage": [
+                "hu",
+                "ro"
+              ]
+            }
+          ]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://layero.ro/#website",
+          "url": "https://layero.ro/",
+          "name": "Layero 3D Design",
+          "inLanguage": "hu",
+          "publisher": {
+            "@id": "https://layero.ro/#organization"
+          }
+        },
+        {
+          "@type": "CollectionPage",
+          "@id": "https://layero.ro/galeria.html#webpage",
+          "url": "https://layero.ro/galeria.html",
+          "name": "Galéria | Layero 3D Design",
+          "description": "Layero galéria termékfotókkal, gyártási videókkal, folyamatképekkel és friss 3D nyomtatott munkákkal.",
+          "inLanguage": "hu",
+          "isPartOf": {
+            "@id": "https://layero.ro/#website"
+          },
+          "publisher": {
+            "@id": "https://layero.ro/#organization"
+          },
+          "primaryImageOfPage": {
+            "@type": "ImageObject",
+            "url": "https://layero.ro/assets/galeria/kepek/4-lakasdekor/optimized/first-display.webp"
+          }
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": "https://layero.ro/galeria.html#breadcrumb",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Főoldal",
+              "item": "https://layero.ro/"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Galéria",
+              "item": "https://layero.ro/galeria.html"
+            }
+          ]
         }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .glx-col { transform: none !important; }
-        .gl-photo, .gl-kat-photo, .gl-process-item { transform: none !important; }
-      }
+      ]
+    }
+    </script>
+    <style>
+          /* ── GALÉRIA OLDAL ──────────────────────────────────────── */
+          .subpage-main::after { display: none !important; }
+          .gl-hl-gold { color: #f4b860; font-weight: 500; }
+          .gl-hl-blue { color: #6cb0d8; font-weight: 500; }
 
-      /* ── KATEGÓRIÁK ───────────────────────────────────────────── */
-      .gl-kat-section { margin-bottom: 64px; }
-      .gl-kat-section:last-child { margin-bottom: 0; }
+          /* ── CINEMATIC HERO — úszó fotófolyam háttérrel ─────────── */
+          .glx-hero { position: relative; overflow: hidden; padding: 150px 0 84px; }
+          .glx-hero__marquee {
+            position: absolute; left: -8%; right: -8%; top: -90px; bottom: -90px;
+            display: flex; flex-direction: column; justify-content: center; gap: 16px;
+            transform: rotate(-3deg); z-index: 0; pointer-events: none;
+          }
+          .glx-row { display: flex; gap: 16px; width: max-content; will-change: transform; }
+          .glx-row--a { animation: glx-scroll-l 85s linear infinite; }
+          .glx-row--b { animation: glx-scroll-r 100s linear infinite; }
+          @keyframes glx-scroll-l { to { transform: translateX(-50%); } }
+          @keyframes glx-scroll-r { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+          .glx-row img {
+            height: 255px; width: auto; border-radius: 16px; object-fit: cover;
+            border: 1px solid rgba(255,255,255,.08); display: block;
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .glx-row--a, .glx-row--b { animation: none; }
+          }
+          .glx-hero__veil {
+            position: absolute; inset: 0; z-index: 1; pointer-events: none;
+            background:
+              radial-gradient(110% 80% at 22% 40%, rgba(2,6,16,.66), transparent 62%),
+              linear-gradient(180deg, rgba(2,6,16,.97) 0%, rgba(2,6,16,.68) 36%, rgba(2,6,16,.56) 62%, rgba(2,6,16,.98) 100%);
+          }
+          .glx-hero__inner {
+            position: relative; z-index: 2;
+            display: grid; grid-template-columns: 1fr 340px;
+            gap: 56px; align-items: center;
+          }
+          @media (max-width: 900px) {
+            .glx-hero__inner { grid-template-columns: 1fr; gap: 36px; }
+            .glx-hero { padding-top: 120px; }
+          }
+          .glx-eyebrow {
+            display: inline-flex; align-items: center; gap: 12px;
+            font-family: 'Space Grotesk', sans-serif; font-size: .64rem; font-weight: 700;
+            letter-spacing: .26em; text-transform: uppercase; color: #f4b860;
+          }
+          .glx-eyebrow::before { content: ''; width: 30px; height: 1px; background: linear-gradient(90deg, transparent, #f4b860); }
+          .glx-title {
+            font-family: 'Fraunces', Georgia, serif; font-weight: 600;
+            font-size: clamp(2.6rem, 5.4vw, 4.3rem); line-height: 1.05; letter-spacing: -.03em;
+            color: #fff; margin: 18px 0 20px;
+          }
+          .glx-title em {
+            font-style: italic; font-weight: 500; color: #f4b860;
+            text-shadow: 0 0 46px rgba(244,184,96,.42);
+          }
+          .glx-lead {
+            max-width: 52ch; color: rgba(255,255,255,.58);
+            font-size: 1.04rem; line-height: 1.78; margin: 0;
+          }
+          .glx-stats {
+            display: flex; gap: 40px; flex-wrap: wrap;
+            margin-top: 32px; padding-top: 24px;
+            border-top: 1px solid rgba(244,184,96,.16);
+          }
+          .glx-stat strong {
+            display: block; font-family: 'Fraunces', Georgia, serif;
+            font-size: 2.1rem; font-weight: 600; line-height: 1; color: #f2ecdf;
+          }
+          .glx-stat strong i { font-style: normal; color: #f4b860; }
+          .glx-stat small {
+            display: block; margin-top: 6px;
+            font-family: 'Space Grotesk', sans-serif; font-size: .6rem; font-weight: 600;
+            letter-spacing: .2em; text-transform: uppercase; color: rgba(255,255,255,.35);
+          }
+          .glx-motm-wrap { position: relative; }
+          .glx-motm-wrap .gl-motm {
+            background: linear-gradient(160deg, rgba(10,16,28,.82), rgba(6,10,20,.94));
+            backdrop-filter: blur(12px);
+            border-color: rgba(244,184,96,.2);
+          }
 
-      .gl-kat-header {
-        display: flex; align-items: baseline; gap: 18px;
-        margin-bottom: 22px; padding-bottom: 18px;
-        border-bottom: 1px solid rgba(255,255,255,.07);
-      }
-      .gl-kat-num {
-        font-family: 'Space Grotesk', sans-serif; font-size: .82rem; font-weight: 700;
-        color: rgba(244,184,96,.55); letter-spacing: .04em; flex-shrink: 0;
-      }
-      .gl-kat-titlewrap { min-width: 0; }
-      .gl-kat-title {
-        font-family: 'Fraunces', Georgia, serif;
-        font-size: clamp(1.15rem, 1.8vw, 1.5rem); font-weight: 500;
-        color: rgba(255,255,255,.92); margin: 0 0 5px; letter-spacing: -.01em;
-      }
-      .gl-kat-desc {
-        font-size: .8rem; line-height: 1.6; color: rgba(255,255,255,.4);
-        margin: 0; max-width: 560px;
-      }
-      .gl-kat-count {
-        margin-left: auto; flex-shrink: 0;
-        font-family: 'Space Grotesk', sans-serif; font-size: .65rem; font-weight: 600;
-        letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.22);
-        white-space: nowrap;
-      }
+          /* ── SCROLL REVEAL ─────────────────────────────────────── */
+          .glx-reveal {
+            opacity: 0; transform: translateY(26px);
+            transition: opacity .7s ease, transform .7s cubic-bezier(.22,.9,.3,1);
+          }
+          .glx-reveal.is-in { opacity: 1; transform: none; }
+          @media (prefers-reduced-motion: reduce) {
+            .glx-reveal { opacity: 1; transform: none; transition: none; }
+          }
 
-      .gl-kat-grid {
-        display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px;
-      }
-      @media (max-width: 1100px) { .gl-kat-grid { grid-template-columns: repeat(4, 1fr); } }
-      @media (max-width: 760px)  { .gl-kat-grid { grid-template-columns: repeat(3, 1fr); } }
-      @media (max-width: 480px)  { .gl-kat-grid { grid-template-columns: repeat(2, 1fr); } }
+          /* Hónap alkotása kártya */
+          .gl-motm {
+            position: relative; border-radius: 18px; overflow: hidden;
+            border: 1px solid rgba(244,184,96,.12);
+            background: linear-gradient(160deg, rgba(10,16,28,.7), rgba(6,10,20,.9));
+            box-shadow: 0 24px 60px -16px rgba(0,0,0,.6), 0 0 0 1px rgba(255,255,255,.03) inset;
+          }
+          .gl-motm__img {
+            position: relative; aspect-ratio: 4/3; overflow: hidden;
+          }
+          .gl-motm__img img {
+            width: 100%; height: 100%; object-fit: cover; display: block;
+            transition: transform .5s;
+          }
+          .gl-motm:hover .gl-motm__img img { transform: scale(1.04); }
+          .gl-motm__img::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(6,10,20,.85) 0%, transparent 60%);
+            pointer-events: none;
+          }
+          .gl-motm__badge {
+            position: absolute; top: 14px; left: 14px; z-index: 2;
+            display: inline-flex; align-items: center; gap: 6px;
+            padding: 5px 12px; border-radius: 8px;
+            background: rgba(244,184,96,.12); border: 1px solid rgba(244,184,96,.25);
+            backdrop-filter: blur(8px);
+            font-family: 'Space Grotesk', sans-serif; font-size: .58rem; font-weight: 700;
+            letter-spacing: .18em; text-transform: uppercase; color: #f4b860;
+          }
+          .gl-motm__badge svg { flex-shrink: 0; }
+          .gl-motm__body {
+            padding: 18px 20px 22px; position: relative;
+          }
+          .gl-motm__title {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: 1.3rem; font-weight: 500; line-height: 1.2;
+            color: rgba(255,255,255,.92); margin: 0 0 6px;
+            letter-spacing: -.01em;
+          }
+          .gl-motm__title em {
+            font-style: italic; color: rgba(255,255,255,.5);
+          }
+          .gl-motm__desc {
+            font-size: .78rem; line-height: 1.65;
+            color: rgba(255,255,255,.4); margin: 0 0 14px;
+          }
+          .gl-motm__facts {
+            display: flex; gap: 16px; margin-bottom: 14px;
+          }
+          .gl-motm__fact {
+            display: flex; flex-direction: column; gap: 1px;
+          }
+          .gl-motm__fact strong {
+            font-family: 'Space Grotesk', sans-serif; font-size: .72rem; font-weight: 700;
+            color: rgba(255,255,255,.7);
+          }
+          .gl-motm__fact small {
+            font-size: .6rem; color: rgba(255,255,255,.28);
+            text-transform: uppercase; letter-spacing: .1em;
+          }
+          .gl-motm__link {
+            display: inline-flex; align-items: center; gap: 6px;
+            font-family: 'Space Grotesk', sans-serif; font-size: .68rem; font-weight: 600;
+            letter-spacing: .12em; text-transform: uppercase;
+            color: rgba(244,184,96,.65); text-decoration: none;
+            transition: color .2s;
+          }
+          .gl-motm__link:hover { color: #f4b860; }
 
-      .gl-kat-photo {
-        aspect-ratio: 1; border-radius: 10px; overflow: hidden;
-        position: relative; cursor: zoom-in;
-        border: 1px solid rgba(255,255,255,.06);
-        transition: border-color .28s, box-shadow .28s;
-      }
-      .gl-kat-photo:hover { border-color: rgba(244,184,96,.32); box-shadow: 0 12px 30px -8px rgba(0,0,0,.6); }
-      .gl-kat-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s; }
-      .gl-kat-photo:hover img { transform: scale(1.06); }
+          /* ── TAB NAV ────────────────────────────────────────────── */
+          .gl-tabs-wrap {
+            position: sticky; top: 64px; z-index: 50;
+            background: rgba(2,6,16,.86); backdrop-filter: blur(18px);
+            border-bottom: 1px solid rgba(255,255,255,.06);
+          }
+          .gl-tabs {
+            max-width: 1200px; margin: 0 auto;
+            padding: 13px 24px; display: flex; gap: 8px;
+            justify-content: center;
+            overflow-x: auto; scrollbar-width: none;
+          }
+          @media (max-width: 640px) { .gl-tabs { justify-content: flex-start; } }
+          .gl-tabs::-webkit-scrollbar { display: none; }
+          .gl-tab {
+            flex-shrink: 0; padding: 9px 26px; border-radius: 999px;
+            border: 1px solid rgba(255,255,255,.1);
+            font-family: 'Space Grotesk', sans-serif; font-size: .73rem; font-weight: 600;
+            letter-spacing: .12em; text-transform: uppercase;
+            color: rgba(255,255,255,.45); background: transparent;
+            cursor: pointer;
+            transition: color .22s, border-color .22s, background .22s, box-shadow .22s, transform .22s;
+          }
+          .gl-tab:hover {
+            color: #f4b860; border-color: rgba(244,184,96,.4);
+            background: rgba(244,184,96,.06);
+          }
+          .gl-tab.is-on {
+            color: #2a1c08; border-color: transparent;
+            background: linear-gradient(180deg, #f4b860, #e0913a);
+            box-shadow: 0 8px 26px -8px rgba(244,184,96,.6);
+            transform: translateY(-1px);
+          }
 
-      .gl-kat-empty {
-        padding: 30px 24px; border-radius: 12px;
-        border: 1px dashed rgba(255,255,255,.09);
-        text-align: center; color: rgba(255,255,255,.2);
-        font-family: 'Space Grotesk', sans-serif; font-size: .68rem;
-        letter-spacing: .1em; text-transform: uppercase;
-      }
+          /* ── SECTION WRAPPERS ──────────────────────────────────── */
+          .gl-section { padding: 60px 0; }
+          .gl-section + .gl-section { padding-top: 0; }
+          .gl-section[hidden] { display: none !important; }
+          .gl-shell { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
 
-      /* ── GYÁRTÁS RÁCS ──────────────────────────────────────── */
-      .gl-process-grid {
-        display: grid; grid-template-columns: repeat(3, 1fr);
-        gap: 10px;
-      }
-      @media (max-width: 700px) { .gl-process-grid { grid-template-columns: 1fr 1fr; } }
-      .gl-process-item {
-        position: relative; border-radius: 12px; overflow: hidden;
-        aspect-ratio: 4/3; cursor: zoom-in;
-        border: 1px solid rgba(255,255,255,.07);
-        transition: border-color .28s;
-      }
-      .gl-process-item:hover { border-color: rgba(244,184,96,.3); }
-      .gl-process-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .45s; }
-      .gl-process-item:hover img { transform: scale(1.05); }
-      .gl-process-item__label {
-        position: absolute; bottom: 0; left: 0; right: 0;
-        padding: 8px 12px;
-        background: linear-gradient(to top, rgba(2,6,18,.8), transparent);
-        font-family: 'Space Grotesk', sans-serif; font-size: .65rem; font-weight: 600;
-        letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.5);
-      }
+          .gl-section-hd {
+            display: flex; align-items: baseline;
+            justify-content: space-between; gap: 16px;
+            margin-bottom: 32px; flex-wrap: wrap;
+          }
+          .gl-section-title {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: clamp(1.4rem, 2.5vw, 2rem); font-weight: 500;
+            color: rgba(255,255,255,.9); margin: 0; letter-spacing: -.02em;
+          }
+          .gl-section-title em { font-style: italic; color: rgba(255,255,255,.5); }
+          .gl-count {
+            font-family: 'Space Grotesk', sans-serif; font-size: .68rem; font-weight: 600;
+            letter-spacing: .15em; color: rgba(255,255,255,.25); text-transform: uppercase;
+          }
 
-      /* Műhely placeholder */
-      .gl-workshop-placeholder {
-        border-radius: 14px; padding: 80px 36px;
-        border: 1px dashed rgba(255,255,255,.1);
-        text-align: center;
-        background: rgba(255,255,255,.015);
-      }
-      .gl-workshop-placeholder p {
-        font-family: 'Space Grotesk', sans-serif; font-size: .72rem; letter-spacing: .14em;
-        text-transform: uppercase; color: rgba(255,255,255,.2); margin: 8px 0 0;
-      }
-      .gl-workshop-placeholder svg { opacity: .18; margin-bottom: 16px; }
+          /* ── KIEMELT BANNER ─────────────────────────────────────── */
+          .gl-featured {
+            display: grid; grid-template-columns: 1.25fr 1fr;
+            min-height: 500px; border-radius: 20px; overflow: hidden;
+            border: 1px solid rgba(255,255,255,.07);
+          }
+          @media (max-width: 860px) { .gl-featured { grid-template-columns: 1fr; } }
+          .gl-featured__media { position: relative; overflow: hidden; min-height: 280px; }
+          .gl-featured__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+          .gl-featured__media::after {
+            content: ''; position: absolute; inset: 0;
+            background: linear-gradient(90deg, transparent 60%, rgba(4,10,22,.6));
+            pointer-events: none;
+          }
+          .gl-featured__body {
+            padding: 52px 56px;
+            background: linear-gradient(140deg, rgba(8,18,36,1), rgba(4,10,22,1));
+            display: flex; flex-direction: column; justify-content: center; gap: 0;
+          }
+          @media (max-width: 860px) { .gl-featured__body { padding: 36px 28px; } }
+          .gl-featured__kicker {
+            font-family: 'Space Grotesk', sans-serif; font-size: .64rem; font-weight: 700;
+            letter-spacing: .24em; text-transform: uppercase;
+            color: #f4b860; margin: 0 0 20px;
+            display: flex; align-items: center; gap: 10px;
+          }
+          .gl-featured__kicker::before { content: ''; width: 28px; height: 1px; background: #f4b860; }
+          .gl-featured__title {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: clamp(2rem, 3.5vw, 3.2rem); font-weight: 500;
+            line-height: 1.1; color: #fff; margin: 0 0 18px; letter-spacing: -.03em;
+          }
+          .gl-featured__title em { font-style: italic; color: rgba(255,255,255,.65); }
+          .gl-featured__desc {
+            font-size: .87rem; line-height: 1.78; color: rgba(255,255,255,.42);
+            margin: 0 0 36px; max-width: 340px;
+          }
+          .gl-featured__facts { display: flex; gap: 28px; flex-wrap: wrap; margin-bottom: 36px; }
+          .gl-featured__fact { display: flex; flex-direction: column; gap: 2px; }
+          .gl-featured__fact strong {
+            font-family: 'Space Grotesk', sans-serif; font-size: .8rem; font-weight: 700;
+            color: rgba(255,255,255,.75);
+          }
+          .gl-featured__fact small {
+            font-size: .68rem; color: rgba(255,255,255,.32); text-transform: uppercase;
+            letter-spacing: .1em;
+          }
+          .gl-featured__cta {
+            display: inline-flex; align-items: center; gap: 8px;
+            font-family: 'Space Grotesk', sans-serif; font-size: .72rem; font-weight: 600;
+            letter-spacing: .14em; text-transform: uppercase;
+            color: rgba(255,255,255,.45); text-decoration: none; transition: color .2s;
+          }
+          .gl-featured__cta:hover { color: #f4b860; }
 
-      /* ── LIGHTBOX ──────────────────────────────────────────── */
-      .gl-lb {
-        position: fixed; inset: 0; z-index: 900;
-        background: rgba(2,4,14,.97);
-        display: flex; align-items: center; justify-content: center;
-        opacity: 0; pointer-events: none; transition: opacity .28s;
-        cursor: zoom-out;
-      }
-      .gl-lb.is-open { opacity: 1; pointer-events: all; }
-      .gl-lb__close {
-        position: fixed; top: 18px; right: 18px; z-index: 10;
-        width: 40px; height: 40px; border-radius: 50%;
-        background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
-        color: rgba(255,255,255,.55); cursor: pointer;
-        display: flex; align-items: center; justify-content: center;
-        transition: background .2s, color .2s;
-      }
-      .gl-lb__close:hover { background: rgba(255,255,255,.15); color: #fff; }
-      .gl-lb__media {
-        max-width: calc(100vw - 140px); max-height: 90vh;
-        display: flex; align-items: center; justify-content: center; cursor: default;
-      }
-      .gl-lb__img {
-        max-width: 100%; max-height: 88vh; object-fit: contain;
-        display: block; border-radius: 6px; transition: opacity .18s;
-        animation: gl-lb-in .34s cubic-bezier(.2,.9,.3,1);
-      }
-      .gl-lb__img.fade { opacity: 0; }
-      @keyframes gl-lb-in {
-        from { transform: scale(.94) translateY(10px); opacity: 0; }
-      }
-      @media (prefers-reduced-motion: reduce) {
-        .gl-lb__img { animation: none; }
-      }
-      .gl-lb__video {
-        max-width: 100%; max-height: 88vh;
-        border-radius: 10px; background: #000; outline: none;
-      }
-      .gl-lb__nav {
-        position: fixed; top: 50%; transform: translateY(-50%); z-index: 10;
-        width: 50px; height: 50px; border-radius: 50%;
-        background: rgba(8,16,30,.75); border: 1px solid rgba(255,255,255,.12);
-        color: rgba(255,255,255,.8); font-size: 1.65rem; line-height: 1;
-        cursor: pointer; display: flex; align-items: center; justify-content: center;
-        backdrop-filter: blur(8px); transition: all .2s; padding: 0;
-      }
-      .gl-lb__nav:hover { border-color: rgba(244,184,96,.4); color: #f4b860; }
-      .gl-lb__prev { left: 16px; }
-      .gl-lb__next { right: 16px; }
-      .gl-lb__counter {
-        position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
-        font-family: 'Space Grotesk', sans-serif; font-size: .75rem; font-weight: 500;
-        letter-spacing: .12em; color: rgba(255,255,255,.3); pointer-events: none;
-      }
-    </style>
+          /* ── VIDEO RÁCS ─────────────────────────────────────────── */
+          .gl-vtabs { display: flex; gap: 6px; margin-bottom: 28px; }
+          .gl-vtab {
+            padding: 6px 16px; border-radius: 20px;
+            border: 1px solid rgba(255,255,255,.1);
+            font-family: 'Space Grotesk', sans-serif; font-size: .68rem; font-weight: 600;
+            letter-spacing: .12em; text-transform: uppercase;
+            color: rgba(255,255,255,.38); background: none; cursor: pointer;
+            transition: color .2s, border-color .2s, background .2s;
+          }
+          .gl-vtab.is-on { color: #f4b860; border-color: rgba(244,184,96,.4); background: rgba(244,184,96,.07); }
+
+          .gl-vgrid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 8px;
+          }
+          @media (max-width: 1100px) { .gl-vgrid { grid-template-columns: repeat(4, 1fr); } }
+          @media (max-width: 760px)  { .gl-vgrid { grid-template-columns: repeat(3, 1fr); } }
+          @media (max-width: 480px)  { .gl-vgrid { grid-template-columns: repeat(2, 1fr); } }
+
+          .gl-vcard {
+            aspect-ratio: 9/16; position: relative;
+            border-radius: 14px; overflow: hidden;
+            cursor: pointer; border: 1px solid rgba(255,255,255,.07);
+            background: rgba(6,14,28,.8);
+            transition: border-color .28s, transform .28s, box-shadow .28s;
+          }
+          .gl-vcard:hover {
+            border-color: rgba(244,184,96,.4);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 48px -12px rgba(0,0,0,.7);
+          }
+          .gl-vcard > video {
+            width: 100%; height: 100%; object-fit: cover;
+            display: block; pointer-events: none;
+          }
+          .gl-vcard__shade {
+            position: absolute; inset: 0;
+            background: linear-gradient(to top, rgba(2,6,18,.85) 0%, rgba(2,6,18,.15) 50%, transparent 100%);
+          }
+          .gl-vcard__play {
+            position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            width: 44px; height: 44px; border-radius: 50%;
+            background: rgba(255,255,255,.1); border: 1.5px solid rgba(255,255,255,.25);
+            display: flex; align-items: center; justify-content: center;
+            color: #fff; backdrop-filter: blur(6px);
+            opacity: 0; transition: opacity .22s; z-index: 2;
+          }
+          .gl-vcard:hover .gl-vcard__play { opacity: 1; }
+          .gl-vcard__meta {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            padding: 10px 12px; z-index: 2;
+          }
+          .gl-vcard__num {
+            font-family: 'Space Grotesk', sans-serif; font-size: .52rem; font-weight: 700;
+            letter-spacing: .22em; color: rgba(244,184,96,.65); display: block; margin-bottom: 2px;
+          }
+          .gl-vcard__title {
+            font-family: 'Space Grotesk', sans-serif; font-size: .7rem; font-weight: 600;
+            color: rgba(255,255,255,.8); white-space: nowrap;
+            overflow: hidden; text-overflow: ellipsis;
+          }
+
+          .gl-placeholder-card {
+            border-radius: 14px; padding: 60px 36px;
+            border: 1px dashed rgba(255,255,255,.1);
+            text-align: center; color: rgba(255,255,255,.22);
+            font-family: 'Space Grotesk', sans-serif; font-size: .72rem; letter-spacing: .14em;
+            text-transform: uppercase; line-height: 1.8;
+            grid-column: 1 / -1;
+          }
+          .gl-placeholder-card span { display: block; font-size: 1.4rem; margin-bottom: 12px; opacity: .3; }
+
+          /* ── KATEGÓRIA AL-SZŰRŐK ─────────────────────────────────── */
+          .gl-cat-filters {
+            display: flex; flex-wrap: wrap; gap: 6px;
+            margin-bottom: 24px; padding-bottom: 18px;
+            border-bottom: 1px solid rgba(255,255,255,.06);
+          }
+          .gl-cat-pill {
+            padding: 6px 16px; border-radius: 20px;
+            border: 1px solid rgba(255,255,255,.1);
+            font-family: 'Space Grotesk', sans-serif; font-size: .68rem; font-weight: 600;
+            letter-spacing: .1em; text-transform: uppercase;
+            color: rgba(255,255,255,.38); background: none; cursor: pointer;
+            transition: color .2s, border-color .2s, background .2s;
+            white-space: nowrap;
+          }
+          .gl-cat-pill:hover {
+            color: rgba(255,255,255,.65); border-color: rgba(255,255,255,.2);
+          }
+          .gl-cat-pill.is-on {
+            color: #f4b860; border-color: rgba(244,184,96,.4);
+            background: rgba(244,184,96,.07);
+          }
+
+          /* ── MASONRY (termékek) ──────────────────────────────────── */
+          .gl-masonry { columns: 4; column-gap: 8px; }
+          @media (max-width: 1000px) { .gl-masonry { columns: 3; } }
+          @media (max-width: 640px)  { .gl-masonry { columns: 2; } }
+
+          /* JS-oszlopos mód: parallax-hoz külön oszlop-wrapperek */
+          .gl-masonry.glx-cols { display: flex; gap: 8px; align-items: flex-start; }
+          .glx-col {
+            flex: 1; min-width: 0;
+            display: flex; flex-direction: column; gap: 8px;
+            will-change: transform;
+          }
+          .glx-cols .gl-photo { margin-bottom: 0; }
+
+          .gl-photo {
+            break-inside: avoid; margin-bottom: 8px;
+            border-radius: 10px; overflow: hidden;
+            position: relative; cursor: zoom-in;
+            border: 1px solid rgba(255,255,255,.06);
+            transition: border-color .28s, box-shadow .28s, filter .35s, transform .18s ease-out;
+          }
+          .gl-photo:hover {
+            border-color: rgba(244,184,96,.38);
+            box-shadow: 0 12px 36px -8px rgba(0,0,0,.6), 0 0 32px -6px rgba(244,184,96,.18);
+          }
+          .gl-photo img { width: 100%; height: auto; display: block; transition: transform .45s; }
+          .gl-photo:hover img { transform: scale(1.04); }
+          .gl-photo__overlay {
+            position: absolute; inset: 0; opacity: 0;
+            background: rgba(244,184,96,.06);
+            display: flex; align-items: center; justify-content: center;
+            transition: opacity .28s;
+          }
+          .gl-photo:hover .gl-photo__overlay { opacity: 1; }
+          .gl-photo__zoom { color: rgba(255,255,255,.5); }
+
+          /* ── Kurzort követő arany fényfolt + spotlight sötétítés ── */
+          .gl-photo::after,
+          .gl-kat-photo::after,
+          .gl-process-item::after {
+            content: ""; position: absolute; inset: 0; pointer-events: none;
+            z-index: 2; opacity: 0;
+            background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 50%), rgba(244,184,96,.2), transparent 58%);
+            transition: opacity .3s;
+          }
+          .gl-photo:hover::after,
+          .gl-kat-photo:hover::after,
+          .gl-process-item:hover::after { opacity: 1; }
+
+          @media (hover: hover) and (pointer: fine) {
+            .gl-kat-photo, .gl-process-item { transition: border-color .28s, box-shadow .28s, filter .35s, transform .18s ease-out; }
+            .gl-masonry:hover .gl-photo:not(:hover),
+            .gl-kat-grid:hover .gl-kat-photo:not(:hover),
+            .gl-process-grid:hover .gl-process-item:not(:hover) {
+              filter: brightness(.58) saturate(.75);
+            }
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .glx-col { transform: none !important; }
+            .gl-photo, .gl-kat-photo, .gl-process-item { transform: none !important; }
+          }
+
+          /* ── KATEGÓRIÁK ───────────────────────────────────────────── */
+          .gl-kat-section { margin-bottom: 64px; }
+          .gl-kat-section:last-child { margin-bottom: 0; }
+
+          .gl-kat-header {
+            display: flex; align-items: baseline; gap: 18px;
+            margin-bottom: 22px; padding-bottom: 18px;
+            border-bottom: 1px solid rgba(255,255,255,.07);
+          }
+          .gl-kat-num {
+            font-family: 'Space Grotesk', sans-serif; font-size: .82rem; font-weight: 700;
+            color: rgba(244,184,96,.55); letter-spacing: .04em; flex-shrink: 0;
+          }
+          .gl-kat-titlewrap { min-width: 0; }
+          .gl-kat-title {
+            font-family: 'Fraunces', Georgia, serif;
+            font-size: clamp(1.15rem, 1.8vw, 1.5rem); font-weight: 500;
+            color: rgba(255,255,255,.92); margin: 0 0 5px; letter-spacing: -.01em;
+          }
+          .gl-kat-desc {
+            font-size: .8rem; line-height: 1.6; color: rgba(255,255,255,.4);
+            margin: 0; max-width: 560px;
+          }
+          .gl-kat-count {
+            margin-left: auto; flex-shrink: 0;
+            font-family: 'Space Grotesk', sans-serif; font-size: .65rem; font-weight: 600;
+            letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.22);
+            white-space: nowrap;
+          }
+
+          .gl-kat-grid {
+            display: grid; grid-template-columns: repeat(5, 1fr); gap: 8px;
+          }
+          @media (max-width: 1100px) { .gl-kat-grid { grid-template-columns: repeat(4, 1fr); } }
+          @media (max-width: 760px)  { .gl-kat-grid { grid-template-columns: repeat(3, 1fr); } }
+          @media (max-width: 480px)  { .gl-kat-grid { grid-template-columns: repeat(2, 1fr); } }
+
+          .gl-kat-photo {
+            aspect-ratio: 1; border-radius: 10px; overflow: hidden;
+            position: relative; cursor: zoom-in;
+            border: 1px solid rgba(255,255,255,.06);
+            transition: border-color .28s, box-shadow .28s;
+          }
+          .gl-kat-photo:hover { border-color: rgba(244,184,96,.32); box-shadow: 0 12px 30px -8px rgba(0,0,0,.6); }
+          .gl-kat-photo img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .4s; }
+          .gl-kat-photo:hover img { transform: scale(1.06); }
+
+          .gl-kat-empty {
+            padding: 30px 24px; border-radius: 12px;
+            border: 1px dashed rgba(255,255,255,.09);
+            text-align: center; color: rgba(255,255,255,.2);
+            font-family: 'Space Grotesk', sans-serif; font-size: .68rem;
+            letter-spacing: .1em; text-transform: uppercase;
+          }
+
+          /* ── GYÁRTÁS RÁCS ──────────────────────────────────────── */
+          .gl-process-grid {
+            display: grid; grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+          }
+          @media (max-width: 700px) { .gl-process-grid { grid-template-columns: 1fr 1fr; } }
+          .gl-process-item {
+            position: relative; border-radius: 12px; overflow: hidden;
+            aspect-ratio: 4/3; cursor: zoom-in;
+            border: 1px solid rgba(255,255,255,.07);
+            transition: border-color .28s;
+          }
+          .gl-process-item:hover { border-color: rgba(244,184,96,.3); }
+          .gl-process-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .45s; }
+          .gl-process-item:hover img { transform: scale(1.05); }
+          .gl-process-item__label {
+            position: absolute; bottom: 0; left: 0; right: 0;
+            padding: 8px 12px;
+            background: linear-gradient(to top, rgba(2,6,18,.8), transparent);
+            font-family: 'Space Grotesk', sans-serif; font-size: .65rem; font-weight: 600;
+            letter-spacing: .12em; text-transform: uppercase; color: rgba(255,255,255,.5);
+          }
+
+          /* Műhely placeholder */
+          .gl-workshop-placeholder {
+            border-radius: 14px; padding: 80px 36px;
+            border: 1px dashed rgba(255,255,255,.1);
+            text-align: center;
+            background: rgba(255,255,255,.015);
+          }
+          .gl-workshop-placeholder p {
+            font-family: 'Space Grotesk', sans-serif; font-size: .72rem; letter-spacing: .14em;
+            text-transform: uppercase; color: rgba(255,255,255,.2); margin: 8px 0 0;
+          }
+          .gl-workshop-placeholder svg { opacity: .18; margin-bottom: 16px; }
+
+          /* ── LIGHTBOX ──────────────────────────────────────────── */
+          .gl-lb {
+            position: fixed; inset: 0; z-index: 900;
+            background: rgba(2,4,14,.97);
+            display: flex; align-items: center; justify-content: center;
+            opacity: 0; pointer-events: none; transition: opacity .28s;
+            cursor: zoom-out;
+          }
+          .gl-lb.is-open { opacity: 1; pointer-events: all; }
+          .gl-lb__close {
+            position: fixed; top: 18px; right: 18px; z-index: 10;
+            width: 40px; height: 40px; border-radius: 50%;
+            background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.12);
+            color: rgba(255,255,255,.55); cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+            transition: background .2s, color .2s;
+          }
+          .gl-lb__close:hover { background: rgba(255,255,255,.15); color: #fff; }
+          .gl-lb__media {
+            max-width: calc(100vw - 140px); max-height: 90vh;
+            display: flex; align-items: center; justify-content: center; cursor: default;
+          }
+          .gl-lb__img {
+            max-width: 100%; max-height: 88vh; object-fit: contain;
+            display: block; border-radius: 6px; transition: opacity .18s;
+            animation: gl-lb-in .34s cubic-bezier(.2,.9,.3,1);
+          }
+          .gl-lb__img.fade { opacity: 0; }
+          @keyframes gl-lb-in {
+            from { transform: scale(.94) translateY(10px); opacity: 0; }
+          }
+          @media (prefers-reduced-motion: reduce) {
+            .gl-lb__img { animation: none; }
+          }
+          .gl-lb__video {
+            max-width: 100%; max-height: 88vh;
+            border-radius: 10px; background: #000; outline: none;
+          }
+          .gl-lb__nav {
+            position: fixed; top: 50%; transform: translateY(-50%); z-index: 10;
+            width: 50px; height: 50px; border-radius: 50%;
+            background: rgba(8,16,30,.75); border: 1px solid rgba(255,255,255,.12);
+            color: rgba(255,255,255,.8); font-size: 1.65rem; line-height: 1;
+            cursor: pointer; display: flex; align-items: center; justify-content: center;
+            backdrop-filter: blur(8px); transition: all .2s; padding: 0;
+          }
+          .gl-lb__nav:hover { border-color: rgba(244,184,96,.4); color: #f4b860; }
+          .gl-lb__prev { left: 16px; }
+          .gl-lb__next { right: 16px; }
+          .gl-lb__counter {
+            position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%);
+            font-family: 'Space Grotesk', sans-serif; font-size: .75rem; font-weight: 500;
+            letter-spacing: .12em; color: rgba(255,255,255,.3); pointer-events: none;
+          }
+        </style>
+
   </head>
   <body>
-    <header class="site-header motion-load" style="--load-delay: 80ms"><div class="header-top" aria-label="Layero gyors elerhetosegek"><div class="header-top__inner"><p class="header-top__motto">Let's <span>print</span> your world <span>together</span>, layer by layer</p><div class="header-top__contact"><a href="tel:+40756642387"><svg class="header-top__icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.77.62 2.61a2 2 0 0 1-.45 2.11L8.09 9.63a16 16 0 0 0 6.28 6.28l1.19-1.19a2 2 0 0 1 2.11-.45c.84.29 1.71.5 2.61.62A2 2 0 0 1 22 16.92Z"></path></svg><span>0756 642 387</span></a><a href="mailto:layeroprint@gmail.com"><svg class="header-top__icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg><span>layeroprint@gmail.com</span></a></div></div></div><div class="header-shell"><a class="logo" href="index.html"><img class="logo__brand-mark" src="assets/layero-logo-mark-from-source.webp" alt="" width="240" height="237"><img class="logo__brand-wordmark" src="assets/layero-logo-wordmark-from-source.webp" alt="Layero 3D Design" width="493" height="171"></a><button class="nav-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" data-nav-toggle><span class="sr-only">Menü megnyitása</span><span class="nav-toggle__line" aria-hidden="true"></span></button><nav class="site-nav" id="site-navigation" aria-label="Főmenü"><a href="termekvilag.html">Termékvilág</a><a href="egyedi-rendeles.html">Egyedi rendelés</a><a href="cegeknek.html">Cégeknek</a><a href="galeria.html" aria-current="page">Galéria</a><a href="rolunk.html">Rólunk</a><a href="kapcsolat.html">Kapcsolat</a></nav><a class="btn btn--outline header-cta" href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer">Üzlet <span aria-hidden="true">→</span></a></div></header>
+    <header class="site-header motion-load" style="--load-delay: 80ms"><div class="header-top" aria-label="Layero gyors elerhetosegek"><div class="header-top__inner"><p class="header-top__motto">Let's <span>print</span> your world <span>together</span>, layer by layer</p><div class="header-top__contact"><a href="tel:+40756642387"><svg class="header-top__icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.77.62 2.61a2 2 0 0 1-.45 2.11L8.09 9.63a16 16 0 0 0 6.28 6.28l1.19-1.19a2 2 0 0 1 2.11-.45c.84.29 1.71.5 2.61.62A2 2 0 0 1 22 16.92Z"></path></svg><span>0756 642 387</span></a><a href="mailto:layeroprint@gmail.com"><svg class="header-top__icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"></rect><path d="m3 7 9 6 9-6"></path></svg><span>layeroprint@gmail.com</span></a></div></div></div><div class="header-shell"><a class="logo" href="index.html"><img class="logo__brand-mark" src="assets/layero-logo-mark-from-source.webp" alt="" width="240" height="237" decoding="async"><img class="logo__brand-wordmark" src="assets/layero-logo-wordmark-from-source.webp" alt="Layero 3D Design" width="493" height="171" decoding="async"></a><button class="nav-toggle" type="button" aria-controls="site-navigation" aria-expanded="false" data-nav-toggle><span class="sr-only">Menü megnyitása</span><span class="nav-toggle__line" aria-hidden="true"></span></button><nav class="site-nav" id="site-navigation" aria-label="Főmenü"><a href="termekvilag.html">Termékvilág</a><a href="egyedi-rendeles.html">Egyedi rendelés</a><a href="cegeknek.html">Cégeknek</a><a href="galeria.html" aria-current="page">Galéria</a><a href="rolunk.html">Rólunk</a><a href="kapcsolat.html">Kapcsolat</a></nav><a class="btn btn--outline header-cta" href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer">Üzlet <span aria-hidden="true">→</span></a></div></header>
 
     <main class="subpage-main">
 
@@ -627,8 +724,8 @@
                   Hónap alkotása
                 </span>
                 <picture>
-                  <source type="image/webp" srcset="assets/termekvilag/hero_slider/8-900.webp">
-                  <img src="assets/termekvilag/hero_slider/8.png" alt="Lumé lámpa — hónap alkotása" loading="eager">
+                  <source type="image/webp" srcset="assets/galeria/kepek/4-lakasdekor/optimized/first-display.webp">
+                  <img src="assets/galeria/kepek/4-lakasdekor/first.webp" alt="Lumé lámpa — hónap alkotása" loading="eager" decoding="async" fetchpriority="high" width="1100" height="825">
                 </picture>
               </div>
               <div class="gl-motm__body">
@@ -665,8 +762,8 @@
           <div class="gl-featured">
             <div class="gl-featured__media">
               <picture>
-                <source type="image/webp" srcset="assets/termekvilag/hero_slider/8-900.webp">
-                <img src="assets/termekvilag/hero_slider/8.png" alt="Layero kiemelt alkotás — lámpa" loading="eager">
+                <source type="image/webp" srcset="assets/galeria/kepek/4-lakasdekor/optimized/first-display.webp">
+                <img src="assets/galeria/kepek/4-lakasdekor/first.webp" alt="Layero kiemelt alkotás — lámpa" loading="eager" decoding="async" fetchpriority="high" width="1100" height="825">
               </picture>
             </div>
             <div class="gl-featured__body">
@@ -728,147 +825,7 @@
             <button class="gl-cat-pill is-on" data-cat="all">Mind</button>
           </div>
 
-          <div class="gl-masonry" id="gl-photo-grid">
-
-            <!-- Hero slider 1–17 -->
-            <div class="gl-photo" data-cat="all" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/1.png">
-              <picture><source type="image/webp" srcset="assets/termekvilag/hero_slider/1-480.webp"><img src="assets/termekvilag/hero_slider/1.png" alt="" loading="lazy"></picture>
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-            <div class="gl-photo" data-cat="all" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/2.png">
-              <picture><source type="image/webp" srcset="assets/termekvilag/hero_slider/2-480.webp"><img src="assets/termekvilag/hero_slider/2.png" alt="" loading="lazy"></picture>
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-            <div class="gl-photo" data-cat="all" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/3.png">
-              <picture><source type="image/webp" srcset="assets/termekvilag/hero_slider/3-480.webp"><img src="assets/termekvilag/hero_slider/3.png" alt="" loading="lazy"></picture>
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-            <div class="gl-photo" data-cat="all" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/4.png">
-              <picture><source type="image/webp" srcset="assets/termekvilag/hero_slider/4-480.webp"><img src="assets/termekvilag/hero_slider/4.png" alt="" loading="lazy"></picture>
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-            <div class="gl-photo" data-cat="all" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/5.png">
-              <picture><source type="image/webp" srcset="assets/termekvilag/hero_slider/5-480.webp"><img src="assets/termekvilag/hero_slider/5.png" alt="" loading="lazy"></picture>
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-            <div class="gl-photo" data-cat="all" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/6.png">
-              <picture><source type="image/webp" srcset="assets/termekvilag/hero_slider/6-480.webp"><img src="assets/termekvilag/hero_slider/6.png" alt="" loading="lazy"></picture>
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-            <div class="gl-photo" data-cat="all" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/7.png">
-              <picture><source type="image/webp" srcset="assets/termekvilag/hero_slider/7-480.webp"><img src="assets/termekvilag/hero_slider/7.png" alt="" loading="lazy"></picture>
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-            <div class="gl-photo" data-cat="all" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/8.png">
-              <picture><source type="image/webp" srcset="assets/termekvilag/hero_slider/8-900.webp"><img src="assets/termekvilag/hero_slider/8.png" alt="" loading="lazy"></picture>
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-            <div class="gl-photo" data-cat="all" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/9.png">
-              <picture><source type="image/webp" srcset="assets/termekvilag/hero_slider/9-480.webp"><img src="assets/termekvilag/hero_slider/9.png" alt="" loading="lazy"></picture>
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-            <div class="gl-photo" data-cat="all" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/10.png">
-              <picture><source type="image/webp" srcset="assets/termekvilag/hero_slider/10-480.webp"><img src="assets/termekvilag/hero_slider/10.png" alt="" loading="lazy"></picture>
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-            <div class="gl-photo" data-cat="all" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/11.png">
-              <picture><source type="image/webp" srcset="assets/termekvilag/hero_slider/11-900.webp"><img src="assets/termekvilag/hero_slider/11.png" alt="" loading="lazy"></picture>
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-            <div class="gl-photo" data-cat="all" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/12.png">
-              <picture><source type="image/webp" srcset="assets/termekvilag/hero_slider/12-480.webp"><img src="assets/termekvilag/hero_slider/12.png" alt="" loading="lazy"></picture>
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-            <div class="gl-photo" data-cat="all" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/13.png">
-              <img src="assets/termekvilag/hero_slider/13.png" alt="" loading="lazy">
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-            <div class="gl-photo" data-cat="all" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/14.png">
-              <img src="assets/termekvilag/hero_slider/14.png" alt="" loading="lazy">
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-            <div class="gl-photo" data-cat="all" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/15.png">
-              <img src="assets/termekvilag/hero_slider/15.png" alt="" loading="lazy">
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-            <div class="gl-photo" data-cat="all" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/16.png">
-              <img src="assets/termekvilag/hero_slider/16.png" alt="" loading="lazy">
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-            <div class="gl-photo" data-cat="all" data-lb-group="termekek" data-lb-src="assets/termekvilag/hero_slider/17.png">
-              <img src="assets/termekvilag/hero_slider/17.png" alt="" loading="lazy">
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-
-            <!-- Dekoraciok -->
-            <div class="gl-photo" data-cat="4-lakasdekor" data-lb-group="termekek" data-lb-src="assets/termekvilag/dekoraciok/hero-1-Yul9sRLGP0h1.png">
-              <picture><source type="image/webp" srcset="assets/termekvilag/dekoraciok/hero-1-Yul9sRLGP0h1-800.webp"><img src="assets/termekvilag/dekoraciok/hero-1-Yul9sRLGP0h1.png" alt="" loading="lazy"></picture>
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-            <div class="gl-photo" data-cat="4-lakasdekor" data-lb-group="termekek" data-lb-src="assets/termekvilag/dekoraciok/hero-1-Qr9oXFYE8fYQ.png">
-              <picture><source type="image/webp" srcset="assets/termekvilag/dekoraciok/hero-1-Qr9oXFYE8fYQ-800.webp"><img src="assets/termekvilag/dekoraciok/hero-1-Qr9oXFYE8fYQ.png" alt="" loading="lazy"></picture>
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-            <div class="gl-photo" data-cat="4-lakasdekor" data-lb-group="termekek" data-lb-src="assets/termekvilag/dekoraciok/544586641_122105787950995565_5779650224825615213_n.jpg">
-              <img src="assets/termekvilag/dekoraciok/544586641_122105787950995565_5779650224825615213_n.jpg" alt="" loading="lazy">
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-            <div class="gl-photo" data-cat="4-lakasdekor" data-lb-group="termekek" data-lb-src="assets/termekvilag/dekoraciok/611589176_122124562772995565_2838307060490523390_n.jpg">
-              <img src="assets/termekvilag/dekoraciok/611589176_122124562772995565_2838307060490523390_n.jpg" alt="" loading="lazy">
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-            <div class="gl-photo" data-cat="4-lakasdekor" data-lb-group="termekek" data-lb-src="assets/termekvilag/dekoraciok/612171558_122124562898995565_3291961570208272080_n.jpg">
-              <img src="assets/termekvilag/dekoraciok/612171558_122124562898995565_3291961570208272080_n.jpg" alt="" loading="lazy">
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-
-            <!-- Céges munkák -->
-            <div class="gl-photo" data-cat="3-ceges-logos" data-lb-group="termekek" data-lb-src="assets/termekvilag/ceges-megoldasok/635a6049-fef7-4b1b-aba8-75cf158d28c5.jpg">
-              <img src="assets/termekvilag/ceges-megoldasok/635a6049-fef7-4b1b-aba8-75cf158d28c5.jpg" alt="" loading="lazy">
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-            <div class="gl-photo" data-cat="3-ceges-logos" data-lb-group="termekek" data-lb-src="assets/termekvilag/ceges-megoldasok/2b270d60-ab57-4fdd-a4dd-91a1ffe02b71.jpg">
-              <img src="assets/termekvilag/ceges-megoldasok/2b270d60-ab57-4fdd-a4dd-91a1ffe02b71.jpg" alt="" loading="lazy">
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-            <div class="gl-photo" data-cat="3-ceges-logos" data-lb-group="termekek" data-lb-src="assets/termekvilag/ceges-megoldasok/84765293-ee96-487c-b0c8-63693593ba6b.jpg">
-              <img src="assets/termekvilag/ceges-megoldasok/84765293-ee96-487c-b0c8-63693593ba6b.jpg" alt="" loading="lazy">
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-            <div class="gl-photo" data-cat="3-ceges-logos" data-lb-group="termekek" data-lb-src="assets/termekvilag/ceges-megoldasok/c03ddc6b-50f6-4fa5-8f3a-e61ff6dd9b54.jpg">
-              <img src="assets/termekvilag/ceges-megoldasok/c03ddc6b-50f6-4fa5-8f3a-e61ff6dd9b54.jpg" alt="" loading="lazy">
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-            <div class="gl-photo" data-cat="3-ceges-logos" data-lb-group="termekek" data-lb-src="assets/termekvilag/ceges-megoldasok/9fa8265c-3f89-48e6-b8c8-e5fdf75c3a22.jpg">
-              <img src="assets/termekvilag/ceges-megoldasok/9fa8265c-3f89-48e6-b8c8-e5fdf75c3a22.jpg" alt="" loading="lazy">
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-            <div class="gl-photo" data-cat="3-ceges-logos" data-lb-group="termekek" data-lb-src="assets/termekvilag/ceges-megoldasok/5f3c0fa5-c5f7-4bf6-8f75-29c0de041b21.jpg">
-              <img src="assets/termekvilag/ceges-megoldasok/5f3c0fa5-c5f7-4bf6-8f75-29c0de041b21.jpg" alt="" loading="lazy">
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-            <div class="gl-photo" data-cat="3-ceges-logos" data-lb-group="termekek" data-lb-src="assets/termekvilag/ceges-megoldasok/31939abe-68c9-4c6b-a4f0-40e37d15a066.jpg">
-              <img src="assets/termekvilag/ceges-megoldasok/31939abe-68c9-4c6b-a4f0-40e37d15a066.jpg" alt="" loading="lazy">
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-            <div class="gl-photo" data-cat="3-ceges-logos" data-lb-group="termekek" data-lb-src="assets/termekvilag/ceges-megoldasok/99cdb2e2-d9ac-4942-9f70-2497972bbe3b.jpg">
-              <img src="assets/termekvilag/ceges-megoldasok/99cdb2e2-d9ac-4942-9f70-2497972bbe3b.jpg" alt="" loading="lazy">
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-            <div class="gl-photo" data-cat="3-ceges-logos" data-lb-group="termekek" data-lb-src="assets/termekvilag/ceges-megoldasok/20cf18db-3472-4298-b30d-0a59968b1e3c.jpg">
-              <img src="assets/termekvilag/ceges-megoldasok/20cf18db-3472-4298-b30d-0a59968b1e3c.jpg" alt="" loading="lazy">
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-            <div class="gl-photo" data-cat="3-ceges-logos" data-lb-group="termekek" data-lb-src="assets/termekvilag/ceges-megoldasok/d7392297-c554-4749-a344-f47e7fc5618c.jpg">
-              <img src="assets/termekvilag/ceges-megoldasok/d7392297-c554-4749-a344-f47e7fc5618c.jpg" alt="" loading="lazy">
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-            <div class="gl-photo" data-cat="3-ceges-logos" data-lb-group="termekek" data-lb-src="assets/termekvilag/ceges-megoldasok/542702584_122105728322995565_1807554181121349208_n (2).jpg">
-              <img src="assets/termekvilag/ceges-megoldasok/542702584_122105728322995565_1807554181121349208_n (2).jpg" alt="" loading="lazy">
-              <div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
-            </div>
-
-          </div><!-- /gl-masonry -->
+          <div class="gl-masonry" id="gl-photo-grid" aria-live="polite"></div><!-- /gl-masonry -->
 
           <!-- Kategória képek (galeria-data.js-ből) -->
           <div id="gl-kat-mount"></div>
@@ -884,15 +841,15 @@
 
           <div class="gl-process-grid" id="gl-process-grid">
             <div class="gl-process-item" data-lb-group="gyartas" data-lb-src="assets/images/lamp-process/01-original-photo.webp">
-              <img src="assets/images/lamp-process/01-original-photo.webp" alt="Gyártási folyamat — eredeti fotó" loading="lazy">
+              <img src="assets/images/lamp-process/01-original-photo.webp" alt="Gyártási folyamat — eredeti fotó" loading="lazy" decoding="async" width="1600" height="1200">
               <div class="gl-process-item__label">Eredeti fotó</div>
             </div>
             <div class="gl-process-item" data-lb-group="gyartas" data-lb-src="assets/images/lamp-process/02-processed-sketch.png">
-              <img src="assets/images/lamp-process/02-processed-sketch.png" alt="Gyártási folyamat — digitális vázlat" loading="lazy">
+              <img src="assets/images/lamp-process/02-processed-sketch.png" alt="Gyártási folyamat — digitális vázlat" loading="lazy" decoding="async" width="1254" height="1254">
               <div class="gl-process-item__label">Digitális vázlat</div>
             </div>
             <div class="gl-process-item" data-lb-group="gyartas" data-lb-src="assets/images/lamp-process/03-finished-lamp.jpg">
-              <img src="assets/images/lamp-process/03-finished-lamp.jpg" alt="Gyártási folyamat — kész lámpa" loading="lazy">
+              <img src="assets/images/lamp-process/03-finished-lamp.jpg" alt="Gyártási folyamat — kész lámpa" loading="lazy" decoding="async" width="1024" height="1024">
               <div class="gl-process-item__label">Kész alkotás</div>
             </div>
           </div>
@@ -939,8 +896,8 @@
       <div class="container footer__grid">
         <div class="footer__brand">
           <a class="logo" href="index.html" aria-label="Layero 3D Design főoldal">
-            <img class="logo__brand-mark" src="assets/layero-logo-mark-from-source.webp" alt="" width="240" height="237">
-            <img class="logo__brand-wordmark" src="assets/layero-logo-wordmark-from-source.webp" alt="Layero 3D Design" width="493" height="171">
+            <img class="logo__brand-mark" src="assets/layero-logo-mark-from-source.webp" alt="" width="240" height="237" decoding="async">
+            <img class="logo__brand-wordmark" src="assets/layero-logo-wordmark-from-source.webp" alt="Layero 3D Design" width="493" height="171" decoding="async">
           </a>
           <p>Prémium 3D design stúdió Satu Mare-ből. Egyedi alkotások, személyes történetekre szabva.</p>
           <a class="btn btn--outline btn--sm" href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer" style="margin-top:18px;width:fit-content">shop.layero.ro →</a>
@@ -990,7 +947,7 @@
     </footer>
 
     <script src="script.js?v=20260703-header-scroll-2"></script>
-    <script src="galeria-data.js?v=20260703-header-icons-1"></script>
+    <script src="galeria-data.js?v=20260704-gallery-refresh-1"></script>
     <script>
     (function() {
 
@@ -1068,6 +1025,72 @@
       });
 
       // ── PHOTO COUNT ───────────────────────────────────────────
+      var catFilters = document.getElementById('gl-cat-filters');
+      var katMount = document.getElementById('gl-kat-mount');
+      var masonryGrid = document.getElementById('gl-photo-grid');
+
+      function galleryPhotoData(item) {
+        if (typeof item === 'string') {
+          var stem = item.replace(/\.[^.]+$/, '');
+          return { file: item, display: 'optimized/' + stem + '-display.webp', width: 900, height: 900 };
+        }
+        return item || { file: '', display: '', width: 900, height: 900 };
+      }
+
+      function galleryImageSrc(kat, item, key) {
+        var data = galleryPhotoData(item);
+        var file = data[key] || data.file;
+        return 'assets/galeria/kepek/' + kat.id + '/' + file;
+      }
+
+      function galleryZoomOverlay() {
+        return '<div class="gl-photo__overlay"><svg class="gl-photo__zoom" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>';
+      }
+
+      function renderGalleryPhotos() {
+        if (!masonryGrid || typeof GALERIA_KATEGORIAK === 'undefined') return;
+        masonryGrid.innerHTML = '';
+        if (katMount) katMount.innerHTML = '';
+        if (catFilters) {
+          catFilters.querySelectorAll('.gl-cat-pill:not([data-cat="all"])').forEach(function(pill) { pill.remove(); });
+        }
+
+        GALERIA_KATEGORIAK.forEach(function(kat) {
+          if (catFilters && kat.kepek.length) {
+            var pill = document.createElement('button');
+            pill.className = 'gl-cat-pill';
+            pill.setAttribute('data-cat', kat.id);
+            var short = kat.cim;
+            if (short.length > 22) short = short.split(' és ')[0].split(' — ')[0];
+            if (short.length > 22) short = short.substring(0, 20) + '...';
+            pill.textContent = short;
+            catFilters.appendChild(pill);
+          }
+
+          kat.kepek.forEach(function(item, index) {
+            var data = galleryPhotoData(item);
+            var photo = document.createElement('div');
+            photo.className = 'gl-photo';
+            photo.setAttribute('data-cat', kat.id);
+            photo.setAttribute('data-lb-group', 'kat-' + kat.id);
+            photo.setAttribute('data-lb-src', galleryImageSrc(kat, item, 'file'));
+
+            var img = document.createElement('img');
+            img.src = galleryImageSrc(kat, item, 'display');
+            img.alt = kat.cim + ' — ' + (index + 1);
+            img.loading = index < 4 ? 'eager' : 'lazy';
+            img.decoding = 'async';
+            if (index < 2) img.fetchPriority = 'high';
+            img.width = data.width || 900;
+            img.height = data.height || 900;
+            photo.appendChild(img);
+            photo.insertAdjacentHTML('beforeend', galleryZoomOverlay());
+            masonryGrid.appendChild(photo);
+          });
+        });
+      }
+
+      renderGalleryPhotos();
       var photoCount = document.querySelectorAll('#gl-photo-grid .gl-photo').length;
       var countEl = document.getElementById('gl-photo-count');
       if (countEl) countEl.textContent = photoCount + ' alkotás';
@@ -1161,104 +1184,30 @@
       })();
 
       // ── KATEGÓRIA AL-SZŰRŐK és renderelés ──────────────────────
-      var catFilters = document.getElementById('gl-cat-filters');
-      var katMount = document.getElementById('gl-kat-mount');
-      var masonryGrid = document.getElementById('gl-photo-grid');
-
-      if (catFilters && typeof GALERIA_KATEGORIAK !== 'undefined') {
-        // Build category pills from data
-        GALERIA_KATEGORIAK.forEach(function(kat) {
-          var pill = document.createElement('button');
-          pill.className = 'gl-cat-pill';
-          pill.setAttribute('data-cat', kat.id);
-          pill.textContent = kat.cim.replace(/ és .*$/, '').replace(/ — .*$/, '');
-          // Shorter label: first meaningful phrase
-          var short = kat.cim;
-          if (short.length > 22) {
-            short = short.split(' és ')[0].split(' — ')[0];
-            if (short.length > 22) short = short.substring(0, 20) + '…';
-          }
-          pill.textContent = short;
-          catFilters.appendChild(pill);
-        });
-
-        // Build category sections inside kat-mount
-        GALERIA_KATEGORIAK.forEach(function(kat) {
-          if (!kat.kepek.length) return;
-          var sec = document.createElement('div');
-          sec.className = 'gl-kat-section';
-          sec.setAttribute('data-cat-section', kat.id);
-
-          var hd = document.createElement('div');
-          hd.className = 'gl-kat-header';
-          hd.innerHTML =
-            '<span class="gl-kat-num">' + kat.szam + '</span>' +
-            '<div class="gl-kat-titlewrap">' +
-              '<h3 class="gl-kat-title">' + kat.cim + '</h3>' +
-              '<p class="gl-kat-desc">' + kat.leiras + '</p>' +
-            '</div>' +
-            '<span class="gl-kat-count">' + kat.kepek.length + ' kép</span>';
-          sec.appendChild(hd);
-
-          var grid = document.createElement('div');
-          grid.className = 'gl-kat-grid';
-          var groupName = 'kat-' + kat.id;
-          kat.kepek.forEach(function(fname) {
-            var src = 'assets/galeria/kepek/' + kat.id + '/' + fname;
-            var item = document.createElement('div');
-            item.className = 'gl-kat-photo';
-            item.setAttribute('data-lb-group', groupName);
-            item.setAttribute('data-lb-src', src);
-            item.innerHTML = '<img src="' + src + '" alt="' + kat.cim + '" loading="lazy">';
-            grid.appendChild(item);
-          });
-          sec.appendChild(grid);
-          katMount.appendChild(sec);
-        });
-
-        // Category filtering logic
+      if (catFilters && masonryGrid) {
         var allPills = catFilters.querySelectorAll('.gl-cat-pill');
         var allPhotos = masonryGrid.querySelectorAll('.gl-photo');
-        var allKatSections = katMount.querySelectorAll('[data-cat-section]');
 
         allPills.forEach(function(pill) {
           pill.addEventListener('click', function() {
             allPills.forEach(function(p) { p.classList.remove('is-on'); });
             pill.classList.add('is-on');
             var cat = pill.getAttribute('data-cat');
-
-            if (cat === 'all') {
-              masonryGrid.style.display = '';
-              allPhotos.forEach(function(ph) { ph.style.display = ''; });
-              allKatSections.forEach(function(s) { s.style.display = 'none'; });
-            } else {
-              // Filter masonry: only show photos tagged with this category
-              allPhotos.forEach(function(ph) {
-                var phCat = ph.getAttribute('data-cat');
-                ph.style.display = (phCat === cat) ? '' : 'none';
-              });
-              // Show matching kat section, hide others
-              allKatSections.forEach(function(s) {
-                s.style.display = (s.getAttribute('data-cat-section') === cat) ? '' : 'none';
-              });
-              masonryGrid.style.display = '';
-            }
-
-            // Update photo count
             var visible = 0;
-            allPhotos.forEach(function(ph) { if (ph.style.display !== 'none') visible++; });
-            allKatSections.forEach(function(s) {
-              if (s.style.display !== 'none') {
-                visible += s.querySelectorAll('.gl-kat-photo').length;
-              }
+
+            allPhotos.forEach(function(ph) {
+              var show = cat === 'all' || ph.getAttribute('data-cat') === cat;
+              ph.style.display = show ? '' : 'none';
+              if (show) visible++;
             });
+
             var countEl2 = document.getElementById('gl-photo-count');
             if (countEl2) countEl2.textContent = visible + ' alkotás';
           });
         });
       }
 
-      // ── PHOTO click handlers ──────────────────────────────────
+      // PHOTO click handlers ──────────────────────────────────
       // az indexet kattintáskor számoljuk, mert az oszlopokba
       // rendezés (glx-cols) átrendezheti a DOM-sorrendet
       document.querySelectorAll('[data-lb-group]').forEach(function(el) {
@@ -1270,25 +1219,17 @@
       });
 
       // ── HERO MARQUEE (úszó fotófolyam) ────────────────────────
-      var MARQ = [
-        'assets/termekvilag/hero_slider/1-480.webp',
-        'assets/termekvilag/hero_slider/2-480.webp',
-        'assets/termekvilag/hero_slider/3-480.webp',
-        'assets/termekvilag/hero_slider/4-480.webp',
-        'assets/termekvilag/hero_slider/5-480.webp',
-        'assets/termekvilag/hero_slider/6-480.webp',
-        'assets/termekvilag/hero_slider/7-480.webp',
-        'assets/termekvilag/hero_slider/8-900.webp',
-        'assets/termekvilag/hero_slider/9-480.webp',
-        'assets/termekvilag/hero_slider/10-480.webp',
-        'assets/termekvilag/hero_slider/11-900.webp',
-        'assets/termekvilag/hero_slider/12-480.webp',
-        'assets/termekvilag/hero_slider/13.png',
-        'assets/termekvilag/hero_slider/14.png',
-        'assets/termekvilag/hero_slider/15.png',
-        'assets/termekvilag/hero_slider/16.png',
-        'assets/termekvilag/hero_slider/17.png'
-      ];
+      var MARQ = [];
+      if (typeof GALERIA_KATEGORIAK !== 'undefined') {
+        GALERIA_KATEGORIAK.forEach(function(kat) {
+          kat.kepek.forEach(function(item) {
+            MARQ.push(galleryImageSrc(kat, item, 'display'));
+          });
+        });
+      }
+      if (!MARQ.length) {
+        MARQ = ['assets/galeria/kepek/4-lakasdekor/optimized/first-display.webp'];
+      }
       var rowA = document.getElementById('glx-row-a');
       var rowB = document.getElementById('glx-row-b');
       function glxFill(row, list) {

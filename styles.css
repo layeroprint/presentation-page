@@ -3763,11 +3763,16 @@ body.nav-open .nav-toggle__bars::after {
 .community__teaser-window {
   margin: 0 -4px;
   padding: 1px 4px 4px;
-  overflow-x: auto;
-  scroll-behavior: smooth;
+  overflow: hidden;
+  cursor: grab;
+  touch-action: pan-y;
   scrollbar-width: none;
   -webkit-mask-image: linear-gradient(90deg, transparent 0, #000 26px, #000 calc(100% - 26px), transparent 100%);
   mask-image: linear-gradient(90deg, transparent 0, #000 26px, #000 calc(100% - 26px), transparent 100%);
+}
+
+.community__teaser-window.is-dragging {
+  cursor: grabbing;
 }
 
 .community__teaser-window::-webkit-scrollbar {
@@ -3778,6 +3783,7 @@ body.nav-open .nav-toggle__bars::after {
   width: max-content;
   display: flex;
   gap: var(--community-teaser-gap);
+  will-change: transform;
 }
 
 .community__teaser-set {
@@ -3795,6 +3801,7 @@ body.nav-open .nav-toggle__bars::after {
   border: 1px solid rgba(0, 229, 255, 0.18);
   object-fit: cover;
   box-shadow: 0 18px 42px rgba(0, 0, 0, 0.32);
+  cursor: zoom-in;
 }
 
 .community__teaser-track img {
@@ -3802,10 +3809,9 @@ body.nav-open .nav-toggle__bars::after {
   -webkit-user-drag: none;
 }
 
-.community__teaser-next {
+.community__teaser-control {
   position: absolute;
   top: 50%;
-  right: -20px;
   width: 42px;
   height: 42px;
   display: grid;
@@ -3820,13 +3826,118 @@ body.nav-open .nav-toggle__bars::after {
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
-.community__teaser-next:hover {
+.community__teaser-control:hover {
   box-shadow: 0 0 30px rgba(0, 229, 255, 0.34);
 }
 
-.community__teaser-next .icon {
+.community__teaser-control .icon {
   width: 18px;
   height: 18px;
+}
+
+.community__teaser-prev {
+  left: -20px;
+}
+
+.community__teaser-prev .icon {
+  transform: rotate(180deg);
+}
+
+.community__teaser-next {
+  right: -20px;
+}
+
+.community-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 980;
+  display: grid;
+  place-items: center;
+  padding: clamp(18px, 4vw, 52px);
+  background: rgba(2, 6, 16, 0.94);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 220ms ease;
+  cursor: zoom-out;
+}
+
+.community-lightbox.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.community-lightbox__frame {
+  position: relative;
+  display: grid;
+  place-items: center;
+  max-width: min(92vw, 1120px);
+  max-height: 88vh;
+  cursor: default;
+}
+
+.community-lightbox__img {
+  display: block;
+  max-width: min(92vw, 1120px);
+  max-height: 84vh;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 34px 90px rgba(0, 0, 0, 0.58);
+}
+
+.community-lightbox__button {
+  position: fixed;
+  z-index: 2;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(244, 184, 96, 0.28);
+  border-radius: 999px;
+  background: rgba(4, 10, 20, 0.78);
+  color: #f4b860;
+  cursor: pointer;
+  backdrop-filter: blur(10px);
+}
+
+.community-lightbox__button .icon {
+  width: 18px;
+  height: 18px;
+}
+
+.community-lightbox__close {
+  top: 18px;
+  right: 18px;
+}
+
+.community-lightbox__prev {
+  left: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.community-lightbox__prev .icon {
+  transform: rotate(180deg);
+}
+
+.community-lightbox__next {
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.community-lightbox__counter {
+  position: fixed;
+  left: 50%;
+  bottom: 22px;
+  transform: translateX(-50%);
+  font-family: var(--font-ui);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: rgba(255, 255, 255, 0.62);
+  pointer-events: none;
 }
 
 .community__cta {
@@ -3870,6 +3981,10 @@ body.nav-open .nav-toggle__bars::after {
 
   .community__teaser-next {
     right: 6px;
+  }
+
+  .community__teaser-prev {
+    left: 6px;
   }
 }
 
@@ -12622,4 +12737,145 @@ body.hdr-scrolled .site-header {
   .header-shell,
   .logo__brand-mark,
   .logo__brand-wordmark { transition: none; }
+}
+
+@media (max-width: 720px) {
+  html,
+  body {
+    max-width: 100%;
+    overflow-x: clip;
+  }
+
+  body {
+    min-width: 0;
+  }
+
+  .site-header {
+    right: 0;
+    width: 100%;
+    max-width: 100vw;
+  }
+
+  .site-header .header-top__inner,
+  .site-header .header-shell,
+  .container,
+  .subpage-shell,
+  .how-command__shell {
+    width: min(var(--content), calc(100% - 32px));
+    max-width: calc(100vw - 32px);
+  }
+
+  .header-top__inner,
+  .header-shell,
+  .header-top__motto,
+  .header-top__contact,
+  .header-top__contact a,
+  .site-nav,
+  .site-nav a,
+  .subpage-hero__grid,
+  .subpage-hero__copy,
+  .subpage-intro-grid,
+  .subpage-intro-panel,
+  .subpage-proof-item,
+  .subpage-metric-strip,
+  .split-section,
+  .split-section__image,
+  .page-card,
+  .wide-cta,
+  .final-cta__panel,
+  .contact-panel,
+  .contact-info-panel,
+  .contact-grid,
+  .b2b-grid,
+  .how-command__shell,
+  .how-command__header,
+  .how-command__benefits,
+  .knowledge-categories,
+  .knowledge-grid,
+  .inspiration-shell,
+  .inspiration-panel,
+  .inspiration-filter-row,
+  .community__teaser-window,
+  .footer__grid,
+  .footer__bottom {
+    min-width: 0;
+    max-width: 100%;
+  }
+
+  .header-top__contact {
+    flex-wrap: wrap;
+    white-space: normal;
+    justify-content: flex-start;
+  }
+
+  .header-top__contact a {
+    flex: 0 1 auto;
+  }
+
+  .header-top__contact a span,
+  .site-nav a,
+  .btn,
+  .subpage-title,
+  .subpage-lead,
+  .subpage-heading,
+  .mini-title,
+  .mini-copy,
+  .page-eyebrow,
+  .subpage-kicker,
+  [class*="__eyebrow"],
+  p,
+  li,
+  blockquote,
+  figcaption,
+  label,
+  small {
+    min-width: 0;
+    overflow-wrap: anywhere;
+  }
+
+  img,
+  video,
+  canvas,
+  svg {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .site-header .header-top__inner,
+  .site-header .header-shell,
+  .container,
+  .subpage-shell,
+  .how-command__shell {
+    width: min(var(--content), calc(100% - 24px));
+    max-width: calc(100vw - 24px);
+  }
+
+  .header-top__contact {
+    gap: 6px 12px;
+  }
+}
+
+@supports (content-visibility: auto) {
+  .subpage-section,
+  .categories,
+  .lamp-showcase,
+  .photo-process,
+  .customer-reviews,
+  .community,
+  .tv-category,
+  .gl-section,
+  .gl-gallery,
+  .footer {
+    content-visibility: auto;
+    contain-intrinsic-size: auto 900px;
+  }
+
+  .hero,
+  .subpage-hero,
+  .tv-hero,
+  .glx-hero {
+    content-visibility: visible;
+    contain-intrinsic-size: none;
+  }
 }

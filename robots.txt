@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
+Disallow: /shop/
+Disallow: /output/
 
 Sitemap: https://layero.ro/sitemap.xml

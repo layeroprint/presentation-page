@@ -1014,7 +1014,34 @@ const communitySuccess = document.querySelector("[data-community-success]");
 const communityFocusButton = document.querySelector("[data-community-focus]");
 const communityTeaserViewport = document.querySelector("[data-community-slider-window]");
 const communityTeaserTrack = document.querySelector("[data-community-slider]");
+const communityTeaserPrev = document.querySelector(".community__teaser-prev");
 const communityTeaserNext = document.querySelector(".community__teaser-next");
+const communityTeaserFullSources = [
+  "assets/kozosseg/0aqiB.jpg",
+  "assets/kozosseg/2.jpg",
+  "assets/kozosseg/3.jpg",
+  "assets/kozosseg/4.jpg",
+  "assets/kozosseg/digitalis etlap QR+NFC.jpg",
+  "assets/kozosseg/E07ri.jpg",
+  "assets/kozosseg/Etj09.jpg",
+  "assets/kozosseg/GqkCV.jpg",
+  "assets/kozosseg/grok-image-1db3af5e-540b-4fd8-a4a7-680d18a115f5 (1)-760.webp",
+  "assets/kozosseg/grok-image-22e650f7-7182-489a-aed7-748c0576234c-760.webp",
+  "assets/kozosseg/grok-image-35bffffc-c8a3-4757-80be-223ad6282cd2.jpg",
+  "assets/kozosseg/grok-image-3b3d42e5-8e82-48ed-9408-2333f952d45d-760.webp",
+  "assets/kozosseg/grok-image-3d4abcd8-b740-4c91-b3ba-38b26e4def1c-760.webp",
+  "assets/kozosseg/grok-image-443eef11-3ef3-496d-b340-ea204a278df6-760.webp",
+  "assets/kozosseg/grok-image-68f146bd-0d7b-49c4-ac2c-19fce7129aab-760.webp",
+  "assets/kozosseg/grok-image-7e77f159-f9b4-4e07-bfb7-70268c286e56.jpg",
+  "assets/kozosseg/grok-image-928ba578-1109-49bc-b0ad-f7300489ed66.jpg",
+  "assets/kozosseg/grok-image-ae8a9e84-17f2-4417-b909-da9b1227d930-760.webp",
+  "assets/kozosseg/grok-image-f63b0b7b-f0af-4239-9ea2-c1b0f2a681b7-760.webp",
+  "assets/kozosseg/grok-image-fef3750f-32df-40aa-bca8-bd2da13feca1.jpg",
+  "assets/kozosseg/ht2xT.jpg",
+  "assets/kozosseg/KrXLM.jpg",
+  "assets/kozosseg/kulcstarto.jpg",
+  "assets/kozosseg/o6e0i.jpg",
+];
 
 communityForm?.addEventListener("submit", (event) => {
   event.preventDefault();
@@ -1044,9 +1071,29 @@ const setupCommunityTeaserSlider = () => {
 
   const firstSet = communityTeaserTrack.querySelector(".community__teaser-set");
   const firstImage = communityTeaserTrack.querySelector("img");
+  const firstSetImages = firstSet ? [...firstSet.querySelectorAll("img")] : [];
+  const allImages = [...communityTeaserTrack.querySelectorAll("img")];
+  const slides = firstSetImages.map((image, index) => ({
+    preview: image.getAttribute("src") || image.currentSrc || image.src,
+    full: communityTeaserFullSources[index] || image.getAttribute("src") || image.currentSrc || image.src,
+    alt: image.alt || `Layero közösségi inspiráció ${index + 1}`,
+  }));
   const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   let paused = false;
   let frameId = 0;
+  let lightboxIndex = 0;
+  let lightbox = null;
+  let lightboxImage = null;
+  let lightboxCounter = null;
+  let restoreBodyOverflow = "";
+  let pointerDown = false;
+  let pointerStartX = 0;
+  let pointerStartOffset = 0;
+  let pointerMoved = false;
+  let pointerCaptured = false;
+  let suppressImageClick = false;
+  let sliderOffset = 0;
+  let transitionTimer = 0;
 
   const getGap = () => {
     const styles = window.getComputedStyle(communityTeaserTrack);
@@ -1060,33 +1107,299 @@ const setupCommunityTeaserSlider = () => {
     return Number.isFinite(gap) ? gap : 0;
   };
 
-  const getLoopWidth = () => (firstSet ? firstSet.scrollWidth + getGap() : communityTeaserTrack.scrollWidth / 2);
+  const getLoopWidth = () => {
+    if (firstSet) {
+      return firstSet.getBoundingClientRect().width + getGap();
+    }
 
-  const normalizeScroll = () => {
+    return communityTeaserTrack.getBoundingClientRect().width / 2;
+  };
+
+  const normalizeOffset = () => {
     const loopWidth = getLoopWidth();
 
-    if (loopWidth > 0 && communityTeaserViewport.scrollLeft >= loopWidth) {
-      communityTeaserViewport.scrollLeft -= loopWidth;
+    if (loopWidth <= 0) {
+      return;
+    }
+
+    while (sliderOffset >= loopWidth) {
+      sliderOffset -= loopWidth;
+    }
+
+    while (sliderOffset < 0) {
+      sliderOffset += loopWidth;
     }
   };
 
+  const applySliderTransform = (smooth = false) => {
+    if (smooth) {
+      window.clearTimeout(transitionTimer);
+      communityTeaserTrack.style.transition = "transform 420ms ease";
+    } else {
+      communityTeaserTrack.style.transition = "none";
+    }
+
+    communityTeaserTrack.style.transform = `translate3d(${-sliderOffset}px, 0, 0)`;
+
+    if (smooth) {
+      transitionTimer = window.setTimeout(() => {
+        normalizeOffset();
+        communityTeaserTrack.style.transition = "none";
+        communityTeaserTrack.style.transform = `translate3d(${-sliderOffset}px, 0, 0)`;
+      }, 440);
+    }
+  };
+
+  const renderSlider = (smooth = false) => {
+    normalizeOffset();
+    applySliderTransform(smooth);
+  };
+
+  const getStep = () => {
+    const cardWidth = firstImage?.getBoundingClientRect().width || communityTeaserViewport.clientWidth * 0.7;
+    return cardWidth + getGap();
+  };
+
+  const moveBy = (direction) => {
+    const loopWidth = getLoopWidth();
+    const step = getStep();
+
+    if (loopWidth <= 0 || step <= 0) {
+      return;
+    }
+
+    if (direction < 0 && sliderOffset <= step) {
+      sliderOffset += loopWidth;
+      applySliderTransform(false);
+    }
+
+    sliderOffset += direction * step;
+    applySliderTransform(true);
+  };
+
+  const ensureLightbox = () => {
+    if (lightbox || !slides.length) {
+      return;
+    }
+
+    lightbox = document.createElement("div");
+    lightbox.className = "community-lightbox";
+    lightbox.setAttribute("role", "dialog");
+    lightbox.setAttribute("aria-modal", "true");
+    lightbox.setAttribute("aria-label", "Közösségi galéria");
+    lightbox.innerHTML = `
+      <button class="community-lightbox__button community-lightbox__close" type="button" aria-label="Bezárás">
+        <svg class="icon" aria-hidden="true"><use href="#icon-x"></use></svg>
+      </button>
+      <button class="community-lightbox__button community-lightbox__prev" type="button" aria-label="Előző kép">
+        <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+      </button>
+      <div class="community-lightbox__frame">
+        <img class="community-lightbox__img" alt="">
+      </div>
+      <button class="community-lightbox__button community-lightbox__next" type="button" aria-label="Következő kép">
+        <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
+      </button>
+      <div class="community-lightbox__counter" aria-live="polite"></div>
+    `;
+    document.body.appendChild(lightbox);
+    lightboxImage = lightbox.querySelector(".community-lightbox__img");
+    lightboxCounter = lightbox.querySelector(".community-lightbox__counter");
+
+    lightbox.querySelector(".community-lightbox__close")?.addEventListener("click", closeLightbox);
+    lightbox.querySelector(".community-lightbox__prev")?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      showLightbox(lightboxIndex - 1);
+    });
+    lightbox.querySelector(".community-lightbox__next")?.addEventListener("click", (event) => {
+      event.stopPropagation();
+      showLightbox(lightboxIndex + 1);
+    });
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
+    });
+  };
+
+  const showLightbox = (index) => {
+    if (!slides.length || !lightboxImage) {
+      return;
+    }
+
+    lightboxIndex = ((index % slides.length) + slides.length) % slides.length;
+    const slide = slides[lightboxIndex];
+    lightboxImage.src = slide.full;
+    lightboxImage.alt = slide.alt;
+
+    if (lightboxCounter) {
+      lightboxCounter.textContent = `${lightboxIndex + 1} / ${slides.length}`;
+    }
+  };
+
+  const openLightbox = (index) => {
+    ensureLightbox();
+
+    if (!lightbox) {
+      return;
+    }
+
+    paused = true;
+    restoreBodyOverflow = document.body.style.overflow;
+    showLightbox(index);
+    lightbox.classList.add("is-open");
+    document.body.style.overflow = "hidden";
+  };
+
+  function closeLightbox() {
+    if (!lightbox) {
+      return;
+    }
+
+    lightbox.classList.remove("is-open");
+    document.body.style.overflow = restoreBodyOverflow;
+    paused = false;
+  }
+
   const tick = () => {
     if (!paused) {
-      communityTeaserViewport.scrollLeft += 0.45;
-      normalizeScroll();
+      sliderOffset += 0.45;
+      renderSlider(false);
     }
 
     frameId = window.requestAnimationFrame(tick);
   };
 
-  communityTeaserNext?.addEventListener("click", () => {
-    const cardWidth = firstImage?.getBoundingClientRect().width || communityTeaserViewport.clientWidth * 0.7;
-    communityTeaserViewport.scrollBy({
-      left: cardWidth + getGap(),
-      behavior: "smooth",
+  allImages.forEach((image, index) => {
+    const slideIndex = slides.length ? index % slides.length : 0;
+    image.dataset.communitySlideIndex = String(slideIndex);
+    image.setAttribute("role", "button");
+    image.setAttribute("aria-label", `${slides[slideIndex]?.alt || "Közösségi kép"} megnyitása`);
+
+    if (image.closest("[aria-hidden='true']")) {
+      image.tabIndex = -1;
+    } else {
+      image.tabIndex = 0;
+    }
+
+    image.addEventListener("click", (event) => {
+      if (suppressImageClick) {
+        event.preventDefault();
+        return;
+      }
+
+      openLightbox(slideIndex);
     });
 
-    window.setTimeout(normalizeScroll, 520);
+    image.addEventListener("keydown", (event) => {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        openLightbox(slideIndex);
+      }
+    });
+  });
+
+  communityTeaserPrev?.addEventListener("click", () => {
+    moveBy(-1);
+  });
+
+  communityTeaserNext?.addEventListener("click", () => {
+    moveBy(1);
+  });
+
+  communityTeaserViewport.addEventListener("pointerdown", (event) => {
+    if (event.button !== 0 || !slides.length) {
+      return;
+    }
+
+    pointerDown = true;
+    pointerMoved = false;
+    pointerStartX = event.clientX;
+    pointerStartOffset = sliderOffset;
+    paused = true;
+  });
+
+  communityTeaserViewport.addEventListener("pointermove", (event) => {
+    if (!pointerDown) {
+      return;
+    }
+
+    const loopWidth = getLoopWidth();
+    const deltaX = event.clientX - pointerStartX;
+    let nextOffset = pointerStartOffset - deltaX;
+
+    if (!pointerMoved && Math.abs(deltaX) <= 4) {
+      return;
+    }
+
+    if (!pointerMoved) {
+      pointerMoved = true;
+      suppressImageClick = true;
+      communityTeaserViewport.classList.add("is-dragging");
+
+      if (typeof communityTeaserViewport.setPointerCapture === "function") {
+        try {
+          communityTeaserViewport.setPointerCapture(event.pointerId);
+          pointerCaptured = true;
+        } catch (error) {
+          pointerCaptured = false;
+        }
+      }
+    }
+
+    if (loopWidth > 0) {
+      if (nextOffset < 0) {
+        pointerStartOffset += loopWidth;
+        nextOffset += loopWidth;
+      } else if (nextOffset >= loopWidth) {
+        pointerStartOffset -= loopWidth;
+        nextOffset -= loopWidth;
+      }
+    }
+
+    sliderOffset = nextOffset;
+    applySliderTransform(false);
+  });
+
+  const endPointerDrag = (event) => {
+    if (!pointerDown) {
+      return;
+    }
+
+    pointerDown = false;
+    paused = false;
+    communityTeaserViewport.classList.remove("is-dragging");
+
+    if (pointerCaptured && typeof communityTeaserViewport.releasePointerCapture === "function") {
+      try {
+        communityTeaserViewport.releasePointerCapture(event.pointerId);
+      } catch (error) {
+        // The pointer can be released by the browser before this handler runs.
+      }
+    }
+
+    pointerCaptured = false;
+    renderSlider(false);
+
+    if (pointerMoved) {
+      window.setTimeout(() => {
+        suppressImageClick = false;
+      }, 40);
+    } else {
+      suppressImageClick = false;
+    }
+  };
+
+  communityTeaserViewport.addEventListener("pointerup", endPointerDrag);
+  communityTeaserViewport.addEventListener("pointercancel", endPointerDrag);
+  communityTeaserViewport.addEventListener("lostpointercapture", () => {
+    if (pointerDown) {
+      pointerDown = false;
+      pointerCaptured = false;
+      paused = false;
+      communityTeaserViewport.classList.remove("is-dragging");
+      renderSlider(false);
+    }
   });
 
   communityTeaserViewport.addEventListener("mouseenter", () => {
@@ -1105,7 +1418,21 @@ const setupCommunityTeaserSlider = () => {
     paused = false;
   });
 
-  communityTeaserViewport.addEventListener("scroll", normalizeScroll, { passive: true });
+  renderSlider(false);
+
+  document.addEventListener("keydown", (event) => {
+    if (!lightbox?.classList.contains("is-open")) {
+      return;
+    }
+
+    if (event.key === "Escape") {
+      closeLightbox();
+    } else if (event.key === "ArrowLeft") {
+      showLightbox(lightboxIndex - 1);
+    } else if (event.key === "ArrowRight") {
+      showLightbox(lightboxIndex + 1);
+    }
+  });
 
   if (!reducedMotion) {
     frameId = window.requestAnimationFrame(tick);
