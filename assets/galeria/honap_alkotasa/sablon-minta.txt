@@ -1,0 +1,39 @@
+HONAP ALKOTASA - ALTALANOS SZOVEG SABLON
+
+Ezt a mintat masold vagy toltsd ki az adott honap mappajaban levo honap-alkotasa.txt fajlban.
+
+Kicker:
+KIEMELT ALKOTAS - [HONAP]
+
+Cim:
+[Az alkotas neve, pl. Lume lampa]
+
+Alcim:
+[Hangulatos rovid mondat, pl. amikor a feny format kap.]
+
+Rovid leiras:
+[2-3 mondat: mi ez, miert keszult, milyen anyagbol, milyen hangulatot vagy funkciot ad.]
+
+Adat 1:
+Ertek: [pl. 32 ora]
+Cimke: [pl. NYOMTATAS]
+
+Adat 2:
+Ertek: [pl. Premium PLA]
+Cimke: [pl. ANYAG]
+
+Adat 3:
+Ertek: [pl. Kezi]
+Cimke: [pl. UTOMUNKA]
+
+Gomb szoveg:
+[pl. SAJAT LAMPA RENDELESE]
+
+Gomb link:
+[pl. egyedi-rendeles.html]
+
+Kep:
+[A fo kep fajlneve. A kepet tedd ugyanabba a honap mappaba.]
+
+Megjegyzes:
+[Nem kotelezo: szin, meret, ugyfelkeres, inspiracio, extra technikai reszlet.]

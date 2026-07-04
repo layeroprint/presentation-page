@@ -1,0 +1,37 @@
+HONAP ALKOTASA - 2026 AUGUSZTUS
+
+Kicker:
+KIEMELT ALKOTAS - AUGUSZTUS
+
+Cim:
+[Ide ird az alkotas nevet, pl. Lume lampa]
+
+Alcim:
+[Ide johet a nagy, hangulatos masodik sor, pl. amikor a feny format kap.]
+
+Rovid leiras:
+[2-3 mondatban ird le, mi ez az alkotas, kinek keszult, milyen hangulatot ad, miert kulonleges.]
+
+Adat 1:
+Ertek: [pl. 32 ora]
+Cimke: [pl. NYOMTATAS]
+
+Adat 2:
+Ertek: [pl. Premium PLA]
+Cimke: [pl. ANYAG]
+
+Adat 3:
+Ertek: [pl. Kezi]
+Cimke: [pl. UTOMUNKA]
+
+Gomb szoveg:
+[pl. SAJAT LAMPA RENDELESE]
+
+Gomb link:
+[pl. egyedi-rendeles.html]
+
+Kep:
+[Ide ird a fo kep fajlnevet, amit ebbe a honap mappaba teszel.]
+
+Megjegyzes:
+[Barmi extra info: szin, meret, hatarido, inspiracio, technika.]

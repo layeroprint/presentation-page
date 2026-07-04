@@ -218,7 +218,10 @@
         .hero-deck {
           position: relative; margin: 0 auto;
           width: min(360px, 100%); aspect-ratio: 3/4;
+          cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none;
         }
+        .hero-deck.is-dragging { cursor: grabbing; }
+        .hero-deck.is-dragging .hero-deck__card { cursor: grabbing; }
         .hero-deck::before {
           content: ""; position: absolute; inset: -16%;
           background: radial-gradient(closest-side, rgba(244,184,96,.15), transparent 72%);
@@ -285,6 +288,7 @@
           background: rgba(4,9,15,.94); backdrop-filter: blur(20px);
           display: flex; align-items: center; justify-content: center; gap: 18px;
           opacity: 0; pointer-events: none; transition: opacity .28s;
+          touch-action: pan-y; user-select: none; -webkit-user-select: none;
         }
         .hs-lb.is-open { opacity: 1; pointer-events: all; }
         .hs-lb__img {
@@ -383,16 +387,22 @@
         /* crossfade — két egymásra rakott kép */
         .sldr-imgs {
           position: relative; z-index: 1; border-radius: 18px; overflow: hidden;
-          aspect-ratio: 4/3;
+          aspect-ratio: 6/5;
           box-shadow: 0 36px 70px -30px rgba(0,0,0,.9), 0 0 0 1px rgba(255,255,255,.05) inset;
+          touch-action: pan-y; user-select: none; -webkit-user-select: none;
         }
+        .sldr-imgs.is-dragging { cursor: grabbing; }
         .sldr-img {
           position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover;
           opacity: 0; transition: opacity .75s ease;
         }
         .sldr-img.is-active { opacity: 1; }
-        .sldr-strip { position: relative; z-index: 2; overflow: hidden; margin-top: 12px; border-radius: 12px; width: 100%; }
-        .sldr-rail { display: flex; gap: 12px; transition: transform .48s cubic-bezier(.4,0,.2,1); }
+        .sldr-strip {
+          position: relative; z-index: 2; overflow: hidden; margin-top: 12px; border-radius: 12px; width: 100%;
+          cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none;
+        }
+        .sldr-strip.is-dragging { cursor: grabbing; }
+        .sldr-rail { display: flex; gap: 12px; transition: transform .48s cubic-bezier(.4,0,.2,1); will-change: transform; }
         .sldr-thumb {
           flex: 0 0 var(--sldr-tw, 80px); width: var(--sldr-tw, 80px);
           border-radius: 12px; overflow: hidden;
@@ -463,9 +473,10 @@
         .sldr-modal__close:hover { background: rgba(255,255,255,.13); color: #fff; }
         .sldr-modal__img-wrap {
           max-width: calc(100vw - 160px); max-height: 88vh;
-          position: relative; cursor: default;
+          position: relative; cursor: grab; touch-action: pan-y; user-select: none; -webkit-user-select: none;
           display: flex; align-items: center; justify-content: center;
         }
+        .sldr-modal__img-wrap.is-dragging { cursor: grabbing; }
         .sldr-modal__main {
           max-width: 100%; max-height: 88vh;
           object-fit: contain; display: block; border-radius: 8px;
@@ -500,6 +511,7 @@
         @media(max-width:640px){
           .cats { padding-top: 20px; }
           .cat { padding: 40px 0; }
+          .sldr-imgs { aspect-ratio: 1/1; }
         }
 
         /* --- kategória "fejezet" design --- */
@@ -1204,23 +1216,52 @@
 
     // húzás / swipe — egér és érintőképernyő
     (function() {
-      var startX = 0, startY = 0, dragging = false, THRESHOLD = 50;
+      var pointerId = null;
+      var startX = 0;
+      var startY = 0;
+      var THRESHOLD = 50;
+      var wrap = modal.querySelector('.sldr-modal__img-wrap');
 
-      function onStart(x, y) { startX = x; startY = y; dragging = true; }
-      function onEnd(x) {
-        if (!dragging) return;
-        dragging = false;
-        var dx = x - startX;
-        if (Math.abs(dx) < THRESHOLD) return;
-        if (dx < 0) lbShow(lbIdx + 1); else lbShow(lbIdx - 1);
+      function clearPointer() {
+        wrap.classList.remove('is-dragging');
+        if (pointerId !== null && typeof wrap.releasePointerCapture === 'function') {
+          try { wrap.releasePointerCapture(pointerId); } catch (error) {}
+        }
+        pointerId = null;
       }
 
-      var wrap = modal.querySelector('.sldr-modal__img-wrap');
-      wrap.addEventListener('mousedown',  (e) => { e.preventDefault(); onStart(e.clientX, e.clientY); wrap.style.cursor = 'grabbing'; });
-      window.addEventListener('mouseup',  (e) => { onEnd(e.clientX); wrap.style.cursor = 'grab'; });
-      wrap.addEventListener('touchstart', (e) => { onStart(e.touches[0].clientX, e.touches[0].clientY); }, { passive: true });
-      wrap.addEventListener('touchend',   (e) => { onEnd(e.changedTouches[0].clientX); });
-      wrap.style.cursor = 'grab';
+      wrap.addEventListener('pointerdown', function(e) {
+        if (e.button !== undefined && e.button !== 0) return;
+        pointerId = e.pointerId;
+        startX = e.clientX;
+        startY = e.clientY;
+        if (typeof wrap.setPointerCapture === 'function') {
+          try { wrap.setPointerCapture(pointerId); } catch (error) {}
+        }
+      });
+
+      wrap.addEventListener('pointermove', function(e) {
+        if (pointerId !== e.pointerId) return;
+        var dx = e.clientX - startX;
+        var dy = e.clientY - startY;
+        if (Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(dy)) {
+          wrap.classList.add('is-dragging');
+          e.preventDefault();
+        }
+      });
+
+      wrap.addEventListener('pointerup', function(e) {
+        if (pointerId !== e.pointerId) return;
+        var dx = e.clientX - startX;
+        var dy = e.clientY - startY;
+        if (Math.abs(dx) >= THRESHOLD && Math.abs(dx) > Math.abs(dy)) {
+          if (dx < 0) lbShow(lbIdx + 1); else lbShow(lbIdx - 1);
+        }
+        clearPointer();
+      });
+
+      wrap.addEventListener('pointercancel', clearPointer);
+      wrap.addEventListener('dragstart', function(e) { e.preventDefault(); });
     })();
 
     // ── slider init ───────────────────────────────────────────────
@@ -1255,6 +1296,7 @@
       const imgA       = el.querySelector('.sldr-img-a');
       const imgB       = el.querySelector('.sldr-img-b');
       const imgsWrap   = el.querySelector('.sldr-imgs');
+      const strip      = el.querySelector('.sldr-strip');
       const rail       = el.querySelector('.sldr-rail');
       const thumbs     = [...el.querySelectorAll('.sldr-thumb')];
       const counter    = el.querySelector('.sldr-counter');
@@ -1263,7 +1305,6 @@
       const nextBtn    = el.querySelector('.sldr-next');
 
       function computeThumbW() {
-        const strip = el.querySelector('.sldr-strip');
         const inner = (strip && strip.clientWidth) || el.clientWidth;
         const tw = Math.floor((inner - 12 * (VISIBLE - 1)) / VISIBLE);
         if (tw <= 0) return;
@@ -1309,25 +1350,72 @@
       el.addEventListener('mouseleave', start);
 
       // drag navigáció a főképen
-      var dragStartX = 0, isDrag = false, DRAG_THRESHOLD = 50;
-      imgsWrap.addEventListener('mousedown', (e) => {
-        dragStartX = e.clientX; isDrag = false;
-        imgsWrap.style.cursor = 'grabbing';
-        e.preventDefault();
-      });
-      window.addEventListener('mouseup', (e) => {
-        if (!dragStartX) return;
-        var dx = e.clientX - dragStartX;
-        if (Math.abs(dx) >= DRAG_THRESHOLD) {
-          isDrag = true;
-          stop(); goTo(dx < 0 ? cur + 1 : cur - 1); start();
-        }
-        dragStartX = 0;
-        imgsWrap.style.cursor = 'grab';
-      });
-      imgsWrap.style.cursor = 'grab';
+      function addSwipeNavigation(target, forward, backward) {
+        var pointerId = null;
+        var startX = 0;
+        var startY = 0;
+        var suppressClick = false;
+        var THRESHOLD = 42;
 
-      imgsWrap.addEventListener('click', (e) => { if (!isDrag) { stop(); lbOpen(lightboxImages, cur); } isDrag = false; });
+        function clearPointer() {
+          target.classList.remove('is-dragging');
+          if (pointerId !== null && typeof target.releasePointerCapture === 'function') {
+            try { target.releasePointerCapture(pointerId); } catch (error) {}
+          }
+          pointerId = null;
+        }
+
+        target.addEventListener('pointerdown', function(e) {
+          if (e.button !== undefined && e.button !== 0) return;
+          pointerId = e.pointerId;
+          startX = e.clientX;
+          startY = e.clientY;
+          suppressClick = false;
+          if (typeof target.setPointerCapture === 'function') {
+            try { target.setPointerCapture(pointerId); } catch (error) {}
+          }
+        });
+
+        target.addEventListener('pointermove', function(e) {
+          if (pointerId !== e.pointerId) return;
+          var dx = e.clientX - startX;
+          var dy = e.clientY - startY;
+          if (Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(dy)) {
+            target.classList.add('is-dragging');
+            stop();
+            e.preventDefault();
+          }
+        });
+
+        target.addEventListener('pointerup', function(e) {
+          if (pointerId !== e.pointerId) return;
+          var dx = e.clientX - startX;
+          var dy = e.clientY - startY;
+          var shouldSlide = Math.abs(dx) >= THRESHOLD && Math.abs(dx) > Math.abs(dy);
+          if (shouldSlide) {
+            suppressClick = true;
+            stop();
+            if (dx < 0) forward(); else backward();
+            start();
+            window.setTimeout(function() { suppressClick = false; }, 120);
+          }
+          clearPointer();
+        });
+
+        target.addEventListener('pointercancel', clearPointer);
+        target.addEventListener('dragstart', function(e) { e.preventDefault(); });
+        target.addEventListener('click', function(e) {
+          if (!suppressClick) return;
+          e.preventDefault();
+          e.stopPropagation();
+        }, true);
+      }
+
+      imgsWrap.style.cursor = 'grab';
+      addSwipeNavigation(imgsWrap, function() { goTo(cur + 1); }, function() { goTo(cur - 1); });
+      addSwipeNavigation(strip, function() { goTo(cur + 1); }, function() { goTo(cur - 1); });
+
+      imgsWrap.addEventListener('click', () => { stop(); lbOpen(lightboxImages, cur); });
       galleryBtn.addEventListener('click', () => { stop(); lbOpen(lightboxImages, cur); });
 
       start();
@@ -1417,6 +1505,68 @@
       const stop  = () => { clearInterval(timer); timer = null; };
       deck.addEventListener('mouseenter', stop);
       deck.addEventListener('mouseleave', start);
+
+      (function addDeckSwipe() {
+        var pointerId = null;
+        var startX = 0;
+        var startY = 0;
+        var suppressClick = false;
+        var THRESHOLD = 42;
+
+        function clearPointer() {
+          deck.classList.remove('is-dragging');
+          if (pointerId !== null && typeof deck.releasePointerCapture === 'function') {
+            try { deck.releasePointerCapture(pointerId); } catch (error) {}
+          }
+          pointerId = null;
+        }
+
+        deck.addEventListener('pointerdown', function(e) {
+          if (e.button !== undefined && e.button !== 0) return;
+          pointerId = e.pointerId;
+          startX = e.clientX;
+          startY = e.clientY;
+          suppressClick = false;
+          if (typeof deck.setPointerCapture === 'function') {
+            try { deck.setPointerCapture(pointerId); } catch (error) {}
+          }
+        });
+
+        deck.addEventListener('pointermove', function(e) {
+          if (pointerId !== e.pointerId) return;
+          var dx = e.clientX - startX;
+          var dy = e.clientY - startY;
+          if (Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(dy)) {
+            deck.classList.add('is-dragging');
+            stop();
+            e.preventDefault();
+          }
+        });
+
+        deck.addEventListener('pointerup', function(e) {
+          if (pointerId !== e.pointerId) return;
+          var dx = e.clientX - startX;
+          var dy = e.clientY - startY;
+          var shouldSlide = Math.abs(dx) >= THRESHOLD && Math.abs(dx) > Math.abs(dy);
+          if (shouldSlide) {
+            suppressClick = true;
+            stop();
+            if (dx < 0) next(); else prev();
+            start();
+            window.setTimeout(function() { suppressClick = false; }, 120);
+          }
+          clearPointer();
+        });
+
+        deck.addEventListener('pointercancel', clearPointer);
+        deck.addEventListener('dragstart', function(e) { e.preventDefault(); });
+        deck.addEventListener('click', function(e) {
+          if (!suppressClick) return;
+          e.preventDefault();
+          e.stopPropagation();
+        }, true);
+      })();
+
       document.querySelector('[data-hd-prev]').addEventListener('click', () => { stop(); prev(); start(); });
       document.querySelector('[data-hd-next]').addEventListener('click', () => { stop(); next(); start(); });
       start();
@@ -1450,6 +1600,42 @@
       lb.querySelector('.hs-lb__close').addEventListener('click', closeLb);
       document.getElementById('lb-prev').addEventListener('click', () => navLb(-1));
       document.getElementById('lb-next').addEventListener('click', () => navLb(1));
+      (function addHeroLightboxSwipe() {
+        var pointerId = null;
+        var startX = 0;
+        var startY = 0;
+        var THRESHOLD = 46;
+
+        function clearPointer() {
+          if (pointerId !== null && typeof lb.releasePointerCapture === 'function') {
+            try { lb.releasePointerCapture(pointerId); } catch (error) {}
+          }
+          pointerId = null;
+        }
+
+        lb.addEventListener('pointerdown', function(e) {
+          if (!lb.classList.contains('is-open') || e.target.closest('button')) return;
+          if (e.button !== undefined && e.button !== 0) return;
+          pointerId = e.pointerId;
+          startX = e.clientX;
+          startY = e.clientY;
+          if (typeof lb.setPointerCapture === 'function') {
+            try { lb.setPointerCapture(pointerId); } catch (error) {}
+          }
+        });
+
+        lb.addEventListener('pointerup', function(e) {
+          if (pointerId !== e.pointerId) return;
+          var dx = e.clientX - startX;
+          var dy = e.clientY - startY;
+          if (Math.abs(dx) >= THRESHOLD && Math.abs(dx) > Math.abs(dy)) {
+            if (dx < 0) navLb(1); else navLb(-1);
+          }
+          clearPointer();
+        });
+
+        lb.addEventListener('pointercancel', clearPointer);
+      })();
       lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
       document.addEventListener('keydown', e => {
         if (!lb.classList.contains('is-open')) return;

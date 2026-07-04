@@ -20,6 +20,59 @@ if (siteNav && !siteNav.querySelector(".site-nav__links")) {
   siteNav.append(mobileHead, linkWrap, mobileCta);
 }
 
+if (siteNav) {
+  const headerTop = document.querySelector(".header-top");
+  const headerMotto = headerTop?.querySelector(".header-top__motto");
+  const headerContact = headerTop?.querySelector(".header-top__contact");
+  const headerCta = document.querySelector(".header-cta");
+  const shopHref = headerCta?.getAttribute("href") || "https://shop.layero.ro";
+
+  const mobileHead = siteNav.querySelector(".site-nav__mobile-head") || document.createElement("div");
+  mobileHead.className = "site-nav__mobile-head";
+  mobileHead.innerHTML = "<span>Layero navig&aacute;ci&oacute;</span><strong>V&aacute;lassz ir&aacute;nyt</strong>";
+
+  const linkWrap = siteNav.querySelector(".site-nav__links") || document.createElement("div");
+  linkWrap.className = "site-nav__links";
+  [...siteNav.querySelectorAll(":scope > a")].forEach((link) => linkWrap.appendChild(link));
+
+  const mobileInfo = siteNav.querySelector(".site-nav__mobile-info") || document.createElement("div");
+  mobileInfo.className = "site-nav__mobile-info";
+  mobileInfo.setAttribute("aria-label", "Gyors elerhetosegek");
+
+  const mobileInfoItems = [];
+  if (headerMotto) {
+    const mottoClone = headerMotto.cloneNode(true);
+    mottoClone.className = "site-nav__mobile-motto";
+    mobileInfoItems.push(mottoClone);
+  }
+
+  if (headerContact) {
+    const contactClone = headerContact.cloneNode(true);
+    contactClone.className = "site-nav__mobile-contact";
+    contactClone.querySelectorAll("svg").forEach((icon) => {
+      icon.classList.add("site-nav__mobile-icon");
+    });
+    mobileInfoItems.push(contactClone);
+  }
+
+  if (mobileInfoItems.length) {
+    mobileInfo.replaceChildren(...mobileInfoItems);
+  } else {
+    mobileInfo.remove();
+  }
+
+  const mobileCta = siteNav.querySelector(".site-nav__mobile-cta") || document.createElement("div");
+  mobileCta.className = "site-nav__mobile-cta";
+  mobileCta.setAttribute("aria-label", "Gyors muveletek");
+  mobileCta.innerHTML = `<a class="btn btn--shop" href="${shopHref}" target="_blank" rel="noopener noreferrer">Online shop</a>`;
+
+  if (mobileInfoItems.length) {
+    siteNav.append(mobileHead, linkWrap, mobileInfo, mobileCta);
+  } else {
+    siteNav.append(mobileHead, linkWrap, mobileCta);
+  }
+}
+
 let navClosers = [...document.querySelectorAll("[data-nav-close]")];
 
 if (navToggle && !navClosers.length) {

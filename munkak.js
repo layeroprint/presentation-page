@@ -31,6 +31,7 @@ async function init() {
   allWorks = data.munkak || [];
   appendChips(data.kategoriak || []);
   renderFeatured(allWorks);
+  setupCarouselDrag(GRID);
 
   FILTERS.addEventListener("click", (event) => {
     const chip = event.target.closest(".munkak-chip");
@@ -60,6 +61,85 @@ function renderFeatured(items) {
   render(items.filter((item) => item.kiemelt).slice(0, 6));
 }
 
+function setupCarouselDrag(scroller) {
+  let pointerId = null;
+  let startX = 0;
+  let startScrollLeft = 0;
+  let moved = false;
+  let suppressClick = false;
+
+  updateCarouselDragReady();
+  window.addEventListener("resize", updateCarouselDragReady);
+
+  function clearPointer(event) {
+    scroller.classList.remove("is-dragging");
+
+    if (pointerId !== null && typeof scroller.releasePointerCapture === "function") {
+      try {
+        scroller.releasePointerCapture(event.pointerId);
+      } catch (error) {
+        // The browser can release the pointer before this handler runs.
+      }
+    }
+
+    pointerId = null;
+
+    if (moved) {
+      window.setTimeout(() => {
+        suppressClick = false;
+      }, 80);
+    } else {
+      suppressClick = false;
+    }
+  }
+
+  scroller.addEventListener("pointerdown", (event) => {
+    if (event.button !== undefined && event.button !== 0) return;
+    if (!scroller.classList.contains("is-drag-ready")) return;
+
+    pointerId = event.pointerId;
+    startX = event.clientX;
+    startScrollLeft = scroller.scrollLeft;
+    moved = false;
+    suppressClick = false;
+
+    if (typeof scroller.setPointerCapture === "function") {
+      try {
+        scroller.setPointerCapture(pointerId);
+      } catch (error) {
+        // Older browser edge case; dragging still works without capture.
+      }
+    }
+  });
+
+  scroller.addEventListener("pointermove", (event) => {
+    if (pointerId !== event.pointerId) return;
+
+    const dx = event.clientX - startX;
+    if (Math.abs(dx) <= 6) return;
+
+    moved = true;
+    suppressClick = true;
+    scroller.classList.add("is-dragging");
+    scroller.scrollLeft = startScrollLeft - dx;
+    event.preventDefault();
+  });
+
+  scroller.addEventListener("pointerup", clearPointer);
+  scroller.addEventListener("pointercancel", clearPointer);
+  scroller.addEventListener("dragstart", (event) => event.preventDefault());
+  scroller.addEventListener("click", (event) => {
+    if (!suppressClick) return;
+    event.preventDefault();
+    event.stopPropagation();
+  }, true);
+}
+
+function updateCarouselDragReady() {
+  if (!GRID) return;
+  GRID.classList.toggle("is-drag-ready", GRID.scrollWidth > GRID.clientWidth + 2);
+}
+
 function render(items) {
   GRID.innerHTML = items.length
     ? items.map(cardHTML).join("")
@@ -69,6 +149,8 @@ function render(items) {
     el.style.animationDelay = `${index * 45}ms`;
     el.classList.add("munkak-card--animate");
   });
+
+  updateCarouselDragReady();
 }
 
 function cardHTML(item) {
