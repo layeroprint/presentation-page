@@ -3941,6 +3941,33 @@ body.nav-open .nav-toggle__bars::after {
   pointer-events: none;
 }
 
+@media (max-width: 640px) {
+  .community-lightbox {
+    padding: 0;
+  }
+
+  .community-lightbox__frame {
+    width: 100vw;
+    max-width: 100vw;
+    max-height: calc(100dvh - 96px);
+  }
+
+  .community-lightbox__img {
+    width: 100vw;
+    max-width: 100vw;
+    max-height: calc(100dvh - 96px);
+    border-radius: 0;
+  }
+
+  .community-lightbox__prev {
+    left: 10px;
+  }
+
+  .community-lightbox__next {
+    right: 10px;
+  }
+}
+
 .community__cta {
   width: min(420px, 100%);
   min-height: 64px;

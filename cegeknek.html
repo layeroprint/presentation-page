@@ -379,6 +379,21 @@
             font-size: 1.4rem; cursor: pointer; display: grid; place-items: center;
           }
           .b2b-lightbox__close:hover { background: rgba(255,255,255,.12); }
+          @media (max-width: 640px) {
+            .b2b-lightbox {
+              padding: 0 !important;
+            }
+            .b2b-lightbox img {
+              width: 100vw !important; max-width: 100vw !important;
+              max-height: calc(100dvh - 96px) !important;
+              border-radius: 0 !important;
+            }
+            .b2b-lightbox__close {
+              top: 12px; right: 12px;
+              background: rgba(4,9,15,.72);
+              border-color: rgba(255,255,255,.2);
+            }
+          }
 
           /* --- B2B features --- */
           .b2b-features {
