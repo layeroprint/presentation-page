@@ -260,6 +260,78 @@ html.content-protection select {
   line-height: 1.55;
 }
 
+html.inspect-lock-mode,
+html.inspect-lock-mode body {
+  min-height: 100%;
+  overflow: hidden !important;
+  background:
+    radial-gradient(circle at 20% 12%, rgba(0, 229, 255, 0.15), transparent 34%),
+    radial-gradient(circle at 82% 88%, rgba(255, 159, 45, 0.16), transparent 32%),
+    #020812 !important;
+}
+
+html.inspect-lock-mode body > :not(.inspect-lock-screen) {
+  display: none !important;
+}
+
+.inspect-lock-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 2147483647;
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: 24px;
+  color: var(--text);
+  background:
+    linear-gradient(145deg, rgba(2, 8, 18, 0.98), rgba(4, 17, 30, 0.98)),
+    repeating-radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.025) 0 1px, transparent 1px 9px);
+}
+
+.inspect-lock-card {
+  width: min(560px, 100%);
+  padding: clamp(28px, 7vw, 54px);
+  text-align: center;
+  background:
+    linear-gradient(145deg, rgba(4, 17, 30, 0.92), rgba(2, 8, 18, 0.94)),
+    radial-gradient(circle at 8% 0%, rgba(0, 229, 255, 0.18), transparent 44%),
+    radial-gradient(circle at 100% 100%, rgba(255, 159, 45, 0.18), transparent 42%);
+  border: 1px solid rgba(240, 194, 122, 0.38);
+  border-radius: 8px;
+  box-shadow: 0 28px 90px rgba(0, 0, 0, 0.46), 0 0 0 1px rgba(0, 229, 255, 0.08) inset;
+}
+
+.inspect-lock-card__kicker,
+.inspect-lock-card__title,
+.inspect-lock-card__text {
+  display: block;
+}
+
+.inspect-lock-card__kicker {
+  margin-bottom: 14px;
+  color: var(--amber);
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.inspect-lock-card__title {
+  margin: 0 0 14px;
+  color: var(--text);
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 8vw, 3.5rem);
+  line-height: 0.98;
+}
+
+.inspect-lock-card__text {
+  margin: 0 auto;
+  max-width: 38rem;
+  color: rgba(230, 238, 247, 0.82);
+  font-size: clamp(0.96rem, 2.4vw, 1.08rem);
+  line-height: 1.7;
+}
+
 button,
 input,
 textarea,

@@ -142,9 +142,16 @@ const inspectNoticeCopy = {
   text:
     "N\u00e9zel\u0151dni \u00e9r, de a k\u00e9pek \u00e9s sz\u00f6vegek a Layero oldalon vannak j\u00f3 helyen. Vissza a gal\u00e9ri\u00e1ba, ott szebb a f\u00e9ny."
 };
+const inspectLockCopy = {
+  kicker: "Layero m\u0171hely",
+  title: "A m\u0171helyajt\u00f3 most becsuk\u00f3dott.",
+  text:
+    "Inspect n\u00e9zetben a k\u00e9pek \u00e9s sz\u00f6vegek pihen\u0151re mentek. Nyisd meg norm\u00e1l b\u00f6ng\u00e9sz\u0151n\u00e9zetben; ott van a hely\u00fck, az inspect pedig maradjon a szersz\u00e1mos fi\u00f3kban."
+};
 const devToolsGapThreshold = 180;
 let inspectNoticeTimeout = null;
 let devToolsWasLikelyOpen = false;
+let pageInspectLocked = false;
 
 function showInspectNotice() {
   let notice = document.querySelector("[data-inspect-notice]");
@@ -190,13 +197,60 @@ function isDevToolsLikelyOpen() {
   return widthGap > devToolsGapThreshold || heightGap > devToolsGapThreshold;
 }
 
+function lockPageForInspect() {
+  if (pageInspectLocked) {
+    return;
+  }
+
+  pageInspectLocked = true;
+  window.__LAYERO_INSPECT_LOCK__ = true;
+  document.documentElement.classList.add("inspect-lock-mode", "content-protection");
+  document.title = "Layero muhely zarva";
+
+  const renderLockScreen = () => {
+    const screen = document.createElement("main");
+    screen.className = "inspect-lock-screen";
+    screen.tabIndex = -1;
+    screen.setAttribute("role", "main");
+    screen.setAttribute("aria-label", "Layero muhely zarva");
+    screen.innerHTML =
+      '<section class="inspect-lock-card">' +
+      '<span class="inspect-lock-card__kicker">' +
+      inspectLockCopy.kicker +
+      "</span>" +
+      '<h1 class="inspect-lock-card__title">' +
+      inspectLockCopy.title +
+      "</h1>" +
+      '<p class="inspect-lock-card__text">' +
+      inspectLockCopy.text +
+      "</p>" +
+      "</section>";
+
+    document.body.className = "inspect-lock-body";
+    document.body.replaceChildren(screen);
+    screen.focus({ preventScroll: true });
+  };
+
+  if (document.body) {
+    renderLockScreen();
+  } else {
+    document.addEventListener("DOMContentLoaded", renderLockScreen, { once: true });
+  }
+
+  try {
+    window.stop();
+  } catch (error) {
+    // Some browsers restrict stop(); the DOM lock above is still applied.
+  }
+}
+
 function watchDevToolsState() {
   const isLikelyOpen = isDevToolsLikelyOpen();
 
   if (isLikelyOpen && !devToolsWasLikelyOpen) {
-    showInspectNotice();
+    lockPageForInspect();
     console.info(
-      "Layero muhely: nezelodni er, de a kepek es szovegek itt vannak jo helyen."
+      "Layero muhely: inspect nezetben a tartalom zarva marad."
     );
   }
 
@@ -206,6 +260,11 @@ function watchDevToolsState() {
 function enableContentProtection() {
   document.documentElement.classList.add("content-protection");
   protectMediaElements();
+
+  if (window.__LAYERO_INSPECT_LOCK__) {
+    lockPageForInspect();
+    return;
+  }
 
   const protectedEvents = ["contextmenu", "copy", "cut", "selectstart"];
   protectedEvents.forEach((eventName) => {

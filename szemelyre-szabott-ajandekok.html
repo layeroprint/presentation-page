@@ -3,6 +3,22 @@
     <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script id="layero-devtools-guard">
+      (function () {
+        var threshold = 180;
+        function isDevToolsLikelyOpen() {
+          if (!window.outerWidth || !window.outerHeight) return false;
+          return Math.abs(window.outerWidth - window.innerWidth) > threshold || Math.abs(window.outerHeight - window.innerHeight) > threshold;
+        }
+        if (!isDevToolsLikelyOpen()) return;
+        window.__LAYERO_INSPECT_LOCK__ = true;
+        document.documentElement.className = (document.documentElement.className + " inspect-lock-mode content-protection").trim();
+        document.title = "Layero muhely zarva";
+        var lockHtml = '<meta name="robots" content="noindex,nofollow"><style>html,body{margin:0;min-width:320px;min-height:100%;overflow:hidden!important;color:#fff;background:radial-gradient(circle at 20% 12%,rgba(0,229,255,.15),transparent 34%),radial-gradient(circle at 82% 88%,rgba(255,159,45,.16),transparent 32%),#020812;font-family:Sora,Space Grotesk,Arial,sans-serif;-webkit-user-select:none!important;user-select:none!important;-webkit-touch-callout:none}body>*:not(.inspect-lock-screen),plaintext{display:none!important}.inspect-lock-screen{position:fixed;inset:0;z-index:2147483647;display:grid;place-items:center;min-height:100vh;padding:24px;background:linear-gradient(145deg,rgba(2,8,18,.98),rgba(4,17,30,.98)),repeating-radial-gradient(circle at 50% 50%,rgba(255,255,255,.025) 0 1px,transparent 1px 9px)}.inspect-lock-card{width:min(560px,100%);padding:clamp(28px,7vw,54px);text-align:center;background:linear-gradient(145deg,rgba(4,17,30,.92),rgba(2,8,18,.94)),radial-gradient(circle at 8% 0%,rgba(0,229,255,.18),transparent 44%),radial-gradient(circle at 100% 100%,rgba(255,159,45,.18),transparent 42%);border:1px solid rgba(240,194,122,.38);border-radius:8px;box-shadow:0 28px 90px rgba(0,0,0,.46),0 0 0 1px rgba(0,229,255,.08) inset}.inspect-lock-card__kicker{display:block;margin-bottom:14px;color:#ff9f2d;font-size:.72rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase}.inspect-lock-card__title{display:block;margin:0 0 14px;color:#fff;font-family:Georgia,serif;font-size:clamp(2rem,8vw,3.5rem);line-height:.98}.inspect-lock-card__text{display:block;margin:0 auto;max-width:38rem;color:rgba(230,238,247,.82);font-size:clamp(.96rem,2.4vw,1.08rem);line-height:1.7}</style></head><body class="inspect-lock-body"><main class="inspect-lock-screen" role="main" aria-label="Layero muhely zarva"><section class="inspect-lock-card"><span class="inspect-lock-card__kicker">Layero m&#369;hely</span><h1 class="inspect-lock-card__title">A m&#369;helyajt&oacute; most becsuk&oacute;dott.</h1><p class="inspect-lock-card__text">Inspect n&eacute;zetben a k&eacute;pek &eacute;s sz&ouml;vegek pihen&#337;re mentek. Nyisd meg norm&aacute;l b&ouml;ng&eacute;sz&#337;n&eacute;zetben; ott van a hely&uuml;k, az inspect pedig maradjon a szersz&aacute;mos fi&oacute;kban.</p></section></main><script>(function(){function block(e){e.preventDefault();e.stopPropagation();}["contextmenu","copy","cut","selectstart","dragstart"].forEach(function(name){document.addEventListener(name,block,{capture:true});});document.addEventListener("keydown",function(e){if(e.key==="F12"||e.ctrlKey||e.metaKey){block(e);}},{capture:true});})();<\/script><plaintext hidden>';
+        document.write(lockHtml);
+        try { window.stop(); } catch (error) {}
+      })();
+    </script>
     <title>Személyre szabott ajándékok | Layero 3D Design</title>
     <meta name="description" content="Névre szóló, emlékőrző és alkalomhoz illő 3D ajándékok, amelyek személyes történetet, kedvenc motívumot vagy különleges üzenetet hordoznak.">
     <meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
@@ -34,7 +50,7 @@
     <meta name="twitter:title" content="Személyre szabott ajándékok | Layero 3D Design">
     <meta name="twitter:description" content="Névre szóló, emlékőrző és alkalomhoz illő 3D ajándékok, amelyek személyes történetet, kedvenc motívumot vagy különleges üzenetet hordoznak.">
     <meta name="twitter:image" content="https://layero.ro/assets/images/categories/layero-asset-0216-760.webp">
-    <link rel="stylesheet" href="styles.css?v=20260705-content-protect-2">
+    <link rel="stylesheet" href="styles.css?v=20260705-content-protect-3">
     <link rel="stylesheet" href="tv-theme.css?v=20260704-seo-perf-1">
     <script type="application/ld+json">
     {
@@ -342,6 +358,6 @@
         </div>
       </div>
     </footer>
-    <script src="script.js?v=20260705-content-protect-2"></script>
+    <script src="script.js?v=20260705-content-protect-3"></script>
   </body>
 </html>
