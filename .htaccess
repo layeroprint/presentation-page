@@ -1,0 +1,16 @@
+Options -Indexes
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  RewriteCond %{HTTP_REFERER} !^$
+  RewriteCond %{HTTP_REFERER} !^https?://([^/]+\.)?layero\.ro/ [NC]
+  RewriteCond %{HTTP_REFERER} !^https?://localhost(:[0-9]+)?/ [NC]
+  RewriteCond %{HTTP_REFERER} !^https?://127\.0\.0\.1(:[0-9]+)?/ [NC]
+  RewriteRule \.(jpe?g|png|gif|webp|avif|svg)$ - [F,NC,L]
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+</IfModule>

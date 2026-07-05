@@ -104,6 +104,165 @@ let newsletterLastActiveElement = null;
 
 document.documentElement.classList.add("js-enabled");
 
+function closestElement(target, selector) {
+  if (target instanceof Element) {
+    return target.closest(selector);
+  }
+
+  return target?.parentElement?.closest(selector) || null;
+}
+
+function isEditableTarget(target) {
+  return Boolean(closestElement(target, "input, textarea, select, [contenteditable='true'], [contenteditable='']"));
+}
+
+function preventProtectedAction(event) {
+  if (isEditableTarget(event.target)) {
+    return;
+  }
+
+  event.preventDefault();
+  event.stopPropagation();
+}
+
+function protectMediaElements(root = document) {
+  root.querySelectorAll?.("img, picture, video, canvas, svg").forEach((element) => {
+    element.setAttribute("draggable", "false");
+    element.setAttribute("aria-dropeffect", "none");
+  });
+
+  root.querySelectorAll?.("a[download]").forEach((link) => {
+    link.removeAttribute("download");
+  });
+}
+
+const inspectNoticeCopy = {
+  kicker: "Layero m\u0171hely",
+  title: "Hopp, ny\u00edlt a m\u0171helyajt\u00f3.",
+  text:
+    "N\u00e9zel\u0151dni \u00e9r, de a k\u00e9pek \u00e9s sz\u00f6vegek a Layero oldalon vannak j\u00f3 helyen. Vissza a gal\u00e9ri\u00e1ba, ott szebb a f\u00e9ny."
+};
+const devToolsGapThreshold = 180;
+let inspectNoticeTimeout = null;
+let devToolsWasLikelyOpen = false;
+
+function showInspectNotice() {
+  let notice = document.querySelector("[data-inspect-notice]");
+
+  if (!notice) {
+    notice = document.createElement("div");
+    notice.className = "inspect-notice";
+    notice.dataset.inspectNotice = "";
+    notice.setAttribute("role", "status");
+    notice.setAttribute("aria-live", "polite");
+    notice.innerHTML =
+      '<span class="inspect-notice__kicker">' +
+      inspectNoticeCopy.kicker +
+      '</span><strong class="inspect-notice__title">' +
+      inspectNoticeCopy.title +
+      '</strong><span class="inspect-notice__text">' +
+      inspectNoticeCopy.text +
+      "</span>";
+    document.body.appendChild(notice);
+  }
+
+  window.clearTimeout(inspectNoticeTimeout);
+  window.requestAnimationFrame(() => {
+    notice.classList.add("is-visible");
+    notice.style.setProperty("opacity", "1", "important");
+    notice.style.setProperty("transform", "translate3d(0, 0, 0) scale(1)", "important");
+  });
+  inspectNoticeTimeout = window.setTimeout(() => {
+    notice.classList.remove("is-visible");
+    notice.style.removeProperty("opacity");
+    notice.style.removeProperty("transform");
+  }, 5200);
+}
+
+function isDevToolsLikelyOpen() {
+  if (!window.outerWidth || !window.outerHeight) {
+    return false;
+  }
+
+  const widthGap = Math.abs(window.outerWidth - window.innerWidth);
+  const heightGap = Math.abs(window.outerHeight - window.innerHeight);
+
+  return widthGap > devToolsGapThreshold || heightGap > devToolsGapThreshold;
+}
+
+function watchDevToolsState() {
+  const isLikelyOpen = isDevToolsLikelyOpen();
+
+  if (isLikelyOpen && !devToolsWasLikelyOpen) {
+    showInspectNotice();
+    console.info(
+      "Layero muhely: nezelodni er, de a kepek es szovegek itt vannak jo helyen."
+    );
+  }
+
+  devToolsWasLikelyOpen = isLikelyOpen;
+}
+
+function enableContentProtection() {
+  document.documentElement.classList.add("content-protection");
+  protectMediaElements();
+
+  const protectedEvents = ["contextmenu", "copy", "cut", "selectstart"];
+  protectedEvents.forEach((eventName) => {
+    document.addEventListener(eventName, preventProtectedAction, { capture: true });
+  });
+
+  document.addEventListener(
+    "dragstart",
+    (event) => {
+      if (closestElement(event.target, "img, picture, video, canvas, svg") || !isEditableTarget(event.target)) {
+        preventProtectedAction(event);
+      }
+    },
+    { capture: true }
+  );
+
+  document.addEventListener(
+    "keydown",
+    (event) => {
+      if (isEditableTarget(event.target)) {
+        return;
+      }
+
+      const key = event.key.toLowerCase();
+      const hasModifier = event.ctrlKey || event.metaKey;
+      const blockedModifiedKeys = ["a", "c", "p", "s", "u", "x"];
+      const blockedDevToolsChord = hasModifier && event.shiftKey && ["c", "i", "j"].includes(key);
+
+      if (event.key === "F12" || blockedDevToolsChord || (hasModifier && blockedModifiedKeys.includes(key))) {
+        if (event.key === "F12" || blockedDevToolsChord) {
+          showInspectNotice();
+        }
+
+        preventProtectedAction(event);
+      }
+    },
+    { capture: true }
+  );
+
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      mutation.addedNodes.forEach((node) => {
+        if (node.nodeType === Node.ELEMENT_NODE) {
+          protectMediaElements(node);
+        }
+      });
+    });
+  });
+
+  observer.observe(document.documentElement, { childList: true, subtree: true });
+  watchDevToolsState();
+  window.addEventListener("resize", watchDevToolsState);
+  window.setInterval(watchDevToolsState, 1400);
+}
+
+enableContentProtection();
+
 const heroFlowTrack = document.querySelector("[data-hero-flow-track]");
 
 if (heroFlowTrack && !heroFlowTrack.dataset.loopReady) {
