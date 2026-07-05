@@ -16,7 +16,7 @@
       "kategoria_cimke": "Lámpák",
       "cim": "Lumé lámpa kutyaportréból",
       "leiras": "Egy szeretett kis kedvenc emlékét őrző fotólámpa, meleg fényben.",
-      "kep": "assets/images/lamp-process/03-finished-lamp.jpg",
+      "kep": "assets/images/lamp-process/layero-asset-0006.jpg",
       "link": "kapcsolat.html",
       "kiemelt": true
     },
@@ -26,7 +26,7 @@
       "kategoria_cimke": "Névtáblák",
       "cim": "Egyedi névtábla apáknak",
       "leiras": "Személyre szabott, asztali dísz névvel és üzenettel.",
-      "kep": "assets/images/personalized-father-plaque.webp",
+      "kep": "assets/images/categories/layero-asset-0188-760.webp",
       "link": "kapcsolat.html",
       "kiemelt": true
     },
@@ -36,7 +36,7 @@
       "kategoria_cimke": "Kulcstartók",
       "cim": "Családi kulcstartó gravírozással",
       "leiras": "Névvel, dátummal és egyedi mintával gravírozva.",
-      "kep": "assets/images/categories/layero-category-branded-keychain-760.webp",
+      "kep": "assets/images/categories/layero-asset-0188-760.webp",
       "link": "kapcsolat.html",
       "kiemelt": true
     },
@@ -46,7 +46,7 @@
       "kategoria_cimke": "Intézmények",
       "cim": "Máltai Szeretetszolgálat emléktábla",
       "leiras": "Köszönet és elismerés jelképeként készült egyedi tábla.",
-      "kep": "assets/images/categories/layero-category-graduation-gift-760.webp",
+      "kep": "assets/images/categories/layero-asset-0213-760.webp",
       "link": "kapcsolat.html",
       "kiemelt": true
     },
@@ -56,7 +56,7 @@
       "kategoria_cimke": "Cégek",
       "cim": "Céges QR kódos asztali display",
       "leiras": "Modern megjelenítő display logóval és QR kóddal.",
-      "kep": "assets/images/categories/layero-category-qr-display-760.webp",
+      "kep": "assets/images/categories/layero-asset-0228-display-760.webp",
       "link": "kapcsolat.html",
       "kiemelt": true
     },
@@ -66,7 +66,7 @@
       "kategoria_cimke": "Figurák",
       "cim": "Egyedi figura saját terv alapján",
       "leiras": "Kézzel tervezett figura, 3D nyomtatva és festve.",
-      "kep": "assets/images/categories/layero-category-custom-figure-760.webp",
+      "kep": "assets/images/categories/layero-asset-0199-760.webp",
       "link": "kapcsolat.html",
       "kiemelt": true
     },
@@ -76,7 +76,7 @@
       "kategoria_cimke": "Dekorációk",
       "cim": "Ünnepi dísz gömb",
       "leiras": "Finom, áttört dekoráció ünnepi hangulathoz vagy ajándékhoz.",
-      "kep": "assets/images/decorative-lattice-ornament.webp",
+      "kep": "assets/images/categories/layero-asset-0222-760.webp",
       "link": "kapcsolat.html",
       "kiemelt": false
     },
@@ -86,7 +86,7 @@
       "kategoria_cimke": "Névtáblák",
       "cim": "Családi névtábla",
       "leiras": "Egyedi feliratozású, elegáns asztali vagy fali névtábla.",
-      "kep": "assets/images/custom-family-nameplate.webp",
+      "kep": "assets/images/categories/layero-asset-0190-760.webp",
       "link": "kapcsolat.html",
       "kiemelt": false
     },
@@ -96,7 +96,7 @@
       "kategoria_cimke": "Dekorációk",
       "cim": "Egyedi bortartó állvány",
       "leiras": "Formabontó, prémium hangulatú dekoráció otthonra vagy ajándékba.",
-      "kep": "assets/images/categories/layero-category-wine-holder-760.webp",
+      "kep": "assets/images/categories/layero-asset-0243-760.webp",
       "link": "kapcsolat.html",
       "kiemelt": false
     },
@@ -106,7 +106,7 @@
       "kategoria_cimke": "Prototípusok",
       "cim": "Egyedi tech prototípus",
       "leiras": "Gyors, precíz prototípus formateszteléshez és bemutatáshoz.",
-      "kep": "assets/images/categories/layero-category-tech-creation-760.webp",
+      "kep": "assets/images/categories/layero-asset-0234-760.webp",
       "link": "kapcsolat.html",
       "kiemelt": false
     }

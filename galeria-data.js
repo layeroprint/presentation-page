@@ -10,19 +10,19 @@ var GALERIA_KATEGORIAK = [
     cim: 'Névre szóló gyerek lámpák',
     leiras: 'Stitch, Micimackó, dinó, Minyon, Hello Kitty, Olaf és gyerekneves lámpák.',
     kepek: [
-      { file: 'grok-image-22e650f7-7182-489a-aed7-748c0576234c.jpg', display: 'optimized/grok-image-22e650f7-7182-489a-aed7-748c0576234c-display.webp', width: 900, height: 900 },
-      { file: 'grok-image-3aa5174a-bfa3-4558-96be-37ad6b3c38a8.jpg', display: 'optimized/grok-image-3aa5174a-bfa3-4558-96be-37ad6b3c38a8-display.webp', width: 900, height: 900 },
-      { file: 'grok-image-3b13dd19-5b7b-4057-b4a9-0ce53e58fc25.jpg', display: 'optimized/grok-image-3b13dd19-5b7b-4057-b4a9-0ce53e58fc25-display.webp', width: 900, height: 900 },
-      { file: 'grok-image-3d4abcd8-b740-4c91-b3ba-38b26e4def1c.jpg', display: 'optimized/grok-image-3d4abcd8-b740-4c91-b3ba-38b26e4def1c-display.webp', width: 900, height: 900 },
-      { file: 'grok-image-443eef11-3ef3-496d-b340-ea204a278df6.jpg', display: 'optimized/grok-image-443eef11-3ef3-496d-b340-ea204a278df6-display.webp', width: 900, height: 900 },
-      { file: 'grok-image-44d572ff-7764-48f2-a1c5-5f22badbc0db.jpg', display: 'optimized/grok-image-44d572ff-7764-48f2-a1c5-5f22badbc0db-display.webp', width: 900, height: 900 },
-      { file: 'grok-image-6de30039-b8ce-4325-a4a5-1577be034931.jpg', display: 'optimized/grok-image-6de30039-b8ce-4325-a4a5-1577be034931-display.webp', width: 900, height: 900 },
-      { file: 'grok-image-8a4699d4-2b91-4810-b20a-3a174f22de29.jpg', display: 'optimized/grok-image-8a4699d4-2b91-4810-b20a-3a174f22de29-display.webp', width: 900, height: 900 },
-      { file: 'grok-image-ae8a9e84-17f2-4417-b909-da9b1227d930.jpg', display: 'optimized/grok-image-ae8a9e84-17f2-4417-b909-da9b1227d930-display.webp', width: 900, height: 900 },
-      { file: 'grok-image-d4f85b69-c89b-4d3b-959b-56028d4d3f46.jpg', display: 'optimized/grok-image-d4f85b69-c89b-4d3b-959b-56028d4d3f46-display.webp', width: 900, height: 900 },
-      { file: 'grok-image-d6f83a05-e6e4-4d44-9034-975c76f72c15.jpg', display: 'optimized/grok-image-d6f83a05-e6e4-4d44-9034-975c76f72c15-display.webp', width: 900, height: 900 },
-      { file: 'grok-image-d9ff8fa9-3f5c-48e5-b0e3-1229804378eb.jpg', display: 'optimized/grok-image-d9ff8fa9-3f5c-48e5-b0e3-1229804378eb-display.webp', width: 900, height: 900 },
-      { file: 'grok-image-f63b0b7b-f0af-4239-9ea2-c1b0f2a681b7.jpg', display: 'optimized/grok-image-f63b0b7b-f0af-4239-9ea2-c1b0f2a681b7-display.webp', width: 900, height: 900 }
+      { file: 'layero-asset-0087.jpg', display: 'optimized/layero-asset-0087-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0090.jpg', display: 'optimized/layero-asset-0090-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0091.jpg', display: 'optimized/layero-asset-0091-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0093.jpg', display: 'optimized/layero-asset-0093-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0094.jpg', display: 'optimized/layero-asset-0094-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0095.jpg', display: 'optimized/layero-asset-0095-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0099.jpg', display: 'optimized/layero-asset-0099-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0104.jpg', display: 'optimized/layero-asset-0104-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0106.jpg', display: 'optimized/layero-asset-0106-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0110.jpg', display: 'optimized/layero-asset-0110-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0112.jpg', display: 'optimized/layero-asset-0112-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0113.jpg', display: 'optimized/layero-asset-0113-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0114.jpg', display: 'optimized/layero-asset-0114-display.webp', width: 900, height: 900 }
     ]
   },
   {
@@ -31,24 +31,24 @@ var GALERIA_KATEGORIAK = [
     cim: 'Gamer és filmes dekorok',
     leiras: 'Minecraft, Fortnite, GTA, Assassin\'s Creed, Pókember, Jurassic Park és popkultúrás lámpák.',
     kepek: [
-      { file: '72uM8.jpg', display: 'optimized/72uM8-display.webp', width: 900, height: 900 },
-      { file: 'dXyHf.jpg', display: 'optimized/dXyHf-display.webp', width: 900, height: 900 },
-      { file: 'e075d082-c204-401e-a147-5537254a0147.png', display: 'optimized/e075d082-c204-401e-a147-5537254a0147-display.webp', width: 657, height: 900 },
-      { file: 'ED0vo.jpg', display: 'optimized/ED0vo-display.webp', width: 900, height: 900 },
-      { file: 'f3xof.jpg', display: 'optimized/f3xof-display.webp', width: 900, height: 900 },
-      { file: 'grok-image-6d2e8ed6-a9a3-472c-a84b-36be24263199.jpg', display: 'optimized/grok-image-6d2e8ed6-a9a3-472c-a84b-36be24263199-display.webp', width: 900, height: 900 },
-      { file: 'grok-image-928ba578-1109-49bc-b0ad-f7300489ed66.jpg', display: 'optimized/grok-image-928ba578-1109-49bc-b0ad-f7300489ed66-display.webp', width: 900, height: 900 },
-      { file: 'grok-image-fef3750f-32df-40aa-bca8-bd2da13feca1.jpg', display: 'optimized/grok-image-fef3750f-32df-40aa-bca8-bd2da13feca1-display.webp', width: 900, height: 900 },
-      { file: 'hero-1-hFSu3nNxTHgz.png', display: 'optimized/hero-1-hFSu3nNxTHgz-display.webp', width: 657, height: 900 },
-      { file: 'JNfgV.jpg', display: 'optimized/JNfgV-display.webp', width: 900, height: 900 },
-      { file: 'kylzM.jpg', display: 'optimized/kylzM-display.webp', width: 900, height: 900 },
-      { file: 'm5lOT.jpg', display: 'optimized/m5lOT-display.webp', width: 900, height: 900 },
-      { file: 'N1gJd.jpg', display: 'optimized/N1gJd-display.webp', width: 900, height: 900 },
-      { file: 'OH52F.jpg', display: 'optimized/OH52F-display.webp', width: 900, height: 900 },
-      { file: 'qvXsE.jpg', display: 'optimized/qvXsE-display.webp', width: 900, height: 900 },
-      { file: 'simple-2-FpsxVOJbc5yI.webp', display: 'optimized/simple-2-FpsxVOJbc5yI-display.webp', width: 657, height: 900 },
-      { file: 'uFZvc.jpg', display: 'optimized/uFZvc-display.webp', width: 900, height: 900 },
-      { file: 'XzjyN.jpg', display: 'optimized/XzjyN-display.webp', width: 900, height: 900 }
+      { file: 'layero-asset-0024.jpg', display: 'optimized/layero-asset-0024-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0074.jpg', display: 'optimized/layero-asset-0074-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0075.png', display: 'optimized/layero-asset-0075-display.webp', width: 657, height: 900 },
+      { file: 'layero-asset-0077.jpg', display: 'optimized/layero-asset-0077-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0079.jpg', display: 'optimized/layero-asset-0079-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0098.jpg', display: 'optimized/layero-asset-0098-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0105.jpg', display: 'optimized/layero-asset-0105-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0117.jpg', display: 'optimized/layero-asset-0117-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0122.png', display: 'optimized/layero-asset-0122-display.webp', width: 657, height: 900 },
+      { file: 'layero-asset-0178.jpg', display: 'optimized/layero-asset-0178-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0187.jpg', display: 'optimized/layero-asset-0187-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0264.jpg', display: 'optimized/layero-asset-0264-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0269.jpg', display: 'optimized/layero-asset-0269-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0278.jpg', display: 'optimized/layero-asset-0278-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0283.jpg', display: 'optimized/layero-asset-0283-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0290.webp', display: 'optimized/layero-asset-0290-display.webp', width: 657, height: 900 },
+      { file: 'layero-asset-0303.jpg', display: 'optimized/layero-asset-0303-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0304.jpg', display: 'optimized/layero-asset-0304-display.webp', width: 900, height: 900 }
     ]
   },
   {
@@ -57,14 +57,14 @@ var GALERIA_KATEGORIAK = [
     cim: 'Céges és logós termékek',
     leiras: 'Világító logók, brandelt táblák, céges ajándékok, QR + NFC displayek és promóciós dekorok.',
     kepek: [
-      { file: 'csomag.jpg', display: 'optimized/csomag-display.webp', width: 900, height: 900 },
-      { file: 'digitalis etlap QR+NFC.jpg', display: 'optimized/digitalis etlap QR+NFC-display.webp', width: 900, height: 900 },
-      { file: 'grok-image-2616584b-a488-4c8f-bd25-cf83f521af27.jpg', display: 'optimized/grok-image-2616584b-a488-4c8f-bd25-cf83f521af27-display.webp', width: 900, height: 900 },
-      { file: 'grok-image-35bffffc-c8a3-4757-80be-223ad6282cd2.jpg', display: 'optimized/grok-image-35bffffc-c8a3-4757-80be-223ad6282cd2-display.webp', width: 900, height: 900 },
-      { file: 'grok-image-ce0ff7d3-fb16-48a3-b828-cdd9db0ead2b.jpg', display: 'optimized/grok-image-ce0ff7d3-fb16-48a3-b828-cdd9db0ead2b-display.webp', width: 675, height: 900 },
-      { file: 'hero_new.png', display: 'optimized/hero_new-display.webp', width: 900, height: 675 },
-      { file: 'kulcstarto.jpg', display: 'optimized/kulcstarto-display.webp', width: 900, height: 900 },
-      { file: 'pohar alatet tarto + adagolo.jpg', display: 'optimized/pohar alatet tarto + adagolo-display.webp', width: 900, height: 900 }
+      { file: 'layero-asset-0068.jpg', display: 'optimized/layero-asset-0068-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0073.jpg', display: 'optimized/layero-asset-0073-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0088.jpg', display: 'optimized/layero-asset-0088-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0089.jpg', display: 'optimized/layero-asset-0089-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0109.jpg', display: 'optimized/layero-asset-0109-display.webp', width: 675, height: 900 },
+      { file: 'layero-asset-0138.png', display: 'optimized/layero-asset-0138-display.webp', width: 900, height: 675 },
+      { file: 'layero-asset-0186.jpg', display: 'optimized/layero-asset-0186-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0281.jpg', display: 'optimized/layero-asset-0281-display.webp', width: 900, height: 900 }
     ]
   },
   {
@@ -73,33 +73,33 @@ var GALERIA_KATEGORIAK = [
     cim: 'Lakásdekor és hangulatlámpák',
     leiras: 'Kaspók, vázák, mécsesek, hengerlámpák, asztali és fali dekorok.',
     kepek: [
-      { file: 'first.webp', display: 'optimized/first-display.webp', width: 900, height: 675 },
-      { file: '00E7Y.jpg', display: 'optimized/00E7Y-display.webp', width: 900, height: 900 },
-      { file: '0aqiB.jpg', display: 'optimized/0aqiB-display.webp', width: 900, height: 900 },
-      { file: '8iUWN.jpg', display: 'optimized/8iUWN-display.webp', width: 900, height: 900 },
-      { file: 'AIGLR.jpg', display: 'optimized/AIGLR-display.webp', width: 900, height: 900 },
-      { file: 'aqFsG.jpg', display: 'optimized/aqFsG-display.webp', width: 900, height: 900 },
-      { file: 'aXMme.jpg', display: 'optimized/aXMme-display.webp', width: 900, height: 900 },
-      { file: 'E07ri.jpg', display: 'optimized/E07ri-display.webp', width: 900, height: 900 },
-      { file: 'Etj09.jpg', display: 'optimized/Etj09-display.webp', width: 900, height: 900 },
-      { file: 'gIhkX.jpg', display: 'optimized/gIhkX-display.webp', width: 900, height: 900 },
-      { file: 'GqkCV.jpg', display: 'optimized/GqkCV-display.webp', width: 900, height: 900 },
-      { file: 'gwvrM.jpg', display: 'optimized/gwvrM-display.webp', width: 900, height: 900 },
-      { file: 'ht2xT.jpg', display: 'optimized/ht2xT-display.webp', width: 900, height: 900 },
-      { file: 'HvIVy.jpg', display: 'optimized/HvIVy-display.webp', width: 900, height: 900 },
-      { file: 'iA4LT.jpg', display: 'optimized/iA4LT-display.webp', width: 900, height: 900 },
-      { file: 'iicPX.jpg', display: 'optimized/iicPX-display.webp', width: 900, height: 900 },
-      { file: 'K3ST8.jpg', display: 'optimized/K3ST8-display.webp', width: 900, height: 900 },
-      { file: 'k9AgW.jpg', display: 'optimized/k9AgW-display.webp', width: 900, height: 900 },
-      { file: 'Km2iG.jpg', display: 'optimized/Km2iG-display.webp', width: 900, height: 900 },
-      { file: 'KrXLM.jpg', display: 'optimized/KrXLM-display.webp', width: 900, height: 900 },
-      { file: 'kUhFr.jpg', display: 'optimized/kUhFr-display.webp', width: 900, height: 900 },
-      { file: 'n1Vxt.jpg', display: 'optimized/n1Vxt-display.webp', width: 900, height: 900 },
-      { file: 'NTdFz.jpg', display: 'optimized/NTdFz-display.webp', width: 900, height: 900 },
-      { file: 'o6e0i.jpg', display: 'optimized/o6e0i-display.webp', width: 900, height: 900 },
-      { file: 'qQd8N.jpg', display: 'optimized/qQd8N-display.webp', width: 900, height: 900 },
-      { file: 'tROvG.jpg', display: 'optimized/tROvG-display.webp', width: 900, height: 900 },
-      { file: 'zLVJM.jpg', display: 'optimized/zLVJM-display.webp', width: 900, height: 900 }
+      { file: 'layero-asset-0081.webp', display: 'optimized/layero-asset-0081-display.webp', width: 900, height: 675 },
+      { file: 'layero-asset-0001.jpg', display: 'optimized/layero-asset-0001-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0008.jpg', display: 'optimized/layero-asset-0008-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0026.jpg', display: 'optimized/layero-asset-0026-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0028.jpg', display: 'optimized/layero-asset-0028-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0031.jpg', display: 'optimized/layero-asset-0031-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0032.jpg', display: 'optimized/layero-asset-0032-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0076.jpg', display: 'optimized/layero-asset-0076-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0078.jpg', display: 'optimized/layero-asset-0078-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0082.jpg', display: 'optimized/layero-asset-0082-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0083.jpg', display: 'optimized/layero-asset-0083-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0118.jpg', display: 'optimized/layero-asset-0118-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0141.jpg', display: 'optimized/layero-asset-0141-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0142.jpg', display: 'optimized/layero-asset-0142-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0143.jpg', display: 'optimized/layero-asset-0143-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0176.jpg', display: 'optimized/layero-asset-0176-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0181.jpg', display: 'optimized/layero-asset-0181-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0182.jpg', display: 'optimized/layero-asset-0182-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0183.jpg', display: 'optimized/layero-asset-0183-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0184.jpg', display: 'optimized/layero-asset-0184-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0185.jpg', display: 'optimized/layero-asset-0185-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0270.jpg', display: 'optimized/layero-asset-0270-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0276.jpg', display: 'optimized/layero-asset-0276-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0277.jpg', display: 'optimized/layero-asset-0277-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0282.jpg', display: 'optimized/layero-asset-0282-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0301.jpg', display: 'optimized/layero-asset-0301-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0305.jpg', display: 'optimized/layero-asset-0305-display.webp', width: 900, height: 900 }
     ]
   },
   {
@@ -108,11 +108,11 @@ var GALERIA_KATEGORIAK = [
     cim: 'Lámpák',
     leiras: 'Egyedi hangulatlámpák, éjjeli fények és dekoratív világítás.',
     kepek: [
-      { file: '8iUWN.jpg', display: 'optimized/8iUWN-display.webp', width: 900, height: 900 },
-      { file: 'aqFsG.jpg', display: 'optimized/aqFsG-display.webp', width: 900, height: 900 },
-      { file: 'GqkCV.jpg', display: 'optimized/GqkCV-display.webp', width: 900, height: 900 },
-      { file: 'gwvrM.jpg', display: 'optimized/gwvrM-display.webp', width: 900, height: 900 },
-      { file: 'NTdFz.jpg', display: 'optimized/NTdFz-display.webp', width: 900, height: 900 }
+      { file: 'layero-asset-0026.jpg', display: 'optimized/layero-asset-0026-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0031.jpg', display: 'optimized/layero-asset-0031-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0083.jpg', display: 'optimized/layero-asset-0083-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0118.jpg', display: 'optimized/layero-asset-0118-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0276.jpg', display: 'optimized/layero-asset-0276-display.webp', width: 900, height: 900 }
     ]
   },
   {
@@ -121,13 +121,13 @@ var GALERIA_KATEGORIAK = [
     cim: 'Anyák napi és virágos ajándékok',
     leiras: 'Anyák napi lapok, pillangós és macis dekorok, tulipánok, csokrok és virágos ajándékok.',
     kepek: [
-      { file: '00E7Y.jpg', display: 'optimized/00E7Y-display.webp', width: 900, height: 900 },
-      { file: 'E07ri.jpg', display: 'optimized/E07ri-display.webp', width: 900, height: 900 },
-      { file: 'gIhkX.jpg', display: 'optimized/gIhkX-display.webp', width: 900, height: 900 },
-      { file: 'HvIVy.jpg', display: 'optimized/HvIVy-display.webp', width: 900, height: 900 },
-      { file: 'K3ST8.jpg', display: 'optimized/K3ST8-display.webp', width: 900, height: 900 },
-      { file: 'qQd8N.jpg', display: 'optimized/qQd8N-display.webp', width: 900, height: 900 },
-      { file: 'tROvG.jpg', display: 'optimized/tROvG-display.webp', width: 900, height: 900 }
+      { file: 'layero-asset-0001.jpg', display: 'optimized/layero-asset-0001-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0076.jpg', display: 'optimized/layero-asset-0076-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0082.jpg', display: 'optimized/layero-asset-0082-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0142.jpg', display: 'optimized/layero-asset-0142-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0181.jpg', display: 'optimized/layero-asset-0181-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0282.jpg', display: 'optimized/layero-asset-0282-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0301.jpg', display: 'optimized/layero-asset-0301-display.webp', width: 900, height: 900 }
     ]
   },
   {
@@ -136,10 +136,10 @@ var GALERIA_KATEGORIAK = [
     cim: 'Valentin és páros ajándékok',
     leiras: 'Love feliratok, szívek, páros neves dekorok és évfordulós ajándékok.',
     kepek: [
-      { file: '00E7Y.jpg', display: 'optimized/00E7Y-display.webp', width: 900, height: 900 },
-      { file: 'Km2iG.jpg', display: 'optimized/Km2iG-display.webp', width: 900, height: 900 },
-      { file: 'qQd8N.jpg', display: 'optimized/qQd8N-display.webp', width: 900, height: 900 },
-      { file: 'tROvG.jpg', display: 'optimized/tROvG-display.webp', width: 900, height: 900 }
+      { file: 'layero-asset-0001.jpg', display: 'optimized/layero-asset-0001-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0183.jpg', display: 'optimized/layero-asset-0183-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0282.jpg', display: 'optimized/layero-asset-0282-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0301.jpg', display: 'optimized/layero-asset-0301-display.webp', width: 900, height: 900 }
     ]
   },
   {
@@ -148,16 +148,16 @@ var GALERIA_KATEGORIAK = [
     cim: 'Karácsonyi termékek',
     leiras: 'Karácsonyi figurák, rénszarvasok, hóemberek, vásári és ünnepi dekorok.',
     kepek: [
-      { file: '0aqiB.jpg', display: 'optimized/0aqiB-display.webp', width: 900, height: 900 },
-      { file: 'AIGLR.jpg', display: 'optimized/AIGLR-display.webp', width: 900, height: 900 },
-      { file: 'aqFsG.jpg', display: 'optimized/aqFsG-display.webp', width: 900, height: 900 },
-      { file: 'Etj09.jpg', display: 'optimized/Etj09-display.webp', width: 900, height: 900 },
-      { file: 'HvIVy.jpg', display: 'optimized/HvIVy-display.webp', width: 900, height: 900 },
-      { file: 'iA4LT.jpg', display: 'optimized/iA4LT-display.webp', width: 900, height: 900 },
-      { file: 'iicPX.jpg', display: 'optimized/iicPX-display.webp', width: 900, height: 900 },
-      { file: 'K3ST8.jpg', display: 'optimized/K3ST8-display.webp', width: 900, height: 900 },
-      { file: 'k9AgW.jpg', display: 'optimized/k9AgW-display.webp', width: 900, height: 900 },
-      { file: 'KrXLM.jpg', display: 'optimized/KrXLM-display.webp', width: 900, height: 900 }
+      { file: 'layero-asset-0008.jpg', display: 'optimized/layero-asset-0008-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0028.jpg', display: 'optimized/layero-asset-0028-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0031.jpg', display: 'optimized/layero-asset-0031-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0078.jpg', display: 'optimized/layero-asset-0078-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0142.jpg', display: 'optimized/layero-asset-0142-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0143.jpg', display: 'optimized/layero-asset-0143-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0176.jpg', display: 'optimized/layero-asset-0176-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0181.jpg', display: 'optimized/layero-asset-0181-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0182.jpg', display: 'optimized/layero-asset-0182-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0184.jpg', display: 'optimized/layero-asset-0184-display.webp', width: 900, height: 900 }
     ]
   },
   {
@@ -166,9 +166,9 @@ var GALERIA_KATEGORIAK = [
     cim: 'Őszi és Halloween dekorációk',
     leiras: 'Tökök, szellemek, hello fall dekorok és őszi asztali díszek.',
     kepek: [
-      { file: 'aXMme.jpg', display: 'optimized/aXMme-display.webp', width: 900, height: 900 },
-      { file: 'o6e0i.jpg', display: 'optimized/o6e0i-display.webp', width: 900, height: 900 },
-      { file: 'zLVJM.jpg', display: 'optimized/zLVJM-display.webp', width: 900, height: 900 }
+      { file: 'layero-asset-0032.jpg', display: 'optimized/layero-asset-0032-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0277.jpg', display: 'optimized/layero-asset-0277-display.webp', width: 900, height: 900 },
+      { file: 'layero-asset-0305.jpg', display: 'optimized/layero-asset-0305-display.webp', width: 900, height: 900 }
     ]
   },
   {

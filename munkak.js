@@ -2,15 +2,15 @@ const GRID = document.getElementById("munkak-grid");
 const FILTERS = document.getElementById("munkak-filters");
 
 const CATEGORY_ICONS = {
-  all: "assets/images/category-icons/badge-ajandek.png",
-  lampak: "assets/images/category-icons/badge-alkoto.png",
-  nevtablak: "assets/images/category-icons/icon-hazavato.png",
-  kulcstartok: "assets/images/category-icons/badge-ajandek.png",
-  figurak: "assets/images/category-icons/icon-gyujtoi.png",
-  dekoraciok: "assets/images/category-icons/icon-dekoracio.png",
-  emlektargyak: "assets/images/category-icons/badge-emlek.png",
-  "ceges-targyak": "assets/images/category-icons/badge-ceges.png",
-  prototipusok: "assets/images/category-icons/badge-alkoto.png"
+  all: "assets/images/category-icons/layero-asset-0033.png",
+  lampak: "assets/images/category-icons/layero-asset-0034.png",
+  nevtablak: "assets/images/category-icons/layero-asset-0159.png",
+  kulcstartok: "assets/images/category-icons/layero-asset-0033.png",
+  figurak: "assets/images/category-icons/layero-asset-0157.png",
+  dekoraciok: "assets/images/category-icons/layero-asset-0150.png",
+  emlektargyak: "assets/images/category-icons/layero-asset-0036.png",
+  "ceges-targyak": "assets/images/category-icons/layero-asset-0035.png",
+  prototipusok: "assets/images/category-icons/layero-asset-0034.png"
 };
 
 let allWorks = [];

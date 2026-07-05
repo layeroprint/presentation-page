@@ -131,7 +131,7 @@ main > section {
   left: max(-130px, calc(50% - 800px));
   width: 760px;
   height: 520px;
-  background-image: url("assets/images/decor-digital-network.webp");
+  background-image: url("assets/images/layero-asset-0069.webp");
   opacity: 0.42;
   transform: rotate(-8deg);
   mask-image: radial-gradient(ellipse at 46% 48%, #000 0%, #000 52%, transparent 82%);
@@ -142,7 +142,7 @@ main > section {
   right: max(-230px, calc(50% - 920px));
   width: 1080px;
   height: 720px;
-  background-image: url("assets/images/decor-wave-contours.webp");
+  background-image: url("assets/images/how-command/layero-asset-0300.webp");
   opacity: 0.4;
   transform: rotate(10deg);
   mask-image: radial-gradient(ellipse at 48% 48%, #000 0%, #000 50%, transparent 82%);
@@ -153,7 +153,7 @@ main > section {
   left: max(-260px, calc(50% - 900px));
   width: 980px;
   height: 700px;
-  background-image: url("assets/images/decor-elliptical-vortex.webp");
+  background-image: url("assets/images/layero-asset-0070.webp");
   opacity: 0.34;
   transform: rotate(-12deg);
   mask-image: radial-gradient(ellipse at 48% 50%, #000 0%, #000 50%, transparent 82%);
@@ -164,7 +164,7 @@ main > section {
   right: max(-170px, calc(50% - 840px));
   width: 1040px;
   height: 580px;
-  background-image: url("assets/images/decor-glowing-ribbon.webp");
+  background-image: url("assets/images/layero-asset-0071.webp");
   opacity: 0.36;
   transform: rotate(-4deg);
   mask-image: linear-gradient(90deg, transparent 0%, #000 18%, #000 78%, transparent 100%);
@@ -719,7 +719,7 @@ body.nav-open .nav-toggle__bars::after {
 
 .hero__bg {
   z-index: -3;
-  background-image: url("assets/images/hero-layero-futuristic-tunnel-1600.webp");
+  background-image: url("assets/images/layero-asset-0129-1600.webp");
   background-position: center 37%;
   background-size: cover;
   filter: saturate(1.1) contrast(1.08);
@@ -1232,7 +1232,7 @@ body.nav-open .nav-toggle__bars::after {
   width: min(1700px, 150vw);
   height: 640px;
   transform: translate(-50%, -50%);
-  background: url("assets/images/decor/layero-decor-wave-glow-1200.webp") center / contain no-repeat;
+  background: url("assets/images/decor/layero-asset-0249-1200.webp") center / contain no-repeat;
   opacity: 0.1;
   mix-blend-mode: screen;
   mask-image: radial-gradient(ellipse 760px 320px at 50% 50%, #000 0%, #000 42%, transparent 78%);
@@ -1534,7 +1534,7 @@ body.nav-open .nav-toggle__bars::after {
   z-index: -2;
   pointer-events: none;
   background:
-    url("assets/images/decor/layero-decor-ribbon-dark-1400.webp") center -120px / 1400px auto no-repeat,
+    url("assets/images/decor/layero-asset-0247-1400.webp") center -120px / 1400px auto no-repeat,
     repeating-radial-gradient(ellipse at 8% 28%, rgba(0, 229, 255, 0.1) 0 1px, transparent 1px 18px),
     repeating-radial-gradient(ellipse at 90% 42%, rgba(0, 229, 255, 0.09) 0 1px, transparent 1px 20px);
   opacity: 0.4;
@@ -2325,7 +2325,7 @@ body.nav-open .nav-toggle__bars::after {
   background:
     radial-gradient(circle at 50% 12%, rgba(0, 229, 255, 0.16), transparent 28%),
     linear-gradient(180deg, rgba(2, 8, 18, 0) 0%, rgba(2, 8, 18, 0.18) 16%, rgba(2, 8, 18, 0.76) 100%),
-    url("assets/images/how-command/how-command-bg.webp") center top / cover no-repeat;
+    url("assets/images/how-command/layero-asset-0140.webp") center top / cover no-repeat;
   mask-image: linear-gradient(180deg, transparent 0%, #000 16%, #000 92%, transparent 100%);
 }
 
@@ -2367,7 +2367,7 @@ body.nav-open .nav-toggle__bars::after {
   width: min(1760px, 132vw);
   height: 760px;
   transform: translateX(-50%) rotate(-2deg);
-  background-image: url("assets/images/how-command/transition-wave-contours.webp");
+  background-image: url("assets/images/layero-asset-0072.webp");
   opacity: 0.34;
   filter: saturate(0.95) contrast(1.08);
   mask-image: radial-gradient(ellipse at 50% 48%, #000 0%, #000 58%, transparent 82%);
@@ -2379,7 +2379,7 @@ body.nav-open .nav-toggle__bars::after {
   width: min(1580px, 126vw);
   height: 620px;
   transform: translateX(-50%);
-  background-image: url("assets/images/how-command/transition-cyan-curve.webp");
+  background-image: url("assets/images/how-command/layero-asset-0299.webp");
   background-size: clamp(820px, 86vw, 1360px) auto;
   background-position: 50% 52%;
   opacity: 0.42;
@@ -2696,7 +2696,7 @@ body.nav-open .nav-toggle__bars::after {
   transform: translateX(-50%);
   pointer-events: none;
   background:
-    url("assets/images/how-command/transition-cyan-curve.webp") 50% 55% / min(1180px, 96vw) auto no-repeat,
+    url("assets/images/how-command/layero-asset-0299.webp") 50% 55% / min(1180px, 96vw) auto no-repeat,
     radial-gradient(ellipse at 50% 48%, rgba(0, 229, 255, 0.16), transparent 62%),
     radial-gradient(ellipse at 18% 62%, rgba(240, 194, 122, 0.14), transparent 34%),
     radial-gradient(ellipse at 82% 42%, rgba(240, 194, 122, 0.1), transparent 32%);
@@ -3123,8 +3123,8 @@ body.nav-open .nav-toggle__bars::after {
   transform: translateX(-50%);
   pointer-events: none;
   background-image:
-    url("assets/images/how-command/transition-cyan-curve.webp"),
-    url("assets/images/how-command/transition-wave-contours.webp");
+    url("assets/images/how-command/layero-asset-0299.webp"),
+    url("assets/images/layero-asset-0072.webp");
   background-position:
     50% 42%,
     50% 50%;
@@ -3209,7 +3209,7 @@ body.nav-open .nav-toggle__bars::after {
   border-radius: var(--radius);
   background:
     linear-gradient(90deg, rgba(2, 8, 18, 0.98) 0%, rgba(2, 8, 18, 0.88) 34%, rgba(2, 8, 18, 0.42) 61%, rgba(2, 8, 18, 0.08) 100%),
-    url("assets/images/lume-lampa-feature-1400.webp") center / cover no-repeat,
+    url("assets/images/layero-asset-0258-1400.webp") center / cover no-repeat,
     linear-gradient(120deg, #020812 0%, #041727 100%);
   box-shadow: 0 30px 90px rgba(0, 0, 0, 0.34), inset 0 0 0 1px rgba(255, 255, 255, 0.04);
 }
@@ -3424,7 +3424,7 @@ body.nav-open .nav-toggle__bars::after {
   width: min(1500px, 130vw);
   height: 520px;
   transform: translate(-50%, -30%);
-  background: url("assets/images/decor/layero-decor-wave-glow-1200.webp") center / contain no-repeat;
+  background: url("assets/images/decor/layero-asset-0249-1200.webp") center / contain no-repeat;
   opacity: 0.1;
   mix-blend-mode: screen;
   mask-image: radial-gradient(ellipse 700px 280px at 50% 50%, #000 0%, transparent 78%);
@@ -4259,7 +4259,7 @@ body.nav-open .nav-toggle__bars::after {
   right: max(-120px, calc(50% - 860px));
   width: 640px;
   height: 480px;
-  background: url("assets/images/decor-wave-contours.webp") center / contain no-repeat;
+  background: url("assets/images/how-command/layero-asset-0300.webp") center / contain no-repeat;
   mix-blend-mode: screen;
   opacity: 0.18;
   pointer-events: none;
@@ -4447,7 +4447,7 @@ body.nav-open .nav-toggle__bars::after {
   position: absolute;
   inset: -20% -12%;
   background:
-    url("assets/images/decor-wave-contours.webp") center / contain no-repeat,
+    url("assets/images/how-command/layero-asset-0300.webp") center / contain no-repeat,
     radial-gradient(ellipse at 50% 52%, rgba(0, 229, 255, 0.12), transparent 62%);
   mix-blend-mode: screen;
   opacity: 0.36;
@@ -6280,7 +6280,7 @@ body.nav-open .nav-toggle__bars::after {
   min-height: 760px;
   padding-bottom: 78px;
   margin-bottom: -230px;
-  --subpage-hero-image: url("assets/images/tudastar-hero-1600.webp");
+  --subpage-hero-image: url("assets/images/layero-asset-0302-1600.webp");
   --subpage-hero-position: center 8%;
   --subpage-hero-size: contain;
   --subpage-hero-bottom: -460px;
@@ -7220,7 +7220,7 @@ body.nav-open .nav-toggle__bars::after {
 
 @media (max-width: 1060px) {
   .hero__bg {
-    background-image: url("assets/images/hero-layero-futuristic-tunnel-1200.webp");
+    background-image: url("assets/images/layero-asset-0129-1200.webp");
   }
 
   .hero-local {
@@ -7271,7 +7271,7 @@ body.nav-open .nav-toggle__bars::after {
   .knowledge-hero {
     min-height: 680px;
     margin-bottom: -190px;
-    --subpage-hero-image: url("assets/images/tudastar-hero-1200.webp");
+    --subpage-hero-image: url("assets/images/layero-asset-0302-1200.webp");
     --subpage-hero-position: 58% 10%;
     --subpage-hero-size: contain;
     --subpage-hero-bottom: -390px;
@@ -7783,7 +7783,7 @@ body.nav-open .nav-toggle__bars::after {
   }
 
   .hero__bg {
-    background-image: url("assets/images/hero-layero-futuristic-tunnel-900.webp");
+    background-image: url("assets/images/layero-asset-0129-900.webp");
   }
 
   .hero-local {
@@ -7828,7 +7828,7 @@ body.nav-open .nav-toggle__bars::after {
     min-height: 620px;
     padding-bottom: 66px;
     margin-bottom: -170px;
-    --subpage-hero-image: url("assets/images/tudastar-hero-900.webp");
+    --subpage-hero-image: url("assets/images/layero-asset-0302-900.webp");
     --subpage-hero-position: 50% 18%;
     --subpage-hero-size: contain;
     --subpage-hero-bottom: -300px;
@@ -8221,7 +8221,7 @@ body.nav-open .nav-toggle__bars::after {
     align-items: start;
     background:
       linear-gradient(180deg, rgba(2, 8, 18, 0.99) 0%, rgba(2, 8, 18, 0.94) 48%, rgba(2, 8, 18, 0.62) 68%, rgba(2, 8, 18, 0.12) 100%),
-      url("assets/images/lume-lampa-feature-900.webp") 64% bottom / auto 55% no-repeat,
+      url("assets/images/layero-asset-0258-900.webp") 64% bottom / auto 55% no-repeat,
       linear-gradient(180deg, #020812 0%, #041727 100%);
   }
 
@@ -10273,7 +10273,7 @@ body.munkak-reference-page {
   z-index: -2;
   background:
     linear-gradient(90deg, rgba(2, 8, 18, 0.96) 0%, rgba(2, 8, 18, 0.76) 34%, rgba(2, 8, 18, 0.12) 64%, rgba(2, 8, 18, 0.78) 100%),
-    url("assets/images/lume-lampa-feature-1400.webp") right 46% / min(64vw, 880px) auto no-repeat;
+    url("assets/images/layero-asset-0258-1400.webp") right 46% / min(64vw, 880px) auto no-repeat;
   filter: saturate(0.95) contrast(1.05);
 }
 
@@ -10889,7 +10889,7 @@ body.munkak-reference-page {
   background:
     radial-gradient(circle at 82% 42%, rgba(255, 159, 45, 0.2), transparent 28%),
     linear-gradient(90deg, rgba(2, 8, 18, 0.98) 0%, rgba(2, 8, 18, 0.78) 34%, rgba(2, 8, 18, 0.08) 64%, rgba(2, 8, 18, 0.74) 100%),
-    url("assets/images/lume-lampa-feature-1400.webp") right 46% / min(64vw, 880px) auto no-repeat;
+    url("assets/images/layero-asset-0258-1400.webp") right 46% / min(64vw, 880px) auto no-repeat;
 }
 
 .munkak-showcase-hero__stage::after {
@@ -10985,23 +10985,23 @@ body.munkak-reference-page {
 }
 
 .munkak-audience-card:nth-child(1) .munkak-audience-card__icon {
-  background-image: url("assets/images/category-icons/badge-ajandek.png");
+  background-image: url("assets/images/category-icons/layero-asset-0033.png");
 }
 
 .munkak-audience-card:nth-child(2) .munkak-audience-card__icon {
-  background-image: url("assets/images/category-icons/badge-ceges.png");
+  background-image: url("assets/images/category-icons/layero-asset-0035.png");
 }
 
 .munkak-audience-card:nth-child(3) .munkak-audience-card__icon {
-  background-image: url("assets/images/category-icons/badge-intezmeny.png");
+  background-image: url("assets/images/category-icons/layero-asset-0037.png");
 }
 
 .munkak-audience-card:nth-child(4) .munkak-audience-card__icon {
-  background-image: url("assets/images/category-icons/badge-alkoto.png");
+  background-image: url("assets/images/category-icons/layero-asset-0034.png");
 }
 
 .munkak-audience-card:nth-child(5) .munkak-audience-card__icon {
-  background-image: url("assets/images/category-icons/icon-dijatado.png");
+  background-image: url("assets/images/category-icons/layero-asset-0151.png");
 }
 
 .munkak-audience-card__icon svg {
@@ -11360,7 +11360,7 @@ body.munkak-reference-page {
   background:
     linear-gradient(90deg, rgba(2, 8, 18, 0.98) 0%, rgba(2, 8, 18, 0.84) 36%, rgba(2, 8, 18, 0.12) 72%, rgba(2, 8, 18, 0.58) 100%),
     radial-gradient(circle at 68% 52%, rgba(255, 159, 45, 0.22), transparent 30%),
-    url("assets/images/lume-lampa-feature-1400.webp") right 42% / min(74vw, 980px) auto no-repeat;
+    url("assets/images/layero-asset-0258-1400.webp") right 42% / min(74vw, 980px) auto no-repeat;
   filter: saturate(1.06) contrast(1.06);
 }
 
@@ -11789,7 +11789,7 @@ body.munkak-reference-page {
 .inspiration-section-title span {
   width: 90px;
   height: 20px;
-  background: url("assets/images/decor-glowing-ribbon.webp") center / contain no-repeat;
+  background: url("assets/images/layero-asset-0071.webp") center / contain no-repeat;
   opacity: 0.78;
 }
 
@@ -12178,12 +12178,12 @@ body.munkak-reference-page {
 
 /* Homepage hero: new product-photo direction */
 .hero {
-  --hero-photo: url("assets/images/Layero_hero_image-1448.webp");
+  --hero-photo: url("assets/images/layero-asset-0253-1448.webp");
 }
 
 @media (min-width: 1920px) {
   .hero {
-    --hero-photo: url("assets/images/Layero_hero_image.webp");
+    --hero-photo: url("assets/images/layero-asset-0253.webp");
   }
 }
 
@@ -12412,7 +12412,7 @@ body.munkak-reference-page {
 
 @media (max-width: 1180px) {
   .hero {
-    --hero-photo: url("assets/images/Layero_hero_image-1200.webp");
+    --hero-photo: url("assets/images/layero-asset-0253-1200.webp");
     min-height: 980px;
     padding-right: 24px;
     padding-left: 24px;
@@ -12438,7 +12438,7 @@ body.munkak-reference-page {
 
 @media (max-width: 720px) {
   .hero {
-    --hero-photo: url("assets/images/index_hero_mobile-720.webp");
+    --hero-photo: url("assets/images/layero-asset-0177-720.webp");
     --hero-mobile-stage: clamp(500px, 126vw, 610px);
     min-height: auto;
     display: block;
@@ -12651,7 +12651,7 @@ body.munkak-reference-page {
 
 @media (max-width: 420px) {
   .hero {
-    --hero-photo: url("assets/images/index_hero_mobile-480.webp");
+    --hero-photo: url("assets/images/layero-asset-0177-480.webp");
     --hero-mobile-stage: clamp(488px, 128vw, 540px);
   }
 
