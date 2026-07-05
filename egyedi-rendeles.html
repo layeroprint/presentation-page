@@ -976,7 +976,7 @@
       modal.innerHTML =
         '<button class="er-sldr-modal__close" aria-label="Bezárás">&#x2715;</button>' +
         '<button class="er-sldr-modal__nav er-sldr-modal__prev" aria-label="Előző">&#x2039;</button>' +
-        '<div class="er-sldr-modal__img-wrap"><img class="er-sldr-modal__main" src="" alt=""></div>' +
+        '<div class="er-sldr-modal__img-wrap"><img class="er-sldr-modal__main" alt=""></div>' +
         '<button class="er-sldr-modal__nav er-sldr-modal__next" aria-label="Következő">&#x203a;</button>' +
         '<div class="er-sldr-modal__counter"></div>';
       document.body.appendChild(modal);
@@ -985,20 +985,27 @@
       var lbImg = modal.querySelector('.er-sldr-modal__main');
       var lbCounter = modal.querySelector('.er-sldr-modal__counter');
 
+      function preloadModalImage(idx) {
+        if (!lbImages.length) return;
+        var src = lbImages[((idx % lbImages.length) + lbImages.length) % lbImages.length];
+        if (!src) return;
+        var preload = new Image();
+        preload.src = src;
+      }
+
       function lbShow(idx) {
+        if (!lbImages.length) return;
         lbIdx = ((idx % lbImages.length) + lbImages.length) % lbImages.length;
-        lbImg.classList.add('lb-fade');
-        setTimeout(function() {
-          lbImg.src = lbImages[lbIdx];
-          lbCounter.textContent = (lbIdx + 1) + ' / ' + lbImages.length;
-          lbImg.classList.remove('lb-fade');
-        }, 160);
+        lbImg.classList.remove('lb-fade');
+        lbImg.src = lbImages[lbIdx];
+        lbCounter.textContent = (lbIdx + 1) + ' / ' + lbImages.length;
+        preloadModalImage(lbIdx - 1);
+        preloadModalImage(lbIdx + 1);
       }
       function lbOpen(images, startIdx) {
+        if (!images || !images.length) return;
         lbImages = images;
-        lbIdx = startIdx;
-        lbImg.src = images[startIdx];
-        lbCounter.textContent = (startIdx + 1) + ' / ' + images.length;
+        lbShow(startIdx);
         modal.classList.add('is-open');
         document.body.style.overflow = 'hidden';
       }
@@ -1049,7 +1056,7 @@
           '<div class="er-sldr-main">' +
             '<div class="er-sldr-imgs" style="cursor:zoom-in" title="Megnyitás galériában">' +
               '<img class="er-sldr-img er-sldr-img-a is-active" src="' + images[0] + '" alt="">' +
-              '<img class="er-sldr-img er-sldr-img-b" src="" alt="">' +
+              '<img class="er-sldr-img er-sldr-img-b" alt="">' +
             '</div>' +
             '<button class="er-sldr-nav er-sldr-prev" type="button" aria-label="Előző">&#x2039;</button>' +
             '<button class="er-sldr-nav er-sldr-next" type="button" aria-label="Következő">&#x203a;</button>' +
@@ -1102,8 +1109,14 @@
           counter.textContent = (cur + 1) + ' / ' + n;
         }
 
-        var start = function() { timer = setInterval(function() { goTo(cur + 1); }, 3000); };
-        var stop  = function() { clearInterval(timer); };
+        var start = function() {
+          stop();
+          timer = setInterval(function() { goTo(cur + 1); }, 3000);
+        };
+        var stop  = function() {
+          clearInterval(timer);
+          timer = null;
+        };
 
         thumbs.forEach(function(t, i) { t.addEventListener('click', function() { stop(); goTo(i); start(); }); });
         prevBtn.addEventListener('click', function() { stop(); goTo(cur - 1); start(); });

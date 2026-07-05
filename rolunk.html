@@ -1174,7 +1174,7 @@
       <button class="ro-lb__close" id="lb-close" aria-label="Bezárás">&#x2715;</button>
       <button class="ro-lb__nav ro-lb__prev" id="lb-prev" aria-label="Előző">&#x2039;</button>
       <div class="ro-lb__img-wrap" id="lb-wrap">
-        <img class="ro-lb__img" id="lb-img" src="" alt="">
+        <img class="ro-lb__img" id="lb-img" alt="">
       </div>
       <button class="ro-lb__nav ro-lb__next" id="lb-next" aria-label="Következő">&#x203a;</button>
       <div class="ro-lb__counter" id="lb-counter"></div>
@@ -1355,20 +1355,28 @@
         return el.dataset.lbSrc || img.currentSrc || img.src;
       });
 
+      function preloadLbImage(i) {
+        if (!images.length) return;
+        var src = images[((i % images.length) + images.length) % images.length];
+        if (!src) return;
+        var preload = new Image();
+        preload.src = src;
+      }
+
       function lbShow(i) {
+        if (!images.length) return;
         idx = ((i % images.length) + images.length) % images.length;
-        lbImg.classList.add('lb-fade');
-        setTimeout(function() {
-          lbImg.src = images[idx];
-          lbCtr.textContent = (idx + 1) + ' / ' + images.length;
-          lbImg.classList.remove('lb-fade');
-        }, 160);
+        lbImg.classList.remove('lb-fade');
+        lbImg.src = images[idx];
+        lbCtr.textContent = (idx + 1) + ' / ' + images.length;
+        preloadLbImage(idx - 1);
+        preloadLbImage(idx + 1);
       }
 
       function lbOpen(imgs, startIdx) {
-        images = imgs; idx = startIdx;
-        lbImg.src = images[idx];
-        lbCtr.textContent = (idx + 1) + ' / ' + images.length;
+        if (!imgs || !imgs.length) return;
+        images = imgs;
+        lbShow(startIdx);
         lb.classList.add('is-open');
       }
 

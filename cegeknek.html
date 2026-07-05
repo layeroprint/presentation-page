@@ -787,7 +787,7 @@
     </footer>
     <div class="b2b-lightbox" id="b2b-lightbox">
       <button class="b2b-lightbox__close" aria-label="Bezárás">&times;</button>
-      <img src="" alt="">
+      <img alt="">
     </div>
     <script src="script.js?v=20260705-content-protect-3"></script>
     <script>
@@ -803,7 +803,12 @@
           document.body.style.overflow = 'hidden';
         });
       });
-      function close(){ lb.classList.remove('active'); document.body.style.overflow = ''; }
+      function close(){
+        lb.classList.remove('active');
+        document.body.style.overflow = '';
+        lbImg.removeAttribute('src');
+        lbImg.alt = '';
+      }
       lbClose.addEventListener('click', close);
       lb.addEventListener('click', function(e){ if(e.target === lb) close(); });
       document.addEventListener('keydown', function(e){ if(e.key === 'Escape') close(); });
