@@ -1,3 +1,252 @@
+const layeroDebugStorageKey = "layero-debug-mode";
+const layeroDebugCookieName = "layero_debug";
+const layeroDebugParamNames = ["debug", "debugg", "layero-debug", "layeroDebug"];
+const layeroInspectLockCookieName = "layero_inspect_lock";
+const layeroInspectLockCookieMaxAge = 900;
+
+function normalizeLayeroDebugCommand(value) {
+  if (typeof value !== "string") {
+    return null;
+  }
+
+  const command = value.trim().toLowerCase();
+  if (["1", "true", "on", "yes", "be"].includes(command)) {
+    return "on";
+  }
+
+  if (["0", "false", "off", "no", "ki"].includes(command)) {
+    return "off";
+  }
+
+  return null;
+}
+
+function isLayeroLocalDebugHost() {
+  const protocol = window.location.protocol;
+  const hostname = (window.location.hostname || "").toLowerCase();
+
+  if (protocol === "file:") {
+    return true;
+  }
+
+  if (!hostname) {
+    return false;
+  }
+
+  if (hostname === "localhost" || hostname === "::1" || hostname === "[::1]") {
+    return true;
+  }
+
+  if (/^127\./.test(hostname) || /^10\./.test(hostname) || /^192\.168\./.test(hostname)) {
+    return true;
+  }
+
+  if (/^172\.(1[6-9]|2\d|3[0-1])\./.test(hostname)) {
+    return true;
+  }
+
+  if (hostname.endsWith(".local") || hostname.endsWith(".lan") || hostname.endsWith(".home.arpa")) {
+    return true;
+  }
+
+  return !hostname.includes(".") && !hostname.includes(":");
+}
+
+function readLayeroDebugCommand() {
+  const sources = [
+    window.location.search ? window.location.search.slice(1) : "",
+    window.location.hash ? window.location.hash.slice(1) : ""
+  ];
+
+  for (const source of sources) {
+    if (!source) {
+      continue;
+    }
+
+    try {
+      const params = new URLSearchParams(source);
+      for (const name of layeroDebugParamNames) {
+        const command = normalizeLayeroDebugCommand(params.get(name));
+        if (command) {
+          return command;
+        }
+      }
+    } catch (error) {
+      // URLSearchParams can reject malformed hashes; the fallback below still handles simple commands.
+    }
+
+    const normalizedSource = source.trim().toLowerCase();
+    if (normalizedSource === "debug-on" || normalizedSource === "debugg-on") {
+      return "on";
+    }
+
+    if (normalizedSource === "debug-off" || normalizedSource === "debugg-off") {
+      return "off";
+    }
+  }
+
+  return null;
+}
+
+function readLayeroStoredDebugPreference() {
+  try {
+    return window.localStorage.getItem(layeroDebugStorageKey);
+  } catch (error) {
+    return null;
+  }
+}
+
+function readLayeroStoredDebugMode() {
+  return readLayeroStoredDebugPreference() === "on";
+}
+
+function readLayeroStoredDebugOffMode() {
+  return readLayeroStoredDebugPreference() === "off";
+}
+
+function readLayeroDebugOffCookie() {
+  try {
+    return document.cookie
+      .split(";")
+      .some((entry) => entry.trim() === `${layeroDebugCookieName}=off`);
+  } catch (error) {
+    return false;
+  }
+}
+
+function readLayeroDebugCookie() {
+  return document.cookie
+    .split(";")
+    .some((entry) => entry.trim() === `${layeroDebugCookieName}=on`);
+}
+
+function persistLayeroInspectLockCookie(enabled) {
+  try {
+    document.cookie = `${layeroInspectLockCookieName}=${enabled ? "1" : ""}; path=/; max-age=${enabled ? layeroInspectLockCookieMaxAge : 0}; SameSite=Lax`;
+  } catch (error) {
+    // A server-side refresh lock is best-effort; the visual lock still works without cookies.
+  }
+}
+
+function persistLayeroDebugMode(enabled) {
+  try {
+    if (enabled) {
+      window.localStorage.setItem(layeroDebugStorageKey, "on");
+    } else {
+      window.localStorage.setItem(layeroDebugStorageKey, "off");
+    }
+  } catch (error) {
+    // Storage can be blocked in private contexts; the cookie fallback may still work.
+  }
+
+  try {
+    document.cookie = `${layeroDebugCookieName}=${enabled ? "on" : "off"}; path=/; max-age=2592000; SameSite=Lax`;
+  } catch (error) {
+    // Cookies are a convenience fallback only.
+  }
+
+  persistLayeroInspectLockCookie(false);
+}
+
+function resolveLayeroDebugMode() {
+  const localDebugHost = isLayeroLocalDebugHost();
+  const command = readLayeroDebugCommand();
+  window.__LAYERO_DEBUG_AVAILABLE__ = localDebugHost;
+
+  if (command === "on") {
+    if (!localDebugHost) {
+      persistLayeroDebugMode(false);
+      window.__LAYERO_DEBUG_MODE__ = false;
+      return false;
+    }
+
+    persistLayeroDebugMode(true);
+    window.__LAYERO_DEBUG_MODE__ = true;
+    return true;
+  }
+
+  if (command === "off") {
+    persistLayeroDebugMode(false);
+    window.__LAYERO_DEBUG_MODE__ = false;
+    return false;
+  }
+
+  const debugWasExplicitlyDisabled = readLayeroStoredDebugOffMode() || readLayeroDebugOffCookie();
+  const enabled = localDebugHost && !debugWasExplicitlyDisabled;
+  window.__LAYERO_DEBUG_MODE__ = enabled;
+  return enabled;
+}
+
+let layeroDebugModeEnabled = resolveLayeroDebugMode();
+
+function isLayeroDebugModeEnabled() {
+  return layeroDebugModeEnabled === true;
+}
+
+function setLayeroDebugMode(enabled) {
+  const localDebugHost = isLayeroLocalDebugHost();
+  window.__LAYERO_DEBUG_AVAILABLE__ = localDebugHost;
+
+  if (enabled && !localDebugHost) {
+    console.warn("Layero debug mode is only available on localhost or local network addresses.");
+    return false;
+  }
+
+  persistLayeroDebugMode(Boolean(enabled));
+  layeroDebugModeEnabled = Boolean(enabled && localDebugHost);
+  window.__LAYERO_DEBUG_MODE__ = layeroDebugModeEnabled;
+  return true;
+}
+
+function stripLayeroDebugCommandFromUrl() {
+  try {
+    const url = new URL(window.location.href);
+    layeroDebugParamNames.forEach((name) => url.searchParams.delete(name));
+
+    const hash = url.hash ? url.hash.slice(1).toLowerCase() : "";
+    if (hash === "debug=on" || hash === "debug=off" || hash === "debugg=on" || hash === "debugg=off" || hash === "debug-on" || hash === "debug-off" || hash === "debugg-on" || hash === "debugg-off") {
+      url.hash = "";
+    }
+
+    return url.toString();
+  } catch (error) {
+    return window.location.href.split("#")[0].split("?")[0];
+  }
+}
+
+function reloadLayeroDebugPage() {
+  window.location.replace(stripLayeroDebugCommandFromUrl());
+}
+
+window.layeroDebug = {
+  on() {
+    if (setLayeroDebugMode(true)) {
+      console.info("Layero debug mode: on. Reloading without content protection.");
+      reloadLayeroDebugPage();
+    }
+  },
+  off() {
+    setLayeroDebugMode(false);
+    console.info("Layero debug mode: off. Reloading with the normal protection.");
+    reloadLayeroDebugPage();
+  },
+  status() {
+    const status = {
+      available: isLayeroLocalDebugHost(),
+      enabled: isLayeroDebugModeEnabled(),
+      host: window.location.hostname || "file"
+    };
+    console.info(`Layero debug mode: ${status.enabled ? "on" : "off"}.`);
+    return status;
+  }
+};
+window.debugg = window.layeroDebug;
+
+if (isLayeroDebugModeEnabled()) {
+  document.documentElement.classList.add("layero-debug-mode");
+  document.documentElement.classList.remove("content-protection", "inspect-lock-mode");
+}
+
 const navToggle = document.querySelector("[data-nav-toggle]");
 const siteNav = document.querySelector(".site-nav");
 
@@ -199,6 +448,7 @@ function lockPageForInspect() {
 
   pageInspectLocked = true;
   window.__LAYERO_INSPECT_LOCK__ = true;
+  persistLayeroInspectLockCookie(true);
   document.documentElement.classList.add("inspect-lock-mode", "content-protection");
   document.title = "Layero muhely zarva";
 
@@ -245,6 +495,13 @@ function watchDevToolsState() {
 }
 
 function enableContentProtection() {
+  if (isLayeroDebugModeEnabled()) {
+    window.__LAYERO_INSPECT_LOCK__ = false;
+    document.documentElement.classList.remove("content-protection", "inspect-lock-mode");
+    console.info("Layero debug mode is on: content protection is disabled on this local address.");
+    return;
+  }
+
   document.documentElement.classList.add("content-protection");
   protectMediaElements();
 
