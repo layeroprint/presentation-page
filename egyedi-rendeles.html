@@ -7,8 +7,6 @@
       (function () {
         var storageKey = "layero-debug-mode";
         var cookieName = "layero_debug";
-        var inspectLockCookieName = "layero_inspect_lock";
-        var inspectLockCookieMaxAge = 900;
         var paramNames = ["debug", "debugg", "layero-debug", "layeroDebug"];
         var threshold = 180;
 
@@ -63,12 +61,6 @@
           return document.cookie.split(";").some(function (entry) { return entry.trim() === cookieName + "=off"; });
         }
 
-        function persistInspectLock(enabled) {
-          try {
-            document.cookie = inspectLockCookieName + "=" + (enabled ? "1" : "") + "; path=/; max-age=" + (enabled ? inspectLockCookieMaxAge : 0) + "; SameSite=Lax";
-          } catch (error) {}
-        }
-
         function persistDebugMode(enabled) {
           try {
             if (enabled) window.localStorage.setItem(storageKey, "on");
@@ -77,7 +69,6 @@
           try {
             document.cookie = cookieName + "=" + (enabled ? "on" : "off") + "; path=/; max-age=2592000; SameSite=Lax";
           } catch (error) {}
-          persistInspectLock(false);
         }
 
         var localDebugHost = isLocalDebugHost();
@@ -106,7 +97,6 @@
           return Math.abs(window.outerWidth - window.innerWidth) > threshold || Math.abs(window.outerHeight - window.innerHeight) > threshold;
         }
         if (!isDevToolsLikelyOpen()) return;
-        persistInspectLock(true);
         window.__LAYERO_INSPECT_LOCK__ = true;
         document.documentElement.className = (document.documentElement.className + " inspect-lock-mode content-protection").trim();
         document.title = "Layero muhely zarva";
@@ -995,36 +985,13 @@
       </symbol>
     </svg>
     <footer class="site-footer" id="about">
-      <div class="container footer__grid">
+      <div class="container footer__grid footer__grid--expanded">
         <div class="footer__brand">
           <a class="logo" href="index.html" aria-label="Layero 3D Design főoldal">
             <img class="logo__brand-mark" src="assets/layero-asset-0251.webp" alt="" width="240" height="237" decoding="async">
             <img class="logo__brand-wordmark" src="assets/layero-asset-0252.webp" alt="Layero 3D Design" width="493" height="171" decoding="async">
           </a>
-          <p>Prémium 3D design stúdió Satu Mare-ből. Egyedi alkotások, személyes történetekre szabva.</p>
-          <a class="btn btn--outline btn--sm" href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer" style="margin-top:18px;width:fit-content">shop.layero.ro →</a>
-        </div>
-        <nav class="footer__links" aria-label="Oldalak">
-          <h2>Oldalak</h2>
-          <a href="termekvilag.html">Termékvilág</a>
-          <a href="egyedi-rendeles.html">Egyedi rendelés</a>
-          <a href="cegeknek.html">Cégeknek</a>
-          <a href="galeria.html">Galéria</a>
-          <a href="rolunk.html">Rólunk</a>
-          <a href="kapcsolat.html">Kapcsolat</a>
-        </nav>
-        <nav class="footer__links" aria-label="Szolgáltatások">
-          <h2>Irányok</h2>
-          <a href="termekvilag.html">Termékvilág</a>
-          <a href="egyedi-rendeles.html">Egyedi rendelés</a>
-          <a href="cegeknek.html">Céges megoldások</a>
-          <a href="galeria.html">Galéria</a>
-          <a href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer">Online shop →</a>
-        </nav>
-        <div class="footer__contact">
-          <h2>Kapcsolat</h2>
-          <a href="mailto:hello@layero.ro">hello@layero.ro</a>
-          <span>Satu Mare, Románia</span>
+          <p>Személyre szabott 3D nyomtatott ajándékok és dekorációk. Szatmárnémetiben tervezve és gyártva — rólad szól, rétegről rétegre.</p>
           <div class="socials" aria-label="Közösségi linkek">
             <a href="https://www.linkedin.com/company/layero3d" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (új lapon nyílik)">
               <svg class="icon" aria-hidden="true"><use href="#icon-linkedin"></use></svg>
@@ -1037,17 +1004,69 @@
             </a>
           </div>
         </div>
-      </div>
-      <div class="container footer__bottom">
-        <p>© 2025–2026 Layero · <a href="https://layero.ro" style="color:inherit">layero.ro</a> · Minden jog fenntartva.</p>
-        <div>
-          <a href="adatvedelem.html">Adatvédelmi tájékoztató</a>
+        <nav class="footer__links" aria-label="Oldalak">
+          <h2>Oldalak</h2>
+          <a href="termekvilag.html">Termékvilág</a>
+          <a href="egyedi-rendeles.html">Egyedi rendelés</a>
+          <a href="cegeknek.html">Cégeknek</a>
+          <a href="galeria.html">Galéria</a>
+          <a href="rolunk.html">Rólunk</a>
+          <a href="kapcsolat.html">Kapcsolat</a>
+        </nav>
+        <nav class="footer__links" aria-label="Információ">
+          <h2>Információ</h2>
           <a href="aszf.html">ÁSZF</a>
+          <a href="adatvedelem.html">Adatvédelem</a>
+        </nav>
+        <div class="footer__contact footer__support">
+          <h2>Ügyfélszolgálat</h2>
+          <a class="footer__contact-row" href="tel:+40756642387">
+            <svg class="footer__contact-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.77.62 2.61a2 2 0 0 1-.45 2.11L8.09 9.63a16 16 0 0 0 6.28 6.28l1.19-1.19a2 2 0 0 1 2.11-.45c.84.29 1.71.5 2.61.62A2 2 0 0 1 22 16.92Z"/></svg>
+            <span><strong>+40 756 642 387</strong><small>hétköznap 9-17 óráig</small></span>
+          </a>
+          <a class="footer__contact-row" href="mailto:layeroprint@gmail.com">
+            <svg class="footer__contact-icon" aria-hidden="true" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+            <span><strong>layeroprint@gmail.com</strong><small>válasz 24 órán belül</small></span>
+          </a>
+          <span class="footer__contact-row">
+            <svg class="footer__contact-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span><strong>Szatmárnémeti, Románia</strong><small>helyi tervezés és gyártás</small></span>
+          </span>
+        </div>
+      </div>
+
+      <div class="container footer__assurance" aria-label="Layero gyors információk">
+        <div class="footer__quickfacts">
+          <span>Amiért érdemes velünk dolgozni:</span>
+          <strong>Helyi gyártás</strong>
+          <strong>Egyedi tervezés</strong>
+          <strong>Céges rendelés</strong>
+          <strong>Ajándékötletek</strong>
+        </div>
+        <div class="footer__secure">
+          <svg class="footer__assurance-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 19 6v5c0 4.8-3 8.3-7 10-4-1.7-7-5.2-7-10V6l7-3Z"/><path d="m9 12 2 2 4-4"/></svg>
+          <span>Biztonságos kapcsolatfelvétel és adatkezelés</span>
+        </div>
+      </div>
+
+      <div class="container footer__trust" aria-label="Layero garanciák és működés">
+        <span><svg class="footer__assurance-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M12 3 19 6v5c0 4.8-3 8.3-7 10-4-1.7-7-5.2-7-10V6l7-3Z"/><path d="m9 12 2 2 4-4"/></svg>Egyeztetett látványterv</span>
+        <span><svg class="footer__assurance-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M7 3h10a2 2 0 0 1 2 2v16l-3-2-2 2-2-2-2 2-2-2-3 2V5a2 2 0 0 1 2-2Z"/><path d="M9 8h6M9 12h6M9 16h4"/></svg>Számla rendeléshez</span>
+        <span><svg class="footer__assurance-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="m21 8-9-5-9 5 9 5 9-5Z"/><path d="M3 8v8l9 5 9-5V8"/><path d="M12 13v8"/></svg>Gondos csomagolás</span>
+        <span><svg class="footer__assurance-icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7"/><path d="M3 4v6h6"/></svg>Rugalmas egyeztetés</span>
+      </div>
+      <div class="container footer__note">Az online vásárlási és adatkezelési feltételeket az ÁSZF és Adatvédelem oldalak tartalmazzák.</div>
+
+      <div class="container footer__bottom">
+        <p>© 2025–2026 Layero 3D Design · <a href="https://layero.ro" style="color:inherit">layero.ro</a> · Minden jog fenntartva.</p>
+        <div>
+          <a href="aszf.html">ÁSZF</a>
+          <a href="adatvedelem.html">Adatvédelem</a>
           <a href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer">shop.layero.ro</a>
         </div>
       </div>
     </footer>
-    <script src="script.js?v=20260706-local-debug-default-on"></script>
+    <script src="script.js?v=20260706-local-debug-no-refresh-lock"></script>
     <script>
     (function() {
       var KEDVENC_IMGS = [

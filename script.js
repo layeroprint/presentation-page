@@ -1,8 +1,6 @@
 const layeroDebugStorageKey = "layero-debug-mode";
 const layeroDebugCookieName = "layero_debug";
 const layeroDebugParamNames = ["debug", "debugg", "layero-debug", "layeroDebug"];
-const layeroInspectLockCookieName = "layero_inspect_lock";
-const layeroInspectLockCookieMaxAge = 900;
 
 function normalizeLayeroDebugCommand(value) {
   if (typeof value !== "string") {
@@ -96,10 +94,6 @@ function readLayeroStoredDebugPreference() {
   }
 }
 
-function readLayeroStoredDebugMode() {
-  return readLayeroStoredDebugPreference() === "on";
-}
-
 function readLayeroStoredDebugOffMode() {
   return readLayeroStoredDebugPreference() === "off";
 }
@@ -111,20 +105,6 @@ function readLayeroDebugOffCookie() {
       .some((entry) => entry.trim() === `${layeroDebugCookieName}=off`);
   } catch (error) {
     return false;
-  }
-}
-
-function readLayeroDebugCookie() {
-  return document.cookie
-    .split(";")
-    .some((entry) => entry.trim() === `${layeroDebugCookieName}=on`);
-}
-
-function persistLayeroInspectLockCookie(enabled) {
-  try {
-    document.cookie = `${layeroInspectLockCookieName}=${enabled ? "1" : ""}; path=/; max-age=${enabled ? layeroInspectLockCookieMaxAge : 0}; SameSite=Lax`;
-  } catch (error) {
-    // A server-side refresh lock is best-effort; the visual lock still works without cookies.
   }
 }
 
@@ -144,8 +124,6 @@ function persistLayeroDebugMode(enabled) {
   } catch (error) {
     // Cookies are a convenience fallback only.
   }
-
-  persistLayeroInspectLockCookie(false);
 }
 
 function resolveLayeroDebugMode() {
@@ -448,7 +426,6 @@ function lockPageForInspect() {
 
   pageInspectLocked = true;
   window.__LAYERO_INSPECT_LOCK__ = true;
-  persistLayeroInspectLockCookie(true);
   document.documentElement.classList.add("inspect-lock-mode", "content-protection");
   document.title = "Layero muhely zarva";
 

@@ -3,16 +3,6 @@ Options -Indexes
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
-  RewriteCond %{HTTP_HOST} !^(localhost|127\.|10\.|192\.168\.|172\.(1[6-9]|2[0-9]|3[0-1])\.|\[?::1\]?)(:[0-9]+)?$ [NC]
-  RewriteCond %{HTTP_HOST} !^[^.]+(:[0-9]+)?$ [NC]
-  RewriteCond %{HTTP_HOST} !(\.local|\.lan|\.home\.arpa)(:[0-9]+)?$ [NC]
-  RewriteCond %{QUERY_STRING} !(^|&)(debug|debugg|layero-debug|layeroDebug)=(1|true|on|yes|be)(&|$) [NC]
-  RewriteCond %{HTTP_COOKIE} (^|;\s*)layero_inspect_lock=1(;|$) [NC]
-  RewriteCond %{HTTP_COOKIE} !(^|;\s*)layero_debug=on(;|$) [NC]
-  RewriteCond %{REQUEST_URI} !^/inspect-lock\.html$ [NC]
-  RewriteCond %{REQUEST_URI} (^/$|/[^?]*\.html?$) [NC]
-  RewriteRule ^ inspect-lock.html [L]
-
   RewriteCond %{HTTP_REFERER} !^$
   RewriteCond %{HTTP_REFERER} !^https?://([^/]+\.)?layero\.ro/ [NC]
   RewriteCond %{HTTP_REFERER} !^https?://localhost(:[0-9]+)?/ [NC]
@@ -23,9 +13,4 @@ Options -Indexes
 <IfModule mod_headers.c>
   Header set X-Content-Type-Options "nosniff"
   Header set X-Frame-Options "SAMEORIGIN"
-
-  <Files "inspect-lock.html">
-    Header set Cache-Control "no-store, no-cache, must-revalidate, max-age=0"
-    Header set X-Robots-Tag "noindex, nofollow"
-  </Files>
 </IfModule>

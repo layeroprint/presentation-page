@@ -54,5 +54,3 @@ http://192.168.1.20:8000/index.html?debug=off
 ```
 
 `?debugg=on` and `?debugg=off` work too. When debug mode is on, the browser console also exposes `layeroDebug.on()`, `layeroDebug.off()`, `layeroDebug.status()`, and the shorter `debugg` alias.
-
-On Apache, when the normal inspect guard is triggered, the page sets a short-lived `layero_inspect_lock=1` cookie. While that cookie is present, `.htaccess` serves `inspect-lock.html` for HTML refreshes instead of the full page response. This keeps normal loads unchanged and reduces what appears in DevTools Network after an inspect-triggered reload.
