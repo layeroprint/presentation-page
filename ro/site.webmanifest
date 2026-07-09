@@ -1,0 +1,25 @@
+{
+  "name": "Layero 3D Design",
+  "short_name": "Layero",
+  "description": "Cadouri 3D personalizate, decorațiuni și obiecte realizate la comandă.",
+  "lang": "ro",
+  "start_url": "/ro/",
+  "scope": "/ro/",
+  "display": "standalone",
+  "background_color": "#050b14",
+  "theme_color": "#050b14",
+  "icons": [
+    {
+      "src": "/assets/icons/layero-asset-0029-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/assets/icons/layero-asset-0029-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ]
+}
