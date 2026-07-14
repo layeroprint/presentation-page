@@ -180,6 +180,11 @@ img {
   max-width: 100%;
 }
 
+[data-newsletter-promo][hidden],
+[data-newsletter-standard][hidden] {
+  display: none !important;
+}
+
 html.content-protection,
 html.content-protection body,
 html.content-protection body *:not(input):not(textarea):not(select) {

@@ -2457,7 +2457,8 @@
               <p class="community__signup-copy">Inspirație săptămânală, lansări noi, povești de atelier și oferte speciale — doar pentru abonați.</p>
 
               <ul class="community__perks">
-                <li><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg><span><b>Cupon -10%</b> pentru prima comandă</span></li>
+                <li data-newsletter-promo hidden><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg><span><b>Cupon -10%</b> pentru prima comandă</span></li>
+                <li data-newsletter-standard><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg><span>Inspirație săptămânală și noutăți din atelier</span></li>
                 <li><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg><span>Vezi primul noile creații</span></li>
                 <li><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg><span>Oferte limitate doar pentru membri</span></li>
                 <li><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg><span>Conținut din culisele atelierului</span></li>
@@ -2688,8 +2689,10 @@
         <svg class="icon"><use href="#icon-ticket"></use></svg>
       </span>
       <span>
-        <strong>-10% la prima comandă</strong>
-        <small>Bonus pentru clienți noi</small>
+        <strong data-newsletter-promo hidden>-10% la prima comandă</strong>
+        <small data-newsletter-promo hidden>Bonus pentru clienți noi</small>
+        <strong data-newsletter-standard>Newsletter Layero</strong>
+        <small data-newsletter-standard>Inspirație și noutăți</small>
       </span>
     </button>
 
@@ -2701,12 +2704,20 @@
         </button>
         <div class="newsletter-modal__visual" aria-hidden="true">
           <svg class="icon"><use href="#icon-mail"></use></svg>
-          <span>LAYERO10</span>
+          <span data-newsletter-promo hidden>LAYERO10</span>
+          <span data-newsletter-standard>NEWSLETTER</span>
         </div>
         <div class="newsletter-modal__copy">
-          <p class="eyebrow">Bonus newsletter</p>
-          <h2 id="newsletter-title">Ca nou client primești <span>10% reducere.</span></h2>
-          <p id="newsletter-description">Abonează-te și primești imediat codul de cupon — folosește-l la prima comandă pe <a href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer" style="color:var(--gold)">shop.layero.ro</a>.</p>
+          <p class="eyebrow" data-newsletter-promo hidden>Bonus newsletter</p>
+          <p class="eyebrow" data-newsletter-standard>Newsletter Layero</p>
+          <h2 id="newsletter-title">
+            <span data-newsletter-promo hidden>Ca nou client primești 10% reducere.</span>
+            <span data-newsletter-standard>Rămâi aproape de ideile noi.</span>
+          </h2>
+          <p id="newsletter-description">
+            <span data-newsletter-promo hidden>Abonează-te și primești imediat codul de cupon — folosește-l la prima comandă pe <a href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer" style="color:var(--gold)">shop.layero.ro</a>.</span>
+            <span data-newsletter-standard>Abonează-te pentru inspirație săptămânală, lansări noi și noutăți din atelier.</span>
+          </p>
 
           <form class="newsletter-form" data-newsletter-form novalidate>
             <label for="newsletter-name">Nume</label>
@@ -2721,21 +2732,23 @@
             </label>
 
             <button class="btn btn--primary" type="submit">
-              Mă abonez și cer bonusul
+              <span data-newsletter-promo hidden>Mă abonez și cer bonusul</span>
+              <span data-newsletter-standard>Mă abonez</span>
               <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
             </button>
 
             <p class="newsletter-form__status" data-newsletter-status role="status" aria-live="polite"></p>
           </form>
 
-          <div class="newsletter-success" hidden data-newsletter-success>
+          <div class="newsletter-success" hidden data-newsletter-success tabindex="-1">
             <div class="newsletter-success__mark" aria-hidden="true">
               <svg class="icon"><use href="#icon-check"></use></svg>
             </div>
             <h3>Abonare reușită</h3>
-            <p>Codul tău bonus pentru prima comandă:</p>
-            <output class="newsletter-success__code" aria-label="Cod cupon">LAYERO10</output>
-            <button class="btn btn--outline" type="button" data-copy-code>
+            <p data-newsletter-promo hidden>Codul tău bonus pentru prima comandă:</p>
+            <p data-newsletter-standard>Îți mulțumim! Primele noutăți și idei vor ajunge în curând.</p>
+            <output class="newsletter-success__code" aria-label="Cod cupon" data-newsletter-promo hidden>LAYERO10</output>
+            <button class="btn btn--outline" type="button" data-copy-code data-newsletter-promo hidden>
               Copiază cuponul
               <svg class="icon" aria-hidden="true"><use href="#icon-copy"></use></svg>
             </button>
@@ -2745,7 +2758,8 @@
       </section>
     </div>
 
-    <script src="script.js?v=20260706-local-debug-no-refresh-lock"></script>
+    <script src="../newsletter-config.js?v=20260714-promo-switch"></script>
+    <script src="script.js?v=20260714-newsletter-promo-switch"></script>
     <script>
       /* pp-anim: photo-process staggered reveal */
       (function () {

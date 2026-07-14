@@ -323,11 +323,20 @@ const newsletterStatus = document.querySelector("[data-newsletter-status]");
 const newsletterEmail = document.querySelector("#newsletter-email");
 const newsletterCopyButton = document.querySelector("[data-copy-code]");
 const newsletterCopyStatus = document.querySelector("[data-copy-status]");
+const newsletterPromoEnabled = window.LAYERO_FEATURES?.newsletterPromo10 === true;
 const newsletterCouponCode = "LAYERO10";
 const newsletterSubscribedKey = "layero-newsletter-subscribed";
 const newsletterDismissedKey = "layero-newsletter-dismissed";
 const newsletterAutoShownKey = "layero-newsletter-auto-shown";
 let newsletterLastActiveElement = null;
+
+document.querySelectorAll("[data-newsletter-promo]").forEach((element) => {
+  element.hidden = !newsletterPromoEnabled;
+});
+
+document.querySelectorAll("[data-newsletter-standard]").forEach((element) => {
+  element.hidden = newsletterPromoEnabled;
+});
 
 document.documentElement.classList.add("js-enabled");
 
@@ -675,7 +684,7 @@ function openNewsletter({ auto = false } = {}) {
 
   window.setTimeout(() => {
     const focusTarget = hasNewsletterSubscription()
-      ? newsletterCopyButton
+      ? (newsletterPromoEnabled ? newsletterCopyButton : newsletterSuccess)
       : newsletterEmail;
 
     (focusTarget || newsletterPanel)?.focus();
@@ -839,7 +848,7 @@ newsletterForm?.addEventListener("submit", (event) => {
   const subscription = {
     name: String(formData.get("name") || "").trim(),
     email: String(formData.get("email") || "").trim(),
-    coupon: newsletterCouponCode,
+    ...(newsletterPromoEnabled ? { coupon: newsletterCouponCode } : {}),
     subscribedAt: new Date().toISOString(),
   };
 
@@ -848,10 +857,14 @@ newsletterForm?.addEventListener("submit", (event) => {
 
   newsletterForm.reset();
   setNewsletterView();
-  newsletterCopyButton?.focus();
+  (newsletterPromoEnabled ? newsletterCopyButton : newsletterSuccess)?.focus();
 });
 
 newsletterCopyButton?.addEventListener("click", async () => {
+  if (!newsletterPromoEnabled) {
+    return;
+  }
+
   let copied = false;
 
   if (navigator.clipboard?.writeText) {

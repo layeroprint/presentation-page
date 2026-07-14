@@ -2457,7 +2457,8 @@
               <p class="community__signup-copy">Heti inspiráció, új megjelenések, alkotói történetek és különleges ajánlatok – csak feliratkozóinknak.</p>
 
               <ul class="community__perks">
-                <li><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg><span><b>-10% kupon</b> az első rendelésedre</span></li>
+                <li data-newsletter-promo hidden><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg><span><b>-10% kupon</b> az első rendelésedre</span></li>
+                <li data-newsletter-standard><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg><span>Heti inspirációk és friss műhelyhírek</span></li>
                 <li><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg><span>Elsőként látod az új alkotásokat</span></li>
                 <li><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg><span>Csak tagoknak szóló limitált ajánlatok</span></li>
                 <li><svg class="icon" aria-hidden="true"><use href="#icon-check"></use></svg><span>Kulisszák mögötti műhelytartalmak</span></li>
@@ -2688,8 +2689,10 @@
         <svg class="icon"><use href="#icon-ticket"></use></svg>
       </span>
       <span>
-        <strong>-10% els&#337; rendel&eacute;sre</strong>
-        <small>&Uacute;j felhaszn&aacute;l&oacute;i b&oacute;nusz</small>
+        <strong data-newsletter-promo hidden>-10% els&#337; rendel&eacute;sre</strong>
+        <small data-newsletter-promo hidden>&Uacute;j felhaszn&aacute;l&oacute;i b&oacute;nusz</small>
+        <strong data-newsletter-standard>Layero h&iacute;rlev&eacute;l</strong>
+        <small data-newsletter-standard>Inspir&aacute;ci&oacute;k &eacute;s &uacute;jdons&aacute;gok</small>
       </span>
     </button>
 
@@ -2701,12 +2704,20 @@
         </button>
         <div class="newsletter-modal__visual" aria-hidden="true">
           <svg class="icon"><use href="#icon-mail"></use></svg>
-          <span>LAYERO10</span>
+          <span data-newsletter-promo hidden>LAYERO10</span>
+          <span data-newsletter-standard>H&Iacute;RLEV&Eacute;L</span>
         </div>
         <div class="newsletter-modal__copy">
-          <p class="eyebrow">Newsletter b&oacute;nusz</p>
-          <h2 id="newsletter-title">&Uacute;j vev&#337;k&eacute;nt kapsz <span>10% kedvezm&eacute;nyt.</span></h2>
-          <p id="newsletter-description">Iratkozz fel, &eacute;s azonnal megkapod a kuponk&oacute;dot — haszn&aacute;ld els&#337; rendelésedhez a <a href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer" style="color:var(--gold)">shop.layero.ro</a>-n.</p>
+          <p class="eyebrow" data-newsletter-promo hidden>Newsletter b&oacute;nusz</p>
+          <p class="eyebrow" data-newsletter-standard>Layero h&iacute;rlev&eacute;l</p>
+          <h2 id="newsletter-title">
+            <span data-newsletter-promo hidden>&Uacute;j vev&#337;k&eacute;nt kapsz 10% kedvezm&eacute;nyt.</span>
+            <span data-newsletter-standard>Maradj k&ouml;zel az &uacute;j &ouml;tletekhez.</span>
+          </h2>
+          <p id="newsletter-description">
+            <span data-newsletter-promo hidden>Iratkozz fel, &eacute;s azonnal megkapod a kuponk&oacute;dot — haszn&aacute;ld els&#337; rendelésedhez a <a href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer" style="color:var(--gold)">shop.layero.ro</a>-n.</span>
+            <span data-newsletter-standard>Iratkozz fel heti inspir&aacute;ci&oacute;k&eacute;rt, &uacute;j megjelen&eacute;sek&eacute;rt &eacute;s m&#369;helyh&iacute;rek&eacute;rt.</span>
+          </p>
 
           <form class="newsletter-form" data-newsletter-form novalidate>
             <label for="newsletter-name">N&eacute;v</label>
@@ -2721,21 +2732,23 @@
             </label>
 
             <button class="btn btn--primary" type="submit">
-              Feliratkozom &eacute;s k&eacute;rem a b&oacute;nuszt
+              <span data-newsletter-promo hidden>Feliratkozom &eacute;s k&eacute;rem a b&oacute;nuszt</span>
+              <span data-newsletter-standard>Feliratkozom</span>
               <svg class="icon" aria-hidden="true"><use href="#icon-arrow-right"></use></svg>
             </button>
 
             <p class="newsletter-form__status" data-newsletter-status role="status" aria-live="polite"></p>
           </form>
 
-          <div class="newsletter-success" hidden data-newsletter-success>
+          <div class="newsletter-success" hidden data-newsletter-success tabindex="-1">
             <div class="newsletter-success__mark" aria-hidden="true">
               <svg class="icon"><use href="#icon-check"></use></svg>
             </div>
             <h3>Sikeres feliratkoz&aacute;s</h3>
-            <p>A b&oacute;nusz k&oacute;dod az els&#337; rendel&eacute;shez:</p>
-            <output class="newsletter-success__code" aria-label="Kuponk&oacute;d">LAYERO10</output>
-            <button class="btn btn--outline" type="button" data-copy-code>
+            <p data-newsletter-promo hidden>A b&oacute;nusz k&oacute;dod az els&#337; rendel&eacute;shez:</p>
+            <p data-newsletter-standard>K&ouml;sz&ouml;nj&uuml;k! Hamarosan &eacute;rkeznek az els&#337; h&iacute;rek &eacute;s inspir&aacute;ci&oacute;k.</p>
+            <output class="newsletter-success__code" aria-label="Kuponk&oacute;d" data-newsletter-promo hidden>LAYERO10</output>
+            <button class="btn btn--outline" type="button" data-copy-code data-newsletter-promo hidden>
               Kupon m&aacute;sol&aacute;sa
               <svg class="icon" aria-hidden="true"><use href="#icon-copy"></use></svg>
             </button>
@@ -2745,7 +2758,8 @@
       </section>
     </div>
 
-    <script src="script.js?v=20260706-local-debug-no-refresh-lock"></script>
+    <script src="newsletter-config.js?v=20260714-promo-switch"></script>
+    <script src="script.js?v=20260714-newsletter-promo-switch"></script>
     <script>
       /* pp-anim: photo-process staggered reveal */
       (function () {
