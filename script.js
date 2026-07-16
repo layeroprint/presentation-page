@@ -222,7 +222,7 @@ window.debugg = window.layeroDebug;
 
 if (isLayeroDebugModeEnabled()) {
   document.documentElement.classList.add("layero-debug-mode");
-  document.documentElement.classList.remove("content-protection", "inspect-lock-mode");
+  document.documentElement.classList.remove("content-protection");
 }
 
 const navToggle = document.querySelector("[data-nav-toggle]");
@@ -372,129 +372,15 @@ function protectMediaElements(root = document) {
   });
 }
 
-const inspectNoticeCopy = {
-  kicker: "Layero m\u0171hely",
-  title: "Hopp, ny\u00edlt a m\u0171helyajt\u00f3.",
-  text:
-    "N\u00e9zel\u0151dni \u00e9r, de a k\u00e9pek \u00e9s sz\u00f6vegek a Layero oldalon vannak j\u00f3 helyen. Vissza a gal\u00e9ri\u00e1ba, ott szebb a f\u00e9ny."
-};
-const inspectLockImageSrc = "assets/inspect_background.webp";
-const devToolsGapThreshold = 180;
-let inspectNoticeTimeout = null;
-let devToolsWasLikelyOpen = false;
-let pageInspectLocked = false;
-
-function showInspectNotice() {
-  let notice = document.querySelector("[data-inspect-notice]");
-
-  if (!notice) {
-    notice = document.createElement("div");
-    notice.className = "inspect-notice";
-    notice.dataset.inspectNotice = "";
-    notice.setAttribute("role", "status");
-    notice.setAttribute("aria-live", "polite");
-    notice.innerHTML =
-      '<span class="inspect-notice__kicker">' +
-      inspectNoticeCopy.kicker +
-      '</span><strong class="inspect-notice__title">' +
-      inspectNoticeCopy.title +
-      '</strong><span class="inspect-notice__text">' +
-      inspectNoticeCopy.text +
-      "</span>";
-    document.body.appendChild(notice);
-  }
-
-  window.clearTimeout(inspectNoticeTimeout);
-  window.requestAnimationFrame(() => {
-    notice.classList.add("is-visible");
-    notice.style.setProperty("opacity", "1", "important");
-    notice.style.setProperty("transform", "translate3d(0, 0, 0) scale(1)", "important");
-  });
-  inspectNoticeTimeout = window.setTimeout(() => {
-    notice.classList.remove("is-visible");
-    notice.style.removeProperty("opacity");
-    notice.style.removeProperty("transform");
-  }, 5200);
-}
-
-function isDevToolsLikelyOpen() {
-  if (!window.outerWidth || !window.outerHeight) {
-    return false;
-  }
-
-  const widthGap = Math.abs(window.outerWidth - window.innerWidth);
-  const heightGap = Math.abs(window.outerHeight - window.innerHeight);
-
-  return widthGap > devToolsGapThreshold || heightGap > devToolsGapThreshold;
-}
-
-function lockPageForInspect() {
-  if (pageInspectLocked) {
-    return;
-  }
-
-  pageInspectLocked = true;
-  window.__LAYERO_INSPECT_LOCK__ = true;
-  document.documentElement.classList.add("inspect-lock-mode", "content-protection");
-  document.title = "Layero muhely zarva";
-
-  const renderLockScreen = () => {
-    const screen = document.createElement("main");
-    screen.className = "inspect-lock-screen";
-    screen.tabIndex = -1;
-    screen.setAttribute("role", "main");
-    screen.setAttribute("aria-label", "Layero inspect zarolokepernyo");
-    screen.innerHTML =
-      '<img class="inspect-lock-image" src="' +
-      inspectLockImageSrc +
-      '" alt="" draggable="false">';
-
-    document.body.className = "inspect-lock-body";
-    document.body.replaceChildren(screen);
-    screen.focus({ preventScroll: true });
-  };
-
-  if (document.body) {
-    renderLockScreen();
-  } else {
-    document.addEventListener("DOMContentLoaded", renderLockScreen, { once: true });
-  }
-
-  try {
-    window.stop();
-  } catch (error) {
-    // Some browsers restrict stop(); the DOM lock above is still applied.
-  }
-}
-
-function watchDevToolsState() {
-  const isLikelyOpen = isDevToolsLikelyOpen();
-
-  if (isLikelyOpen && !devToolsWasLikelyOpen) {
-    lockPageForInspect();
-    console.info(
-      "Layero muhely: inspect nezetben a tartalom zarva marad."
-    );
-  }
-
-  devToolsWasLikelyOpen = isLikelyOpen;
-}
-
 function enableContentProtection() {
   if (isLayeroDebugModeEnabled()) {
-    window.__LAYERO_INSPECT_LOCK__ = false;
-    document.documentElement.classList.remove("content-protection", "inspect-lock-mode");
+    document.documentElement.classList.remove("content-protection");
     console.info("Layero debug mode is on: content protection is disabled on this local address.");
     return;
   }
 
   document.documentElement.classList.add("content-protection");
   protectMediaElements();
-
-  if (window.__LAYERO_INSPECT_LOCK__) {
-    lockPageForInspect();
-    return;
-  }
 
   const protectedEvents = ["contextmenu", "copy", "cut", "selectstart"];
   protectedEvents.forEach((eventName) => {
@@ -521,13 +407,8 @@ function enableContentProtection() {
       const key = event.key.toLowerCase();
       const hasModifier = event.ctrlKey || event.metaKey;
       const blockedModifiedKeys = ["a", "c", "p", "s", "u", "x"];
-      const blockedDevToolsChord = hasModifier && event.shiftKey && ["c", "i", "j"].includes(key);
 
-      if (event.key === "F12" || blockedDevToolsChord || (hasModifier && blockedModifiedKeys.includes(key))) {
-        if (event.key === "F12" || blockedDevToolsChord) {
-          showInspectNotice();
-        }
-
+      if (hasModifier && !event.shiftKey && blockedModifiedKeys.includes(key)) {
         preventProtectedAction(event);
       }
     },
@@ -545,9 +426,6 @@ function enableContentProtection() {
   });
 
   observer.observe(document.documentElement, { childList: true, subtree: true });
-  watchDevToolsState();
-  window.addEventListener("resize", watchDevToolsState);
-  window.setInterval(watchDevToolsState, 1400);
 }
 
 enableContentProtection();
