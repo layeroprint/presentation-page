@@ -3,6 +3,11 @@ Options -Indexes
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
+  # Romanian is the primary language: only the bare domain redirects.
+  # /index.html remains the directly accessible Hungarian homepage.
+  RewriteCond %{HTTP_HOST} ^(?:www\.)?layero\.ro$ [NC]
+  RewriteRule ^$ /ro/ [R=301,L]
+
   RewriteCond %{HTTP_REFERER} !^$
   RewriteCond %{HTTP_REFERER} !^https?://([^/]+\.)?layero\.ro/ [NC]
   RewriteCond %{HTTP_REFERER} !^https?://localhost(:[0-9]+)?/ [NC]

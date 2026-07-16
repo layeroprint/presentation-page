@@ -328,6 +328,8 @@ const newsletterCouponCode = "LAYERO10";
 const newsletterSubscribedKey = "layero-newsletter-subscribed";
 const newsletterDismissedKey = "layero-newsletter-dismissed";
 const newsletterAutoShownKey = "layero-newsletter-auto-shown";
+const newsletterSessionStartedAtKey = "layero-newsletter-session-started-at";
+const newsletterAutoOpenDelay = 60_000;
 let newsletterLastActiveElement = null;
 
 document.querySelectorAll("[data-newsletter-promo]").forEach((element) => {
@@ -636,49 +638,31 @@ function scheduleNewsletterPopup() {
     return;
   }
 
+  const now = Date.now();
+  const storedStartedAt = Number(getStored(window.sessionStorage, newsletterSessionStartedAtKey));
+  const sessionStartedAt = Number.isFinite(storedStartedAt) && storedStartedAt > 0 && storedStartedAt <= now
+    ? storedStartedAt
+    : now;
+
+  if (sessionStartedAt === now) {
+    setStored(window.sessionStorage, newsletterSessionStartedAtKey, String(now));
+  }
+
   const tryAutoOpen = () => {
-    if (shouldAutoOpenNewsletter() && !document.body.classList.contains("nav-open")) {
-      openNewsletter({ auto: true });
-      return true;
+    if (!shouldAutoOpenNewsletter() || isNewsletterOpen()) {
+      return;
     }
-    return false;
+
+    if (document.body.classList.contains("nav-open")) {
+      window.setTimeout(tryAutoOpen, 1000);
+      return;
+    }
+
+    openNewsletter({ auto: true });
   };
 
-  const handleNewsletterScroll = () => {
-    const scrollableHeight = document.documentElement.scrollHeight - window.innerHeight;
-    const scrollProgress = scrollableHeight > 0 ? window.scrollY / scrollableHeight : 0;
-
-    if (scrollProgress > 0.5 && tryAutoOpen()) {
-      window.removeEventListener("scroll", handleNewsletterScroll);
-      document.removeEventListener("mouseout", handleExitIntent);
-    }
-  };
-
-  let moveCount = 0;
-  const markMoved = () => {
-    moveCount += 1;
-    if (moveCount > 2) {
-      window.removeEventListener("mousemove", markMoved);
-    }
-  };
-
-  const handleExitIntent = (event) => {
-    const leavingTopOfPage =
-      moveCount > 2 && event.clientY <= 0 && !event.relatedTarget && !event.toElement;
-
-    if (leavingTopOfPage && tryAutoOpen()) {
-      window.removeEventListener("scroll", handleNewsletterScroll);
-      document.removeEventListener("mouseout", handleExitIntent);
-      window.removeEventListener("mousemove", markMoved);
-    }
-  };
-
-  window.addEventListener("scroll", handleNewsletterScroll, { passive: true });
-  window.addEventListener("mousemove", markMoved, { passive: true });
-
-  window.setTimeout(() => {
-    document.addEventListener("mouseout", handleExitIntent);
-  }, 2500);
+  const remainingDelay = Math.max(0, newsletterAutoOpenDelay - (now - sessionStartedAt));
+  window.setTimeout(tryAutoOpen, remainingDelay);
 }
 
 function fallbackCopyCoupon() {

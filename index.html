@@ -18,10 +18,15 @@
     <meta name="author" content="Layero 3D Design">
     <meta name="theme-color" content="#050b14">
     <meta name="color-scheme" content="dark light">
-    <link rel="canonical" href="https://layero.ro/">
-    <link rel="alternate" hreflang="hu" href="https://layero.ro/">
+    <link rel="canonical" href="https://layero.ro/index.html">
+    <link rel="alternate" hreflang="hu" href="https://layero.ro/index.html">
     <link rel="alternate" hreflang="ro" href="https://layero.ro/ro/">
-    <link rel="alternate" hreflang="x-default" href="https://layero.ro/">
+    <link rel="alternate" hreflang="x-default" href="https://layero.ro/ro/">
+    <script>
+      if (/^(?:www\.)?layero\.ro$/i.test(window.location.hostname) && window.location.pathname === "/") {
+        window.location.replace("/ro/" + window.location.search + window.location.hash);
+      }
+    </script>
     <link rel="preload" href="assets/images/layero-asset-0177-480.webp" as="image" fetchpriority="high" media="(max-width: 420px)">
     <link rel="preload" href="assets/images/layero-asset-0177-720.webp" as="image" fetchpriority="high" media="(min-width: 421px) and (max-width: 720px)">
     <link rel="preload" href="assets/images/layero-asset-0253-1200.webp" as="image" fetchpriority="high" media="(min-width: 721px) and (max-width: 1180px)">
@@ -39,7 +44,7 @@
     <meta property="og:site_name" content="Layero 3D Design">
     <meta property="og:title" content="Layero 3D Design | Prémium 3D ajándékok">
     <meta property="og:description" content="Személyre szabott 3D ajándékok, dekorációk és különleges tárgyak modern technológiával, gondos kivitelezéssel és prémium részletességgel.">
-    <meta property="og:url" content="https://layero.ro/">
+    <meta property="og:url" content="https://layero.ro/index.html">
     <meta property="og:image" content="https://layero.ro/assets/images/layero-asset-0253-1448.webp">
     <meta property="og:image:alt" content="Layero 3D Design egyedi 3D alkotás">
     <meta property="og:image:width" content="1448">
@@ -83,15 +88,15 @@
           "@id": "https://layero.ro/#website",
           "url": "https://layero.ro/",
           "name": "Layero 3D Design",
-          "inLanguage": "hu",
+          "inLanguage": "ro",
           "publisher": {
             "@id": "https://layero.ro/#organization"
           }
         },
         {
           "@type": "WebPage",
-          "@id": "https://layero.ro/#webpage",
-          "url": "https://layero.ro/",
+          "@id": "https://layero.ro/index.html#webpage",
+          "url": "https://layero.ro/index.html",
           "name": "Layero 3D Design | Prémium 3D ajándékok",
           "description": "Személyre szabott 3D ajándékok, dekorációk és különleges tárgyak modern technológiával, gondos kivitelezéssel és prémium részletességgel.",
           "inLanguage": "hu",
@@ -114,7 +119,7 @@
               "@type": "ListItem",
               "position": 1,
               "name": "Főoldal",
-              "item": "https://layero.ro/"
+              "item": "https://layero.ro/index.html"
             }
           ]
         }
