@@ -22,7 +22,7 @@
     <link rel="alternate" hreflang="hu" href="https://layero.ro/galeria.html">
     <link rel="alternate" hreflang="ro" href="https://layero.ro/ro/galeria.html">
     <link rel="alternate" hreflang="x-default" href="https://layero.ro/ro/galeria.html">
-    <link rel="preload" href="assets/galeria/kepek/4-lakasdekor/optimized/layero-asset-0081-thumb.webp" as="image" fetchpriority="high">
+    <link rel="preload" href="assets/galeria/honap_alkotasa/2026/07-julius/featured-thumb.webp" as="image" type="image/webp" fetchpriority="high">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,600;9..144,0,700;9..144,1,400;9..144,1,500&family=Sora:wght@300;400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap">
@@ -37,14 +37,14 @@
     <meta property="og:title" content="3D nyomtatott ajándékok és dekorációk – Galéria | Layero">
     <meta property="og:description" content="Nézd meg a Layero elkészült 3D lámpáit, személyes ajándékait, dekorációit, céges munkáit és a gyártási folyamat videóit.">
     <meta property="og:url" content="https://layero.ro/galeria.html">
-    <meta property="og:image" content="https://layero.ro/assets/galeria/kepek/4-lakasdekor/optimized/layero-asset-0081-display.webp">
-    <meta property="og:image:alt" content="Layero 3D Design egyedi 3D alkotás">
-    <meta property="og:image:width" content="1100">
-    <meta property="og:image:height" content="825">
+    <meta property="og:image" content="https://layero.ro/assets/galeria/honap_alkotasa/2026/07-julius/featured-display.webp">
+    <meta property="og:image:alt" content="Denisz személyre szabott, elefántos babalámpája születési adatokkal">
+    <meta property="og:image:width" content="1024">
+    <meta property="og:image:height" content="1024">
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="3D nyomtatott ajándékok és dekorációk – Galéria | Layero">
     <meta name="twitter:description" content="Nézd meg a Layero elkészült 3D lámpáit, személyes ajándékait, dekorációit, céges munkáit és a gyártási folyamat videóit.">
-    <meta name="twitter:image" content="https://layero.ro/assets/galeria/kepek/4-lakasdekor/optimized/layero-asset-0081-display.webp">
+    <meta name="twitter:image" content="https://layero.ro/assets/galeria/honap_alkotasa/2026/07-julius/featured-display.webp">
     <link rel="stylesheet" href="styles.css?v=20260709-hero-image-fix">
     <link rel="stylesheet" href="tv-theme.css?v=20260704-seo-perf-1">
     <script type="application/ld+json">
@@ -76,7 +76,8 @@
           "email": "layeroprint@gmail.com",
           "telephone": "+40756642387",
           "sameAs": [
-            "https://www.instagram.com/layero3d"
+            "https://www.facebook.com/layero",
+            "https://www.instagram.com/layero.3d"
           ],
           "contactPoint": [
             {
@@ -418,6 +419,85 @@
             color: rgba(255,255,255,.45); text-decoration: none; transition: color .2s;
           }
           .gl-featured__cta:hover { color: #f4b860; }
+
+          .gl-monthly-archive {
+            margin-top: 30px; padding-top: 28px;
+            border-top: 1px solid rgba(255,255,255,.07);
+          }
+          .gl-monthly-archive__head {
+            display: flex; align-items: end; justify-content: space-between;
+            gap: 20px; margin-bottom: 18px;
+          }
+          .gl-monthly-archive__eyebrow {
+            display: block; margin-bottom: 5px;
+            font-family: 'Space Grotesk', sans-serif; font-size: .58rem; font-weight: 700;
+            letter-spacing: .2em; text-transform: uppercase; color: #f4b860;
+          }
+          .gl-monthly-archive__title {
+            margin: 0; font-family: 'Fraunces', Georgia, serif;
+            font-size: clamp(1.35rem, 2.5vw, 1.9rem); font-weight: 500;
+            color: rgba(255,255,255,.9);
+          }
+          .gl-monthly-years { display: flex; gap: 6px; }
+          .gl-monthly-year {
+            padding: 7px 13px; border-radius: 999px;
+            border: 1px solid rgba(255,255,255,.1); background: transparent;
+            color: rgba(255,255,255,.42); cursor: pointer;
+            font: 600 .66rem/1 'Space Grotesk', sans-serif; letter-spacing: .08em;
+            transition: color .2s, border-color .2s, background .2s;
+          }
+          .gl-monthly-year:hover,
+          .gl-monthly-year.is-on {
+            color: #f4b860; border-color: rgba(244,184,96,.38);
+            background: rgba(244,184,96,.07);
+          }
+          .gl-monthly-grid {
+            display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px;
+          }
+          .gl-month-card {
+            display: grid; grid-template-columns: 72px minmax(0, 1fr); align-items: center;
+            gap: 12px; min-height: 88px; padding: 8px;
+            border: 1px solid rgba(255,255,255,.07); border-radius: 13px;
+            background: rgba(255,255,255,.025); color: inherit;
+            cursor: pointer; text-align: left;
+            transition: transform .22s, border-color .22s, background .22s, box-shadow .22s;
+          }
+          .gl-month-card:hover {
+            transform: translateY(-2px); border-color: rgba(244,184,96,.28);
+            background: rgba(244,184,96,.045);
+          }
+          .gl-month-card.is-on {
+            border-color: rgba(244,184,96,.5); background: rgba(244,184,96,.075);
+            box-shadow: 0 12px 30px -18px rgba(244,184,96,.6);
+          }
+          .gl-month-card[hidden] { display: none; }
+          .gl-month-card__media {
+            width: 72px; aspect-ratio: 1; border-radius: 9px; overflow: hidden;
+            background: rgba(255,255,255,.04);
+          }
+          .gl-month-card__media img { width: 100%; height: 100%; object-fit: cover; display: block; }
+          .gl-month-card__date {
+            display: block; margin-bottom: 5px;
+            font: 700 .55rem/1.2 'Space Grotesk', sans-serif;
+            letter-spacing: .14em; text-transform: uppercase; color: rgba(244,184,96,.7);
+          }
+          .gl-month-card__name {
+            display: block; overflow: hidden;
+            font: 500 .78rem/1.35 'Space Grotesk', sans-serif;
+            color: rgba(255,255,255,.72);
+          }
+          @media (max-width: 980px) {
+            .gl-monthly-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+          }
+          @media (max-width: 680px) {
+            .gl-monthly-archive__head { align-items: flex-start; flex-direction: column; }
+            .gl-monthly-grid {
+              display: flex; gap: 10px; overflow-x: auto; padding: 0 2px 10px;
+              scroll-snap-type: x proximity; scrollbar-width: none;
+            }
+            .gl-monthly-grid::-webkit-scrollbar { display: none; }
+            .gl-month-card { min-width: 230px; scroll-snap-align: start; }
+          }
 
           /* ── VIDEO RÁCS ─────────────────────────────────────────── */
           .gl-vtabs { display: flex; gap: 6px; margin-bottom: 28px; }
@@ -782,20 +862,20 @@
                   Hónap alkotása
                 </span>
                 <picture>
-                  <source type="image/webp" srcset="assets/galeria/kepek/4-lakasdekor/optimized/layero-asset-0081-thumb.webp">
-                  <img src="assets/galeria/kepek/4-lakasdekor/optimized/layero-asset-0081-thumb.webp" alt="Lumé lámpa — hónap alkotása" loading="eager" decoding="async" fetchpriority="high" width="300" height="225">
+                  <source type="image/webp" srcset="assets/galeria/honap_alkotasa/2026/07-julius/featured-thumb.webp">
+                  <img src="assets/galeria/honap_alkotasa/2026/07-julius/featured-thumb.webp" alt="Denisz személyre szabott, elefántos babalámpája születési adatokkal" loading="eager" decoding="async" fetchpriority="high" width="480" height="480">
                 </picture>
               </div>
               <div class="gl-motm__body">
-                <h2 class="gl-motm__title">Lumé lámpa <em>— július</em></h2>
-                <p class="gl-motm__desc">Organikus mintázatú hangulatlámpa, amely nappal design tárgy, este meleg fényével különleges atmoszférát teremt.</p>
+                <h2 class="gl-motm__title">Denisz babafénye <em>— 2026. július</em></h2>
+                <p class="gl-motm__desc">Személyre szabott babalámpa, amely a nevet és a születés legfontosabb adatait meleg éjszakai fénybe foglalja.</p>
                 <div class="gl-motm__facts">
-                  <div class="gl-motm__fact"><strong>32 óra</strong><small>nyomtatás</small></div>
-                  <div class="gl-motm__fact"><strong>Prémium PLA</strong><small>anyag</small></div>
-                  <div class="gl-motm__fact"><strong>Kézi</strong><small>utómunka</small></div>
+                  <div class="gl-motm__fact"><strong>5 adat</strong><small>személyre szabva</small></div>
+                  <div class="gl-motm__fact"><strong>Meleg LED</strong><small>hangulatfény</small></div>
+                  <div class="gl-motm__fact"><strong>Névre szóló</strong><small>egyedi design</small></div>
                 </div>
                 <a class="gl-motm__link" href="egyedi-rendeles.html">
-                  Saját lámpa rendelése
+                  Saját babalámpát kérek
                   <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
                 </a>
               </div>
@@ -817,27 +897,38 @@
       <!-- ── KIEMELT ALKOTÁS ───────────────────────────────────── -->
       <section class="gl-section" data-gl="kiemelt" hidden>
         <div class="gl-shell">
-          <div class="gl-featured">
+          <div class="gl-featured" id="gl-featured">
             <div class="gl-featured__media">
-              <picture>
-                <source type="image/webp" srcset="assets/galeria/kepek/4-lakasdekor/optimized/layero-asset-0081-thumb.webp">
-                <img src="assets/galeria/kepek/4-lakasdekor/optimized/layero-asset-0081-thumb.webp" alt="Layero kiemelt alkotás — lámpa" loading="eager" decoding="async" fetchpriority="high" width="300" height="225">
-              </picture>
+              <img id="gl-featured-image" src="assets/galeria/honap_alkotasa/2026/07-julius/featured-display.webp" alt="Denisz személyre szabott, elefántos babalámpája születési adatokkal" loading="lazy" decoding="async" width="1024" height="1024">
             </div>
             <div class="gl-featured__body">
-              <p class="gl-featured__kicker">Kiemelt alkotás &nbsp;· Június</p>
-              <h2 class="gl-featured__title">Lumé lámpa<br><em>amikor a fény<br>formát kap.</em></h2>
-              <p class="gl-featured__desc">Organikus mintázatú, 3D nyomtatott hangulatlámpa — nappal karakteres design tárgy, este meleg fényével különleges atmoszférát teremt.</p>
-              <div class="gl-featured__facts">
-                <div class="gl-featured__fact"><strong>32 óra</strong><small>nyomtatás</small></div>
-                <div class="gl-featured__fact"><strong>Prémium PLA</strong><small>anyag</small></div>
-                <div class="gl-featured__fact"><strong>Kézi</strong><small>utómunka</small></div>
+              <p class="gl-featured__kicker" id="gl-featured-kicker">Kiemelt alkotás &nbsp;· 2026. július</p>
+              <h2 class="gl-featured__title" id="gl-featured-title">Denisz babafénye<br><em>az első pillanatokból fénylő emlék.</em></h2>
+              <p class="gl-featured__desc" id="gl-featured-desc">Személyre szabott, elefántos babalámpa, amely a nevet és a születés legfontosabb adatait meleg éjszakai fénybe foglalja. Egyszerre meghitt gyerekszobai dekoráció és életre szóló családi emlék.</p>
+              <div class="gl-featured__facts" id="gl-featured-facts">
+                <div class="gl-featured__fact"><strong>5 adat</strong><small>személyre szabva</small></div>
+                <div class="gl-featured__fact"><strong>Meleg LED</strong><small>hangulatfény</small></div>
+                <div class="gl-featured__fact"><strong>Névre szóló</strong><small>egyedi design</small></div>
               </div>
-              <a class="gl-featured__cta" href="egyedi-rendeles.html">
-                Saját lámpa rendelése
+              <a class="gl-featured__cta" id="gl-featured-cta" href="egyedi-rendeles.html">
+                <span>Saját babalámpát kérek</span>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg>
               </a>
             </div>
+          </div>
+          <div class="gl-monthly-archive" aria-labelledby="gl-monthly-title">
+            <div class="gl-monthly-archive__head">
+              <div>
+                <span class="gl-monthly-archive__eyebrow">Layero válogatás</span>
+                <h2 class="gl-monthly-archive__title" id="gl-monthly-title">A hónap alkotásai</h2>
+              </div>
+              <div class="gl-monthly-years" role="group" aria-label="Szűrés év szerint">
+                <button class="gl-monthly-year is-on" type="button" data-month-year="all">Mind</button>
+                <button class="gl-monthly-year" type="button" data-month-year="2026">2026</button>
+                <button class="gl-monthly-year" type="button" data-month-year="2025">2025</button>
+              </div>
+            </div>
+            <div class="gl-monthly-grid" id="gl-monthly-grid"></div>
           </div>
         </div>
       </section>
@@ -933,21 +1024,13 @@
     </div>
 
     <svg class="icon-sprite" aria-hidden="true" focusable="false">
-      <symbol id="icon-linkedin" viewBox="0 0 24 24">
-        <path d="M6.5 10v8"></path>
-        <path d="M10.5 18v-4.4c0-2.2 1.3-3.6 3.2-3.6 1.8 0 2.8 1.3 2.8 3.6V18"></path>
-        <path d="M6.5 6.4v.1"></path>
+      <symbol id="icon-facebook" viewBox="0 0 24 24">
+        <path d="M14 8h3V4h-3c-3.3 0-5 2-5 5v2H6v4h3v5h4v-5h3l1-4h-4V9c0-.7.3-1 1-1Z"></path>
       </symbol>
       <symbol id="icon-instagram" viewBox="0 0 24 24">
         <rect x="5" y="5" width="14" height="14" rx="4"></rect>
         <circle cx="12" cy="12" r="3"></circle>
         <path d="M16.5 7.5h.1"></path>
-      </symbol>
-      <symbol id="icon-dribbble" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="7"></circle>
-        <path d="M6.5 9.5c4.2 0 7.7-1.4 10.1-3.2"></path>
-        <path d="M8.2 17.7c1.8-3.6 5.2-6.2 10.7-6.3"></path>
-        <path d="M9.4 5.7c2.2 2.8 3.9 6.8 5 12"></path>
       </symbol>
     </svg>
     <footer class="site-footer" id="about">
@@ -959,14 +1042,11 @@
           </a>
           <p>Személyre szabott 3D nyomtatott ajándékok és dekorációk. Szatmárnémetiben tervezve és gyártva — rólad szól, rétegről rétegre.</p>
           <div class="socials" aria-label="Közösségi linkek">
-            <a href="https://www.linkedin.com/company/layero3d" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn (új lapon nyílik)">
-              <svg class="icon" aria-hidden="true"><use href="#icon-linkedin"></use></svg>
+            <a href="https://www.facebook.com/layero" target="_blank" rel="noopener noreferrer" aria-label="Facebook (új lapon nyílik)">
+              <svg class="icon" aria-hidden="true"><use href="#icon-facebook"></use></svg>
             </a>
-            <a href="https://www.instagram.com/layero3d" target="_blank" rel="noopener noreferrer" aria-label="Instagram (új lapon nyílik)">
+            <a href="https://www.instagram.com/layero.3d" target="_blank" rel="noopener noreferrer" aria-label="Instagram (új lapon nyílik)">
               <svg class="icon" aria-hidden="true"><use href="#icon-instagram"></use></svg>
-            </a>
-            <a href="https://dribbble.com/layero3d" target="_blank" rel="noopener noreferrer" aria-label="Dribbble (új lapon nyílik)">
-              <svg class="icon" aria-hidden="true"><use href="#icon-dribbble"></use></svg>
             </a>
           </div>
         </div>
@@ -1035,6 +1115,8 @@
 
     <script src="script.js?v=20260706-local-debug-no-refresh-lock"></script>
     <script src="galeria-data.js?v=20260704-gallery-refresh-1"></script>
+    <script src="assets/galeria/honap_alkotasa/monthly-creations.js?v=20260720-1"></script>
+    <script src="assets/galeria/honap_alkotasa/monthly-creations-ui.js?v=20260720-1"></script>
     <script>
     (function() {
 

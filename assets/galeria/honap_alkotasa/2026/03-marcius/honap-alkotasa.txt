@@ -1,37 +1,37 @@
-HONAP ALKOTASA - 2026 MARCIUS
+HÓNAP ALKOTÁSA - 2026 MÁRCIUS
 
 Kicker:
-KIEMELT ALKOTAS - MARCIUS
+KIEMELT ALKOTÁS - MÁRCIUS
 
-Cim:
-[Ide ird az alkotas nevet, pl. Lume lampa]
+Cím:
+Örök tulipánkollekció
 
-Alcim:
-[Ide johet a nagy, hangulatos masodik sor, pl. amikor a feny format kap.]
+Alcím:
+tavasz, amely nem hervad el.
 
-Rovid leiras:
-[2-3 mondatban ird le, mi ez az alkotas, kinek keszult, milyen hangulatot ad, miert kulonleges.]
+Rövid leírás:
+Piros, fehér és napsárga tulipánok részletgazdag, 3D nyomtatott csokra dekoratív vázákkal. Színt és frissességet visz az enteriőrbe, miközben minden évszakban ugyanolyan üde marad.
 
 Adat 1:
-Ertek: [pl. 32 ora]
-Cimke: [pl. NYOMTATAS]
+Érték: 3 szín
+Címke: KOLLEKCIÓ
 
 Adat 2:
-Ertek: [pl. Premium PLA]
-Cimke: [pl. ANYAG]
+Érték: Variálható
+Címke: CSOKOR
 
 Adat 3:
-Ertek: [pl. Kezi]
-Cimke: [pl. UTOMUNKA]
+Érték: Tartós
+Címke: DEKORÁCIÓ
 
-Gomb szoveg:
-[pl. SAJAT LAMPA RENDELESE]
+Gomb szöveg:
+Saját virágdekorációt kérek
 
 Gomb link:
-[pl. egyedi-rendeles.html]
+egyedi-rendeles.html
 
-Kep:
-[Ide ird a fo kep fajlnevet, amit ebbe a honap mappaba teszel.]
+Kép:
+featured-display.webp
 
-Megjegyzes:
-[Barmi extra info: szin, meret, hatarido, inspiracio, technika.]
+Megjegyzés:
+A koncepció és a szöveg a fotón látható alkotás karakteréhez igazítva.

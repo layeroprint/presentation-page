@@ -1,37 +1,37 @@
-HONAP ALKOTASA - 2026 APRILIS
+HÓNAP ALKOTÁSA - 2026 ÁPRILIS
 
 Kicker:
-KIEMELT ALKOTAS - APRILIS
+KIEMELT ALKOTÁS - ÁPRILIS
 
-Cim:
-[Ide ird az alkotas nevet, pl. Lume lampa]
+Cím:
+Voronoi fénykocka
 
-Alcim:
-[Ide johet a nagy, hangulatos masodik sor, pl. amikor a feny format kap.]
+Alcím:
+amikor a geometria meleggé teszi a teret.
 
-Rovid leiras:
-[2-3 mondatban ird le, mi ez az alkotas, kinek keszult, milyen hangulatot ad, miert kulonleges.]
+Rövid leírás:
+Letisztult hasábforma, organikus cellaminta és finoman szűrt fény alkot kortárs hangulatlámpát. A fekete külső rács nappal grafikus tárgy, este pedig különleges árnyékokat rajzol a környezetére.
 
 Adat 1:
-Ertek: [pl. 32 ora]
-Cimke: [pl. NYOMTATAS]
+Érték: 4 oldal
+Címke: KÖRBESUGÁRZÁS
 
 Adat 2:
-Ertek: [pl. Premium PLA]
-Cimke: [pl. ANYAG]
+Érték: Kétszínű
+Címke: RÉTEGES TEST
 
 Adat 3:
-Ertek: [pl. Kezi]
-Cimke: [pl. UTOMUNKA]
+Érték: Meleg LED
+Címke: HANGULATFÉNY
 
-Gomb szoveg:
-[pl. SAJAT LAMPA RENDELESE]
+Gomb szöveg:
+Saját lámpát kérek
 
 Gomb link:
-[pl. egyedi-rendeles.html]
+egyedi-rendeles.html
 
-Kep:
-[Ide ird a fo kep fajlnevet, amit ebbe a honap mappaba teszel.]
+Kép:
+featured-display.webp
 
-Megjegyzes:
-[Barmi extra info: szin, meret, hatarido, inspiracio, technika.]
+Megjegyzés:
+A koncepció és a szöveg a fotón látható alkotás karakteréhez igazítva.

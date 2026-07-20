@@ -1,37 +1,37 @@
-HONAP ALKOTASA - 2026 JULIUS
+HÓNAP ALKOTÁSA - 2026 JÚLIUS
 
 Kicker:
-KIEMELT ALKOTAS - JULIUS
+KIEMELT ALKOTÁS - JÚLIUS
 
-Cim:
-[Ide ird az alkotas nevet, pl. Lume lampa]
+Cím:
+Denisz babafénye
 
-Alcim:
-[Ide johet a nagy, hangulatos masodik sor, pl. amikor a feny format kap.]
+Alcím:
+az első pillanatokból fénylő emlék.
 
-Rovid leiras:
-[2-3 mondatban ird le, mi ez az alkotas, kinek keszult, milyen hangulatot ad, miert kulonleges.]
+Rövid leírás:
+Személyre szabott, elefántos babalámpa, amely a nevet és a születés legfontosabb adatait meleg éjszakai fénybe foglalja. Egyszerre meghitt gyerekszobai dekoráció és életre szóló családi emlék.
 
 Adat 1:
-Ertek: [pl. 32 ora]
-Cimke: [pl. NYOMTATAS]
+Érték: 5 adat
+Címke: SZEMÉLYRE SZABVA
 
 Adat 2:
-Ertek: [pl. Premium PLA]
-Cimke: [pl. ANYAG]
+Érték: Meleg LED
+Címke: HANGULATFÉNY
 
 Adat 3:
-Ertek: [pl. Kezi]
-Cimke: [pl. UTOMUNKA]
+Érték: Névre szóló
+Címke: EGYEDI DESIGN
 
-Gomb szoveg:
-[pl. SAJAT LAMPA RENDELESE]
+Gomb szöveg:
+Saját babalámpát kérek
 
 Gomb link:
-[pl. egyedi-rendeles.html]
+egyedi-rendeles.html
 
-Kep:
-[Ide ird a fo kep fajlnevet, amit ebbe a honap mappaba teszel.]
+Kép:
+featured-display.webp
 
-Megjegyzes:
-[Barmi extra info: szin, meret, hatarido, inspiracio, technika.]
+Megjegyzés:
+A koncepció és a szöveg a fotón látható alkotás karakteréhez igazítva.

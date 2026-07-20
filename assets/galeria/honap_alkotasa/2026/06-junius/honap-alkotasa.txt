@@ -1,37 +1,37 @@
-HONAP ALKOTASA - 2026 JUNIUS
+HÓNAP ALKOTÁSA - 2026 JÚNIUS
 
 Kicker:
-KIEMELT ALKOTAS - JUNIUS
+KIEMELT ALKOTÁS - JÚNIUS
 
-Cim:
-[Ide ird az alkotas nevet, pl. Lume lampa]
+Cím:
+Chopper palacktartó
 
-Alcim:
-[Ide johet a nagy, hangulatos masodik sor, pl. amikor a feny format kap.]
+Alcím:
+az ajándék, amely beindítja a hangulatot.
 
-Rovid leiras:
-[2-3 mondatban ird le, mi ez az alkotas, kinek keszult, milyen hangulatot ad, miert kulonleges.]
+Rövid leírás:
+Karakteres motorforma és stabil, döntött palacktartás egyetlen látványos tárgyban. Személyes meglepetés motorrajongóknak, amely az átadás pillanatától beszédtéma lesz.
 
 Adat 1:
-Ertek: [pl. 32 ora]
-Cimke: [pl. NYOMTATAS]
+Érték: 1 palack
+Címke: KAPACITÁS
 
 Adat 2:
-Ertek: [pl. Premium PLA]
-Cimke: [pl. ANYAG]
+Érték: Döntött
+Címke: STABIL TARTÁS
 
 Adat 3:
-Ertek: [pl. Kezi]
-Cimke: [pl. UTOMUNKA]
+Érték: Tematikus
+Címke: AJÁNDÉKÖTLET
 
-Gomb szoveg:
-[pl. SAJAT LAMPA RENDELESE]
+Gomb szöveg:
+Saját ajándéktárgyat kérek
 
 Gomb link:
-[pl. egyedi-rendeles.html]
+egyedi-rendeles.html
 
-Kep:
-[Ide ird a fo kep fajlnevet, amit ebbe a honap mappaba teszel.]
+Kép:
+featured-display.webp
 
-Megjegyzes:
-[Barmi extra info: szin, meret, hatarido, inspiracio, technika.]
+Megjegyzés:
+A koncepció és a szöveg a fotón látható alkotás karakteréhez igazítva.

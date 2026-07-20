@@ -3,6 +3,19 @@
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
     <loc>https://layero.ro/galeria.html</loc>
+    <image:image><image:loc>https://layero.ro/assets/galeria/honap_alkotasa/2026/07-julius/featured-display.webp</image:loc></image:image>
+    <image:image><image:loc>https://layero.ro/assets/galeria/honap_alkotasa/2026/06-junius/featured-display.webp</image:loc></image:image>
+    <image:image><image:loc>https://layero.ro/assets/galeria/honap_alkotasa/2026/05-majus/featured-display.webp</image:loc></image:image>
+    <image:image><image:loc>https://layero.ro/assets/galeria/honap_alkotasa/2026/04-aprilis/featured-display.webp</image:loc></image:image>
+    <image:image><image:loc>https://layero.ro/assets/galeria/honap_alkotasa/2026/03-marcius/featured-display.webp</image:loc></image:image>
+    <image:image><image:loc>https://layero.ro/assets/galeria/honap_alkotasa/2026/02-februar/featured-display.webp</image:loc></image:image>
+    <image:image><image:loc>https://layero.ro/assets/galeria/honap_alkotasa/2026/01-januar/featured-display.webp</image:loc></image:image>
+    <image:image><image:loc>https://layero.ro/assets/galeria/honap_alkotasa/2025/12-december/featured-display.webp</image:loc></image:image>
+    <image:image><image:loc>https://layero.ro/assets/galeria/honap_alkotasa/2025/11-november/featured-display.webp</image:loc></image:image>
+    <image:image><image:loc>https://layero.ro/assets/galeria/honap_alkotasa/2025/10-oktober/featured-display.webp</image:loc></image:image>
+    <image:image><image:loc>https://layero.ro/assets/galeria/honap_alkotasa/2025/09-szeptember/featured-display.webp</image:loc></image:image>
+    <image:image><image:loc>https://layero.ro/assets/galeria/honap_alkotasa/2025/08-augusztus/featured-display.webp</image:loc></image:image>
+    <image:image><image:loc>https://layero.ro/assets/galeria/honap_alkotasa/2025/07-julius/featured-display.webp</image:loc></image:image>
     <image:image><image:loc>https://layero.ro/assets/galeria/kepek/1-gyerek-lampak/optimized/layero-asset-0087-display.webp</image:loc></image:image>
     <image:image><image:loc>https://layero.ro/assets/galeria/kepek/1-gyerek-lampak/optimized/layero-asset-0090-display.webp</image:loc></image:image>
     <image:image><image:loc>https://layero.ro/assets/galeria/kepek/1-gyerek-lampak/optimized/layero-asset-0091-display.webp</image:loc></image:image>

@@ -1,37 +1,37 @@
-HONAP ALKOTASA - 2026 FEBRUAR
+HÓNAP ALKOTÁSA - 2026 FEBRUÁR
 
 Kicker:
-KIEMELT ALKOTAS - FEBRUAR
+KIEMELT ALKOTÁS - FEBRUÁR
 
-Cim:
-[Ide ird az alkotas nevet, pl. Lume lampa]
+Cím:
+El Camino emlékszobor
 
-Alcim:
-[Ide johet a nagy, hangulatos masodik sor, pl. amikor a feny format kap.]
+Alcím:
+315 kilométer, egyetlen emlékbe sűrítve.
 
-Rovid leiras:
-[2-3 mondatban ird le, mi ez az alkotas, kinek keszult, milyen hangulatot ad, miert kulonleges.]
+Rövid leírás:
+Névre szóló zarándokfigura, amely a megtett út hosszát és évét is megőrzi. A kagyló, a bot és a hátizsák apró részletei személyes mérföldkővé formálják az utazás emlékét.
 
 Adat 1:
-Ertek: [pl. 32 ora]
-Cimke: [pl. NYOMTATAS]
+Érték: 315 km
+Címke: MEGTETT ÚT
 
 Adat 2:
-Ertek: [pl. Premium PLA]
-Cimke: [pl. ANYAG]
+Érték: 2025
+Címke: EMLÉKÉV
 
 Adat 3:
-Ertek: [pl. Kezi]
-Cimke: [pl. UTOMUNKA]
+Érték: Névre szóló
+Címke: TALAPZAT
 
-Gomb szoveg:
-[pl. SAJAT LAMPA RENDELESE]
+Gomb szöveg:
+Saját emlékszobrot kérek
 
 Gomb link:
-[pl. egyedi-rendeles.html]
+egyedi-rendeles.html
 
-Kep:
-[Ide ird a fo kep fajlnevet, amit ebbe a honap mappaba teszel.]
+Kép:
+featured-display.webp
 
-Megjegyzes:
-[Barmi extra info: szin, meret, hatarido, inspiracio, technika.]
+Megjegyzés:
+A koncepció és a szöveg a fotón látható alkotás karakteréhez igazítva.

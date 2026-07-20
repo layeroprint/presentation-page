@@ -1,37 +1,37 @@
-HONAP ALKOTASA - 2026 MAJUS
+HÓNAP ALKOTÁSA - 2026 MÁJUS
 
 Kicker:
-KIEMELT ALKOTAS - MAJUS
+KIEMELT ALKOTÁS - MÁJUS
 
-Cim:
-[Ide ird az alkotas nevet, pl. Lume lampa]
+Cím:
+Középfölde-relief
 
-Alcim:
-[Ide johet a nagy, hangulatos masodik sor, pl. amikor a feny format kap.]
+Alcím:
+egy legendás út, rétegről rétegre.
 
-Rovid leiras:
-[2-3 mondatban ird le, mi ez az alkotas, kinek keszult, milyen hangulatot ad, miert kulonleges.]
+Rövid leírás:
+Monokróm, keretezett domborkép, amely hegyvonulatból, vándorló alakokból és egy ikonikus mágusportréból épít filmszerű kompozíciót. A finom relief sötét és világos felületei a fény változásával új részleteket mutatnak.
 
 Adat 1:
-Ertek: [pl. 32 ora]
-Cimke: [pl. NYOMTATAS]
+Érték: Réteges
+Címke: 3D RELIEF
 
 Adat 2:
-Ertek: [pl. Premium PLA]
-Cimke: [pl. ANYAG]
+Érték: Monokróm
+Címke: KONTRASZT
 
 Adat 3:
-Ertek: [pl. Kezi]
-Cimke: [pl. UTOMUNKA]
+Érték: Keretezett
+Címke: FALI DEKOR
 
-Gomb szoveg:
-[pl. SAJAT LAMPA RENDELESE]
+Gomb szöveg:
+Saját tematikus dekorációt kérek
 
 Gomb link:
-[pl. egyedi-rendeles.html]
+egyedi-rendeles.html
 
-Kep:
-[Ide ird a fo kep fajlnevet, amit ebbe a honap mappaba teszel.]
+Kép:
+featured-display.webp
 
-Megjegyzes:
-[Barmi extra info: szin, meret, hatarido, inspiracio, technika.]
+Megjegyzés:
+A koncepció és a szöveg a fotón látható alkotás karakteréhez igazítva.
