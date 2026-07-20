@@ -4718,6 +4718,11 @@ body.nav-open .nav-toggle__bars::after {
   padding: 44px 0;
 }
 
+.subpage-section[id],
+.b2b-form-panel[id] {
+  scroll-margin-top: 118px;
+}
+
 .subpage-section::before {
   display: none;
 }
@@ -8915,15 +8920,7 @@ body.nav-open .nav-toggle__bars::after {
   }
 
   .newsletter-fab {
-    right: 16px;
-    bottom: 14px;
-    left: auto;
-    max-width: none;
-    min-height: 46px;
-    width: 60px;
-    padding: 0;
-    border-radius: 999px;
-    overflow: hidden;
+    display: none !important;
   }
 
   .newsletter-fab__icon {
@@ -13428,9 +13425,13 @@ body.inspiration-showcase-page {
   padding: 0;
 }
 
-.site-header .header-top__inner,
-.site-header .header-shell {
-  width: min(1880px, calc(100% - var(--header-gutter, clamp(16px, 2.8vw, 44px)) - var(--header-gutter, clamp(16px, 2.8vw, 44px))));
+@media (min-width: 721px) {
+  .site-header .header-top__inner,
+  .site-header .header-shell {
+    width: 100%;
+    max-width: none;
+    padding-inline: var(--header-gutter, clamp(16px, 2.8vw, 44px));
+  }
 }
 
 /* ══ Scroll-reaktív fejléc: kompakt üveg állapot + fényvonalak ═══════ */
@@ -13491,7 +13492,7 @@ body.hdr-scrolled .site-header {
   }
 
   body.hdr-scrolled .header-shell {
-    padding: 9px 0;
+    padding-block: 9px;
   }
 
   .logo__brand-mark,
@@ -13648,7 +13649,6 @@ body.hdr-scrolled .site-header {
 }
 
 @supports (content-visibility: auto) {
-  .subpage-section,
   .categories,
   .lamp-showcase,
   .photo-process,
@@ -13656,7 +13656,6 @@ body.hdr-scrolled .site-header {
   .community,
   .tv-category,
   .gl-section,
-  .gl-gallery,
   .footer {
     content-visibility: auto;
     contain-intrinsic-size: auto 900px;

@@ -242,7 +242,7 @@ if (siteNav && !siteNav.querySelector(".site-nav__links")) {
   const mobileCta = document.createElement("div");
   mobileCta.className = "site-nav__mobile-cta";
   mobileCta.setAttribute("aria-label", "Gyors műveletek");
-  mobileCta.innerHTML = '<a class="btn btn--shop" href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer">Shop</a><a class="site-nav__contact" href="mailto:hello@layero.ro">hello@layero.ro</a>';
+  mobileCta.innerHTML = '<a class="btn btn--shop" href="https://shop.layero.ro" target="_blank" rel="noopener noreferrer">Shop</a><a class="site-nav__contact" href="mailto:layeroprint@gmail.com">layeroprint@gmail.com</a>';
 
   siteNav.append(mobileHead, linkWrap, mobileCta);
 }
@@ -747,7 +747,7 @@ newsletterCopyButton?.addEventListener("click", async () => {
   }
 });
 
-scheduleNewsletterPopup();
+// A hírlevélablak csak tudatos kattintásra nyílik meg, nem szakítja félbe a böngészést.
 
 const knowledgeFilterButtons = [...document.querySelectorAll("[data-knowledge-filter]")];
 const knowledgeCards = [...document.querySelectorAll("[data-knowledge-card]")];
