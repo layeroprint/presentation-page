@@ -151,6 +151,10 @@
     </script>
     <style>
           /* ── GALÉRIA OLDAL ──────────────────────────────────────── */
+          .subpage-main {
+            overflow-x: clip;
+            overflow-y: visible;
+          }
           .subpage-main::after { display: none !important; }
           .gl-hl-gold { color: #f4b860; font-weight: 500; }
           .gl-hl-blue { color: #6cb0d8; font-weight: 500; }
@@ -311,7 +315,7 @@
 
           /* ── TAB NAV ────────────────────────────────────────────── */
           .gl-tabs-wrap {
-            position: sticky; top: 64px; z-index: 50;
+            position: sticky; top: 66px; z-index: 19;
             background: rgba(2,6,16,.86); backdrop-filter: blur(18px);
             border-bottom: 1px solid rgba(255,255,255,.06);
           }
@@ -321,6 +325,7 @@
             justify-content: center;
             overflow-x: auto; scrollbar-width: none;
           }
+          @media (max-width: 720px) { .gl-tabs-wrap { top: 67px; } }
           @media (max-width: 640px) { .gl-tabs { justify-content: flex-start; } }
           .gl-tabs::-webkit-scrollbar { display: none; }
           .gl-tab {
