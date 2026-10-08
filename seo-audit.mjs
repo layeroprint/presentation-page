@@ -18,6 +18,11 @@ const findMeta = (html, key, value) => tags(html, 'meta').map(attrs).find((item)
 const findLink = (html, rel) => tags(html, 'link').map(attrs).filter((item) => item.rel?.split(/\s+/).includes(rel));
 const normalizeText = (value = '') => value.replace(/\s+/g, ' ').trim();
 const pageUrl = (file) => `https://layero.ro/${file.replaceAll('\\', '/')}`;
+const translatedPairs = {
+  'gyakori-kerdesek.html': 'ro/intrebari-frecvente.html',
+  'ro/intrebari-frecvente.html': 'gyakori-kerdesek.html',
+};
+const translatedFile = (file) => translatedPairs[file] ?? (file.startsWith('ro/') ? file.slice(3) : `ro/${file}`);
 
 for (const file of pages) {
   const html = fs.readFileSync(path.join(root, file), 'utf8');
@@ -53,8 +58,8 @@ for (const file of pages) {
   if (twitterTitle !== title) fail(file, 'twitter:title does not match title');
   if (twitterDescription !== description) fail(file, 'twitter:description does not match meta description');
 
-  const expectedHu = file.startsWith('ro/') ? pageUrl(file.slice(3)) : canonical;
-  const expectedRo = file.startsWith('ro/') ? canonical : file === 'index.html' ? 'https://layero.ro/ro/' : pageUrl(`ro/${file}`);
+  const expectedHu = file.startsWith('ro/') ? pageUrl(translatedFile(file)) : canonical;
+  const expectedRo = file.startsWith('ro/') ? canonical : file === 'index.html' ? 'https://layero.ro/ro/' : pageUrl(translatedFile(file));
   const expectedDefault = expectedRo;
   if (alternates.hu !== expectedHu) fail(file, `invalid hu hreflang: ${alternates.hu}`);
   if (alternates.ro !== expectedRo) fail(file, `invalid ro hreflang: ${alternates.ro}`);
@@ -82,6 +87,30 @@ for (const file of pages) {
   for (const property of ['breadcrumb', 'mainEntity']) {
     const ref = webpage?.[property]?.['@id'];
     if (ref && !ids.has(ref)) fail(file, `unresolved schema ${property} reference: ${ref}`);
+  }
+
+  const organization = graphItems.find((item) => item?.['@type'] === 'Organization');
+  if (!organization) fail(file, 'missing Organization schema');
+  const logo = organization?.logo;
+  if (logo?.url !== 'https://layero.ro/assets/brand/layero-logo-primary.svg' || logo?.width < 112 || logo?.height < 112) fail(file, 'Organization must use the Layero logo with valid dimensions');
+  if (!organization?.description || !organization?.knowsAbout?.length) fail(file, 'missing business description or service topics');
+  if (webpage?.about?.['@id'] !== organization?.['@id']) fail(file, 'page is not linked to the business entity');
+  const brandedImages = imageTags.filter((item) => item.class?.split(/\s+/).includes('logo__image'));
+  if (brandedImages.length < 2 || brandedImages.some((item) => !item.src?.endsWith('assets/brand/layero-logo-on-dark.svg'))) fail(file, 'header and footer must use the Layero logo');
+  const faq = graphItems.find((item) => item?.['@type'] === 'FAQPage');
+  if (faq) {
+    const details = [...staticHtml.matchAll(/<details\b[^>]*>([\s\S]*?)<\/details>/gi)].map((match) => ({
+      question: normalizeText(textBetween(match[1], 'summary')[0]),
+      answer: normalizeText(textBetween(match[1], 'p')[0]),
+    }));
+    if (faq.mainEntity?.length !== details.length || details.length < 1) fail(file, 'FAQ schema count does not match visible questions');
+    faq.mainEntity?.forEach((question, index) => {
+      if (normalizeText(question.name) !== details[index]?.question || normalizeText(question.acceptedAnswer?.text) !== details[index]?.answer) fail(file, `FAQ question ${index + 1} does not match the visible text`);
+    });
+    const languageLinks = tags(staticHtml, 'a').map(attrs).filter((item) => ['hu', 'ro'].includes(item.lang));
+    for (const link of languageLinks) {
+      if (new URL(link.href, canonical).href !== alternates[link.lang]) fail(file, `language switcher does not match ${link.lang} hreflang`);
+    }
   }
 
   documents.set(file.replaceAll('\\', '/'), { html, title, description, canonical, alternates, graphItems });
@@ -128,10 +157,26 @@ for (const field of ['title', 'description', 'canonical']) {
 }
 
 for (const [file, document] of documents) {
-  const pair = file.startsWith('ro/') ? file.slice(3) : `ro/${file}`;
+  const pair = translatedFile(file);
   const paired = documents.get(pair);
   if (!paired) fail(file, `missing translated pair: ${pair}`);
   if (paired && paired.alternates[file.startsWith('ro/') ? 'ro' : 'hu'] !== document.canonical) fail(file, `hreflang is not reciprocal with ${pair}`);
+}
+
+const sitemap = fs.readFileSync(path.join(root, 'sitemap-pages.xml'), 'utf8');
+const sitemapUrls = [...sitemap.matchAll(/<loc>([^<]+)<\/loc>/g)].map((match) => match[1]);
+if (new Set(sitemapUrls).size !== sitemapUrls.length) fail('sitemap-pages.xml', 'duplicate page URLs');
+for (const [file, document] of documents) {
+  if (!sitemapUrls.includes(document.canonical)) fail(file, 'canonical URL missing from sitemap');
+}
+for (const url of sitemapUrls) {
+  if (![...documents.values()].some((document) => document.canonical === url)) fail('sitemap-pages.xml', `URL has no canonical page: ${url}`);
+}
+for (const file of ['site.webmanifest', 'ro/site.webmanifest']) {
+  const manifest = JSON.parse(fs.readFileSync(path.join(root, file), 'utf8'));
+  for (const icon of manifest.icons) {
+    if (!fs.existsSync(path.join(root, icon.src.replace(/^\//, '')))) fail(file, `missing app icon: ${icon.src}`);
+  }
 }
 
 if (failures.length) {

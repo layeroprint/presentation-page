@@ -256,7 +256,7 @@ if (siteNav) {
 
   const mobileHead = siteNav.querySelector(".site-nav__mobile-head") || document.createElement("div");
   mobileHead.className = "site-nav__mobile-head";
-  mobileHead.innerHTML = "<span>Layero navig&aacute;ci&oacute;</span><strong>V&aacute;lassz ir&aacute;nyt</strong>";
+  mobileHead.innerHTML = "<span>Navigare Layero</span><strong>Alege direcția</strong>";
 
   const linkWrap = siteNav.querySelector(".site-nav__links") || document.createElement("div");
   linkWrap.className = "site-nav__links";
@@ -264,7 +264,7 @@ if (siteNav) {
 
   const mobileInfo = siteNav.querySelector(".site-nav__mobile-info") || document.createElement("div");
   mobileInfo.className = "site-nav__mobile-info";
-  mobileInfo.setAttribute("aria-label", "Gyors elerhetosegek");
+  mobileInfo.setAttribute("aria-label", "Contact rapid");
 
   const mobileInfoItems = [];
   if (headerMotto) {
@@ -290,7 +290,7 @@ if (siteNav) {
 
   const mobileCta = siteNav.querySelector(".site-nav__mobile-cta") || document.createElement("div");
   mobileCta.className = "site-nav__mobile-cta";
-  mobileCta.setAttribute("aria-label", "Gyors muveletek");
+  mobileCta.setAttribute("aria-label", "Acțiuni rapide");
   mobileCta.innerHTML = `<a class="btn btn--shop" href="${shopHref}" target="_blank" rel="noopener noreferrer">Magazin online</a>`;
 
   if (mobileInfoItems.length) {

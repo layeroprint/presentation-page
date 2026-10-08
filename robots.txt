@@ -1,6 +1,14 @@
+# Search crawlers share the public site rules, including ChatGPT search.
 User-agent: *
+User-agent: OAI-SearchBot
 Allow: /
 Disallow: /output/
 Disallow: /layero_shop_00_2026/
+Disallow: /source_build/
+Disallow: /exports/
+Disallow: /.git/
+Disallow: /.agents/
+Disallow: /.codex/
+Disallow: /.claude/
 
 Sitemap: https://layero.ro/sitemap.xml

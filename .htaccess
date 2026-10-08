@@ -4,6 +4,12 @@ DirectoryIndex index.html
 <IfModule mod_rewrite.c>
   RewriteEngine On
 
+  # HTTPS on the production domain, including hosts behind an HTTPS proxy.
+  RewriteCond %{HTTP_HOST} ^(?:www\.)?layero\.ro$ [NC]
+  RewriteCond %{HTTPS} !=on
+  RewriteCond %{HTTP:X-Forwarded-Proto} !^https$ [NC]
+  RewriteRule ^ https://layero.ro%{REQUEST_URI} [R=301,L,NE]
+
   # One canonical host for every URL.
   RewriteCond %{HTTP_HOST} ^www\.layero\.ro$ [NC]
   RewriteRule ^ https://layero.ro%{REQUEST_URI} [R=301,L,NE]

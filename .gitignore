@@ -15,6 +15,9 @@ source_build/
 # ── Demo webshop ────────────────────────────────────────────────
 shop/
 
+# Separate webshop Git repository
+/layero_shop_00_2026/
+
 # ── Kimenetek / screenshotok ────────────────────────────────────
 output/
 

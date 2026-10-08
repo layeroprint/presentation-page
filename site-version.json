@@ -1,10 +1,10 @@
 {
-  "version": "20260703-how-command-mobile-2",
-  "description": "Mobile how-command spacing update.",
-  "updatedAt": "2026-07-03",
+  "version": "20261008-layero-review-1",
+  "description": "Layero brand and SEO update; gallery visibility and Romanian interface fixes.",
+  "updatedAt": "2026-10-08",
   "assets": {
-    "styles": "styles.css?v=20260703-how-command-mobile-2",
-    "script": "script.js?v=20260703-how-command-mobile-2",
-    "theme": "tv-theme.css?v=20260703-how-command-mobile-2"
+    "styles": "styles.css?v=20261008-brand-seo",
+    "script": "script.js?v=20260714-newsletter-promo-switch",
+    "romanianScript": "ro/script.js?v=20261008-review-fixes"
   }
 }
